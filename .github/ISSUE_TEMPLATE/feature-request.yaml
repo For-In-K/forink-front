@@ -1,0 +1,28 @@
+name: ✨ Feature Request
+description: ForinK에 필요한 새로운 기능이나 개선 아이디어를 제안해요.
+title: '[Feature] ✨ 요약을 작성해주세요'
+labels: ['feature']
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: 🎯 목표/문제 정의
+      placeholder: 이 기능이 왜 필요한가요? 어떤 문제를 해결하나요?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 💡 제안 내용
+      placeholder: 어떤 방식으로 구현하면 좋을지 구체적으로 알려주세요.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reference
+    attributes:
+      label: 🔍 참고 자료 (선택)
+      placeholder: 다른 서비스 예시, Figma 링크, 스크린샷 등
+    validations:
+      required: false

@@ -1,0 +1,36 @@
+name: 🎨 Design Task
+description: ForinK 서비스의 디자인 작업 요청을 남겨요.
+title: '[Design] 🎨 요약을 작성해주세요'
+labels: ['design', 'ux']
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: 🔍 작업 배경
+      placeholder: 어떤 컴포넌트나 흐름을 개선하고 싶나요?
+    validations:
+      required: true
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: 🎯 디자인 목표
+      placeholder: 어떤 사용자 문제를 해결하거나 어떤 개선을 이루고 싶나요?
+    validations:
+      required: true
+
+  - type: textarea
+    id: link
+    attributes:
+      label: 📎 Figma or 참고 링크
+      placeholder: 관련된 시안이나 참고 자료가 있다면 넣어주세요.
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 💬 기타 참고 사항
+      placeholder: 구현 시 고려할 점, 인터랙션 요구사항 등
+    validations:
+      required: false
