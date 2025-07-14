@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 import { FORINK_COLOR } from './src/styles/color';
 import { FORINK_LAYOUT } from './src/styles/layout';
-import { FORINK_FONT } from './src/styles/typo';
+import { FORINK_TYPO } from './src/styles/typo';
 
 export default {
   content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
@@ -40,24 +40,24 @@ export default {
       },
     },
     fontFamily: {
-      mono: [FORINK_FONT.body.fontFamily],
+      mono: [FORINK_TYPO.body.fontFamily],
     },
     fontSize: {
       title1: [
-        FORINK_FONT.title1.fontSize,
-        { lineHeight: FORINK_FONT.title1.lineHeight },
+        FORINK_TYPO.title1.fontSize,
+        { lineHeight: FORINK_TYPO.title1.lineHeight },
       ],
       title2: [
-        FORINK_FONT.title2.fontSize,
-        { lineHeight: FORINK_FONT.title2.lineHeight },
+        FORINK_TYPO.title2.fontSize,
+        { lineHeight: FORINK_TYPO.title2.lineHeight },
       ],
       body: [
-        FORINK_FONT.body.fontSize,
-        { lineHeight: FORINK_FONT.body.lineHeight },
+        FORINK_TYPO.body.fontSize,
+        { lineHeight: FORINK_TYPO.body.lineHeight },
       ],
       caption: [
-        FORINK_FONT.caption.fontSize,
-        { lineHeight: FORINK_FONT.caption.lineHeight },
+        FORINK_TYPO.caption.fontSize,
+        { lineHeight: FORINK_TYPO.caption.lineHeight },
       ],
     },
   },
