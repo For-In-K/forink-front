@@ -7,6 +7,10 @@ export default {
   content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      backgroundImage: {
+        cloudPattern: "url('./src/assets/patterns/cloud-pattern.svg')",
+        logoPattern: "url('./src/assets/patterns/logo-pattern.svg')",
+      },
       colors: {
         primary: FORINK_COLOR.primary,
         primaryHover: FORINK_COLOR.primaryHover,
@@ -37,6 +41,7 @@ export default {
       },
       height: {
         header: FORINK_LAYOUT.header,
+        minHeader: FORINK_LAYOUT.minHeader,
       },
     },
     fontFamily: {

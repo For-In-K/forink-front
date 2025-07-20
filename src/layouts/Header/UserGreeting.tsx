@@ -1,7 +1,9 @@
 const UserGreeting = () => {
   return (
     <>
-      <p className="text-body text-textMuted">Welcome, redzzzi!</p>
+      <p className="hidden text-body text-textMuted sm:inline-block">
+        Welcome, redzzzi!
+      </p>
     </>
   );
 };

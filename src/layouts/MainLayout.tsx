@@ -1,14 +1,12 @@
-import Container from './Container';
 import Header from './Header';
+import Container from './Container';
 
 const MainLayout = () => {
   return (
     <>
-      <div className="flex min-h-screen w-full flex-col">
+      <div className="bg-cloudPattern flex min-h-screen w-full flex-col bg-background bg-center bg-repeat">
         <Header />
-        <div>
-          <Container />
-        </div>
+        <Container />
       </div>
     </>
   );
