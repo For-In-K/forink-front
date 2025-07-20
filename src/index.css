@@ -6,12 +6,14 @@ layer(base);
 @theme {
   --font-mono: 'Ubuntu Mono', monospace;
 
+  --text-6xl: 60px;
   --text-title1: 32px;
   --text-title1--line-height: 40px;
   --text-title2: 20px;
   --text-title2--line-height: 28px;
   --text-body: 16px;
   --text-body--line-height: 18px;
+  --text-xs: 12px;
   --text-caption: 10px;
   --text-caption--line-height: 12px;
 

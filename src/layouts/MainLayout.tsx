@@ -4,7 +4,7 @@ import Container from './Container';
 const MainLayout = () => {
   return (
     <>
-      <div className="bg-cloud-pattern flex min-h-screen w-full flex-col bg-background bg-center bg-repeat">
+      <div className="bg-cloud-pattern bg-background flex min-h-screen w-full min-w-xs flex-col bg-center bg-repeat">
         <Header />
         <Container />
       </div>
