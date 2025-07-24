@@ -1,8 +1,12 @@
+import { useTranslation } from 'react-i18next';
+
 const UserGreeting = () => {
+  const { t } = useTranslation();
+
   return (
     <>
-      <p className="hidden text-body text-text-muted sm:inline-block">
-        Welcome, redzzzi!
+      <p className="text-body text-text-muted hidden sm:inline-block">
+        <span>{t('greeting')}</span>, redzzzi!
       </p>
     </>
   );

@@ -7,7 +7,7 @@ import SignInButton from './SignInButtont';
 const Header = () => {
   return (
     <>
-      <header className="sm:h-min-header flex w-full items-center justify-around border-b border-border bg-white text-text-primary md:h-header">
+      <header className="h-min-header border-border text-text-primary md:h-header flex w-full items-center justify-around border-b bg-white">
         <LogoButton />
         <NavMenu />
         <UserGreeting />

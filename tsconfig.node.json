@@ -11,7 +11,8 @@
       "@types/*": ["types/*"],
       "@layouts/*": ["layouts/*"],
       "@hooks/*": ["hooks/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@routes/*": ["routes/*"]
     },
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
     "target": "ES2023",
