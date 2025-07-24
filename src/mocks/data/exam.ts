@@ -1,6 +1,10 @@
-import type { Question } from '@src/types/exams';
+import type { Exam } from '@src/types/exam';
 
-export const exam_question: Question[] = [
+function mapAnswers(answers: string[]) {
+  return answers.map((answer, idx) => ({ answerId: idx, answer }));
+}
+
+export const exam_question: Exam[] = [
   {
     examId: 1,
     question: {
@@ -8,7 +12,7 @@ export const exam_question: Question[] = [
     },
     answer: {
       mode: 'Dropdown',
-      options: [
+      options: mapAnswers([
         'No visa',
         'A-1',
         'A-2',
@@ -47,7 +51,7 @@ export const exam_question: Question[] = [
         'G-1',
         'H-1',
         'H-2',
-      ],
+      ]),
     },
   },
   {
@@ -59,132 +63,144 @@ export const exam_question: Question[] = [
       mode: 'Dropdown',
       options: [],
       conditionalOptions: {
-        'No visa': [
+        'No visa': mapAnswers([
           '초단기 체류 (1~14일)',
           '단기 체류 (15~30일)',
           '장기 관광 (31~90일)',
-        ],
-        'A-1': [
+        ]),
+        'A-1': mapAnswers([
           '단기 체류 (1~6개월)',
           '중기 체류 (6개월~2년)',
           '장기 체류 (2년 이상)',
-        ],
-        'A-2': [
+        ]),
+        'A-2': mapAnswers([
           '단기 체류 (1~6개월)',
           '중기 체류 (6개월~2년)',
           '장기 체류 (2년 이상)',
-        ],
-        'A-3': [
+        ]),
+        'A-3': mapAnswers([
           '단기 체류 (1~6개월)',
           '중기 체류 (6개월~2년)',
           '장기 체류 (2년 이상)',
-        ],
-        'B-1': [
+        ]),
+        'B-1': mapAnswers([
           '초단기 체류 (1~14일)',
           '단기 체류 (15~30일)',
           '장기 관광 (31~90일)',
-        ],
-        'B-2': [
+        ]),
+        'B-2': mapAnswers([
           '초단기 체류 (1~14일)',
           '단기 체류 (15~30일)',
           '장기 관광 (31~90일)',
-        ],
-        'C-1': ['단기 체류 (1~30일)', '중기 체류 (31~90일)'],
-        'C-3': [
+        ]),
+        'C-1': mapAnswers(['단기 체류 (1~30일)', '중기 체류 (31~90일)']),
+        'C-3': mapAnswers([
           '초단기 체류 (1~14일)',
           '단기 체류 (15~30일)',
           '장기 관광/출장 (31~90일)',
-        ],
-        'C-4': ['단기 프로젝트 (1~30일)', '중기 프로젝트 (31~90일)'],
-        'D-1': [
+        ]),
+        'C-4': mapAnswers([
+          '단기 프로젝트 (1~30일)',
+          '중기 프로젝트 (31~90일)',
+        ]),
+        'D-1': mapAnswers([
           '단기 프로젝트 (1~3개월)',
           '중기 활동 (3~12개월)',
           '장기 활동 (1~3년)',
-        ],
-        'D-2': [
+        ]),
+        'D-2': mapAnswers([
           '단기 학기 (3~6개월)',
           '정규과정 (6개월~1년)',
           '학위과정 (1~5년)',
-        ],
-        'D-3': ['단기 훈련 (1~6개월)', '표준 훈련 (6~12개월)'],
-        'D-4': ['단기 어학연수 (1~3개월)', '정규 어학과정 (3~12개월)'],
-        'D-5': ['단기 기획취재 (1~3개월)', '상주 취재 (3개월 이상)'],
-        'D-6': ['단기 선교/행사 (1~6개월)', '장기 종교기관 활동 (6개월~5년)'],
-        'D-7': ['단기 파견 (3~6개월)', '정규 주재 (6개월~3년)'],
-        'D-8': [
+        ]),
+        'D-3': mapAnswers(['단기 훈련 (1~6개월)', '표준 훈련 (6~12개월)']),
+        'D-4': mapAnswers([
+          '단기 어학연수 (1~3개월)',
+          '정규 어학과정 (3~12개월)',
+        ]),
+        'D-5': mapAnswers([
+          '단기 기획취재 (1~3개월)',
+          '상주 취재 (3개월 이상)',
+        ]),
+        'D-6': mapAnswers([
+          '단기 선교/행사 (1~6개월)',
+          '장기 종교기관 활동 (6개월~5년)',
+        ]),
+        'D-7': mapAnswers(['단기 파견 (3~6개월)', '정규 주재 (6개월~3년)']),
+        'D-8': mapAnswers([
           '설립 준비 (1~6개월)',
           '초기 운영 (6개월~1년)',
           '안정화/운영 (1~5년)',
-        ],
-        'D-9': [
+        ]),
+        'D-9': mapAnswers([
           '시장조사/준비 (1~3개월)',
           '영업 개시 (3~12개월)',
           '사업 운영 (1~5년)',
-        ],
-        'D-10': ['초기 구직 (1~6개월)', '연장 구직 (6개월~2년)'],
-        'E-1': [
+        ]),
+        'D-10': mapAnswers(['초기 구직 (1~6개월)', '연장 구직 (6개월~2년)']),
+        'E-1': mapAnswers([
           '단기 체류 (3개월 이하)',
           '중기 체류 (3개월~2년)',
           '장기 체류 (2년 이상)',
-        ],
-        'E-2': [
+        ]),
+        'E-2': mapAnswers([
           '단기 체류 (3개월 이하)',
           '중기 체류 (3개월~2년)',
           '장기 체류 (2년 이상)',
-        ],
-        'E-3': [
+        ]),
+        'E-3': mapAnswers([
           '단기 체류 (3개월 이하)',
           '중기 체류 (3개월~2년)',
           '장기 체류 (2년 이상)',
-        ],
-        'E-4': [
+        ]),
+        'E-4': mapAnswers([
           '단기 체류 (3개월 이하)',
           '중기 체류 (3개월~2년)',
           '장기 체류 (2년 이상)',
-        ],
-        'E-5': [
+        ]),
+        'E-5': mapAnswers([
           '단기 체류 (3개월 이하)',
           '중기 체류 (3개월~2년)',
           '장기 체류 (2년 이상)',
-        ],
-        'E-6': [
+        ]),
+        'E-6': mapAnswers([
           '단기 체류 (3개월 이하)',
           '중기 체류 (3개월~2년)',
           '장기 체류 (2년 이상)',
-        ],
-        'E-7': [
+        ]),
+        'E-7': mapAnswers([
           '단기 체류 (3개월 이하)',
           '중기 체류 (3개월~2년)',
           '장기 체류 (2년 이상)',
-        ],
-        'E-9': [
+        ]),
+        'E-9': mapAnswers([
           '단기 체류 (3개월 이하)',
           '중기 체류 (3개월~1년)',
           '장기 체류 (1년 이상)',
-        ],
-        'F-2': [
+        ]),
+        'F-2': mapAnswers([
           '단기 체류 (6개월 이하)',
           '중기 체류 (6개월~2년)',
           '장기 체류 (2년 이상)',
-        ],
-        'F-4': [
+        ]),
+        'F-4': mapAnswers([
           '단기 체류 (6개월 이하)',
           '중기 체류 (6개월~2년)',
           '장기 체류 (2년 이상)',
-        ],
-        'F-5': ['모든 체류기간 공통'],
-        'F-6': [
+        ]),
+        'F-5': mapAnswers(['모든 체류기간 공통']),
+        'F-6': mapAnswers([
           '단기 체류 (6개월 이하)',
           '중기 체류 (6개월~2년)',
           '장기 체류 (2년 이상)',
-        ],
-        'G-1': ['개별 사유에 따라 출입국사무소 문의 필요'],
-        'H-1': ['단기 체류 (3개월 이하)', '중기 체류 (3개월 이상)'],
-        'H-2': [
+        ]),
+        'G-1': mapAnswers(['개별 사유에 따라 출입국사무소 문의 필요']),
+        'H-1': mapAnswers(['단기 체류 (3개월 이하)', '중기 체류 (3개월 이상)']),
+        'H-2': mapAnswers([
           '단기 체류 (3개월 이하)',
           '중기 체류 (3개월~3년)',
           '장기 체류 (3년 이상)',
-        ],
+        ]),
       },
     },
     dependsOn: {
@@ -198,7 +214,7 @@ export const exam_question: Question[] = [
     },
     answer: {
       mode: 'Button',
-      options: ['Yes', 'No'],
+      options: mapAnswers(['Yes', 'No']),
     },
   },
   {
@@ -208,7 +224,7 @@ export const exam_question: Question[] = [
     },
     answer: {
       mode: 'Button',
-      options: ['Yes', 'No'],
+      options: mapAnswers(['Yes', 'No']),
     },
   },
   {
@@ -218,7 +234,7 @@ export const exam_question: Question[] = [
     },
     answer: {
       mode: 'Button',
-      options: ['Yes', 'No'],
+      options: mapAnswers(['Yes', 'No']),
     },
   },
   {
@@ -229,13 +245,13 @@ export const exam_question: Question[] = [
     },
     answer: {
       mode: 'Scale',
-      options: [
-        '1 (Not at all)',
-        '2 (A little)',
-        '3 (Moderately)',
-        '4 (Confidently)',
-        '5 (Fluent)',
-      ],
+      options: mapAnswers([
+        'Not at all',
+        'A little',
+        'Moderately',
+        'Confidently',
+        'Fluent',
+      ]),
     },
   },
   {
@@ -246,7 +262,7 @@ export const exam_question: Question[] = [
     },
     answer: {
       mode: 'Button',
-      options: ['Yes', 'No'],
+      options: mapAnswers(['Yes', 'No']),
     },
   },
   {
@@ -257,7 +273,7 @@ export const exam_question: Question[] = [
     },
     answer: {
       mode: 'Button',
-      options: ['Yes', 'No'],
+      options: mapAnswers(['Yes', 'No']),
     },
   },
   {
@@ -267,7 +283,7 @@ export const exam_question: Question[] = [
     },
     answer: {
       mode: 'Button',
-      options: ['Yes', 'No'],
+      options: mapAnswers(['Yes', 'No']),
     },
   },
   {
@@ -278,7 +294,7 @@ export const exam_question: Question[] = [
     },
     answer: {
       mode: 'Button',
-      options: ['Yes', 'No'],
+      options: mapAnswers(['Yes', 'No']),
     },
   },
   {
@@ -288,12 +304,12 @@ export const exam_question: Question[] = [
     },
     answer: {
       mode: 'Dropdown',
-      options: [
+      options: mapAnswers([
         "No, I'm traveling alone",
         'Yes, with my spouse only',
         'Yes, with my children only',
         'Yes, with both my spouse and children',
-      ],
+      ]),
     },
   },
   {
@@ -304,7 +320,7 @@ export const exam_question: Question[] = [
     },
     answer: {
       mode: 'Button',
-      options: ['Yes', 'No'],
+      options: mapAnswers(['Yes', 'No']),
     },
   },
   {
@@ -314,7 +330,7 @@ export const exam_question: Question[] = [
     },
     answer: {
       mode: 'Button',
-      options: ['Yes', 'No'],
+      options: mapAnswers(['Yes', 'No']),
     },
   },
   {
@@ -324,13 +340,13 @@ export const exam_question: Question[] = [
     },
     answer: {
       mode: 'Dropdown',
-      options: [
+      options: mapAnswers([
         'IT/Tech',
         'Arts & Culture',
         'Manufacturing',
         'Education',
         'Other (Please specify)',
-      ],
+      ]),
     },
   },
   {
@@ -340,7 +356,7 @@ export const exam_question: Question[] = [
     },
     answer: {
       mode: 'Button',
-      options: ['Yes', 'No'],
+      options: mapAnswers(['Yes', 'No']),
     },
   },
   {
@@ -350,13 +366,13 @@ export const exam_question: Question[] = [
     },
     answer: {
       mode: 'Dropdown',
-      options: [
+      options: mapAnswers([
         'Language Program',
         'Undergraduate',
         "Graduate (Master's/PhD)",
         'Exchange Student',
         'Other (Please specify)',
-      ],
+      ]),
     },
   },
   {
@@ -366,7 +382,7 @@ export const exam_question: Question[] = [
     },
     answer: {
       mode: 'Button',
-      options: ['Yes', 'No'],
+      options: mapAnswers(['Yes', 'No']),
     },
   },
 ];
