@@ -21,14 +21,14 @@ const Questionnaire = ({ size, exam }: QuestionnaireProps) => {
 
     const nextQuestionId = exam.examId + 1;
     if (nextQuestionId <= size) {
-      navigate(`/exams/${nextQuestionId}`);
+      navigate(`/exam/${nextQuestionId}`);
     } else {
-      navigate('/exams/check');
+      navigate('/exam/check');
     }
   };
   return (
     <>
-      <div className="flex min-h-screen w-full max-w-300 flex-col items-center justify-center px-15">
+      <div className="flex w-full max-w-300 flex-col items-center justify-center px-15">
         <div className="border-primary my-10 flex h-100 w-full flex-col items-center justify-center rounded-[50px] border-2 bg-white p-10 md:px-20">
           <div className="flex w-full flex-1">
             <QuestionTitle
