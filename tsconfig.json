@@ -10,7 +10,8 @@
       "@types/*": ["types/*"],
       "@layouts/*": ["layouts/*"],
       "@hooks/*": ["hooks/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@routes/*": ["routes/*"]
     }
   },
   "files": [],

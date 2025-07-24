@@ -1,9 +1,12 @@
+import { NavLink } from 'react-router-dom';
 import LogoIcon from '@assets/logo/logo.svg?react';
 
 const Logo = () => {
   return (
     <>
-      <LogoIcon />
+      <NavLink to="/">
+        <LogoIcon className="p-1 sm:p-0" />
+      </NavLink>
     </>
   );
 };

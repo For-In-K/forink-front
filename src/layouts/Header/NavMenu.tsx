@@ -19,8 +19,10 @@ const NavButton = ({ label, to }: NavMenuButtonProps) => {
       <NavLink
         to={to}
         className={({ isActive }) =>
-          `px-3 py-2 text-title2 font-bold text-textPrimary transition-colors duration-300 ease-in-out ${
-            isActive ? 'border-b-2 border-primary text-primary' : ''
+          `ransition-colors px-3 py-2 text-title2 font-bold duration-300 ease-in-out ${
+            isActive
+              ? 'border-primary text-primary sm:border-b-2'
+              : 'text-text-primary'
           }`
         }
       >
