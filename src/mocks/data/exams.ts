@@ -1,4 +1,4 @@
-import type { Exam } from '@src/types/exam';
+import type { Exam } from '@src/types/exams';
 
 function mapAnswers(answers: string[]) {
   return answers.map((answer, idx) => ({ answerId: idx, answer }));

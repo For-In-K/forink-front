@@ -1,4 +1,4 @@
-import type { Option } from '@src/types/exam';
+import type { Option } from '@src/types/exams';
 
 interface ButtonInputProps {
   options: Option[];

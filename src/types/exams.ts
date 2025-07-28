@@ -1,3 +1,5 @@
+/* UI 구현을 위한 타입 정의 */
+
 export type InputMode = 'Dropdown' | 'Button' | 'Scale' | 'Text';
 
 export interface Option {
@@ -33,5 +35,11 @@ export interface Exam {
 
 export interface ExamResultPostDto {
   examId: number;
+  answerId: number;
+}
+
+/* API를 위한 타입 정의 */
+
+export interface UpdateExamRequest {
   answerId: number;
 }

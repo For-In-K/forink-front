@@ -1,4 +1,4 @@
-import type { Answer, Option } from '@src/types/exam';
+import type { Answer, Option } from '@src/types/exams';
 
 import DropdownInput from '@src/components/input/DropdownInput';
 import ButtonInput from '@src/components/input/ButtonInput';

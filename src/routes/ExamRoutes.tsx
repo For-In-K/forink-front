@@ -3,7 +3,7 @@ import { useRoutes } from 'react-router-dom';
 import Questionnaire from '@src/pages/onboarding/template/Questionnaire';
 import CheckPage from '@src/pages/onboarding/exam/CheckPage';
 
-import { exam_question } from '@src/mocks/data/exam';
+import { exam_question } from '@src/mocks/data/exams';
 
 const ExamRoutes = () => {
   const LAST_QUESTION_ID = exam_question.length;
