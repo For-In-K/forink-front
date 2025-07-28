@@ -1,7 +1,24 @@
 import apiClient from './apiClient';
-import type { UpdateExamRequest } from '@src/types/exams';
+import type {
+  CreateExamResponse,
+  CreateExamStepRequest,
+  GetExamResponse,
+} from '@src/types/exams';
 
-const updateExam = async (examId: number, payload: UpdateExamRequest) => {
-  const res = await apiClient.patch(`/exams/steps/${examId}`, payload);
+export const createExam = async (): Promise<CreateExamResponse> => {
+  const res = await apiClient.post('/exams');
+  return res.data;
+};
+
+export const getExam = async (): Promise<GetExamResponse> => {
+  const res = await apiClient.get('exams');
+  return res.data;
+};
+
+export const createExamStep = async (
+  stepNumber: number,
+  payload: CreateExamStepRequest
+) => {
+  const res = await apiClient.post(`exams/step/${stepNumber}`, payload);
   return res.data;
 };
