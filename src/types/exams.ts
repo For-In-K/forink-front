@@ -40,6 +40,12 @@ export interface ExamResultPostDto {
 
 /* API를 위한 타입 정의 */
 
-export interface UpdateExamRequest {
-  answerId: number;
+export interface CreateExamResponse {
+  redirectUrl: string;
+}
+
+export type GetExamResponse = { stepNumber: number; answer: number }[];
+
+export interface CreateExamStepRequest {
+  answer: number;
 }
