@@ -1,10 +1,18 @@
 interface ProgressbarProps {
-  progress: number;
+  totalSize: number;
+  currentSize: number;
   showNumber?: boolean;
 }
 
-const Progressbar = ({ progress, showNumber = false }: ProgressbarProps) => {
-  const safeProgress = Math.min(100, Math.max(0, progress));
+const Progressbar = ({
+  totalSize,
+  currentSize,
+  showNumber = false,
+}: ProgressbarProps) => {
+  const safeProgress = Math.min(
+    100,
+    Math.max(0, (currentSize / totalSize) * 100)
+  );
 
   return (
     <div className="flex w-full items-center space-x-4 px-2">
@@ -26,7 +34,7 @@ const Progressbar = ({ progress, showNumber = false }: ProgressbarProps) => {
 
       {showNumber && (
         <span className="text-text-muted text-body min-w-[2.5rem] text-right font-mono">
-          {Math.round(safeProgress)}%
+          {currentSize}/{totalSize}
         </span>
       )}
     </div>
