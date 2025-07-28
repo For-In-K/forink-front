@@ -22,8 +22,6 @@ const DropdownInput = ({
     onChange(option);
   };
 
-  console.log(options);
-
   return (
     <div className="relative" style={{ minWidth: 'max-content' }}>
       <button
