@@ -1,66 +1,41 @@
-import React from 'react';
-
-type RoadmapCategory = {
-  id: string;
-  title: string;
-  description: string;
-  progress: number; // 0 ~ 100
-  isActive: boolean;
-};
-
-const roadmapCategories: RoadmapCategory[] = [
-  {
-    id: 'languages',
-    title: 'Languages',
-    description: 'Start learning Korean for daily life and survival situations',
-    progress: 95,
-    isActive: false,
-  },
-  {
-    id: 'administrative',
-    title: 'Administrative',
-    description:
-      'Get step-by-step guidance for visas, health insurance, and registration.',
-    progress: 95,
-    isActive: true,
-  },
-  {
-    id: 'travel',
-    title: 'Travel',
-    description: 'Discover essential places and tips before settling down.',
-    progress: 95,
-    isActive: false,
-  },
-  {
-    id: 'career',
-    title: 'Career',
-    description: 'Build your career path in Korea with resources and guidance.',
-    progress: 50,
-    isActive: false,
-  },
-];
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { capitalizeFirstLetter } from '@src/utils/chars';
+import Progressbar from '@src/components/input/Progressbar';
+import { roadmapTypes } from '@src/mocks/data/roadmaps';
 
 const Roadmap = () => {
+  const { t } = useTranslation();
+  const [hoveredType, setHoveredType] = useState<string | null>(null);
+
   return (
     <div className="flex flex-col items-center gap-6 py-10">
-      {roadmapCategories.map((category) => (
-        <div
-          key={category.id}
-          className={`w-[500px] rounded-[20px] px-6 py-5 shadow-md transition-all duration-300 ${category.isActive ? 'bg-[#7BA7FF] text-white' : 'bg-[#7BA7FF88] text-white/70'} `}
-        >
-          <div className="text-xl font-bold">{category.title}</div>
-          <div className="mt-1 text-sm">{category.description}</div>
-          <div className="mt-4 flex items-center gap-2">
-            <div className="h-2 w-full overflow-hidden rounded-full bg-white/30">
-              <div
-                className="h-full rounded-full bg-gradient-to-r from-green-400 to-yellow-400"
-                style={{ width: `${category.progress}%` }}
+      {roadmapTypes.map((category) => {
+        const type = category.type;
+        const progress = category.progressRatio;
+        const title = capitalizeFirstLetter(type);
+        const description = t(`roadmap.categories.${type}.description`);
+
+        return (
+          <button
+            key={category.type}
+            type="button"
+            onMouseEnter={() => setHoveredType(category.type)}
+            onMouseLeave={() => setHoveredType(null)}
+            className={`flex h-42 w-2xl flex-col items-start gap-1 rounded-3xl px-10 py-6 text-white shadow-md transition-all duration-300 hover:scale-105 hover:text-white ${hoveredType && hoveredType !== type ? 'bg-primary/50 blur-xs filter' : 'bg-primary/75'} `}
+          >
+            <span className="text-title1 font-bold">{title}</span>
+            <span className="text-body h-16 text-left">{description}</span>
+            <div className="my-1 flex w-full items-center gap-2">
+              <Progressbar
+                totalSize={100}
+                currentSize={progress}
+                showNumber="percent"
               />
             </div>
-            <span className="text-sm font-semibold">{category.progress}%</span>
-          </div>
-        </div>
-      ))}
+          </button>
+        );
+      })}
     </div>
   );
 };
