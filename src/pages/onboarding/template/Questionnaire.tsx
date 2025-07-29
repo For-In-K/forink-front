@@ -30,7 +30,11 @@ const Questionnaire = ({ size, exam }: QuestionnaireProps) => {
     <>
       <div className="flex w-full max-w-300 flex-col items-center justify-center px-15">
         <div className="flex w-full items-center px-10">
-          <Progressbar totalSize={size} currentSize={exam.examId} showNumber />
+          <Progressbar
+            totalSize={size}
+            currentSize={exam.examId}
+            showNumber="fraction"
+          />
         </div>
         <div className="border-primary my-10 flex h-100 w-full flex-col items-center justify-center rounded-[50px] border-2 bg-white p-10 md:px-20">
           <div className="flex w-full flex-1">
