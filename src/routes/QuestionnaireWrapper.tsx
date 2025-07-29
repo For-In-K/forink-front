@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import Questionnaire from '@src/pages/onboarding/template/Questionnaire';
-import { exam_question } from '@src/mocks/data/exams';
+import { exam_question } from '@src/constants/exams';
 
 const LAST_QUESTION_ID = exam_question.length;
 
