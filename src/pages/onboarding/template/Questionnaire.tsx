@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import type { Exam, Option, ExamResultPostDto } from '@src/types/exams';
-import Progressbar from '@src/components/input/Progressbar';
+import Progressbar from '@src/components/status/Progressbar';
 import QuestionTitle from './Question/QuestionTitle';
 import QuestionInput from './Question/QuestionInput';
 import Logo from '@assets/logo/logo-name.svg?react';

@@ -1,9 +1,11 @@
-export interface RoadmapType {
+export type RoadmapType = 'administration' | 'travel' | 'career';
+
+export interface RoadmapTypeDetail {
   type: string;
   progressRatio: number;
 }
 
-export type GetRoadmapTypeResponse = RoadmapType[];
+export type GetRoadmapTypeResponse = RoadmapTypeDetail[];
 
 export interface UiRoadmapType {
   type: string;
@@ -29,7 +31,7 @@ export interface RoadmapSection {
   steps: Step[];
 }
 
-export type CreateRoadmapResponse = RoadmapSection[];
+export type CreateRoadmapsResponse = RoadmapSection[];
 
 export interface SubroadmapSection {
   roadmapId: number;

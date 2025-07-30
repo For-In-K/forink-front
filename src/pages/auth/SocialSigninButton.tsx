@@ -13,7 +13,7 @@ const SocialSigninButton = () => {
   return (
     <button
       onClick={handleSignin}
-      className="text-md md:text-title2 flex items-center justify-center border border-[#747775] bg-white px-5 py-3 font-sans font-medium text-[#1F1F1F]"
+      className="text-md md:text-title2 hover:bg-white-hover flex items-center justify-center border border-[#747775] bg-white px-5 py-3 font-sans font-medium text-[#1F1F1F]"
     >
       <GoogleIcon className="size-5" />
       <span>{BUTTON_TEXT}</span>

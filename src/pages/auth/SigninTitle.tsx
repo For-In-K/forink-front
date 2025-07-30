@@ -7,8 +7,10 @@ const SigninTitle = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-2 text-center">
-        <h1 className="text-title1 tracking-tight md:text-6xl">{TITLE1}</h1>
+      <div className="flex animate-bounce flex-col gap-3 text-center">
+        <h1 className="text-title1 font-semibold tracking-tight md:text-6xl">
+          {TITLE1}
+        </h1>
         <p className="md:text-title2 text-text-muted text-xs">
           {TITLE2.split('\n').map((line, index) => (
             <React.Fragment key={index}>
