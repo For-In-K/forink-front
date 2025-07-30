@@ -72,3 +72,9 @@
     cursor: pointer;
   }
 }
+
+@keyframes flowDash {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
