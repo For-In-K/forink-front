@@ -17,8 +17,8 @@
   --text-caption: 10px;
   --text-caption--line-height: 12px;
 
-  --background-image-cloud-pattern: url('./src/assets/patterns/cloud-pattern.svg');
-  --background-image-logo-pattern: url('./src/assets/patterns/logo-pattern.svg');
+  --background-image-cloud-pattern: url('/src/assets/patterns/cloud-pattern.svg');
+  --background-image-logo-pattern: url('/src/assets/patterns/logo-pattern.svg');
 
   --color-primary: #3b82f6;
   --color-primary-hover: #2563eb;
