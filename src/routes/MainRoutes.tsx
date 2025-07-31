@@ -3,11 +3,11 @@ import ExamRoutes from './ExamRoutes';
 
 import SideLayout from '@layouts/SideLayout';
 import MainLayout from '@layouts/MainLayout';
-import Signin from '@src/pages/auth/Signin';
+import SigninPage from '@pages/auth/SigninPage';
 
-import RoadmapTypeSelector from '@src/pages/roadmap/RoadmapTypeSelector';
-import RoadmapDiagram from '@src/pages/roadmap/RoadmapDiagram';
-import RoadmapStepDetail from '@src/pages/roadmap/RoadmapStepDetail';
+import RoadmapTypeSelectorPage from '@pages/roadmap/RoadmapTypeSelectorPage';
+import RoadmapDiagramPage from '@pages/roadmap/RoadmapDiagramPage';
+import RoadmapStepDetailPage from '@pages/roadmap/RoadmapStepDetailPage';
 
 import Guide from '@pages/guide/Guide';
 import Board from '@pages/board/Board';
@@ -19,11 +19,11 @@ const MainRoutes = () => {
       element: <MainLayout />,
       children: [
         { index: true, element: <div>This is home page.</div> },
-        { path: 'roadmap', element: <RoadmapTypeSelector /> },
-        { path: 'roadmap/:roadmapType', element: <RoadmapDiagram /> },
+        { path: 'roadmap', element: <RoadmapTypeSelectorPage /> },
+        { path: 'roadmap/:roadmapType', element: <RoadmapDiagramPage /> },
         {
           path: 'roadmap/:roadmapType/:stepId',
-          element: <RoadmapStepDetail />,
+          element: <RoadmapStepDetailPage />,
         },
         { path: 'guide', element: <Guide /> },
         { path: 'board', element: <Board /> },
@@ -32,7 +32,7 @@ const MainRoutes = () => {
     {
       element: <SideLayout />,
       children: [
-        { path: 'signin', element: <Signin /> },
+        { path: 'signin', element: <SigninPage /> },
         {
           path: 'exams',
           children: ExamRoutes,

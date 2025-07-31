@@ -1,6 +1,7 @@
-import { roadmapTypes } from '@src/mocks/data/roadmaps';
-import Progressbar from '@src/components/status/Progressbar';
-import { capitalizeFirstLetter } from '@src/utils/chars';
+import { roadmapTypes } from '@mocks/data/roadmaps';
+import Progressbar from '@components/status/Progressbar';
+import type { RoadmapTypeDetail } from 'types/roadmaps';
+import { capitalizeFirstLetter } from '@utils/chars';
 
 interface RoadmapHeaderType {
   roadmapType: string;
@@ -8,7 +9,9 @@ interface RoadmapHeaderType {
 
 const getProgressRatio = (type: string) => {
   const roadmapTypeStd = type.toUpperCase();
-  const roadmapItem = roadmapTypes.find((item) => item.type === roadmapTypeStd);
+  const roadmapItem = roadmapTypes.find(
+    (item: RoadmapTypeDetail) => item.type === roadmapTypeStd
+  );
   return roadmapItem ? roadmapItem.progressRatio : 0;
 };
 

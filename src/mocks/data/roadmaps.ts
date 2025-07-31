@@ -1,7 +1,7 @@
 import type {
   GetRoadmapTypeResponse,
   GetSubroadmapResponse,
-} from '@src/types/roadmaps';
+} from 'types/roadmaps';
 
 export const roadmapTypes: GetRoadmapTypeResponse = [
   { type: 'ADMINISTRATION', progressRatio: 95 },
@@ -26,6 +26,26 @@ export const subroadmaps: GetSubroadmapResponse = [
   {
     roadmapId: 3,
     title: 'Health Insurance',
+    statusType: 'COMPLETED',
+  },
+  {
+    roadmapId: 4,
+    title: 'Residence Registration',
+    statusType: 'COMPLETED',
+  },
+  {
+    roadmapId: 5,
+    title: 'Bank Account Opening',
+    statusType: 'COMPLETED',
+  },
+  {
+    roadmapId: 6,
+    title: 'Mobile & Internet Setup',
+    statusType: 'IN_PROGRESS',
+  },
+  {
+    roadmapId: 7,
+    title: 'Tax & Employment Registration',
     statusType: 'IN_PROGRESS',
   },
 ];
