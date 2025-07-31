@@ -14,7 +14,7 @@ export interface BaseAnswer {
 export interface OptionsAnswer extends BaseAnswer {
   mode: 'Dropdown' | 'Button' | 'Scale';
   options: Option[];
-  conditionalOptions?: { [key: string]: Option[] };
+  conditionalOptions?: { [key: number]: Option[] };
 }
 
 export interface TextAnswer extends BaseAnswer {
