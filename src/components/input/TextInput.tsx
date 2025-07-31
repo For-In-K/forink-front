@@ -1,4 +1,4 @@
-import type { Option } from '@src/types/exams';
+import type { Option } from 'types/exams';
 
 interface TextInputProps {
   placeholder?: string;
