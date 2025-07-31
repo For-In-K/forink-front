@@ -1,20 +1,17 @@
-import { useParams } from 'react-router-dom';
-import Questionnaire from '@src/pages/onboarding/template/Questionnaire';
-import { exam_question } from '@src/constants/exams';
+import { useParams, Outlet } from 'react-router-dom';
 
-const LAST_QUESTION_ID = exam_question.length;
+import { examQuestions } from '@constants/exams';
 
 const QuestionnaireWrapper = () => {
-  const { examId } = useParams();
-  const examIdNum = Number(examId);
-  if (!examIdNum || examIdNum < 1 || examIdNum > LAST_QUESTION_ID) {
-    return <div>잘못된 문제 ID입니다.</div>;
-  }
+  const { stepNumber } = useParams();
+  const step = Number(stepNumber);
+  const currentExam = examQuestions[step - 1];
 
-  const exam = exam_question.find((e) => e.examId === examIdNum);
-  if (!exam) return <div>문제를 찾을 수 없습니다.</div>;
-
-  return <Questionnaire size={LAST_QUESTION_ID} exam={exam} />;
+  return currentExam ? (
+    <Outlet context={{ currentExam }} />
+  ) : (
+    <div>문항을 찾을 수 없습니다.</div>
+  );
 };
 
 export default QuestionnaireWrapper;

@@ -3,7 +3,7 @@ import type {
   CreateExamResponse,
   CreateExamStepRequest,
   GetExamResponse,
-} from '@src/types/exams';
+} from 'types/exams';
 
 export const createExam = async (): Promise<CreateExamResponse> => {
   const res = await apiClient.post('/exams');

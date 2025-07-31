@@ -1,6 +1,6 @@
 import apiClient from './apiClient';
 
-import type { CreateRoadmapsResponse } from '@src/types/roadmaps';
+import type { CreateRoadmapsResponse } from 'types/roadmaps';
 
 export const createRoadmaps = async (): Promise<CreateRoadmapsResponse> => {
   const res = await apiClient.post('/roadmaps');
@@ -9,4 +9,5 @@ export const createRoadmaps = async (): Promise<CreateRoadmapsResponse> => {
 
 export const getRoadmap = async (roadmapType: string) => {
   const res = await apiClient.get(`/roadmaps/${roadmapType}`);
+  return res.data;
 };

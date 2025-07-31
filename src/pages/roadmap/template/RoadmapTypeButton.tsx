@@ -1,5 +1,5 @@
 import React from 'react';
-import Progressbar from '@src/components/status/Progressbar';
+import Progressbar from '@components/status/Progressbar';
 
 interface RoadmapTypeButtonProps {
   type: string;

@@ -1,23 +1,37 @@
 {
   "compilerOptions": {
-    "jsx": "preserve",
+    "target": "es2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "react-jsx",
     "baseUrl": "./src",
     "paths": {
-      "@src/*": ["*"],
+      "@apis/*": ["apis/*"],
       "@assets/*": ["assets/*"],
       "@pages/*": ["pages/*"],
-      "@styles/*": ["styles/*"],
-      "@components/*": ["components/*"],
-      "@types/*": ["types/*"],
+      "@routes/*": ["routes/*"],
       "@layouts/*": ["layouts/*"],
+      "@mocks/*": ["mocks/*"],
+      "@components/*": ["components/*"],
+      "@constants/*": ["constants/*"],
+      "@types/*": ["types/*"],
+      "@styles/*": ["styles/*"],
       "@hooks/*": ["hooks/*"],
       "@utils/*": ["utils/*"],
-      "@routes/*": ["routes/*"]
-    }
+      "@stores/*": ["stores/*"]
+    },
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "incremental": true
   },
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+  "include": ["src"]
 }

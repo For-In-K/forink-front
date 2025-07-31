@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { capitalizeFirstLetter } from '@src/utils/chars';
+import { capitalizeFirstLetter } from '@utils/chars';
+import type { RoadmapTypeDetail } from 'types/roadmaps';
 import RoadmapTypeButton from './template/RoadmapTypeButton';
-import { roadmapTypes } from '@src/mocks/data/roadmaps';
+import { roadmapTypes } from '@mocks/data/roadmaps';
 
 const RoadmapTypeSelector = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const RoadmapTypeSelector = () => {
 
   return (
     <div className="flex flex-col items-center gap-6">
-      {roadmapTypes.map((category) => {
+      {roadmapTypes.map((category: RoadmapTypeDetail) => {
         const type = category.type.toLowerCase();
         const progress = category.progressRatio;
         const title = capitalizeFirstLetter(type);

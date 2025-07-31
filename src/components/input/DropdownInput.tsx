@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { Option } from '@src/types/exams';
+import type { Option } from 'types/exams';
 import { ChevronDown, Check } from 'lucide-react';
 
 interface DropdownInputProps {

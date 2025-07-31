@@ -1,28 +1,28 @@
-import type { Answer, Option } from '@src/types/exams';
+import type { Answer, Option } from 'types/exams';
 
-import DropdownInput from '@src/components/input/DropdownInput';
-import ButtonInput from '@src/components/input/ButtonInput';
-import ScaleInput from '@src/components/input/ScaleInput';
+import DropdownInput from '@components/input/DropdownInput';
+import ButtonInput from '@components/input/ButtonInput';
+import ScaleInput from '@components/input/ScaleInput';
 
 interface QuestionInputProps {
-  options: Answer;
+  answer: Answer;
   onChange: (value: Option) => void;
 }
 
-const QuestionInput = ({ options, onChange }: QuestionInputProps) => {
+const QuestionInput = ({ answer, onChange }: QuestionInputProps) => {
   let component;
 
-  switch (options.mode) {
+  switch (answer.mode) {
     case 'Dropdown':
       component = (
-        <DropdownInput options={options.options} onChange={onChange} />
+        <DropdownInput options={answer.options} onChange={onChange} />
       );
       break;
     case 'Button':
-      component = <ButtonInput options={options.options} onChange={onChange} />;
+      component = <ButtonInput options={answer.options} onChange={onChange} />;
       break;
     case 'Scale':
-      component = <ScaleInput options={options.options} onChange={onChange} />;
+      component = <ScaleInput options={answer.options} onChange={onChange} />;
       break;
     default:
       component = null;
