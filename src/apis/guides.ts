@@ -1,5 +1,5 @@
 import apiClient from './apiClient';
-import type { GuideResponse } from '@src/types/guides';
+import type { GuideResponse } from 'types/guides';
 
 export const getGuide = async (): Promise<GuideResponse> => {
   const res = await apiClient.get('/guides');
