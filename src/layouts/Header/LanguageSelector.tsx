@@ -27,7 +27,7 @@ export const LanguageSelector = () => {
   };
 
   return (
-    <div className="relative flex">
+    <div className="relative hidden sm:flex">
       <button
         onClick={toggleDropdown}
         className="border-border size-10 min-w-10 overflow-hidden rounded-full border"
