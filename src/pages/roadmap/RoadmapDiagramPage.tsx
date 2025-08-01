@@ -5,7 +5,7 @@ import MilestoneWrapper from './template/MilestoneWrapper';
 const RoadmapDiagram = () => {
   const { roadmapType } = useParams();
   if (!roadmapType) {
-    return <div>Cannot load roadmap progress.</div>;
+    return <div>Cannot load roadmap diagram.</div>;
   }
 
   return (
