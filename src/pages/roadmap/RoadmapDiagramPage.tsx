@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import RoadmapHeader from './template/RoadmapHeader';
-import MilestoneWrapper from './template/MilestoneWrapper';
+import MilestoneWrapper from './template/milestone/MilestoneWrapper';
 
 const RoadmapDiagram = () => {
   const { roadmapType } = useParams();
