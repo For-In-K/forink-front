@@ -42,13 +42,13 @@ export const LanguageSelector = () => {
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="absolute z-10 mt-12 flex flex-col gap-2 rounded-full"
+          className="absolute left-1/2 z-10 mt-12 flex -translate-x-1/2 flex-col gap-2 rounded-full bg-white p-1 shadow-md"
         >
           {LANGUAGES.filter((l) => l.code !== currentLang.code).map((lang) => (
             <button
               key={lang.code}
               onClick={() => handleChange(lang.code)}
-              className="hover:ring-primary size-10 min-w-10 overflow-hidden rounded-full transition hover:ring-2"
+              className="hover:ring-primary size-9 overflow-hidden rounded-full shadow-xs transition hover:ring-2"
             >
               <Flag
                 code={lang.countryCode}
