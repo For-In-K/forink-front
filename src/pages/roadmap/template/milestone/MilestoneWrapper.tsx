@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { getX } from '@utils/coordinates';
 import { milestoneNodeTypes } from 'types/milestone';
-import MilestoneButton from '@components/status/MilestoneButton';
+import MilestoneButton from '@components/button/MilestoneButton';
 import { subroadmaps } from '@mocks/data/roadmaps';
 
 interface MilestoneWrapperProps {

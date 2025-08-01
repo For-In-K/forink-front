@@ -22,7 +22,7 @@ const MainRoutes = () => {
         { path: 'roadmap', element: <RoadmapTypeSelectorPage /> },
         { path: 'roadmap/:roadmapType', element: <RoadmapDiagramPage /> },
         {
-          path: 'roadmap/:roadmapType/:stepNumber',
+          path: 'roadmap/:roadmapType/:roadmapId',
           element: <RoadmapStepDetailPage />,
         },
         { path: 'guide', element: <Guide /> },

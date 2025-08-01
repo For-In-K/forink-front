@@ -10,6 +10,7 @@ i18n.use(initReactI18next).init({
         greeting: 'Welcome',
         signin: 'Sign in',
         signout: 'Sign out',
+        submit: 'Submit',
         roadmap: {
           categories: {
             ADMINISTRATION: {
@@ -33,6 +34,7 @@ i18n.use(initReactI18next).init({
         greeting: '안녕하세요',
         signin: '로그인',
         signout: '로그아웃',
+        submit: '제출',
         roadmap: {
           categories: {
             ADMINISTRATION: {
@@ -55,6 +57,7 @@ i18n.use(initReactI18next).init({
         greeting: '欢迎',
         signin: '登录',
         signout: '登出',
+        submit: '提交',
         roadmap: {
           categories: {
             ADMINISTRATION: {
@@ -75,6 +78,7 @@ i18n.use(initReactI18next).init({
         greeting: 'Chào mừng',
         signin: 'Đăng nhập',
         signout: 'Đăng xuất',
+        submit: 'Gửi đi',
         roadmap: {
           categories: {
             ADMINISTRATION: {
