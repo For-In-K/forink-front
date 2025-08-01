@@ -14,7 +14,9 @@ export interface UiRoadmapType {
 }
 
 export interface StepContent {
+  stepContentId: number;
   stepContent: string;
+  isChecked: boolean;
 }
 
 export interface Step {
@@ -24,14 +26,7 @@ export interface Step {
   contents: StepContent[];
 }
 
-export interface RoadmapSection {
-  type: string;
-  order: number;
-  title: string;
-  steps: Step[];
-}
-
-export type CreateRoadmapsResponse = RoadmapSection[];
+export type GetRoadmapStepDetailResponse = Step[];
 
 export interface SubroadmapSection {
   roadmapId: number;

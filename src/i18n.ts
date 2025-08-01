@@ -2,10 +2,10 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 i18n.use(initReactI18next).init({
-  lng: 'en',
-  fallbackLng: 'en',
+  lng: 'eng',
+  fallbackLng: 'eng',
   resources: {
-    en: {
+    eng: {
       translation: {
         greeting: 'Welcome',
         signin: 'Sign in',
@@ -28,7 +28,7 @@ i18n.use(initReactI18next).init({
         },
       },
     },
-    ko: {
+    kor: {
       translation: {
         greeting: '안녕하세요',
         signin: '로그인',
@@ -45,6 +45,49 @@ i18n.use(initReactI18next).init({
             CAREER: {
               description:
                 '한국에서 경력 경로를 구축할 수 있는 리소스와 가이드를 제공해요.',
+            },
+          },
+        },
+      },
+    },
+    chi: {
+      translation: {
+        greeting: '欢迎',
+        signin: '登录',
+        signout: '登出',
+        roadmap: {
+          categories: {
+            ADMINISTRATION: {
+              description: '获取有关签证、健康保险和注册的逐步指南。',
+            },
+            TRAVEL: {
+              description: '在定居之前，发现必要的地方和提示。',
+            },
+            CAREER: {
+              description: '通过资源和指导在韩国建立你的职业生涯。',
+            },
+          },
+        },
+      },
+    },
+    vie: {
+      translation: {
+        greeting: 'Chào mừng',
+        signin: 'Đăng nhập',
+        signout: 'Đăng xuất',
+        roadmap: {
+          categories: {
+            ADMINISTRATION: {
+              description:
+                'Nhận hướng dẫn từng bước về visa, bảo hiểm y tế và đăng ký.',
+            },
+            TRAVEL: {
+              description:
+                'Khám phá những nơi cần thiết và mẹo trước khi định cư.',
+            },
+            CAREER: {
+              description:
+                'Xây dựng con đường sự nghiệp của bạn tại Hàn Quốc với các tài nguyên và hướng dẫn.',
             },
           },
         },

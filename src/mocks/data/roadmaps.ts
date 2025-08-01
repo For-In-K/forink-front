@@ -1,6 +1,7 @@
 import type {
   GetRoadmapTypeResponse,
   GetSubroadmapResponse,
+  GetRoadmapStepDetailResponse,
 } from 'types/roadmaps';
 
 export const roadmapTypes: GetRoadmapTypeResponse = [
@@ -47,5 +48,43 @@ export const subroadmaps: GetSubroadmapResponse = [
     roadmapId: 7,
     title: 'Tax & Employment Registration',
     statusType: 'IN_PROGRESS',
+  },
+];
+
+export const roadmapStepDetail: GetRoadmapStepDetailResponse = [
+  {
+    stepNumber: 1,
+    stepTitle: 'Check if my current phone is compatible',
+    stepDescription: 'First, verify if your phone uses a Korean SIM card.',
+    contents: [
+      {
+        stepContentId: 1,
+        stepContent: 'Confirmed the phone is unlocked',
+        isChecked: true,
+      },
+      {
+        stepContentId: 2,
+        stepContent: 'Checked the SIM size compatibility for Korean SIMs',
+        isChecked: false,
+      },
+    ],
+  },
+  {
+    stepNumber: 2,
+    stepTitle: 'Learn about carriers and plan types',
+    stepDescription: 'Find the right carrier and plan for you',
+    contents: [
+      {
+        stepContentId: 3,
+        stepContent:
+          'Understnad the difference between prepaid and postpaid plans',
+        isChecked: false,
+      },
+      {
+        stepContentId: 4,
+        stepContent: 'checked which carriers are foreigner-friendly',
+        isChecked: false,
+      },
+    ],
   },
 ];
