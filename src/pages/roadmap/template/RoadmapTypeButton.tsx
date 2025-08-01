@@ -32,8 +32,8 @@ const RoadmapTypeButton = ({
         isHovered ? 'bg-primary/50 blur-xs filter' : 'bg-primary/75'
       }`}
     >
-      <span className="text-title1 w-full text-left font-bold">{title}</span>
-      <span className="text-body h-16 w-full text-left">{description}</span>
+      <p className="text-title1 text-left font-bold">{title}</p>
+      <p className="text-body h-16 text-left">{description}</p>
       <div className="my-1 flex w-full items-center gap-2">
         <Progressbar
           totalSize={100}
