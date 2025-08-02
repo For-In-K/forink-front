@@ -8,7 +8,7 @@ interface StepWrapperProps {
 const StepWrapper = ({ roadmapId }: StepWrapperProps) => {
   return (
     <>
-      <div className="flex flex-col items-center gap-10">
+      <div className="flex flex-col items-center gap-8">
         {roadmapStepDetail.map((step) => (
           <StepUnit key={step.stepNumber} step={step} />
         ))}
