@@ -9,7 +9,7 @@ import RoadmapTypeSelectorPage from '@pages/roadmap/RoadmapTypeSelectorPage';
 import RoadmapDiagramPage from '@pages/roadmap/RoadmapDiagramPage';
 import RoadmapStepDetailPage from '@pages/roadmap/RoadmapStepDetailPage';
 
-import Guide from '@pages/guide/Guide';
+import GuideProfilePage from '@pages/guide/GuideProfilePage';
 import Board from '@pages/board/Board';
 
 const MainRoutes = () => {
@@ -25,7 +25,7 @@ const MainRoutes = () => {
           path: 'roadmap/:roadmapType/:roadmapId',
           element: <RoadmapStepDetailPage />,
         },
-        { path: 'guide', element: <Guide /> },
+        { path: 'guide', element: <GuideProfilePage /> },
         { path: 'board', element: <Board /> },
       ],
     },
@@ -37,6 +37,7 @@ const MainRoutes = () => {
           path: 'exams',
           children: ExamRoutes,
         },
+        { path: 'resume', element: <div>This is resume page.</div> },
       ],
     },
   ]);
