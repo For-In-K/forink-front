@@ -19,10 +19,10 @@ const NavButton = ({ label, to }: NavMenuButtonProps) => {
       <NavLink
         to={to}
         className={({ isActive }) =>
-          `ransition-colors px-3 py-2 text-title2 font-bold duration-300 ease-in-out ${
+          `text-title2 flex h-10 items-center px-2 font-bold transition-colors duration-300 ease-in-out ${
             isActive
-              ? 'border-primary text-primary sm:border-b-2'
-              : 'text-text-primary'
+              ? 'border-primary text-primary hover:text-primary-hover sm:border-b-2'
+              : 'text-text-primary hover:text-gray-500'
           }`
         }
       >
@@ -35,7 +35,7 @@ const NavButton = ({ label, to }: NavMenuButtonProps) => {
 const NavMenu = () => {
   return (
     <>
-      <nav className="flex gap-4">
+      <nav className="flex gap-4 sm:gap-10">
         {NAV_ITEMS.map(({ buttonName, directPath }) => (
           <NavButton key={buttonName} to={directPath} label={buttonName} />
         ))}

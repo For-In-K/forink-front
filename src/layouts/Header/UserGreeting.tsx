@@ -5,7 +5,7 @@ const UserGreeting = () => {
 
   return (
     <>
-      <p className="text-body text-text-muted hidden sm:inline-block">
+      <p className="text-body text-text-muted hidden w-48 text-left md:inline-block">
         <span>{t('greeting')}</span>, redzzzi!
       </p>
     </>

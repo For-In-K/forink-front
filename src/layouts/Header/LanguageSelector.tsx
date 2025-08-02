@@ -3,11 +3,13 @@ import { useState } from 'react';
 import Flag from 'react-world-flags';
 import { motion } from 'framer-motion';
 
-type Language = 'en' | 'ko';
+type Language = 'eng' | 'kor' | 'chi' | 'vie';
 
 const LANGUAGES: { code: Language; label: string; countryCode: string }[] = [
-  { code: 'en', label: 'English', countryCode: 'US' },
-  { code: 'ko', label: '한국어', countryCode: 'KR' },
+  { code: 'eng', label: 'English', countryCode: 'US' },
+  { code: 'kor', label: '한국어', countryCode: 'KR' },
+  { code: 'chi', label: '中文', countryCode: 'CN' },
+  { code: 'vie', label: 'Tiếng Việt', countryCode: 'VN' },
 ];
 
 export const LanguageSelector = () => {
@@ -25,10 +27,10 @@ export const LanguageSelector = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative hidden sm:flex">
       <button
         onClick={toggleDropdown}
-        className="size-10 min-w-10 overflow-hidden rounded-full"
+        className="border-border size-10 min-w-10 overflow-hidden rounded-full border"
       >
         <Flag
           code={currentLang.countryCode}
@@ -40,13 +42,13 @@ export const LanguageSelector = () => {
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="absolute z-10 mt-2 flex flex-col gap-2 rounded-full bg-white shadow-md"
+          className="absolute left-1/2 z-10 mt-12 flex -translate-x-1/2 flex-col gap-2 rounded-full bg-white p-1 shadow-md"
         >
           {LANGUAGES.filter((l) => l.code !== currentLang.code).map((lang) => (
             <button
               key={lang.code}
               onClick={() => handleChange(lang.code)}
-              className="hover:ring-primary size-10 min-w-10 overflow-hidden rounded-full transition hover:ring-2"
+              className="hover:ring-primary size-9 overflow-hidden rounded-full shadow-xs transition hover:ring-2"
             >
               <Flag
                 code={lang.countryCode}
