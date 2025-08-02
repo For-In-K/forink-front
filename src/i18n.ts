@@ -11,6 +11,7 @@ i18n.use(initReactI18next).init({
         signin: 'Sign in',
         signout: 'Sign out',
         submit: 'Submit',
+        request: 'Request a Guide',
         roadmap: {
           categories: {
             ADMINISTRATION: {
@@ -35,6 +36,7 @@ i18n.use(initReactI18next).init({
         signin: '로그인',
         signout: '로그아웃',
         submit: '제출',
+        request: '가이드 매칭 요청',
         roadmap: {
           categories: {
             ADMINISTRATION: {
@@ -58,6 +60,7 @@ i18n.use(initReactI18next).init({
         signin: '登录',
         signout: '登出',
         submit: '提交',
+        request: '请求指南',
         roadmap: {
           categories: {
             ADMINISTRATION: {
@@ -79,6 +82,7 @@ i18n.use(initReactI18next).init({
         signin: 'Đăng nhập',
         signout: 'Đăng xuất',
         submit: 'Gửi đi',
+        request: 'Yêu cầu hướng dẫn',
         roadmap: {
           categories: {
             ADMINISTRATION: {
