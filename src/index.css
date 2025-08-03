@@ -78,3 +78,51 @@
     stroke-dashoffset: -28;
   }
 }
+
+@keyframes shimmer {
+  0% {
+    background-position: -300% 0;
+  }
+  100% {
+    background-position: 300% 0;
+  }
+}
+
+.shimmer-primary {
+  background: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    color-mix(in srgb, var(--color-primary) 90%, white 10%) 20%,
+    color-mix(in srgb, var(--color-primary) 70%, white 30%) 50%,
+    color-mix(in srgb, var(--color-primary) 90%, white 10%) 80%,
+    var(--color-primary) 100%
+  );
+  background-size: 300% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.shimmer-secondary {
+  background: linear-gradient(
+    90deg,
+    var(--color-secondary) 0%,
+    color-mix(in srgb, var(--color-secondary) 90%, white 10%) 20%,
+    color-mix(in srgb, var(--color-secondary) 70%, white 30%) 50%,
+    color-mix(in srgb, var(--color-secondary) 90%, white 10%) 80%,
+    var(--color-secondary) 100%
+  );
+  background-size: 300% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.shimmer-accent {
+  background: linear-gradient(
+    90deg,
+    var(--color-accent) 0%,
+    color-mix(in srgb, var(--color-accent) 90%, white 10%) 20%,
+    color-mix(in srgb, var(--color-accent) 70%, white 30%) 50%,
+    color-mix(in srgb, var(--color-accent) 90%, white 10%) 80%,
+    var(--color-accent) 100%
+  );
+  background-size: 300% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}

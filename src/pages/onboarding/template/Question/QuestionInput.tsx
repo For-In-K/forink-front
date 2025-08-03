@@ -6,23 +6,21 @@ import ScaleInput from '@components/input/ScaleInput';
 
 interface QuestionInputProps {
   answer: Answer;
-  onChange: (value: Option) => void;
+  onSubmit: (value: Option) => void;
 }
 
-const QuestionInput = ({ answer, onChange }: QuestionInputProps) => {
+const QuestionInput = ({ answer, onSubmit }: QuestionInputProps) => {
   let component;
 
   switch (answer.mode) {
     case 'Dropdown':
-      component = (
-        <DropdownInput options={answer.options} onChange={onChange} />
-      );
+      component = <DropdownInput options={answer.options} onClick={onSubmit} />;
       break;
     case 'Button':
-      component = <ButtonInput options={answer.options} onChange={onChange} />;
+      component = <ButtonInput options={answer.options} onSubmit={onSubmit} />;
       break;
     case 'Scale':
-      component = <ScaleInput options={answer.options} onChange={onChange} />;
+      component = <ScaleInput options={answer.options} onSubmit={onSubmit} />;
       break;
     default:
       component = null;

@@ -1,20 +1,24 @@
-import { useMemo, useEffect } from 'react';
+import { useMemo, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { examQuestions } from '@constants/exams';
 import type { Answer, OptionsAnswer } from 'types/exams';
 import { useExamStore } from '@stores/useExamStore';
 
-import Logo from '@assets/logo/logo-name.svg?react';
 import Progressbar from '@components/status/Progressbar';
 import QuestionTitle from '../template/Question/QuestionTitle';
 import QuestionInput from '../template/Question/QuestionInput';
+import NextButton from '@components/button/NextButton';
 
 const ExamQuestionnairePage = () => {
   const navigate = useNavigate();
   const { stepNumber } = useParams();
   const currentStep = Number(stepNumber ?? '1');
   const size = examQuestions.length;
+
+  const [selectedValue, setSelectedValue] = useState<{
+    answerId: number;
+  } | null>(null);
 
   const answers = useExamStore((state) => state.answers);
   const saveAnswer = useExamStore((state) => state.setAnswer);
@@ -36,15 +40,15 @@ const ExamQuestionnairePage = () => {
         exam.dependsOn.answerId !== parentAnswer
       ) {
         const nextStep = currentStep + 1;
-        if (nextStep <= size) {
-          setTimeout(() => {
-            navigate(`/exams/step/${nextStep}`, { replace: true });
-          }, 1500);
-        } else {
-          navigate('/', { replace: true });
-        }
+        setTimeout(() => {
+          navigate(nextStep <= size ? `/exams/step/${nextStep}` : '/', {
+            replace: true,
+          });
+        }, 2000);
       }
     }
+
+    setSelectedValue(null);
   }, [answers, currentStep, exam, navigate, size]);
 
   if (!exam) return null;
@@ -54,21 +58,22 @@ const ExamQuestionnairePage = () => {
       const conditionalOpts =
         exam.answer.conditionalOptions?.[answers[exam.dependsOn.examId]];
       if (conditionalOpts) {
-        return {
-          ...exam.answer,
-          options: conditionalOpts,
-        } as OptionsAnswer;
+        return { ...exam.answer, options: conditionalOpts } as OptionsAnswer;
       }
     }
     return exam.answer;
   }, [answers, exam]);
 
-  const handleAnswerSubmit = (option: { answerId: number }) => {
-    saveAnswer(exam.examId, option.answerId);
+  const handleAnswerSubmit = () => {
+    if (!selectedValue) {
+      alert('Please select an answer before proceeding.');
+      return;
+    }
+    saveAnswer(exam.examId, selectedValue.answerId);
 
     const nextStep = currentStep + 1;
-    const isLastQuestion = nextStep > size;
-    navigate(isLastQuestion ? '/' : `/exams/step/${nextStep}`);
+    navigate(nextStep > size ? '/' : `/exams/step/${nextStep}`);
+    setSelectedValue(null);
   };
 
   return (
@@ -80,22 +85,28 @@ const ExamQuestionnairePage = () => {
           showNumber="fraction"
         />
       </div>
-      <div className="border-primary my-10 flex h-100 w-full flex-col items-center justify-center rounded-[50px] border-2 bg-white p-10 md:px-20">
-        <div className="flex w-full flex-1">
+      <div className="border-primary my-10 flex h-100 w-full flex-col items-center justify-center rounded-[50px] border-2 bg-white p-12 md:p-20">
+        <div className="flex w-full flex-1 justify-center">
           <QuestionTitle
             title={`Q${exam.examId}. ${exam.question.title}`}
             description={exam.question.description}
           />
         </div>
-        <div className="flex flex-1">
-          <QuestionInput
-            answer={filteredAnswer}
-            onChange={handleAnswerSubmit}
-          />
+        <div className="flex w-full flex-1 justify-center">
+          <QuestionInput answer={filteredAnswer} onSubmit={setSelectedValue} />
         </div>
       </div>
-      <footer>
-        <Logo className="h-10 animate-bounce opacity-60" />
+      <footer className="flex w-full justify-end">
+        <NextButton
+          onClick={() => {
+            if (selectedValue !== null) {
+              console.log(selectedValue);
+              handleAnswerSubmit();
+            } else {
+              alert('Please fill in your answer.');
+            }
+          }}
+        />
       </footer>
     </div>
   );
