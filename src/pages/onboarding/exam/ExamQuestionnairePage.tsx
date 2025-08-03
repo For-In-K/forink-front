@@ -72,7 +72,7 @@ const ExamQuestionnairePage = () => {
       return;
     }
     saveAnswer(exam.examId, selectedValue.answerId);
-
+    console.log(selectedValue);
     const nextStep = currentStep + 1;
     navigate(nextStep > size ? '/' : `/exams/step/${nextStep}`);
     setSelectedValue(null);
@@ -99,18 +99,21 @@ const ExamQuestionnairePage = () => {
         <div className="flex w-full flex-1 justify-center">
           {filteredAnswer.mode === 'Dropdown' && (
             <DropdownInput
+              key={`${currentStep}`}
               options={filteredAnswer.options}
               onClick={setSelectedValue}
             />
           )}
           {filteredAnswer.mode === 'Button' && filteredAnswer.options && (
             <ButtonInput
+              key={`${currentStep}`}
               options={filteredAnswer.options}
               onSubmit={setSelectedValue}
             />
           )}
           {filteredAnswer.mode === 'Scale' && filteredAnswer.options && (
             <ScaleInput
+              key={`${currentStep}`}
               options={filteredAnswer.options}
               onSubmit={setSelectedValue}
             />
