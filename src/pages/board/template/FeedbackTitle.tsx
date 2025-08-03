@@ -2,7 +2,7 @@ interface FeedbackTitleProps {
   title: string;
 }
 
-const FeedbackTitle = ({ title }: FeedbackTitleProps) => {
+export const FeedbackTitleOnRating = ({ title }: FeedbackTitleProps) => {
   return (
     <p className="text-title2 font-bold text-black">
       Rate this feedback on&nbsp;
@@ -11,4 +11,11 @@ const FeedbackTitle = ({ title }: FeedbackTitleProps) => {
   );
 };
 
-export default FeedbackTitle;
+export const FeedbackTitleOnStatus = ({ title }: FeedbackTitleProps) => {
+  return (
+    <p className="text-title2 font-bold text-black">
+      Rating result of&nbsp;
+      <span className="text-primary">'{title}'</span> subroadmap
+    </p>
+  );
+};

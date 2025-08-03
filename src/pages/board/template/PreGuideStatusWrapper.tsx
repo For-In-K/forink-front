@@ -1,5 +1,14 @@
+import { guideFeedbackRates } from '@mocks/data/guides';
+import StatusUnit from './StatusUnit';
+
 const PreGuideStatusWrapper = () => {
-  return <>래퍼 컴포넌트</>;
+  return (
+    <>
+      {guideFeedbackRates.map((rating) => (
+        <StatusUnit key={rating.rateId} rating={rating} />
+      ))}
+    </>
+  );
 };
 
 export default PreGuideStatusWrapper;

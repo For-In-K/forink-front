@@ -1,5 +1,5 @@
 import { GuideFeedback } from 'types/guides';
-import FeedbackTitle from './FeedbackTitle';
+import { FeedbackTitleOnRating } from './FeedbackTitle';
 import FeedbackContent from './FeedbackContent';
 
 interface GuideRatingContentProps {
@@ -13,7 +13,7 @@ const GuideRatingContent = ({
 }: GuideRatingContentProps) => {
   return (
     <>
-      <FeedbackTitle title={feedbackTitle} />
+      <FeedbackTitleOnRating title={feedbackTitle} />
       <FeedbackContent content={feedbackContent} />
     </>
   );

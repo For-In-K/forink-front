@@ -7,7 +7,7 @@ const PreGuideStatusPage = () => {
   return (
     <div className="flex flex-col gap-10">
       <GuideHeader
-        headerTitle="Promotion Status"
+        headerTitle="Rating results"
         mode="Board"
         status={preGuideRateStatus.rateStatus}
       />

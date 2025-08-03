@@ -13,7 +13,7 @@ const RatingUnit = ({ feedback }: RatingUnitProps) => {
         feedbackTitle={feedback.feedbackTitle}
         feedbackContent={feedback.feedbackContent}
       />
-      <GuideRatingForm />
+      <GuideRatingForm feedbackId={feedback.feedbackId} />
     </div>
   );
 };

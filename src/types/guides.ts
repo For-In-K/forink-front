@@ -39,7 +39,7 @@ export interface SubmitFeedbackRateFieldRequest {
   recommendScore: number;
 }
 
-export interface GuideFeedbackRate {
+export interface GuideFeedbackRating {
   rateId: number;
   feedbackTitle: string;
   rateCount: number;
@@ -49,7 +49,7 @@ export interface GuideFeedbackRate {
   recommendScore: number;
 }
 
-export type GetPreGuideFeedbackRateResponse = GuideFeedbackRate[];
+export type GetPreGuideFeedbackRateResponse = GuideFeedbackRating[];
 
 export interface PreGuideRateStatus {
   rateStatus: 'IN PROGRESS' | 'ALMOST';
