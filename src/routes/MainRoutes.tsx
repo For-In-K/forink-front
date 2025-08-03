@@ -10,7 +10,8 @@ import RoadmapDiagramPage from '@pages/roadmap/RoadmapDiagramPage';
 import RoadmapStepDetailPage from '@pages/roadmap/RoadmapStepDetailPage';
 
 import GuideProfilePage from '@pages/guide/GuideProfilePage';
-import Board from '@pages/board/Board';
+import GuideRatingPage from '@pages/board/GuideRatingPage';
+import PreGuideStatusPage from '@pages/board/PreGuideStatusPage';
 
 const MainRoutes = () => {
   return useRoutes([
@@ -25,8 +26,14 @@ const MainRoutes = () => {
           path: 'roadmap/:roadmapType/:roadmapId',
           element: <RoadmapStepDetailPage />,
         },
-        { path: 'guide', element: <GuideProfilePage /> },
-        { path: 'board', element: <Board /> },
+        {
+          path: 'guide',
+          children: [
+            { index: true, element: <GuideProfilePage /> },
+            { path: 'rating', element: <GuideRatingPage /> },
+            { path: 'status', element: <PreGuideStatusPage /> },
+          ],
+        },
       ],
     },
     {

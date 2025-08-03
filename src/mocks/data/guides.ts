@@ -91,8 +91,22 @@ export const officialGuideProfiles: GetOfficialGuideProfileResponse = [
 export const preGuideFeedbacks: GetPreGuideFeedbackResponse = [
   {
     feedbackId: 1,
-    feedbackTitle: 'Very Helpful!',
-    feedbackContent: 'The guide provided detailed and accurate information.',
+    feedbackTitle: 'Bank Account Opening',
+    feedbackContent: `
+Situation
+I was trying to open a bank account as a newly arrived foreigner in Korea. I had my passport and alien registration card, but I wasn’t sure which banks were more foreigner-friendly.
+
+Problem
+The roadmap mentioned bringing basic identification, but it didn’t clarify that some banks also require a Korean phone number or proof of address (like a lease contract). At KEB Hana Bank, I was told I couldn’t proceed without a local phone number, which was not easy to get beforehand.
+
+Suggestion
+I suggest adding a table comparing major banks (e.g., KEB Hana, Shinhan, Woori) and their specific requirements for foreigners. Also, clarify that not all branches handle foreigner services — maybe even recommend visiting main branches in major districts like Gangnam or Hongdae.
+
+Referenced Background Knowledge
+- Experience from community forums (e.g., r/Korea, local KakaoTalk expat groups)
+- Personal attempt at three different banks over a week
+- Consultation with a Korean co-worker
+    `,
   },
   {
     feedbackId: 2,
@@ -103,6 +117,41 @@ export const preGuideFeedbacks: GetPreGuideFeedbackResponse = [
     feedbackId: 3,
     feedbackTitle: 'Could Improve',
     feedbackContent: 'Helpful but lacked some local knowledge.',
+  },
+  {
+    feedbackId: 4,
+    feedbackTitle: 'Visa Extension Guidance',
+    feedbackContent: `
+Situation
+Needed to extend my D-4 visa for language study.
+
+Problem
+The roadmap gave a brief outline but didn’t mention the necessity of booking an immigration office appointment weeks in advance. The process also required a certificate of enrollment and proof of bank balance which was not in the checklist.
+
+Suggestion
+Include a detailed checklist with all required documents for different visa types. Also, add a reminder about making the online reservation early through the HiKorea website.
+    `,
+  },
+  {
+    feedbackId: 5,
+    feedbackTitle: 'Neighborhood Orientation',
+    feedbackContent: `
+Provided a great walking tour of the local area, showing supermarkets, clinics, and bus stops. This really helped me settle in faster.
+    `,
+  },
+  {
+    feedbackId: 6,
+    feedbackTitle: 'Lack of Public Transport Tips',
+    feedbackContent: `
+Was expecting advice on using T-money cards and transferring between buses and subway, but this wasn't covered.
+    `,
+  },
+  {
+    feedbackId: 7,
+    feedbackTitle: 'Exceptional Help with Housing Contract',
+    feedbackContent: `
+Helped me review my housing lease in detail, explaining key legal terms and ensuring there were no unfair clauses. This gave me peace of mind before signing.
+    `,
   },
 ];
 

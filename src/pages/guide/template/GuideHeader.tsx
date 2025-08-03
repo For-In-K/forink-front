@@ -16,19 +16,29 @@ const TypeButton = ({ type, isSelected = false }: TypeButtonProps) => {
   );
 };
 
-const GuideHeader = () => {
-  const HEADER_KEYWORD = 'Types of Guides';
+interface GuideHeaderProps {
+  headerTitle: string;
+  mode: 'Profile' | 'Board';
+}
 
+const GuideHeader = ({ headerTitle, mode }: GuideHeaderProps) => {
   return (
     <>
       <div className="flex flex-wrap items-start gap-3 truncate sm:gap-6">
         <div className="text-text-muted bg-surface text-title2 rounded-full px-6 py-2">
-          {HEADER_KEYWORD}
+          {headerTitle}
         </div>
-        <TypeButton type="All" isSelected />
-        {roadmapTypes.map((item) => (
-          <TypeButton type={capitalizeFirstLetter(item.type)} />
-        ))}
+        {mode === 'Profile' && (
+          <>
+            <TypeButton type="All" isSelected />
+            {roadmapTypes.map((item) => (
+              <TypeButton
+                key={item.type}
+                type={capitalizeFirstLetter(item.type)}
+              />
+            ))}
+          </>
+        )}
       </div>
     </>
   );
