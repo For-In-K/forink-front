@@ -1,3 +1,4 @@
+import { ResumeAnswer } from './resume';
 /* UI 구현을 위한 타입 정의 */
 
 export type InputMode = 'Dropdown' | 'Button' | 'Scale' | 'Text';
@@ -21,7 +22,7 @@ export interface TextAnswer extends BaseAnswer {
   mode: 'Text';
 }
 
-export type Answer = OptionsAnswer | TextAnswer;
+export type Answer = OptionsAnswer;
 
 export interface Exam {
   examId: number;

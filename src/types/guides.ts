@@ -9,6 +9,17 @@ export interface GuideProfile {
 
 export type GetOfficialGuideProfileResponse = GuideProfile[];
 
+export interface GuideResume {
+  name: string;
+  age: string;
+  nationality: string;
+  language: string;
+  expertise: string;
+  link: string;
+}
+
+export type GetGuideResumeResponse = GuideResume;
+
 export interface GuideFeedback {
   // now for pre guide
   feedbackId: number;
