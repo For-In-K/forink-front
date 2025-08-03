@@ -1,4 +1,5 @@
 import { roadmapTypes } from '@mocks/data/roadmaps';
+import { PreGuideRateStatus } from 'types/guides';
 import { capitalizeFirstLetter } from '@utils/chars';
 
 interface TypeButtonProps {
@@ -19,12 +20,13 @@ const TypeButton = ({ type, isSelected = false }: TypeButtonProps) => {
 interface GuideHeaderProps {
   headerTitle: string;
   mode: 'Profile' | 'Board';
+  status?: 'IN PROGRESS' | 'ALMOST';
 }
 
-const GuideHeader = ({ headerTitle, mode }: GuideHeaderProps) => {
+const GuideHeader = ({ headerTitle, mode, status }: GuideHeaderProps) => {
   return (
     <>
-      <div className="flex flex-wrap items-start gap-3 truncate sm:gap-6">
+      <div className="flex flex-wrap items-start justify-between gap-3 truncate sm:gap-6">
         <div className="text-text-muted bg-surface text-title2 rounded-full px-6 py-2">
           {headerTitle}
         </div>
@@ -38,6 +40,13 @@ const GuideHeader = ({ headerTitle, mode }: GuideHeaderProps) => {
               />
             ))}
           </>
+        )}
+        {mode === 'Board' && status && (
+          <div
+            className={`${status === 'ALMOST' ? 'bg-secondary/90' : 'bg-accent/90'} text-title2 rounded-full px-6 py-2 text-white`}
+          >
+            {capitalizeFirstLetter(status)}
+          </div>
         )}
       </div>
     </>

@@ -52,7 +52,7 @@ export interface GuideFeedbackRate {
 export type GetPreGuideFeedbackRateResponse = GuideFeedbackRate[];
 
 export interface PreGuideRateStatus {
-  rateStatus: 'IN_PROGRESS' | 'ALMOST';
+  rateStatus: 'IN PROGRESS' | 'ALMOST';
 }
 
 export type GetPreGuideRateStatusResponse = PreGuideRateStatus;

@@ -177,5 +177,5 @@ export const guideFeedbackRates: GetPreGuideFeedbackRateResponse = [
 ];
 
 export const preGuideRateStatus: GetPreGuideRateStatusResponse = {
-  rateStatus: 'IN_PROGRESS',
+  rateStatus: 'IN PROGRESS',
 };
