@@ -2,13 +2,15 @@ import { useMemo, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { examQuestions } from '@constants/exams';
-import type { Answer, OptionsAnswer } from 'types/exams';
+import type { Answer, OptionsAnswer, Option } from 'types/exams';
 import { useExamStore } from '@stores/useExamStore';
 
 import Progressbar from '@components/status/Progressbar';
 import QuestionTitle from '../template/Question/QuestionTitle';
-import QuestionInput from '../template/Question/QuestionInput';
 import NextButton from '@components/button/NextButton';
+import DropdownInput from '@components/input/DropdownInput';
+import ButtonInput from '@components/input/ButtonInput';
+import ScaleInput from '@components/input/ScaleInput';
 
 const ExamQuestionnairePage = () => {
   const navigate = useNavigate();
@@ -16,9 +18,7 @@ const ExamQuestionnairePage = () => {
   const currentStep = Number(stepNumber ?? '1');
   const size = examQuestions.length;
 
-  const [selectedValue, setSelectedValue] = useState<{
-    answerId: number;
-  } | null>(null);
+  const [selectedValue, setSelectedValue] = useState<Option | null>(null);
 
   const answers = useExamStore((state) => state.answers);
   const saveAnswer = useExamStore((state) => state.setAnswer);
@@ -35,6 +35,7 @@ const ExamQuestionnairePage = () => {
       const parentAnswer = answers[exam.dependsOn.examId];
       if (parentAnswer === undefined) {
         navigate(`/exams/step/${exam.dependsOn.examId}`, { replace: true });
+        return;
       } else if (
         exam.dependsOn.answerId !== undefined &&
         exam.dependsOn.answerId !== parentAnswer
@@ -45,6 +46,7 @@ const ExamQuestionnairePage = () => {
             replace: true,
           });
         }, 2000);
+        return;
       }
     }
 
@@ -85,6 +87,7 @@ const ExamQuestionnairePage = () => {
           showNumber="fraction"
         />
       </div>
+
       <div className="border-primary my-10 flex h-100 w-full flex-col items-center justify-center rounded-[50px] border-2 bg-white p-12 md:p-20">
         <div className="flex w-full flex-1 justify-center">
           <QuestionTitle
@@ -92,21 +95,31 @@ const ExamQuestionnairePage = () => {
             description={exam.question.description}
           />
         </div>
+
         <div className="flex w-full flex-1 justify-center">
-          <QuestionInput answer={filteredAnswer} onSubmit={setSelectedValue} />
+          {filteredAnswer.mode === 'Dropdown' && (
+            <DropdownInput
+              options={filteredAnswer.options}
+              onClick={setSelectedValue}
+            />
+          )}
+          {filteredAnswer.mode === 'Button' && filteredAnswer.options && (
+            <ButtonInput
+              options={filteredAnswer.options}
+              onSubmit={setSelectedValue}
+            />
+          )}
+          {filteredAnswer.mode === 'Scale' && filteredAnswer.options && (
+            <ScaleInput
+              options={filteredAnswer.options}
+              onSubmit={setSelectedValue}
+            />
+          )}
         </div>
       </div>
+
       <footer className="flex w-full justify-end">
-        <NextButton
-          onClick={() => {
-            if (selectedValue !== null) {
-              console.log(selectedValue);
-              handleAnswerSubmit();
-            } else {
-              alert('Please fill in your answer.');
-            }
-          }}
-        />
+        <NextButton onClick={handleAnswerSubmit} />
       </footer>
     </div>
   );
