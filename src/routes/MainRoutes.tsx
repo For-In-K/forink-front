@@ -1,5 +1,5 @@
 import { useRoutes } from 'react-router-dom';
-import ExamRoutes from './ExamRoutes';
+import { ExamRoutes, ResumeRoutes } from './OnboardingRoutes';
 
 import SideLayout from '@layouts/SideLayout';
 import MainLayout from '@layouts/MainLayout';
@@ -37,7 +37,7 @@ const MainRoutes = () => {
           path: 'exams',
           children: ExamRoutes,
         },
-        { path: 'resume', element: <div>This is resume page.</div> },
+        { path: 'resume', children: ResumeRoutes },
       ],
     },
   ]);

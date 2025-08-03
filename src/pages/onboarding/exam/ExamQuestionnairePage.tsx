@@ -7,12 +7,12 @@ import { useExamStore } from '@stores/useExamStore';
 
 import Logo from '@assets/logo/logo-name.svg?react';
 import Progressbar from '@components/status/Progressbar';
-import QuestionTitle from './Question/QuestionTitle';
-import QuestionInput from './Question/QuestionInput';
+import QuestionTitle from '../template/Question/QuestionTitle';
+import QuestionInput from '../template/Question/QuestionInput';
 
-const QuestionnairePage = () => {
+const ExamQuestionnairePage = () => {
   const navigate = useNavigate();
-  const { stepNumber } = useParams<{ stepNumber: string }>();
+  const { stepNumber } = useParams();
   const currentStep = Number(stepNumber ?? '1');
   const size = examQuestions.length;
 
@@ -50,11 +50,7 @@ const QuestionnairePage = () => {
   if (!exam) return null;
 
   const filteredAnswer: Answer = useMemo(() => {
-    if (
-      exam.answer.mode !== 'Text' &&
-      exam.dependsOn &&
-      answers[exam.dependsOn.examId] !== undefined
-    ) {
+    if (exam.dependsOn && answers[exam.dependsOn.examId] !== undefined) {
       const conditionalOpts =
         exam.answer.conditionalOptions?.[answers[exam.dependsOn.examId]];
       if (conditionalOpts) {
@@ -67,7 +63,7 @@ const QuestionnairePage = () => {
     return exam.answer;
   }, [answers, exam]);
 
-  const handleAnswerSelect = (option: { answerId: number }) => {
+  const handleAnswerSubmit = (option: { answerId: number }) => {
     saveAnswer(exam.examId, option.answerId);
 
     const nextStep = currentStep + 1;
@@ -94,7 +90,7 @@ const QuestionnairePage = () => {
         <div className="flex flex-1">
           <QuestionInput
             answer={filteredAnswer}
-            onChange={handleAnswerSelect}
+            onChange={handleAnswerSubmit}
           />
         </div>
       </div>
@@ -105,4 +101,4 @@ const QuestionnairePage = () => {
   );
 };
 
-export default QuestionnairePage;
+export default ExamQuestionnairePage;
