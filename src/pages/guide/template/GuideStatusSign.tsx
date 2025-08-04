@@ -33,7 +33,7 @@ const guideSteps: GuideStep[] = [
 
 const LOCAL_STORAGE_KEY = 'guideStatusSignClosed';
 
-const GuideStatusSign = () => {
+const GuideStatusSign = ({ onClose }: { onClose?: () => void }) => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -46,21 +46,22 @@ const GuideStatusSign = () => {
   const handleClose = () => {
     localStorage.setItem(LOCAL_STORAGE_KEY, 'true');
     setVisible(false);
+    onClose?.();
   };
 
   if (!visible) return null;
 
   return (
-    <div className="relative flex w-full flex-col gap-6 rounded-lg bg-white p-8 font-sans shadow-sm">
+    <div className="relative flex flex-col gap-6 rounded-lg bg-white p-6 font-sans shadow-sm">
       <button
         onClick={handleClose}
         className="absolute top-3 right-3 rounded-md p-1 text-gray-400 hover:text-gray-700 focus:ring-2 focus:ring-gray-400 focus:outline-none"
       >
-        <X />
+        <X size={16} />
       </button>
       <div className="flex flex-col gap-1">
         <h2 className="text-lg font-semibold">Guide Status Levels</h2>
-        <p className="text-sm leading-snug text-wrap text-gray-500">
+        <p className="text-sm leading-snug text-gray-500">
           Your status is determined by the number of ratings you’ve received and
           the quality of your feedback. To reach Formal Guide, earn enough
           ratings and maintain high scores across all criteria.
@@ -81,9 +82,7 @@ const GuideStatusSign = () => {
             </div>
             <ul className="list-inside list-disc space-y-1 text-gray-700">
               {step.requirements.map((req, idx) => (
-                <li key={idx} className="text-gray-700">
-                  {req}
-                </li>
+                <li key={idx}>{req}</li>
               ))}
             </ul>
           </div>
