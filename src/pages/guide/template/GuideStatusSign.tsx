@@ -60,7 +60,7 @@ const GuideStatusSign = () => {
       </button>
       <div className="flex flex-col gap-1">
         <h2 className="text-lg font-semibold">Guide Status Levels</h2>
-        <p className="text-sm leading-snug text-gray-500">
+        <p className="text-sm leading-snug text-wrap text-gray-500">
           Your status is determined by the number of ratings you’ve received and
           the quality of your feedback. To reach Formal Guide, earn enough
           ratings and maintain high scores across all criteria.

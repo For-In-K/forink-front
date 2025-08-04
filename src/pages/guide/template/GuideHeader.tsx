@@ -43,6 +43,11 @@ const GuideHeader = ({ headerTitle, mode, status }: GuideHeaderProps) => {
             ))}
           </>
         )}
+        {mode === 'Board' && !status && (
+          <div className="flex w-full">
+            <GuideStatusSign />
+          </div>
+        )}
         {mode === 'Board' && status && (
           <>
             <div
