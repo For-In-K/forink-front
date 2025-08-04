@@ -9,24 +9,48 @@ const RatingCountText = ({ count }: { count: number }) => {
   );
 };
 
-const PreGuideScoreContent = ({ rating }: StatusUnitProps) => {
+const ScoreBadge = ({
+  criteria,
+  score,
+  className,
+}: {
+  criteria: string;
+  score: number;
+  className?: string;
+}) => {
   return (
-    <div className="text-text-muted bg-background text-body flex flex-col gap-5 rounded-md p-5 leading-loose">
+    <div className={`truncate rounded-full px-4 py-1 ${className}`}>
+      {criteria}: {score}
+    </div>
+  );
+};
+
+const PreGuideScoreContent = ({ rating }: StatusUnitProps) => {
+  const highlight = 'Average';
+  const scores = {
+    Average: rating.averageScore,
+    Expertise: rating.expertiseScore,
+    Helpfulness: rating.helpScore,
+    Recommendability: rating.recommendScore,
+  };
+
+  return (
+    <div className="text-text-muted bg-background text-body flex flex-col gap-6 rounded-md p-4 leading-loose">
       <RatingCountText count={rating.rateCount} />
       <div className="flex flex-col items-start justify-between gap-2">
-        <div className="bg-primary rounded-full px-4 py-1 text-white">
-          Average: {rating.averageScore}
-        </div>
-        <div className="flex w-full items-center gap-2">
-          <div className="bg-primary/10 text-primary truncate rounded-full px-4 py-1">
-            Expertise: {rating.expertiseScore}
-          </div>
-          <div className="bg-primary/10 text-primary truncate rounded-full px-4 py-1">
-            Helpfulness: {rating.helpScore}
-          </div>
-          <div className="bg-primary/10 text-primary truncate rounded-full px-4 py-1">
-            Recommendability: {rating.recommendScore}
-          </div>
+        <div className="flex flex-wrap gap-3">
+          {Object.entries(scores).map(([label, score]) => (
+            <span
+              key={label}
+              className={`flex items-center rounded-full px-4 py-2 text-sm font-medium transition ${
+                label === highlight
+                  ? 'bg-primary text-white shadow-md'
+                  : 'bg-primary/10 text-primary'
+              }`}
+            >
+              {label}: {score?.toFixed(1)}
+            </span>
+          ))}
         </div>
       </div>
     </div>
