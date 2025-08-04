@@ -3,27 +3,27 @@ import type { Option } from 'types/exams';
 
 interface ScaleInputProps {
   options: Option[];
-  onChange: (value: Option) => void;
+  onSubmit: (value: Option) => void;
 }
 
-const ScaleInput = ({ options, onChange }: ScaleInputProps) => {
+const ScaleInput = ({ options, onSubmit }: ScaleInputProps) => {
   const [selected, setSelected] = useState<number | null>(null);
 
   const handleSelect = (option: Option) => {
     setSelected(option.answerId);
-    onChange(option);
+    onSubmit(option);
   };
 
   return (
     <div className="flex items-center gap-5">
       {options.map((option, index) => {
         const value = index + 1;
-        const isSelected = value === selected;
+        const isSelected = option.answerId === selected;
         return (
           <div className="group relative inline-block" key={option.answerId}>
             <button
               onClick={() => handleSelect(option)}
-              className={`border-primary size-10 rounded-full border-2 text-sm transition ${isSelected ? 'bg-primary text-white' : 'hover:bg-white-hover bg-white text-black'} `}
+              className={`border-primary text-title2 size-12 rounded-full border-2 transition ${isSelected ? 'bg-primary text-white' : 'hover:bg-white-hover text-primary bg-white'} `}
             >
               {value}
             </button>

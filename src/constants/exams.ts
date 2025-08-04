@@ -1,8 +1,5 @@
 import type { Exam } from 'types/exams';
-
-function mapAnswers(answers: string[]) {
-  return answers.map((answer, idx) => ({ answerId: idx, answer }));
-}
+import { mapAnswers } from '@utils/answers';
 
 export const examQuestions: Exam[] = [
   {
@@ -14,39 +11,39 @@ export const examQuestions: Exam[] = [
       mode: 'Dropdown',
       options: mapAnswers([
         'No visa',
-        'A-1 (외교)',
-        'A-2 (공무)',
-        'A-3 (협정)',
-        'B-1 (사증면제)',
-        'B-2 (관광통과)',
-        'C-1 (일시취재)',
-        'C-3 (단기방문)',
-        'C-4 (단기취업)',
-        'D-1 (문화예술)',
-        'D-2 (유학)',
-        'D-3 (기술연수)',
-        'D-4 (일반연수)',
-        'D-5 (취재)',
-        'D-6 (종교)',
-        'D-7 (주재)',
-        'D-8 (기업투자)',
-        'D-9 (무역경영)',
-        'D-10 (구직)',
-        'E-1 (교수)',
-        'E-2 (회화지도)',
-        'E-3 (연구)',
-        'E-4 (기술지도)',
-        'E-5 (전문직업)',
-        'E-6 (예술흥행)',
-        'E-7 (특정활동)',
-        'E-9 (비전문취업)',
-        'F-2 (거주)',
-        'F-4 (재외동포)',
-        'F-5 (영주)',
-        'F-6 (결혼이민)',
-        'G-1 (기타)',
-        'H-1 (관광취업/워킹홀리데이)',
-        'H-2 (방문취업)',
+        'A-1 (Diplomat)',
+        'A-2 (Official)',
+        'A-3 (Treaty)',
+        'B-1 (Visa Exemption)',
+        'B-2 (Tourist/Transit)',
+        'C-1 (Temporary News Coverage)',
+        'C-3 (Short-term Visit)',
+        'C-4 (Short-term Employment)',
+        'D-1 (Culture/Arts)',
+        'D-2 (Study)',
+        'D-3 (Industrial Training)',
+        'D-4 (General Training)',
+        'D-5 (News Coverage)',
+        'D-6 (Religion)',
+        'D-7 (Intra-company Transferee)',
+        'D-8 (Corporate Investment)',
+        'D-9 (Trade Management)',
+        'D-10 (Job Seeking)',
+        'E-1 (Professor)',
+        'E-2 (Foreign Language Instructor)',
+        'E-3 (Research)',
+        'E-4 (Technological Guidance)',
+        'E-5 (Professional Employment)',
+        'E-6 (Arts/Entertainment)',
+        'E-7 (Specific Activities)',
+        'E-9 (Non-professional Employment)',
+        'F-2 (Long-term Residency)',
+        'F-4 (Overseas Korean)',
+        'F-5 (Permanent Residency)',
+        'F-6 (Marriage Migrant)',
+        'G-1 (Miscellaneous)',
+        'H-1 (Working Holiday)',
+        'H-2 (Visit and Employment)',
       ]),
     },
   },
@@ -61,160 +58,180 @@ export const examQuestions: Exam[] = [
       conditionalOptions: {
         0: mapAnswers([
           // No visa
-          '초단기 체류 (1~14일)',
-          '단기 체류 (15~30일)',
-          '장기 관광 (31~90일)',
+          'Ultra-short stay (1–14 days)',
+          'Short stay (15–30 days)',
+          'Long-term tourism (31–90 days)',
         ]),
         1: mapAnswers([
           // A-1
-          '단기 체류 (1~6개월)',
-          '중기 체류 (6개월~2년)',
-          '장기 체류 (2년 이상)',
+          'Short stay (1–6 months)',
+          'Medium stay (6 months–2 years)',
+          'Long stay (over 2 years)',
         ]),
         2: mapAnswers([
           // A-2
-          '단기 체류 (1~6개월)',
-          '중기 체류 (6개월~2년)',
-          '장기 체류 (2년 이상)',
+          'Short stay (1–6 months)',
+          'Medium stay (6 months–2 years)',
+          'Long stay (over 2 years)',
         ]),
         3: mapAnswers([
           // A-3
-          '단기 체류 (1~6개월)',
-          '중기 체류 (6개월~2년)',
-          '장기 체류 (2년 이상)',
+          'Short stay (1–6 months)',
+          'Medium stay (6 months–2 years)',
+          'Long stay (over 2 years)',
         ]),
         4: mapAnswers([
           // B-1
-          '초단기 체류 (1~14일)',
-          '단기 체류 (15~30일)',
-          '장기 관광 (31~90일)',
+          'Ultra-short stay (1–14 days)',
+          'Short stay (15–30 days)',
+          'Long-term tourism (31–90 days)',
         ]),
         5: mapAnswers([
           // B-2
-          '초단기 체류 (1~14일)',
-          '단기 체류 (15~30일)',
-          '장기 관광 (31~90일)',
+          'Ultra-short stay (1–14 days)',
+          'Short stay (15–30 days)',
+          'Long-term tourism (31–90 days)',
         ]),
-        6: mapAnswers(['단기 체류 (1~30일)', '중기 체류 (31~90일)']), // C-1
+        6: mapAnswers(['Short stay (1–30 days)', 'Medium stay (31–90 days)']), // C-1
         7: mapAnswers([
           // C-3
-          '초단기 체류 (1~14일)',
-          '단기 체류 (15~30일)',
-          '장기 관광/출장 (31~90일)',
+          'Ultra-short stay (1–14 days)',
+          'Short stay (15–30 days)',
+          'Long-term tourism/business trip (31–90 days)',
         ]),
         8: mapAnswers([
           // C-4
-          '단기 프로젝트 (1~30일)',
-          '중기 프로젝트 (31~90일)',
+          'Short-term project (1–30 days)',
+          'Medium-term project (31–90 days)',
         ]),
         9: mapAnswers([
           // D-1
-          '단기 프로젝트 (1~3개월)',
-          '중기 활동 (3~12개월)',
-          '장기 활동 (1~3년)',
+          'Short-term project (1–3 months)',
+          'Medium-term activities (3–12 months)',
+          'Long-term activities (1–3 years)',
         ]),
         10: mapAnswers([
           // D-2
-          '단기 학기 (3~6개월)',
-          '정규과정 (6개월~1년)',
-          '학위과정 (1~5년)',
+          'Short-term semester (3–6 months)',
+          'Regular course (6 months–1 year)',
+          'Degree program (1–5 years)',
         ]),
-        11: mapAnswers(['단기 훈련 (1~6개월)', '표준 훈련 (6~12개월)']), // D-3
-        12: mapAnswers(['단기 어학연수 (1~3개월)', '정규 어학과정 (3~12개월)']), // D-4
-        13: mapAnswers(['단기 기획취재 (1~3개월)', '상주 취재 (3개월 이상)']), // D-5
+        11: mapAnswers([
+          'Short-term training (1–6 months)',
+          'Standard training (6–12 months)',
+        ]), // D-3
+        12: mapAnswers([
+          'Short-term language study (1–3 months)',
+          'Regular language program (3–12 months)',
+        ]), // D-4
+        13: mapAnswers([
+          'Short-term special coverage (1–3 months)',
+          'Resident coverage (over 3 months)',
+        ]), // D-5
         14: mapAnswers([
           // D-6
-          '단기 선교/행사 (1~6개월)',
-          '장기 종교기관 활동 (6개월~5년)',
+          'Short-term mission/event (1–6 months)',
+          'Long-term religious activities (6 months–5 years)',
         ]),
-        15: mapAnswers(['단기 파견 (3~6개월)', '정규 주재 (6개월~3년)']), // D-7
+        15: mapAnswers([
+          'Short-term dispatch (3–6 months)',
+          'Regular posting (6 months–3 years)',
+        ]), // D-7
         16: mapAnswers([
           // D-8
-          '설립 준비 (1~6개월)',
-          '초기 운영 (6개월~1년)',
-          '안정화/운영 (1~5년)',
+          'Preparation for establishment (1–6 months)',
+          'Initial operation (6 months–1 year)',
+          'Stabilization/operation (1–5 years)',
         ]),
         17: mapAnswers([
           // D-9
-          '시장조사/준비 (1~3개월)',
-          '영업 개시 (3~12개월)',
-          '사업 운영 (1~5년)',
+          'Market research/preparation (1–3 months)',
+          'Business launch (3–12 months)',
+          'Business operation (1–5 years)',
         ]),
-        18: mapAnswers(['초기 구직 (1~6개월)', '연장 구직 (6개월~2년)']), // D-10
+        18: mapAnswers([
+          'Initial job search (1–6 months)',
+          'Extended job search (6 months–2 years)',
+        ]), // D-10
         19: mapAnswers([
           // E-1
-          '단기 체류 (3개월 이하)',
-          '중기 체류 (3개월~2년)',
-          '장기 체류 (2년 이상)',
+          'Short stay (up to 3 months)',
+          'Medium stay (3 months–2 years)',
+          'Long stay (over 2 years)',
         ]),
         20: mapAnswers([
           // E-2
-          '단기 체류 (3개월 이하)',
-          '중기 체류 (3개월~2년)',
-          '장기 체류 (2년 이상)',
+          'Short stay (up to 3 months)',
+          'Medium stay (3 months–2 years)',
+          'Long stay (over 2 years)',
         ]),
         21: mapAnswers([
           // E-3
-          '단기 체류 (3개월 이하)',
-          '중기 체류 (3개월~2년)',
-          '장기 체류 (2년 이상)',
+          'Short stay (up to 3 months)',
+          'Medium stay (3 months–2 years)',
+          'Long stay (over 2 years)',
         ]),
         22: mapAnswers([
           // E-4
-          '단기 체류 (3개월 이하)',
-          '중기 체류 (3개월~2년)',
-          '장기 체류 (2년 이상)',
+          'Short stay (up to 3 months)',
+          'Medium stay (3 months–2 years)',
+          'Long stay (over 2 years)',
         ]),
         23: mapAnswers([
           // E-5
-          '단기 체류 (3개월 이하)',
-          '중기 체류 (3개월~2년)',
-          '장기 체류 (2년 이상)',
+          'Short stay (up to 3 months)',
+          'Medium stay (3 months–2 years)',
+          'Long stay (over 2 years)',
         ]),
         24: mapAnswers([
           // E-6
-          '단기 체류 (3개월 이하)',
-          '중기 체류 (3개월~2년)',
-          '장기 체류 (2년 이상)',
+          'Short stay (up to 3 months)',
+          'Medium stay (3 months–2 years)',
+          'Long stay (over 2 years)',
         ]),
         25: mapAnswers([
           // E-7
-          '단기 체류 (3개월 이하)',
-          '중기 체류 (3개월~2년)',
-          '장기 체류 (2년 이상)',
+          'Short stay (up to 3 months)',
+          'Medium stay (3 months–2 years)',
+          'Long stay (over 2 years)',
         ]),
         26: mapAnswers([
           // E-9
-          '단기 체류 (3개월 이하)',
-          '중기 체류 (3개월~1년)',
-          '장기 체류 (1년 이상)',
+          'Short stay (up to 3 months)',
+          'Medium stay (3 months–1 year)',
+          'Long stay (over 1 year)',
         ]),
         27: mapAnswers([
           // F-2
-          '단기 체류 (6개월 이하)',
-          '중기 체류 (6개월~2년)',
-          '장기 체류 (2년 이상)',
+          'Short stay (up to 6 months)',
+          'Medium stay (6 months–2 years)',
+          'Long stay (over 2 years)',
         ]),
         28: mapAnswers([
           // F-4
-          '단기 체류 (6개월 이하)',
-          '중기 체류 (6개월~2년)',
-          '장기 체류 (2년 이상)',
+          'Short stay (up to 6 months)',
+          'Medium stay (6 months–2 years)',
+          'Long stay (over 2 years)',
         ]),
-        29: mapAnswers(['모든 체류기간 공통']), // F-5
+        29: mapAnswers(['Applicable to all stay durations']), // F-5
         30: mapAnswers([
           // F-6
-          '단기 체류 (6개월 이하)',
-          '중기 체류 (6개월~2년)',
-          '장기 체류 (2년 이상)',
+          'Short stay (up to 6 months)',
+          'Medium stay (6 months–2 years)',
+          'Long stay (over 2 years)',
         ]),
-        31: mapAnswers(['개별 사유에 따라 출입국사무소 문의 필요']), // G-1
-        32: mapAnswers(['단기 체류 (3개월 이하)', '중기 체류 (3개월 이상)']), // H-1
+        31: mapAnswers([
+          'Please contact the immigration office depending on your individual circumstances',
+        ]), // G-1
+        32: mapAnswers([
+          'Short stay (up to 3 months)',
+          'Medium stay (over 3 months)',
+        ]), // H-1
         33: mapAnswers([
           // H-2
-          '단기 체류 (3개월 이하)',
-          '중기 체류 (3개월~3년)',
-          '장기 체류 (3년 이상)',
+          'Short stay (up to 3 months)',
+          'Medium stay (3 months–3 years)',
+          'Long stay (over 3 years)',
         ]),
       },
     },
@@ -243,23 +260,23 @@ export const examQuestions: Exam[] = [
       conditionalOptions: {
         0: [{ answerId: -1, answer: 'No specific area' }],
         1: mapAnswers([
-          '서울특별시',
-          '부산광역시',
-          '대구광역시',
-          '인천광역시',
-          '광주광역시',
-          '대전광역시',
-          '울산광역시',
-          '세종특별자치시',
-          '경기도',
-          '강원특별자치도',
-          '충청북도',
-          '충청남도',
-          '전라북도',
-          '전라남도',
-          '경상북도',
-          '경상남도',
-          '제주특별자치도',
+          'Seoul Special City',
+          'Busan Metropolitan City',
+          'Daegu Metropolitan City',
+          'Incheon Metropolitan City',
+          'Gwangju Metropolitan City',
+          'Daejeon Metropolitan City',
+          'Ulsan Metropolitan City',
+          'Sejong Special Self-Governing City',
+          'Gyeonggi Province',
+          'Gangwon Special Self-Governing Province',
+          'Chungcheongbuk Province',
+          'Chungcheongnam Province',
+          'Jeollabuk Province',
+          'Jeollanam Province',
+          'Gyeongsangbuk Province',
+          'Gyeongsangnam Province',
+          'Jeju Special Self-Governing Province',
         ]),
       },
     },

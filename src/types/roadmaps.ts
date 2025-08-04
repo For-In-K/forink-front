@@ -7,6 +7,14 @@ export interface RoadmapTypeDetail {
 
 export type GetRoadmapTypeResponse = RoadmapTypeDetail[];
 
+export interface SubroadmapSection {
+  roadmapId: number;
+  title: string;
+  statusType: 'COMPLETED' | 'IN_PROGRESS';
+}
+
+export type GetSubroadmapsResponse = SubroadmapSection[];
+
 export interface UiRoadmapType {
   type: string;
   typeDescription: string;
@@ -28,10 +36,10 @@ export interface Step {
 
 export type GetRoadmapStepDetailResponse = Step[];
 
-export interface SubroadmapSection {
-  roadmapId: number;
-  title: string;
-  statusType: 'COMPLETED' | 'IN_PROGRESS';
+export interface PostRoadmapFeedbackOnType {
+  roadmapAnswerType: 'GOOD' | 'BAD';
 }
 
-export type GetSubroadmapResponse = SubroadmapSection[];
+export interface PostRoadmapDetailFeedbackOnType {
+  content: string;
+}
