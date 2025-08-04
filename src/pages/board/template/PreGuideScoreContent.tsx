@@ -9,22 +9,6 @@ const RatingCountText = ({ count }: { count: number }) => {
   );
 };
 
-const ScoreBadge = ({
-  criteria,
-  score,
-  className,
-}: {
-  criteria: string;
-  score: number;
-  className?: string;
-}) => {
-  return (
-    <div className={`truncate rounded-full px-4 py-1 ${className}`}>
-      {criteria}: {score}
-    </div>
-  );
-};
-
 const PreGuideScoreContent = ({ rating }: StatusUnitProps) => {
   const highlight = 'Average';
   const scores = {
@@ -35,7 +19,7 @@ const PreGuideScoreContent = ({ rating }: StatusUnitProps) => {
   };
 
   return (
-    <div className="text-text-muted bg-background text-body flex flex-col gap-6 rounded-md p-4 leading-loose">
+    <div className="text-text-muted text-body flex flex-col gap-6 rounded-md px-6 py-4 leading-loose">
       <RatingCountText count={rating.rateCount} />
       <div className="flex flex-col items-start justify-between gap-2">
         <div className="flex flex-wrap gap-3">

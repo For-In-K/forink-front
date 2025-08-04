@@ -8,7 +8,7 @@ export interface StatusUnitProps {
 
 const StatusUnit = ({ rating }: StatusUnitProps) => {
   return (
-    <div className="border-primary flex w-full flex-col justify-center gap-5 rounded-xl border bg-white p-8 md:px-15 md:py-10">
+    <div className="border-primary/30 flex w-full flex-col justify-center gap-5 rounded-xl border bg-white p-8">
       <FeedbackTitleOnStatus title={rating.feedbackTitle} />
       <PreGuideScoreContent rating={rating} />
     </div>

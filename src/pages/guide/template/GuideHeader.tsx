@@ -2,6 +2,8 @@ import { roadmapTypes } from '@mocks/data/roadmaps';
 import { PreGuideRateStatus } from 'types/guides';
 import { capitalizeFirstLetter } from '@utils/chars';
 
+import GuideStatusSign from './GuideStatusSign';
+
 interface TypeButtonProps {
   type: string;
   isSelected?: boolean;
@@ -49,6 +51,7 @@ const GuideHeader = ({ headerTitle, mode, status }: GuideHeaderProps) => {
           </div>
         )}
       </div>
+      <GuideStatusSign />
     </>
   );
 };
