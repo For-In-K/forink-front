@@ -23,16 +23,11 @@ const MainRoutes = () => {
         {
           path: 'roadmap',
           children: [
+            { index: true, element: <RoadmapTypeSelectorPage /> },
+            { path: ':roadmapType', element: <RoadmapDiagramPage /> },
             {
-              index: true,
-              element: <RoadmapTypeSelectorPage />,
-            },
-            {
-              path: ':roadmapType',
-              element: <RoadmapDiagramPage />,
-              children: [
-                { path: ':roadmapId', element: <RoadmapStepDetailPage /> },
-              ],
+              path: ':roadmapType/:roadmapId',
+              element: <RoadmapStepDetailPage />,
             },
           ],
         },

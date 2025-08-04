@@ -12,7 +12,7 @@ const StepUnit = ({ step }: StepUnitProps) => {
 
   return (
     <>
-      <div className="flex w-full flex-col justify-start gap-8 rounded-3xl border bg-white p-8 shadow-xs md:px-15 md:py-10">
+      <div className="flex w-full flex-col justify-start gap-8 rounded-3xl bg-white p-8 shadow-sm md:px-15 md:py-10">
         <div className="gap-10">
           <p className="text-title2 text-black">{unitTitle}</p>
           <p className="text-caption text-text-muted">{unitDescription}</p>
