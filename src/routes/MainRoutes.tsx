@@ -20,18 +20,31 @@ const MainRoutes = () => {
       element: <MainLayout />,
       children: [
         { index: true, element: <div>This is home page.</div> },
-        { path: 'roadmap', element: <RoadmapTypeSelectorPage /> },
-        { path: 'roadmap/:roadmapType', element: <RoadmapDiagramPage /> },
         {
-          path: 'roadmap/:roadmapType/:roadmapId',
-          element: <RoadmapStepDetailPage />,
+          path: 'roadmap',
+          children: [
+            {
+              index: true,
+              element: <RoadmapTypeSelectorPage />,
+            },
+            {
+              path: ':roadmapType',
+              element: <RoadmapDiagramPage />,
+              children: [
+                { path: ':roadmapId', element: <RoadmapStepDetailPage /> },
+              ],
+            },
+          ],
         },
         {
           path: 'guide',
+          children: [{ index: true, element: <GuideProfilePage /> }],
+        },
+        {
+          path: 'board',
           children: [
-            { index: true, element: <GuideProfilePage /> },
-            { path: 'rating', element: <GuideRatingPage /> },
-            { path: 'status', element: <PreGuideStatusPage /> },
+            { path: 'guide/rating', element: <GuideRatingPage /> },
+            { path: 'guide/status', element: <PreGuideStatusPage /> },
           ],
         },
       ],
