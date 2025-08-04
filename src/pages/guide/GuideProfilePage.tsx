@@ -5,7 +5,7 @@ const GuideProfilePage = () => {
   return (
     <>
       <div className="flex flex-col gap-10">
-        <GuideHeader />
+        <GuideHeader headerTitle="Types Of Guides" mode="Profile" />
         <ProfileWrapper />
       </div>
     </>

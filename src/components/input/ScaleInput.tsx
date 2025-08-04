@@ -23,7 +23,7 @@ const ScaleInput = ({ options, onSubmit }: ScaleInputProps) => {
           <div className="group relative inline-block" key={option.answerId}>
             <button
               onClick={() => handleSelect(option)}
-              className={`border-primary text-title2 size-12 rounded-full border-2 transition ${isSelected ? 'bg-primary text-white' : 'hover:bg-white-hover text-primary bg-white'} `}
+              className={`text-title2 size-12 rounded-full transition ${isSelected ? 'bg-primary text-white' : 'hover:bg-primary/40 bg-primary/10 text-primary hover:text-white'} `}
             >
               {value}
             </button>

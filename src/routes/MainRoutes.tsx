@@ -10,7 +10,8 @@ import RoadmapDiagramPage from '@pages/roadmap/RoadmapDiagramPage';
 import RoadmapStepDetailPage from '@pages/roadmap/RoadmapStepDetailPage';
 
 import GuideProfilePage from '@pages/guide/GuideProfilePage';
-import Board from '@pages/board/Board';
+import GuideRatingPage from '@pages/board/GuideRatingPage';
+import PreGuideStatusPage from '@pages/board/PreGuideStatusPage';
 
 const MainRoutes = () => {
   return useRoutes([
@@ -19,14 +20,33 @@ const MainRoutes = () => {
       element: <MainLayout />,
       children: [
         { index: true, element: <div>This is home page.</div> },
-        { path: 'roadmap', element: <RoadmapTypeSelectorPage /> },
-        { path: 'roadmap/:roadmapType', element: <RoadmapDiagramPage /> },
         {
-          path: 'roadmap/:roadmapType/:roadmapId',
-          element: <RoadmapStepDetailPage />,
+          path: 'roadmap',
+          children: [
+            {
+              index: true,
+              element: <RoadmapTypeSelectorPage />,
+            },
+            {
+              path: ':roadmapType',
+              element: <RoadmapDiagramPage />,
+              children: [
+                { path: ':roadmapId', element: <RoadmapStepDetailPage /> },
+              ],
+            },
+          ],
         },
-        { path: 'guide', element: <GuideProfilePage /> },
-        { path: 'board', element: <Board /> },
+        {
+          path: 'guide',
+          children: [{ index: true, element: <GuideProfilePage /> }],
+        },
+        {
+          path: 'board',
+          children: [
+            { path: 'guide/rating', element: <GuideRatingPage /> },
+            { path: 'guide/status', element: <PreGuideStatusPage /> },
+          ],
+        },
       ],
     },
     {

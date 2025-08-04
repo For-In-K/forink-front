@@ -1,0 +1,21 @@
+import { GuideFeedback } from 'types/guides';
+import GuideRatingContent from './GuideRatingContent';
+import GuideRatingForm from './GuideRatingForm';
+
+interface RatingUnitProps {
+  feedback: GuideFeedback;
+}
+
+const RatingUnit = ({ feedback }: RatingUnitProps) => {
+  return (
+    <div className="border-primary/50 flex w-full flex-col justify-center gap-5 rounded-xl border bg-white p-8">
+      <GuideRatingContent
+        feedbackTitle={feedback.feedbackTitle}
+        feedbackContent={feedback.feedbackContent}
+      />
+      <GuideRatingForm feedbackId={feedback.feedbackId} />
+    </div>
+  );
+};
+
+export default RatingUnit;
