@@ -26,7 +26,7 @@ const RoadmapHeader = ({
 }: RoadmapHeaderProps) => {
   const headerRatio = getProgressRatio(roadmapType);
   const milestoneTitle = subroadmaps.find(
-    (item) => item.roadmapId === roadmapId
+    (item: { roadmapId: number | undefined; }) => item.roadmapId === roadmapId
   )?.title;
 
   return (
