@@ -1,6 +1,6 @@
 import type {
   GetRoadmapTypeResponse,
-  GetSubroadmapResponse,
+  GetSubroadmapsResponse,
   GetRoadmapStepDetailResponse,
 } from 'types/roadmaps';
 
@@ -12,7 +12,7 @@ export const roadmapTypes: GetRoadmapTypeResponse = [
   { type: 'HOUSING', progressRatio: 40 },
 ];
 
-export const subroadmaps: GetSubroadmapResponse = [
+export const subroadmaps: GetSubroadmapsResponse = [
   {
     roadmapId: 1,
     title: 'Visa Insurance',
