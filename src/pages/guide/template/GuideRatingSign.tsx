@@ -40,7 +40,7 @@ const GuideRatingSign = ({ onClose }: GuideRatingSignProps) => {
         and a minimum of <strong>3.0 per criterion</strong> for promotion.
       </p>
       <ul className="list-inside list-disc space-y-1 text-sm text-gray-700">
-        <li>Milestone title – Feedback content</li>
+        <li>Milestone title and the feedback given by a pre-guide</li>
       </ul>
     </div>
   );
