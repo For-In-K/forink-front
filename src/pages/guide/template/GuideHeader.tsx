@@ -44,14 +44,18 @@ const GuideHeader = ({ headerTitle, mode, status }: GuideHeaderProps) => {
           </>
         )}
         {mode === 'Board' && status && (
-          <div
-            className={`${status === 'ALMOST' ? 'bg-secondary/90' : 'bg-accent/90'} text-title2 rounded-full px-6 py-2 text-white`}
-          >
-            {capitalizeFirstLetter(status)}
-          </div>
+          <>
+            <div
+              className={`${status === 'ALMOST' ? 'bg-secondary/90' : 'bg-accent/90'} text-title2 rounded-full px-6 py-2 text-white`}
+            >
+              {capitalizeFirstLetter(status)}
+            </div>
+            <div className="flex w-full">
+              <GuideStatusSign />
+            </div>
+          </>
         )}
       </div>
-      <GuideStatusSign />
     </>
   );
 };

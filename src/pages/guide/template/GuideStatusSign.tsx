@@ -51,7 +51,7 @@ const GuideStatusSign = () => {
   if (!visible) return null;
 
   return (
-    <div className="relative flex flex-col gap-6 rounded-lg bg-white p-8 font-sans shadow-sm">
+    <div className="relative flex w-full flex-col gap-6 rounded-lg bg-white p-8 font-sans shadow-sm">
       <button
         onClick={handleClose}
         className="absolute top-3 right-3 rounded-md p-1 text-gray-400 hover:text-gray-700 focus:ring-2 focus:ring-gray-400 focus:outline-none"
