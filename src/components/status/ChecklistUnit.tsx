@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { StepContent } from 'types/roadmaps';
 import CheckButton from '../button/CheckButton';
 
@@ -6,11 +7,21 @@ interface ChecklistUnitProps {
 }
 
 const ChecklistUnit = ({ content }: ChecklistUnitProps) => {
-  const handleListCheck = () => {};
+  const [isChecked, setIsChecked] = useState(content.isChecked);
+
+  const handleListCheck = () => {
+    setIsChecked((prev) => !prev);
+    console.log(content.stepContentId);
+    // TODO: API 연결하기
+  };
 
   return (
     <div className="flex gap-3 md:gap-5">
-      <CheckButton isChecked={content.isChecked} onClick={handleListCheck} />
+      <CheckButton
+        key={content.stepContentId}
+        isChecked={isChecked}
+        onClick={handleListCheck}
+      />
       <p>{content.stepContent}</p>
     </div>
   );

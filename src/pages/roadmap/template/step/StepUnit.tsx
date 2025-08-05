@@ -9,6 +9,11 @@ interface StepUnitProps {
 const StepUnit = ({ step }: StepUnitProps) => {
   const unitTitle = `${step.stepNumber}. ${step.stepTitle}`;
   const unitDescription = step.stepDescription;
+  const isUnitCompleted = step.contents.every((content) => content.isChecked);
+
+  const handleFeedbackStepSubmit = () => {
+    console.log('Submitted');
+  };
 
   return (
     <>
@@ -24,9 +29,8 @@ const StepUnit = ({ step }: StepUnitProps) => {
         </div>
         <div className="flex justify-end">
           <SubmitButton
-            onClick={() => {
-              console.log('Submitted');
-            }}
+            disabled={!isUnitCompleted}
+            onClick={handleFeedbackStepSubmit}
           />
         </div>
       </div>
