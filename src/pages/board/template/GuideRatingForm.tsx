@@ -28,6 +28,9 @@ const GuideRatingForm = ({ feedbackId, onSuccess }: RatingFormProps) => {
     helpScore: 0,
     recommendScore: 0,
   });
+  const allRatingsCompleted = Object.values(ratings).every(
+    (value) => value > 0
+  );
 
   const handleRate = (
     criteriaKey: keyof SubmitFeedbackRateFieldRequest,
@@ -49,7 +52,7 @@ const GuideRatingForm = ({ feedbackId, onSuccess }: RatingFormProps) => {
   };
 
   return (
-    <div className="bg-background flex flex-col items-center gap-6 rounded-md p-5 md:items-end">
+    <div className="bg-surface/50 flex flex-col items-center gap-6 rounded-md p-5 md:items-end">
       {criteriaList.map(({ key, label }) => (
         <RatingRow
           key={key}
@@ -60,8 +63,12 @@ const GuideRatingForm = ({ feedbackId, onSuccess }: RatingFormProps) => {
       ))}
 
       <div className="mt-4 flex flex-col gap-4 md:flex-row">
-        <CancelButton onClick={handleCancel} />
-        <SubmitButton color="secondary" onClick={handleSubmit} />
+        {allRatingsCompleted && <CancelButton onClick={handleCancel} />}
+        <SubmitButton
+          color="secondary"
+          onClick={handleSubmit}
+          disabled={!allRatingsCompleted}
+        />
       </div>
     </div>
   );
