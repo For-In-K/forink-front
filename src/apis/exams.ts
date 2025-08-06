@@ -15,10 +15,13 @@ export const getExam = async (): Promise<GetExamResponse> => {
   return res.data;
 };
 
-export const createExamStep = async (
-  stepNumber: number,
-  payload: CreateExamStepRequest
-) => {
+export const createExamStep = async ({
+  stepNumber,
+  payload,
+}: {
+  stepNumber: number;
+  payload: CreateExamStepRequest;
+}) => {
   const res = await apiClient.post(`exams/step/${stepNumber}`, payload);
   return res.data;
 };

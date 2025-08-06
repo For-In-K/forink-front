@@ -2,8 +2,8 @@ import {
   GetRoadmapStepDetailResponse,
   GetRoadmapTypeResponse,
   GetSubroadmapsResponse,
-  PostRoadmapFeedbackOnType,
-  PostRoadmapDetailFeedbackOnType,
+  PostRoadmapFeedbackOnStepDetail,
+  PostRoadmapFeedbackOnSubroadmap,
 } from 'types/roadmaps';
 import apiClient from './apiClient';
 
@@ -38,18 +38,24 @@ export const updateRoadmapStepDetailCheck = async (
   return res.data;
 };
 
-export const submitRoadmapFeedbackOnType = async (
-  roadmapStepId: number,
-  payload: PostRoadmapFeedbackOnType
-) => {
-  const res = await apiClient.post(`/roadmaps/${roadmapStepId}`);
+export const submitRoadmapFeedbackOnSubroadmap = async ({
+  roadmapId,
+  payload,
+}: {
+  roadmapId: number;
+  payload: PostRoadmapFeedbackOnSubroadmap;
+}) => {
+  const res = await apiClient.post(`/roadmaps/${roadmapId}`, payload);
   return res.data;
 };
 
-export const submitRoadmapDetailFeedbackOnType = async (
-  roadmapId: number,
-  payload: PostRoadmapDetailFeedbackOnType
-) => {
-  const res = await apiClient.post(`/roadmaps/${roadmapId}`);
+export const submitRoadmapFeedbackOnStepDetail = async ({
+  roadmapStepId,
+  payload,
+}: {
+  roadmapStepId: number;
+  payload: PostRoadmapFeedbackOnStepDetail;
+}) => {
+  const res = await apiClient.post(`/roadmaps/${roadmapStepId}`, payload);
   return res.data;
 };

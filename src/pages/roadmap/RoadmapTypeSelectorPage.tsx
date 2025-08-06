@@ -6,6 +6,13 @@ import type { RoadmapTypeDetail } from 'types/roadmaps';
 import RoadmapTypeButton from './template/RoadmapTypeButton';
 import { roadmapTypes } from '@mocks/data/roadmaps';
 
+export interface RoadmapTypeButtonInfo {
+  type: string;
+  title: string;
+  description: string;
+  progress: number;
+}
+
 const RoadmapTypeSelector = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -23,20 +30,21 @@ const RoadmapTypeSelector = () => {
   return (
     <div className="flex flex-col items-center gap-6">
       {roadmapTypes.map((category: RoadmapTypeDetail) => {
-        const type = category.type.toLowerCase();
-        const progress = category.progressRatio;
-        const title = capitalizeFirstLetter(type);
-        const description = t(
-          `roadmap.categories.${type.toUpperCase()}.description`
-        );
+        const roadmapTypeInfo: RoadmapTypeButtonInfo = {
+          type: category.type,
+          title: t(`roadmap.categories.${category.type}.title`, {
+            defaultValue: capitalizeFirstLetter(category.type),
+          }),
+          description: t(`roadmap.categories.${category.type}.description`, {
+            defaultValue: '',
+          }),
+          progress: category.progressRatio,
+        };
 
         return (
           <RoadmapTypeButton
             key={category.type}
-            type={type}
-            title={title}
-            description={description}
-            progress={progress}
+            roadmapTypeButtonInfo={roadmapTypeInfo}
             hoveredType={hoveredType}
             onSelect={handleRoadmapTypeSelect}
             onHover={handleHover}

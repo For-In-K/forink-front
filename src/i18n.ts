@@ -27,6 +27,19 @@ i18n.use(initReactI18next).init({
                 'Build your career path in Korea with resources and guidance.',
             },
           },
+          stepFeedback: {
+            title: 'Step {{stepNumber}} Completed!',
+            description: 'Please leave feedback for this step.',
+            bad: 'Not good',
+            good: 'Good',
+          },
+          milestoneFeedback: {
+            button: 'Leave Feedback for Rewards!',
+            title: 'All Steps Completed!',
+            description: 'Please leave feedback for the milestone.',
+            placeholder:
+              'It’s great to highlight the content, expertise, and usefulness of the roadmap.',
+          },
         },
       },
     },
@@ -35,7 +48,7 @@ i18n.use(initReactI18next).init({
         greeting: '안녕하세요',
         signin: '로그인',
         signout: '로그아웃',
-        submit: '제출',
+        submit: '제출하기',
         request: '가이드 매칭 요청',
         roadmap: {
           categories: {
@@ -50,6 +63,19 @@ i18n.use(initReactI18next).init({
               description:
                 '한국에서 경력 경로를 구축할 수 있는 리소스와 가이드를 제공해요.',
             },
+          },
+          stepFeedback: {
+            title: '단계 {{stepNumber}} 완료!',
+            description: '이 단계에 대한 피드백을 남겨주세요.',
+            bad: '별로예요',
+            good: '좋아요',
+          },
+          milestoneFeedback: {
+            button: '보상 피드백 남기기',
+            title: '모든 단계 완료!',
+            description: '마일스톤에 대한 피드백을 남겨주세요.',
+            placeholder:
+              '로드맵 내용, 전문성, 유용성 등을 강조해서 작성하면 좋아요.',
           },
         },
       },
@@ -72,6 +98,18 @@ i18n.use(initReactI18next).init({
             CAREER: {
               description: '通过资源和指导在韩国建立你的职业生涯。',
             },
+          },
+          stepFeedback: {
+            title: '步骤 {{stepNumber}} 完成！',
+            description: '请为此步骤留下反馈。',
+            bad: '不好',
+            good: '好',
+          },
+          milestoneFeedback: {
+            button: '留下奖励反馈！',
+            title: '所有步骤已完成！',
+            description: '请为里程碑留下反馈。',
+            placeholder: '强调路线图的内容、专业性和实用性是很好的。',
           },
         },
       },
@@ -97,6 +135,19 @@ i18n.use(initReactI18next).init({
               description:
                 'Xây dựng con đường sự nghiệp của bạn tại Hàn Quốc với các tài nguyên và hướng dẫn.',
             },
+          },
+          stepFeedback: {
+            title: 'Bước {{stepNumber}} đã hoàn thành!',
+            description: 'Vui lòng để lại phản hồi cho bước này.',
+            bad: 'Không tốt',
+            good: 'Tốt',
+          },
+          milestoneFeedback: {
+            button: 'Để lại phản hồi cho phần thưởng!',
+            title: 'Tất cả các bước đã hoàn thành!',
+            description: 'Vui lòng để lại phản hồi cho cột mốc.',
+            placeholder:
+              'Nên làm nổi bật nội dung, chuyên môn và tính hữu ích của lộ trình.',
           },
         },
       },
