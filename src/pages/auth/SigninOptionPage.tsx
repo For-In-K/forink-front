@@ -1,19 +1,19 @@
 import SigninTitle from './SigninTitle';
-import SocialSigninButton from './SocialSigninButton';
+import SigninOptionButtonsGroup from './SigninOptionButtonsGroup';
 
-const SigninPage = () => {
-  const TITLE = 'For better life in K.';
+const SigninOptionPage = () => {
+  const TITLE = 'Which role do you want to choose?';
   const DESCRIPTION = `
-You can be a user or a guide here.
+You can choose to be a user or a guide.
 Just go get and share much experience.`;
   return (
     <>
       <div className="flex flex-col items-center gap-30">
         <SigninTitle title={TITLE} description={DESCRIPTION} />
-        <SocialSigninButton />
+        <SigninOptionButtonsGroup />
       </div>
     </>
   );
 };
 
-export default SigninPage;
+export default SigninOptionPage;
