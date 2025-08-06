@@ -5,7 +5,7 @@ const PreGuideStatusWrapper = () => {
   return (
     <>
       {guideFeedbackRates.map((rating) => (
-        <StatusUnit key={rating.rateId} rating={rating} />
+        <StatusUnit key={rating.ratingId} rating={rating} />
       ))}
     </>
   );

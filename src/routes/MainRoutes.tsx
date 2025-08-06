@@ -6,6 +6,7 @@ import { ExamRoutes, ResumeRoutes } from './OnboardingRoutes';
 import SideLayout from '@layouts/SideLayout';
 import MainLayout from '@layouts/MainLayout';
 import SigninPage from '@pages/auth/SigninPage';
+import SigninOptionPage from '@pages/auth/SigninOptionPage';
 
 import RoadmapTypeSelectorPage from '@pages/roadmap/RoadmapTypeSelectorPage';
 import RoadmapDiagramPage from '@pages/roadmap/RoadmapDiagramPage';
@@ -62,6 +63,7 @@ const MainRoutes = () => {
       element: <SideLayout />,
       children: [
         { path: 'signin', element: <SigninPage /> },
+        { path: 'signin/option', element: <SigninOptionPage /> },
         {
           path: 'exams',
           children: ExamRoutes,

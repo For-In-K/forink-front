@@ -12,15 +12,15 @@ const RatingCountText = ({ count }: { count: number }) => {
 const PreGuideScoreContent = ({ rating }: StatusUnitProps) => {
   const highlight = 'Average';
   const scores = {
-    Average: rating.averageScore,
-    Expertise: rating.expertiseScore,
-    Helpfulness: rating.helpScore,
-    Recommendability: rating.recommendScore,
+    Average: rating.allAvgScore,
+    Expertise: rating.expertiseAvgScore,
+    Helpfulness: rating.helpAvgScore,
+    Recommendability: rating.recommendAvgScore,
   };
 
   return (
     <div className="text-text-muted text-body flex flex-col gap-6 rounded-md px-6 py-4 leading-loose">
-      <RatingCountText count={rating.rateCount} />
+      <RatingCountText count={rating.ratingCount} />
       <div className="flex flex-col items-start justify-between gap-2">
         <div className="flex flex-wrap gap-3">
           {Object.entries(scores).map(([label, score]) => (

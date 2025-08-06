@@ -157,25 +157,25 @@ Helped me review my housing lease in detail, explaining key legal terms and ensu
 
 export const guideFeedbackRates: GetPreGuideFeedbackRateResponse = [
   {
-    rateId: 1,
+    ratingId: 1,
     feedbackTitle: 'Immigration Help',
-    rateCount: 12,
-    averageScore: 4.3,
-    expertiseScore: 4.5,
-    helpScore: 4.2,
-    recommendScore: 4.1,
+    ratingCount: 12,
+    allAvgScore: 4.3,
+    expertiseAvgScore: 4.5,
+    helpAvgScore: 4.2,
+    recommendAvgScore: 4.1,
   },
   {
-    rateId: 2,
+    ratingId: 2,
     feedbackTitle: 'Housing Guide',
-    rateCount: 9,
-    averageScore: 4.0,
-    expertiseScore: 3.8,
-    helpScore: 4.1,
-    recommendScore: 4.2,
+    ratingCount: 9,
+    allAvgScore: 4.0,
+    expertiseAvgScore: 3.8,
+    helpAvgScore: 4.1,
+    recommendAvgScore: 4.2,
   },
 ];
 
 export const preGuideRateStatus: GetPreGuideRateStatusResponse = {
-  rateStatus: 'IN PROGRESS',
+  ratingStatus: 'IN PROGRESS',
 };

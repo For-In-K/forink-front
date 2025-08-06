@@ -5,7 +5,7 @@ import type {
   GetExamResponse,
 } from 'types/exams';
 
-export const createExam = async (): Promise<CreateExamResponse> => {
+export const createUserExam = async (): Promise<CreateExamResponse> => {
   const res = await apiClient.post('/exams');
   return res.data;
 };
