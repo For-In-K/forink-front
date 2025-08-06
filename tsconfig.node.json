@@ -11,7 +11,7 @@
       "@mocks/*": ["mocks/*"],
       "@components/*": ["components/*"],
       "@constants/*": ["constants/*"],
-      "@types/*": ["types/*"],
+      "types/*": ["types/*"],
       "@styles/*": ["styles/*"],
       "@hooks/*": ["hooks/*"],
       "@utils/*": ["utils/*"],
