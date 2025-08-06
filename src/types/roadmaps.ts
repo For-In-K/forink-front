@@ -36,10 +36,10 @@ export interface Step {
 
 export type GetRoadmapStepDetailResponse = Step[];
 
-export interface PostRoadmapFeedbackOnType {
+export interface PostRoadmapFeedbackOnStepDetail {
   roadmapAnswerType: 'GOOD' | 'BAD';
 }
 
-export interface PostRoadmapDetailFeedbackOnType {
+export interface PostRoadmapFeedbackOnSubroadmap {
   content: string;
 }
