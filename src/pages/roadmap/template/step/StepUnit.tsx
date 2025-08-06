@@ -9,33 +9,36 @@ interface StepUnitProps {
 }
 
 const StepUnit = ({ step }: StepUnitProps) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const unitTitle = `${step.stepNumber}. ${step.stepTitle}`;
-  const unitDescription = step.stepDescription;
-  const isUnitCompleted = !step.contents.every((content) => content.isChecked);
+  const [stepFeedbackOpen, setstepFeedbackOpen] = useState(false);
+
+  const stepNumber = step.stepNumber;
+  const stepTitle = `${step.stepNumber}. ${step.stepTitle}`;
+  const stepDescription = step.stepDescription;
+
+  const isStepCompleted = step.contents.every((content) => content.isChecked);
 
   const handleFeedbackModalClose = () => {
-    setIsModalOpen(false);
+    setstepFeedbackOpen(false);
   };
 
   const handleFeedbackStepSubmit = () => {
     console.log('Submitted');
-    setIsModalOpen(true);
+    setstepFeedbackOpen(true);
   };
 
   return (
     <>
       <div className="absolute top-0 left-0 z-10 flex w-full">
         <StepFeedbackModal
-          stepNumber={step.stepNumber}
-          open={isModalOpen}
+          stepNumber={stepNumber}
+          open={stepFeedbackOpen}
           onClose={handleFeedbackModalClose}
         />
       </div>
-      <div className="relative flex w-full flex-col justify-start gap-8 rounded-3xl bg-white p-8 shadow-sm md:px-15 md:py-10">
+      <div className="flex w-full flex-col justify-start gap-8 rounded-3xl bg-white p-8 shadow-sm md:px-15 md:py-10">
         <div className="gap-10">
-          <p className="text-title2 text-black">{unitTitle}</p>
-          <p className="text-caption text-text-muted">{unitDescription}</p>
+          <p className="text-title2 text-black">{stepTitle}</p>
+          <p className="text-caption text-text-muted">{stepDescription}</p>
         </div>
         <div className="flex flex-col gap-3">
           {step.contents.map((content, index) => (
@@ -44,7 +47,7 @@ const StepUnit = ({ step }: StepUnitProps) => {
         </div>
         <div className="flex justify-end">
           <SubmitButton
-            disabled={!isUnitCompleted}
+            disabled={!isStepCompleted}
             onClick={handleFeedbackStepSubmit}
           />
         </div>
