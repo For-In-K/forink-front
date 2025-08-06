@@ -12,3 +12,18 @@ export interface ResumeQuestion {
 }
 
 export type GetResumeQuestionResponse = ResumeQuestion[];
+
+export interface UpdateGuideResumeStepRequest {
+  answer: string;
+}
+
+export interface GuideResume {
+  name: string;
+  age: string;
+  nationality: string;
+  language: string;
+  expertise: string;
+  link: string;
+}
+
+export type GetGuideResumeResponse = GuideResume;

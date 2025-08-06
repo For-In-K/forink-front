@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-import { createGuideResume } from '@apis/guides';
+import { createGuideResume } from '@apis/resume';
 import { createUserExam } from '@apis/exams';
 
 interface SigninOptionButtonProps {
