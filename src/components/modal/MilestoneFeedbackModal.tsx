@@ -4,6 +4,7 @@ import Modal from '@components/modal/Modal';
 import SubmitButton from '@components/button/SubmitButton';
 
 import { submitRoadmapFeedbackOnSubroadmap } from '@apis/roadmaps';
+import { t } from 'i18next';
 
 interface MilestoneFeedbackModalProps {
   roadmapId: number;
@@ -50,15 +51,15 @@ const MilestoneFeedbackModal = ({
             <p className="text-title1 animate-bounce">🥳</p>
           </div>
           <div className="text-title1 w-full text-center font-bold text-white drop-shadow">
-            <p>All Steps Completed!</p>
+            <p>{t('roadmap.milestoneFeedback.title')}</p>
             <p className="text-body font-normal text-white/80">
-              마일스톤에 대한 피드백을 남겨주세요.
+              {t('roadmap.milestoneFeedback.description')}
             </p>
           </div>
         </div>
         <textarea
           className="focus:text-text-primary text-text-muted min-h-[120px] w-full resize-y rounded-lg border-none bg-white/90 p-4 transition-all duration-300 ease-in-out placeholder:text-gray-200 focus:bg-white focus:outline-none"
-          placeholder="마일스톤에 대한 피드백을 입력해주세요."
+          placeholder={t('roadmap.milestoneFeedback.placeholder')}
           value={feedback}
           onChange={(e) => setFeedback(e.target.value)}
         />

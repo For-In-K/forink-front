@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useRoutes } from 'react-router-dom';
 import { ExamRoutes, ResumeRoutes } from './OnboardingRoutes';
 
@@ -14,6 +16,18 @@ import GuideRatingPage from '@pages/board/GuideRatingPage';
 import PreGuideStatusPage from '@pages/board/PreGuideStatusPage';
 
 const MainRoutes = () => {
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    const html = document.documentElement;
+
+    html.lang = i18n.language;
+    html.dir = i18n.dir(i18n.language);
+
+    html.classList.remove('lang-eng', 'lang-kor', 'lang-chi', 'lang-vie');
+    html.classList.add(`lang-${i18n.language}`);
+  }, [i18n.language]);
+
   return useRoutes([
     {
       path: '/',

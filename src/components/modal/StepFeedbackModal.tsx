@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
+import { useTranslation } from 'react-i18next';
 import { submitRoadmapFeedbackOnStepDetail } from '@apis/roadmaps';
 
 import Modal from '@components/modal/Modal';
@@ -15,6 +16,8 @@ const StepFeedbackModal = ({
   open,
   onClose,
 }: StepFeedbackModalProps) => {
+  const { t } = useTranslation();
+
   const { mutate: submitFeedbackOnStep } = useMutation({
     mutationFn: submitRoadmapFeedbackOnStepDetail,
     onSuccess: () => {
@@ -45,10 +48,10 @@ const StepFeedbackModal = ({
           </div>
           <div className="w-full text-center">
             <p className="text-title1 font-bold text-white drop-shadow">
-              Step {stepNumber} Completed!
+              {t('roadmap.stepFeedback.title', { stepNumber })}
             </p>
             <p className="text-body text-white/80">
-              Please leave feedback for this step.
+              {t('roadmap.stepFeedback.description')}
             </p>
           </div>
         </div>
@@ -58,14 +61,14 @@ const StepFeedbackModal = ({
             className="shimmer-accent border-danger/40 text-title2 flex items-center gap-2 rounded-full border-2 px-7 py-3 font-bold text-white shadow-lg transition-all"
           >
             <ThumbsDown className="inline" />
-            Not good
+            {t('roadmap.stepFeedback.bad')}
           </button>
           <button
             onClick={() => handleFeedbackSubmit('GOOD')}
             className="shimmer-secondary text-title2 flex items-center gap-2 rounded-full border-2 border-emerald-600 px-7 py-3 font-bold text-white shadow-lg transition-all"
           >
             <ThumbsUp className="inline" />
-            Good
+            {t('roadmap.stepFeedback.good')}
           </button>
         </div>
       </div>

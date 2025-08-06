@@ -19,9 +19,9 @@ const NavButton = ({ label, to }: NavMenuButtonProps) => {
       <NavLink
         to={to}
         className={({ isActive }) =>
-          `text-title2 flex h-10 items-center px-2 font-bold transition-colors duration-300 ease-in-out ${
+          `text-title2 flex h-10 items-center px-2 font-mono font-bold transition-colors duration-300 ease-in-out ${
             isActive
-              ? 'border-primary text-primary hover:text-primary-hover sm:border-b-2'
+              ? 'border-primary text-primary hover:text-primary-hover border-b-0 sm:border-b-2'
               : 'text-text-primary hover:text-gray-500'
           }`
         }

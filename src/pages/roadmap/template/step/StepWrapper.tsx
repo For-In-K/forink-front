@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import StepUnit from './StepUnit';
 import MilestoneFeedbackModal from '@components/modal/MilestoneFeedbackModal';
 import { roadmapStepDetail } from '@mocks/data/roadmaps';
@@ -8,6 +10,8 @@ interface StepWrapperProps {
 }
 
 const StepWrapper = ({ roadmapId }: StepWrapperProps) => {
+  const { t } = useTranslation();
+
   const [milestoneFeedbackOpen, setMilestoneFeedbackOpen] = useState(false);
   const isMilestoneCompleted = roadmapStepDetail.every((step) =>
     step.contents.every((content) => content.isChecked)
@@ -26,7 +30,7 @@ const StepWrapper = ({ roadmapId }: StepWrapperProps) => {
         disabled={!isMilestoneCompleted}
         onClick={() => setMilestoneFeedbackOpen(true)}
       >
-        🏆 Leave Feedback For Rewards! 🏆
+        🏆 {t('roadmap.milestoneFeedback.button')} 🏆
       </button>
       <MilestoneFeedbackModal
         roadmapId={roadmapId}
