@@ -36,11 +36,11 @@ const MultiSelectInput = ({
   };
 
   return (
-    <div className="flex w-full items-center justify-between gap-4">
-      <div className="relative flex flex-1" style={{ minWidth: 'max-content' }}>
+    <div className="flex w-full flex-col items-start justify-between gap-5">
+      <div className="relative flex" style={{ minWidth: 'max-content' }}>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="border-primary text-primary hover:bg-white-hover flex w-55 items-center justify-between rounded-full border-2 bg-white px-5 py-2 transition"
+          className="border-primary/40 text-text-muted hover:bg-white-hover flex w-55 items-center justify-between rounded-full border bg-white px-5 py-2 transition"
           type="button"
           aria-haspopup="listbox"
           aria-expanded={isOpen}
@@ -53,7 +53,7 @@ const MultiSelectInput = ({
           <ul
             role="listbox"
             aria-multiselectable="true"
-            className="border-primary absolute z-10 mt-14 max-h-60 w-full min-w-max overflow-y-auto rounded-xl border-2 bg-white shadow-lg [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-blue-500 [&::-webkit-scrollbar-track]:bg-none"
+            className="border-primary/40 absolute z-10 mt-14 max-h-60 w-full min-w-max overflow-y-auto rounded-xl border bg-white shadow-lg [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-blue-300 [&::-webkit-scrollbar-track]:bg-none"
           >
             {filteredOptions.map((option) => (
               <li
@@ -77,11 +77,11 @@ const MultiSelectInput = ({
           </ul>
         )}
       </div>
-      <div className="flex flex-1 flex-wrap justify-end gap-2 rounded-xl">
+      <div className="flex flex-wrap justify-start gap-2">
         {selected.map((opt) => (
           <div
             key={opt.answerId}
-            className="bg-primary flex w-25 items-center justify-between rounded-full px-3 py-1 text-sm text-white"
+            className="bg-primary text-md flex w-25 items-center justify-between rounded-full px-3 py-1 text-white"
           >
             <span className="truncate">{opt.answer}</span>
             <button

@@ -23,19 +23,19 @@ const DropdownInput = ({
   };
 
   return (
-    <div className="flex items-center">
+    <div className="flex w-full items-start justify-start">
       <div className="relative" style={{ minWidth: 'max-content' }}>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="border-primary text-primary hover:bg-white-hover flex w-55 items-center justify-between rounded-full border-2 bg-white px-5 py-2 transition"
+          className="hover:bg-white-hover text-text-muted border-primary/40 flex w-55 items-center justify-between rounded-full border bg-white px-5 py-2 transition"
           type="button"
         >
           <span className="truncate">{selected || placeholder}</span>
-          <ChevronDown className="h-4 w-4 flex-shrink-0" />
+          <ChevronDown className="text-primary h-4 w-4 flex-shrink-0" />
         </button>
 
         {isOpen && (
-          <ul className="border-primary absolute z-10 mt-2 max-h-60 w-full min-w-max overflow-y-auto rounded-xl border-2 bg-white shadow-lg [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-blue-500 [&::-webkit-scrollbar-track]:bg-none">
+          <ul className="border-primary/40 absolute z-10 mt-2 max-h-60 w-full min-w-max overflow-y-auto rounded-xl border bg-white shadow-lg [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-blue-300 [&::-webkit-scrollbar-track]:bg-none">
             {options.map((option) => (
               <li
                 key={option.answerId}

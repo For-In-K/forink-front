@@ -15,7 +15,7 @@ const ButtonInput = ({ options, onSubmit }: ButtonInputProps) => {
   };
 
   return (
-    <div className="flex items-center justify-center gap-10">
+    <div className="flex w-full items-start justify-start gap-10">
       {options.map((option) => {
         const isSelected = option.answerId === selectedId;
         return (
@@ -23,10 +23,10 @@ const ButtonInput = ({ options, onSubmit }: ButtonInputProps) => {
             key={option.answerId}
             onClick={() => handleSelect(option)}
             type="button"
-            className={`border-primary text-title2 min-w-32 rounded-full border-2 px-4 py-2 transition ${
+            className={`border-primary/40 text-title2 min-w-32 rounded-full border px-4 py-2 transition ${
               isSelected
                 ? 'bg-primary text-white'
-                : 'text-primary hover:bg-white-hover bg-white'
+                : 'text-text-muted hover:bg-white-hover bg-white'
             } `}
           >
             {option.answer}
