@@ -7,7 +7,7 @@ const SigninTitle = () => {
 
   return (
     <>
-      <div className="flex animate-bounce flex-col gap-3 text-center">
+      <div className="flex animate-bounce flex-col gap-3 text-center font-mono">
         <h1 className="text-title1 font-semibold tracking-tight md:text-6xl">
           {TITLE1}
         </h1>
