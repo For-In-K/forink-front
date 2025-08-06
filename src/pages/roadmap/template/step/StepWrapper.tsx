@@ -22,11 +22,11 @@ const StepWrapper = ({ roadmapId }: StepWrapperProps) => {
       </div>
 
       <button
-        className={`w-full animate-pulse rounded-3xl p-2 ${isMilestoneCompleted ? 'bg-sky-500 text-white hover:bg-sky-600' : 'cursor-not-allowed bg-gray-300 text-gray-500'}`}
+        className={`w-full animate-pulse rounded-3xl p-2 ${isMilestoneCompleted ? 'shimmer-accent text-white' : 'cursor-not-allowed bg-gray-300 text-gray-500'}`}
         disabled={!isMilestoneCompleted}
         onClick={() => setMilestoneFeedbackOpen(true)}
       >
-        Leave Feedback For Rewards!
+        🏆 Leave Feedback For Rewards! 🏆
       </button>
       <MilestoneFeedbackModal
         roadmapId={roadmapId}

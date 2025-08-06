@@ -47,7 +47,7 @@ const MilestoneFeedbackModal = ({
       <div className="flex w-full flex-col items-center gap-10">
         <div className="flex w-full flex-col items-center gap-5">
           <div className="rounded-full bg-white/30 p-3">
-            <p className="text-title1 animate-bounce">🏁</p>
+            <p className="text-title1 animate-bounce">🥳</p>
           </div>
           <div className="text-title1 w-full text-center font-bold text-white drop-shadow">
             <p>All Steps Completed!</p>
@@ -57,7 +57,7 @@ const MilestoneFeedbackModal = ({
           </div>
         </div>
         <textarea
-          className="focus:text-text-primary text-text-muted min-h-[120px] w-full resize-y rounded-lg border-none bg-white/70 p-4 transition-all duration-300 ease-in-out placeholder:text-gray-200 focus:bg-white focus:outline-none"
+          className="focus:text-text-primary text-text-muted min-h-[120px] w-full resize-y rounded-lg border-none bg-white/90 p-4 transition-all duration-300 ease-in-out placeholder:text-gray-200 focus:bg-white focus:outline-none"
           placeholder="마일스톤에 대한 피드백을 입력해주세요."
           value={feedback}
           onChange={(e) => setFeedback(e.target.value)}
