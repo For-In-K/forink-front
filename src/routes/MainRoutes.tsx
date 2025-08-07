@@ -15,6 +15,7 @@ import RoadmapStepDetailPage from '@pages/roadmap/RoadmapStepDetailPage';
 import GuideProfilePage from '@pages/guide/GuideProfilePage';
 import GuideRatingPage from '@pages/board/GuideRatingPage';
 import PreGuideStatusPage from '@pages/board/PreGuideStatusPage';
+import ResumeFinalViewPage from '@pages/onboarding/resume/ResumeFinalViewPage';
 
 const MainRoutes = () => {
   const { i18n } = useTranslation();
@@ -69,6 +70,7 @@ const MainRoutes = () => {
           children: ExamRoutes,
         },
         { path: 'resume', children: ResumeRoutes },
+        { path: 'resume/final', element: <ResumeFinalViewPage /> },
       ],
     },
   ]);
