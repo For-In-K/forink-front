@@ -1,13 +1,18 @@
 import { useNavigate } from 'react-router-dom';
+import { getOauthUrl } from '@apis/oauth';
 import GoogleIcon from '@assets/icons/google.svg?react';
 
 const SocialSigninButton = () => {
   const navigate = useNavigate();
   const BUTTON_TEXT = 'Sign in with Google';
 
-  const handleSignin = () => {
-    console.log('signin clicked');
-    navigate('/');
+  const handleSignin = async () => {
+    try {
+      const { url } = await getOauthUrl();
+      window.location.href = url;
+    } catch (error) {
+      alert('로그인에 실패했습니다. 다시 시도해주세요.'); // TODO: 토스트로 대체하기
+    }
   };
 
   return (
