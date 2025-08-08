@@ -17,6 +17,8 @@ import GuideRatingPage from '@pages/board/GuideRatingPage';
 import PreGuideStatusPage from '@pages/board/PreGuideStatusPage';
 import ResumeFinalViewPage from '@pages/onboarding/resume/ResumeFinalViewPage';
 
+import NotFound from '@pages/fallback/NotFound';
+
 const MainRoutes = () => {
   const { i18n } = useTranslation();
 
@@ -58,6 +60,7 @@ const MainRoutes = () => {
             { path: 'guide/status', element: <PreGuideStatusPage /> },
           ],
         },
+        { path: '*', element: <NotFound /> },
       ],
     },
     {
@@ -71,6 +74,7 @@ const MainRoutes = () => {
         },
         { path: 'resume', children: ResumeRoutes },
         { path: 'resume/final', element: <ResumeFinalViewPage /> },
+        { path: '*', element: <NotFound /> },
       ],
     },
   ]);
