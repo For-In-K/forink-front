@@ -26,7 +26,7 @@ const StepWrapper = ({ roadmapId }: StepWrapperProps) => {
       </div>
 
       <button
-        className={`w-full animate-pulse rounded-3xl p-2 ${isMilestoneCompleted ? 'shimmer-accent text-white' : 'cursor-not-allowed bg-gray-300 text-gray-500'}`}
+        className={`text-body w-full animate-pulse rounded-3xl p-2 ${isMilestoneCompleted ? 'shimmer-accent text-white' : 'cursor-not-allowed bg-gray-300 text-gray-500'}`}
         disabled={!isMilestoneCompleted}
         onClick={() => setMilestoneFeedbackOpen(true)}
       >

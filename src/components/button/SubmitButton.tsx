@@ -25,7 +25,7 @@ const SubmitButton = ({
     <button
       disabled={disabled}
       onClick={onClick}
-      className={`text-title2 border border-white/60 ${disabled ? 'bg-gray-300 active:transform-none' : colorClassMap[color]} w-40 p-2 text-white transition-colors duration-200 ${className}`}
+      className={`border border-white/60 ${disabled ? 'bg-gray-300 active:transform-none' : colorClassMap[color]} sm:text-body p-2 px-4 text-sm text-white transition-colors duration-200 ${className}`}
     >
       {t('submit')}
     </button>

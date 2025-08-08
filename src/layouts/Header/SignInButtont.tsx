@@ -6,7 +6,7 @@ const SignInButton = () => {
 
   return (
     <>
-      <button className="bg-primary hover:bg-primary-hover flex w-15 min-w-auto items-center justify-center p-2 text-white sm:w-30">
+      <button className="bg-primary hover:bg-primary-hover flex min-w-auto items-center justify-center p-2 px-4 text-xs text-white sm:text-sm">
         <LogIn className="inline-block sm:hidden" />
         <p className="hidden sm:inline-block">{t('signout')}</p>
       </button>

@@ -18,8 +18,8 @@ const RatingRow = ({ label, value, onChange }: RatingRowProps) => {
               onClick={() => onChange(score)}
               className={`flex h-8 w-8 items-center justify-center rounded-full border transition ${
                 isSelected
-                  ? 'bg-secondary text-white'
-                  : 'bg-secondary/10 hover:bg-secondary/40 text-secondary border-transparent hover:text-white'
+                  ? 'bg-primary text-white'
+                  : 'bg-primary/10 hover:bg-primary/40 text-primary border-transparent hover:text-white'
               }`}
             >
               {score}
