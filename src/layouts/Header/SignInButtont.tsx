@@ -6,16 +6,14 @@ import { useNavigate } from 'react-router-dom';
 
 interface SignInButtonProps {
   signedIn?: boolean;
-  onClick?: () => void;
 }
 
-const SignInButton = ({ signedIn = false, onClick }: SignInButtonProps) => {
+const SignInButton = ({ signedIn = false }: SignInButtonProps) => {
   const { t } = useTranslation();
   const { signOut } = useAuth();
   const navigate = useNavigate();
 
   const handleClick = () => {
-    if (onClick) onClick();
     if (signedIn) {
       signOut();
       toast.success('로그아웃 되었어요');
