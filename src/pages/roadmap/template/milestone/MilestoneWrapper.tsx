@@ -1,4 +1,8 @@
 import React, { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { getRoadmapsOnType } from '@apis/roadmaps';
+
 import ReactFlow, {
   Background,
   Controls,
@@ -9,12 +13,10 @@ import ReactFlow, {
 } from 'reactflow';
 import type { Node, Edge, Connection } from 'reactflow';
 import 'reactflow/dist/style.css';
-import { useNavigate } from 'react-router-dom';
 
 import { getX } from '@utils/coordinates';
 import { milestoneNodeTypes } from 'types/milestone';
 import MilestoneButton from '@components/button/MilestoneButton';
-import { subroadmaps } from '@mocks/data/roadmaps';
 
 interface MilestoneWrapperProps {
   roadmapType: string;
@@ -26,6 +28,11 @@ const MilestoneWrapper = ({ roadmapType }: MilestoneWrapperProps) => {
   const handleMilestoneSelect = (roadmapId: number) => {
     navigate(`/roadmap/${roadmapType}/${roadmapId}`);
   };
+
+  const { data: subroadmaps = [] } = useQuery({
+    queryKey: ['roadmaps', roadmapType],
+    queryFn: () => getRoadmapsOnType(roadmapType),
+  });
 
   const initialNodes: Node[] = subroadmaps.map((sub: any, index: number) => ({
     id: sub.roadmapId.toString(),
