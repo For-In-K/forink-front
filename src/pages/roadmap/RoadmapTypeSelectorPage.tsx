@@ -13,6 +13,7 @@ export interface RoadmapTypeButtonInfo {
   title: string;
   description: string;
   progress: number;
+  
 }
 
 const RoadmapTypeSelector = () => {
@@ -38,18 +39,19 @@ const RoadmapTypeSelector = () => {
   return (
     <div className="flex flex-col items-center gap-6">
       {roadmapTypes.map((category: RoadmapTypeDetail) => {
+        const roadmapType = category.roadmapType.toLowerCase();
+        const title = capitalizeFirstLetter(category.roadmapType);
+        const progress = category.progressRatio;
+
         const roadmapTypeInfo: RoadmapTypeButtonInfo = {
-          type: category.roadmapType,
-          title: t(`roadmap.categories.${category.roadmapType}.title`, {
-            defaultValue: capitalizeFirstLetter(category.roadmapType),
+          type: roadmapType,
+          title: t(`roadmap.categories.${roadmapType}.title`, {
+            defaultValue: title,
           }),
-          description: t(
-            `roadmap.categories.${category.roadmapType}.description`,
-            {
-              defaultValue: '',
-            }
-          ),
-          progress: category.progressRatio,
+          description: t(`roadmap.categories.${roadmapType}.description`, {
+            defaultValue: '',
+          }),
+          progress: progress,
         };
 
         return (
