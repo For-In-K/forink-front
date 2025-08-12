@@ -14,19 +14,19 @@ i18n.use(initReactI18next).init({
         request: 'Request a Guide',
         roadmap: {
           categories: {
-            ADMINISTRATION: {
+            administration: {
               description:
                 'Get step-by-step guidance for visas, health insurance, and registration.',
             },
-            TRAVEL: {
+            travel: {
               description:
                 'Discover essential places and tips before settling down.',
             },
-            LANGUAGE: {
+            language: {
               description:
                 'Learn the basics of the Korean language to help you settle in.',
             },
-            CAREER: {
+            career: {
               description:
                 'Build your career path in Korea with resources and guidance.',
             },
@@ -56,17 +56,17 @@ i18n.use(initReactI18next).init({
         request: '가이드 매칭 요청',
         roadmap: {
           categories: {
-            ADMINISTRATION: {
+            administration: {
               description:
                 '비자, 건강 보험 및 등록에 대한 단계별 가이드를 받으세요.',
             },
-            TRAVEL: {
+            travel: {
               description: '정착하기 전에 필수 장소와 팁을 알아보세요.',
             },
-            LANGUAGE: {
+            language: {
               description: '한국어의 기초를 배워 정착하는 데 도움을 주세요.',
             },
-            CAREER: {
+            career: {
               description:
                 '한국에서 경력 경로를 구축할 수 있는 리소스와 가이드를 제공해요.',
             },
@@ -96,16 +96,16 @@ i18n.use(initReactI18next).init({
         request: '请求指南',
         roadmap: {
           categories: {
-            ADMINISTRATION: {
+            administration: {
               description: '获取有关签证、健康保险和注册的逐步指南。',
             },
-            TRAVEL: {
+            travel: {
               description: '在定居之前，发现必要的地方和提示。',
             },
-            LANGUAGE: {
+            language: {
               description: '学习韩语基础知识，以帮助您定居。',
             },
-            CAREER: {
+            career: {
               description: '通过资源和指导在韩国建立你的职业生涯。',
             },
           },
@@ -133,19 +133,19 @@ i18n.use(initReactI18next).init({
         request: 'Yêu cầu hướng dẫn',
         roadmap: {
           categories: {
-            ADMINISTRATION: {
+            administration: {
               description:
                 'Nhận hướng dẫn từng bước về visa, bảo hiểm y tế và đăng ký.',
             },
-            TRAVEL: {
+            travel: {
               description:
                 'Khám phá những nơi cần thiết và mẹo trước khi định cư.',
             },
-            LANGUAGE: {
+            language: {
               description:
                 'Học các kiến thức cơ bản về tiếng Hàn để giúp bạn định cư.',
             },
-            CAREER: {
+            career: {
               description:
                 'Xây dựng con đường sự nghiệp của bạn tại Hàn Quốc với các tài nguyên và hướng dẫn.',
             },
