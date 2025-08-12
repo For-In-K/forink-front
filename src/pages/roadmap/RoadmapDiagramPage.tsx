@@ -1,12 +1,25 @@
-import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
+import { VALID_ROADMAP_TYPES } from 'types/roadmaps';
 import RoadmapHeader from './template/RoadmapHeader';
 import MilestoneWrapper from './template/milestone/MilestoneWrapper';
 
 const RoadmapDiagram = () => {
-  const { roadmapType } = useParams();
-  if (!roadmapType) {
-    return <div>Cannot load roadmap diagram.</div>;
-  }
+  const navigate = useNavigate();
+  const { roadmapType } = useParams<{ roadmapType: string }>();
+
+  const isValidType = roadmapType && VALID_ROADMAP_TYPES.includes(roadmapType);
+
+  useEffect(() => {
+    if (!isValidType) {
+      toast.error('유효하지 않은 로드맵 타입입니다.');
+      navigate('/');
+    }
+  }, [isValidType, navigate]);
+
+  if (!isValidType) return null;
 
   return (
     <>

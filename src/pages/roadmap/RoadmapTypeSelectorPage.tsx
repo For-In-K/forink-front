@@ -13,7 +13,6 @@ export interface RoadmapTypeButtonInfo {
   title: string;
   description: string;
   progress: number;
-  
 }
 
 const RoadmapTypeSelector = () => {
@@ -28,7 +27,6 @@ const RoadmapTypeSelector = () => {
   });
 
   const handleRoadmapTypeSelect = (roadmapType: string) => {
-    console.log(`Selected roadmap type: ${roadmapType}`);
     navigate(`/roadmap/${roadmapType}`);
   };
 

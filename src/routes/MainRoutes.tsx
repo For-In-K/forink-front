@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useRoutes } from 'react-router-dom';
+import { useRoutes, Navigate } from 'react-router-dom';
 import { ExamRoutes, ResumeRoutes } from './OnboardingRoutes';
 
 import SideLayout from '@layouts/SideLayout';
@@ -62,7 +62,7 @@ const MainRoutes = () => {
             { path: 'guide/status', element: <PreGuideStatusPage /> },
           ],
         },
-        { path: '*', element: <NotFound /> },
+        { path: '*', element: <Navigate to="/" replace /> },
       ],
     },
     {
