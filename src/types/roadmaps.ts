@@ -1,7 +1,7 @@
 export type RoadmapType = 'administration' | 'travel' | 'career';
 
 export interface RoadmapTypeDetail {
-  type: string;
+  roadmapType: string;
   progressRatio: number;
 }
 

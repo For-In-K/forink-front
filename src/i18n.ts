@@ -22,6 +22,10 @@ i18n.use(initReactI18next).init({
               description:
                 'Discover essential places and tips before settling down.',
             },
+            LANGUAGE: {
+              description:
+                'Learn the basics of the Korean language to help you settle in.',
+            },
             CAREER: {
               description:
                 'Build your career path in Korea with resources and guidance.',
@@ -59,6 +63,9 @@ i18n.use(initReactI18next).init({
             TRAVEL: {
               description: '정착하기 전에 필수 장소와 팁을 알아보세요.',
             },
+            LANGUAGE: {
+              description: '한국어의 기초를 배워 정착하는 데 도움을 주세요.',
+            },
             CAREER: {
               description:
                 '한국에서 경력 경로를 구축할 수 있는 리소스와 가이드를 제공해요.',
@@ -95,6 +102,9 @@ i18n.use(initReactI18next).init({
             TRAVEL: {
               description: '在定居之前，发现必要的地方和提示。',
             },
+            LANGUAGE: {
+              description: '学习韩语基础知识，以帮助您定居。',
+            },
             CAREER: {
               description: '通过资源和指导在韩国建立你的职业生涯。',
             },
@@ -130,6 +140,10 @@ i18n.use(initReactI18next).init({
             TRAVEL: {
               description:
                 'Khám phá những nơi cần thiết và mẹo trước khi định cư.',
+            },
+            LANGUAGE: {
+              description:
+                'Học các kiến thức cơ bản về tiếng Hàn để giúp bạn định cư.',
             },
             CAREER: {
               description:
