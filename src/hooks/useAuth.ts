@@ -33,7 +33,12 @@ const useAuth = () => {
 
   useEffect(() => {
     const userFromToken = token ? getUserFromToken(token) : null;
-    userFromToken ? setUser(userFromToken) : clearUser();
+    if (userFromToken) {
+      setUser(userFromToken);
+    } else {
+      clearUser();
+      if (token) clearToken();
+    }
   }, [token, setUser, clearUser]);
 
   return {

@@ -27,7 +27,7 @@ export const LanguageSelector = () => {
   };
 
   return (
-    <div className="relative hidden sm:flex">
+    <div className="relative hidden items-center sm:flex">
       <button
         onClick={toggleDropdown}
         className="border-border size-10 min-w-10 overflow-hidden rounded-full border"
@@ -42,7 +42,7 @@ export const LanguageSelector = () => {
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="absolute left-1/2 z-10 mt-12 flex -translate-x-1/2 flex-col gap-2 rounded-full bg-white p-1 shadow-md"
+          className="absolute top-12 left-1/2 z-10 flex -translate-x-1/2 flex-col gap-2 rounded-full bg-white p-1 shadow-md"
         >
           {LANGUAGES.filter((l) => l.code !== currentLang.code).map((lang) => (
             <button

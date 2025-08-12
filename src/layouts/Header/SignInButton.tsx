@@ -21,15 +21,15 @@ const SignInButton = () => {
 
   return (
     <button
-      className="bg-primary hover:bg-primary-hover flex min-w-auto items-center justify-center p-2 px-4 text-xs text-white sm:text-sm"
+      className="bg-primary hover:bg-primary-hover flex min-w-auto items-center justify-center p-2 px-4 text-xs text-nowrap text-white md:text-sm"
       onClick={handleClick}
     >
       {isSignedIn ? (
-        <LogOut className="inline-block sm:hidden" />
+        <LogOut className="inline-block md:hidden" />
       ) : (
-        <LogIn className="inline-block sm:hidden" />
+        <LogIn className="inline-block md:hidden" />
       )}
-      <span className="hidden sm:inline-block">
+      <span className="hidden md:inline-block">
         {isSignedIn ? t('signout') : t('signin')}
       </span>
     </button>

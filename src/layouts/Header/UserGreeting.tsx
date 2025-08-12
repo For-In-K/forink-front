@@ -1,14 +1,14 @@
+import { useUserStore } from '@stores/useUserStore';
 import { useTranslation } from 'react-i18next';
 
 const UserGreeting = () => {
   const { t } = useTranslation();
+  const { user } = useUserStore();
 
   return (
-    <>
-      <p className="text-body text-text-muted hidden w-48 text-left font-mono md:inline-block">
-        <span>{t('greeting')}</span>, redzzzi!
-      </p>
-    </>
+    <p className="text-body text-text-muted hidden truncate text-center font-mono lg:inline-block">
+      <span>{t('greeting')}</span>, {user?.email}!
+    </p>
   );
 };
 

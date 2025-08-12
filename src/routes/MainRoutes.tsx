@@ -19,6 +19,7 @@ import PreGuideStatusPage from '@pages/board/PreGuideStatusPage';
 import ResumeFinalViewPage from '@pages/onboarding/resume/ResumeFinalViewPage';
 
 import NotFound from '@pages/fallback/NotFound';
+import HomePage from '@pages/home/HomePage';
 
 const MainRoutes = () => {
   const { i18n } = useTranslation();
@@ -38,7 +39,7 @@ const MainRoutes = () => {
       path: '/',
       element: <MainLayout />,
       children: [
-        { index: true, element: <div>This is home page.</div> },
+        { index: true, element: <HomePage /> },
         {
           path: 'roadmap',
           children: [
