@@ -1,4 +1,9 @@
-export type RoadmapType = 'administration' | 'travel' | 'career';
+export const VALID_ROADMAP_TYPES = [
+  'administration',
+  'career',
+  'language',
+  'travel',
+];
 
 export interface RoadmapTypeDetail {
   roadmapType: string;
