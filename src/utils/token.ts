@@ -15,8 +15,7 @@ export const removeToken = () => {
   Cookies.remove('token');
 };
 
-export const getUserFromToken = (): User | null => {
-  const token = getToken();
+export const getUserFromToken = (token: string): User | null => {
   if (!token) return null;
   try {
     const decoded = jwtDecode<UserOAuthResponse>(token);

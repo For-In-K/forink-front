@@ -1,7 +1,11 @@
 import { useCallback, useEffect } from 'react';
 import { useUserStore } from '@stores/useUserStore';
 import { useTokenStore } from '@stores/useTokenStore';
-import { getUserFromToken } from '@utils/token';
+import {
+  getUserFromToken,
+  setToken as setTokenInCookie,
+  removeToken as removeTokenFromCookie,
+} from '@utils/token';
 
 const useAuth = () => {
   const { user, setUser, clearUser } = useUserStore();
@@ -16,17 +20,19 @@ const useAuth = () => {
   const signIn = useCallback(
     (token: string) => {
       setToken(token);
+      setTokenInCookie(token);
     },
     [setToken]
   );
 
   const signOut = useCallback(() => {
+    removeTokenFromCookie();
     clearToken();
     clearUser();
   }, [clearToken, clearUser]);
 
   useEffect(() => {
-    const userFromToken = token ? getUserFromToken() : null;
+    const userFromToken = token ? getUserFromToken(token) : null;
     userFromToken ? setUser(userFromToken) : clearUser();
   }, [token, setUser, clearUser]);
 

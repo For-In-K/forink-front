@@ -68,7 +68,7 @@ const MainRoutes = () => {
       element: <SideLayout />,
       children: [
         { path: 'signin', element: <SigninPage /> },
-        { path: '/oauth/google/callback', element: <SigninCallback /> },
+        { path: 'oauth/google/callback', element: <SigninCallback /> },
         { path: 'signin/option', element: <SigninOptionPage /> },
         {
           path: 'exams',

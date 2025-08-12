@@ -6,11 +6,9 @@ import useAuth from '@hooks/useAuth';
 import { getOauthCallback } from '@apis/oauth';
 
 const SigninCallback = () => {
-  console.log('SigninCallback component rendered');
   const [params] = useSearchParams();
   const code = params.get('code');
 
-  console.log('SigninCallback rendered');
   const navigate = useNavigate();
   const { signIn } = useAuth();
 
