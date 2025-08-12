@@ -3,7 +3,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import { resumeQuestions } from '@constants/resume';
 import { useResumeStore } from '@stores/useResumeStore';
-import { Option } from 'types/exams';
 
 import Progressbar from '@components/status/Progressbar';
 import QuestionTitle from '../template/Question/QuestionTitle';

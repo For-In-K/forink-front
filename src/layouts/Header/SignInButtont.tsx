@@ -4,17 +4,13 @@ import useAuth from '@hooks/useAuth';
 import { LogIn, LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-interface SignInButtonProps {
-  signedIn?: boolean;
-}
-
-const SignInButton = ({ signedIn = false }: SignInButtonProps) => {
+const SignInButton = () => {
   const { t } = useTranslation();
-  const { signOut } = useAuth();
+  const { isSignedIn, signOut } = useAuth();
   const navigate = useNavigate();
 
   const handleClick = () => {
-    if (signedIn) {
+    if (isSignedIn) {
       signOut();
       toast.success('로그아웃 되었어요');
       navigate('/');
@@ -28,13 +24,13 @@ const SignInButton = ({ signedIn = false }: SignInButtonProps) => {
       className="bg-primary hover:bg-primary-hover flex min-w-auto items-center justify-center p-2 px-4 text-xs text-white sm:text-sm"
       onClick={handleClick}
     >
-      {signedIn ? (
+      {isSignedIn ? (
         <LogOut className="inline-block sm:hidden" />
       ) : (
         <LogIn className="inline-block sm:hidden" />
       )}
       <span className="hidden sm:inline-block">
-        {signedIn ? t('signout') : t('signin')}
+        {isSignedIn ? t('signout') : t('signin')}
       </span>
     </button>
   );

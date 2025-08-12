@@ -6,15 +6,17 @@ import useAuth from '@hooks/useAuth';
 import { getOauthCallback } from '@apis/oauth';
 
 const SigninCallback = () => {
-  const navigate = useNavigate();
-  const { signIn } = useAuth();
-
+  console.log('SigninCallback component rendered');
   const [params] = useSearchParams();
   const code = params.get('code');
 
+  console.log('SigninCallback rendered');
+  const navigate = useNavigate();
+  const { signIn } = useAuth();
+
   useEffect(() => {
     if (!code) {
-      toast('로그인에 실패했어요');
+      toast.error('로그인에 실패했어요');
       navigate('/signin');
       return;
     }
@@ -23,10 +25,10 @@ const SigninCallback = () => {
       try {
         const { token } = await getOauthCallback(code);
         signIn(token);
-        toast('로그인에 성공했어요');
+        toast.success('로그인에 성공했어요');
         navigate('/');
       } catch {
-        toast('로그인에 실패했어요');
+        toast.error('로그인에 실패했어요');
         navigate('/signin');
       }
     };

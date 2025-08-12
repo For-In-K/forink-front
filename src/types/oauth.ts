@@ -1,9 +1,9 @@
-export type RoleType = 'ROLE_회원' | 'ROLE_예비가이드' | 'ROLE_가이드';
+import { RoleType } from './global';
 
-export interface UserOAuthResponse {
+export type UserOAuthResponse = {
   token: string;
   memberId: number;
   email: string;
   name: string;
   role: RoleType;
-}
+};

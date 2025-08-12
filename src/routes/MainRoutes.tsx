@@ -7,6 +7,7 @@ import SideLayout from '@layouts/SideLayout';
 import MainLayout from '@layouts/MainLayout';
 import SigninPage from '@pages/auth/SigninPage';
 import SigninOptionPage from '@pages/auth/SigninOptionPage';
+import SigninCallback from '@pages/auth/SigninCallback';
 
 import RoadmapTypeSelectorPage from '@pages/roadmap/RoadmapTypeSelectorPage';
 import RoadmapDiagramPage from '@pages/roadmap/RoadmapDiagramPage';
@@ -67,6 +68,7 @@ const MainRoutes = () => {
       element: <SideLayout />,
       children: [
         { path: 'signin', element: <SigninPage /> },
+        { path: '/oauth/google/callback', element: <SigninCallback /> },
         { path: 'signin/option', element: <SigninOptionPage /> },
         {
           path: 'exams',

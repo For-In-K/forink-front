@@ -1,12 +1,5 @@
 import { create } from 'zustand';
-import { RoleType } from 'types/oauth';
-
-export type User = {
-  id: number;
-  email: string;
-  name: string;
-  role: RoleType;
-};
+import { RoleType, User } from 'types/global';
 
 interface UserState {
   user: User | null;
