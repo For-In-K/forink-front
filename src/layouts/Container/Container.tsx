@@ -1,10 +1,18 @@
 import { Outlet } from 'react-router-dom';
+import CustomToastContainer from '@components/toast/CustomToastContainer';
+import ChatbotWidget from '@components/chatbot/ChatbotWidget';
+
+import useChatbotRoutes from '@hooks/useChatbotRoutes';
 
 const Container = () => {
+  const { isChatbotVisible } = useChatbotRoutes();
+
   return (
     <>
-      <div className="container mx-auto w-full px-10 py-25 md:py-30">
+      <div className="container mx-auto mt-[var(--height-min-header)] w-full px-10 py-10 md:mt-[var(--height-header)] md:py-15">
         <Outlet />
+        <CustomToastContainer />
+        {isChatbotVisible && <ChatbotWidget />}
       </div>
     </>
   );

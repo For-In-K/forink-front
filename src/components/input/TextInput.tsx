@@ -8,7 +8,7 @@ interface TextInputProps {
 
 const TextInput = ({ placeholder, value, onType }: TextInputProps) => {
   return (
-    <div className="flex items-center">
+    <div className="flex w-full items-start justify-start">
       <input
         placeholder={placeholder}
         className="border-primary rounded-lg border px-4 py-2 text-black"

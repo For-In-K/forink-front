@@ -7,7 +7,7 @@ interface RatingRowProps {
 const RatingRow = ({ label, value, onChange }: RatingRowProps) => {
   return (
     <div className="flex flex-col items-start gap-6 md:flex-row md:items-center">
-      <span className="w-40 font-semibold">{label}</span>
+      <span className="text-text-muted w-40 font-semibold">{label}</span>
       <div className="flex gap-3">
         {[1, 2, 3, 4, 5].map((score) => {
           const isSelected = value === score;
@@ -18,8 +18,8 @@ const RatingRow = ({ label, value, onChange }: RatingRowProps) => {
               onClick={() => onChange(score)}
               className={`flex h-8 w-8 items-center justify-center rounded-full border transition ${
                 isSelected
-                  ? 'bg-secondary text-white'
-                  : 'bg-secondary/10 hover:bg-secondary/40 text-secondary border-transparent hover:text-white'
+                  ? 'bg-primary text-white'
+                  : 'bg-primary/10 hover:bg-primary/40 text-primary border-transparent hover:text-white'
               }`}
             >
               {score}

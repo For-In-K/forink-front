@@ -1,13 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import GoogleIcon from '@assets/icons/google.svg?react';
+import { toast } from 'react-toastify';
 
 const SocialSigninButton = () => {
-  const navigate = useNavigate();
   const BUTTON_TEXT = 'Sign in with Google';
+  const GOOGLE_OAUTH_URL = `${import.meta.env.VITE_API_BASE_URL}/oauth/google`;
 
-  const handleSignin = () => {
-    console.log('signin clicked');
-    navigate('/');
+  const handleSignin = async () => {
+    try {
+      window.location.href = GOOGLE_OAUTH_URL;
+    } catch (error) {
+      toast.error('로그인 화면 연결에 실패했어요');
+    }
   };
 
   return (

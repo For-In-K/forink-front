@@ -8,7 +8,7 @@ const CancelButton = ({ className, onClick }: CancelButtonProps) => {
     <button
       type="button"
       onClick={onClick}
-      className={`${className} text-title2 bg-danger hover:bg-danger-hover w-40 border border-white/60 py-2 text-white transition-colors duration-200`}
+      className={`${className} sm:text-body bg-danger hover:bg-danger-hover border border-white/60 p-2 px-4 py-2 text-sm text-white transition-colors duration-200`}
     >
       Cancel
     </button>

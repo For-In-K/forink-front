@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+
+import { getRoadmapTypes } from '@apis/roadmaps';
 import { capitalizeFirstLetter } from '@utils/chars';
 import type { RoadmapTypeDetail } from 'types/roadmaps';
 import RoadmapTypeButton from './template/RoadmapTypeButton';
-import { roadmapTypes } from '@mocks/data/roadmaps';
 
 export interface RoadmapTypeButtonInfo {
   type: string;
@@ -17,6 +19,12 @@ const RoadmapTypeSelector = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [hoveredType, setHoveredType] = useState<string | null>(null);
+
+  const { data: roadmapTypes = [] } = useQuery<RoadmapTypeDetail[]>({
+    queryKey: ['roadmapTypes'],
+    queryFn: getRoadmapTypes,
+    refetchOnWindowFocus: false,
+  });
 
   const handleRoadmapTypeSelect = (roadmapType: string) => {
     console.log(`Selected roadmap type: ${roadmapType}`);

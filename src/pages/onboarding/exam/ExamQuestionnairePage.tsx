@@ -88,15 +88,15 @@ const ExamQuestionnairePage = () => {
         />
       </div>
 
-      <div className="border-primary my-10 flex h-100 w-full flex-col items-center justify-center rounded-[50px] border-2 bg-white p-12 md:p-20">
-        <div className="flex w-full flex-1 justify-center">
+      <div className="my-10 flex h-100 w-full flex-col items-center justify-center rounded-[50px] bg-white p-12 shadow-md md:p-20">
+        <div className="flex w-full flex-4 justify-center">
           <QuestionTitle
             title={`Q${exam.examId}. ${exam.question.title}`}
             description={exam.question.description}
           />
         </div>
 
-        <div className="flex w-full flex-1 justify-center">
+        <div className="flex w-full flex-3 justify-center px-10">
           {filteredAnswer.mode === 'Dropdown' && (
             <DropdownInput
               key={`${currentStep}`}

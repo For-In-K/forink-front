@@ -6,6 +6,8 @@ import { ExamRoutes, ResumeRoutes } from './OnboardingRoutes';
 import SideLayout from '@layouts/SideLayout';
 import MainLayout from '@layouts/MainLayout';
 import SigninPage from '@pages/auth/SigninPage';
+import SigninOptionPage from '@pages/auth/SigninOptionPage';
+import SigninCallback from '@pages/auth/SigninCallback';
 
 import RoadmapTypeSelectorPage from '@pages/roadmap/RoadmapTypeSelectorPage';
 import RoadmapDiagramPage from '@pages/roadmap/RoadmapDiagramPage';
@@ -14,6 +16,9 @@ import RoadmapStepDetailPage from '@pages/roadmap/RoadmapStepDetailPage';
 import GuideProfilePage from '@pages/guide/GuideProfilePage';
 import GuideRatingPage from '@pages/board/GuideRatingPage';
 import PreGuideStatusPage from '@pages/board/PreGuideStatusPage';
+import ResumeFinalViewPage from '@pages/onboarding/resume/ResumeFinalViewPage';
+
+import NotFound from '@pages/fallback/NotFound';
 
 const MainRoutes = () => {
   const { i18n } = useTranslation();
@@ -56,17 +61,22 @@ const MainRoutes = () => {
             { path: 'guide/status', element: <PreGuideStatusPage /> },
           ],
         },
+        { path: '*', element: <NotFound /> },
       ],
     },
     {
       element: <SideLayout />,
       children: [
         { path: 'signin', element: <SigninPage /> },
+        { path: '/oauth/google/callback', element: <SigninCallback /> },
+        { path: 'signin/option', element: <SigninOptionPage /> },
         {
           path: 'exams',
           children: ExamRoutes,
         },
         { path: 'resume', children: ResumeRoutes },
+        { path: 'resume/final', element: <ResumeFinalViewPage /> },
+        { path: '*', element: <NotFound /> },
       ],
     },
   ]);

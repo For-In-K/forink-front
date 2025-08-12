@@ -3,7 +3,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import { resumeQuestions } from '@constants/resume';
 import { useResumeStore } from '@stores/useResumeStore';
-import { Option } from 'types/exams';
 
 import Progressbar from '@components/status/Progressbar';
 import QuestionTitle from '../template/Question/QuestionTitle';
@@ -55,13 +54,13 @@ const ResumeQuestionnairePage = () => {
           showNumber="fraction"
         />
       </div>
-      <div className="border-primary my-10 flex h-100 w-full flex-col items-center justify-center rounded-[50px] border-2 bg-white p-12 md:p-20">
-        <div className="flex w-full flex-1">
+      <div className="my-10 flex h-100 w-full flex-col items-center justify-center rounded-[50px] bg-white p-12 shadow-md md:p-20">
+        <div className="flex w-full flex-4">
           <QuestionTitle
             title={`Q${resume.questionId}. ${resume.questionTitle}`}
           />
         </div>
-        <div className="flex w-full flex-1 justify-center">
+        <div className="flex w-full flex-3 justify-center px-10">
           {resume.answer.mode === 'Text' && (
             <TextInput
               value={submittedValue}

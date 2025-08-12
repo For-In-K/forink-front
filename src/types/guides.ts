@@ -9,21 +9,6 @@ export interface GuideProfile {
 
 export type GetOfficialGuideProfileResponse = GuideProfile[];
 
-export interface UpdateGuideResumeStepRequest {
-  answer: string;
-}
-
-export interface GuideResume {
-  name: string;
-  age: string;
-  nationality: string;
-  language: string;
-  expertise: string;
-  link: string;
-}
-
-export type GetGuideResumeResponse = GuideResume;
-
 export interface GuideFeedback {
   // now for pre guide
   feedbackId: number;
@@ -40,19 +25,19 @@ export interface SubmitFeedbackRateFieldRequest {
 }
 
 export interface GuideFeedbackRating {
-  rateId: number;
+  ratingId: number;
   feedbackTitle: string;
-  rateCount: number;
-  averageScore: number;
-  expertiseScore: number;
-  helpScore: number;
-  recommendScore: number;
+  ratingCount: number;
+  allAvgScore: number;
+  expertiseAvgScore: number;
+  helpAvgScore: number;
+  recommendAvgScore: number;
 }
 
 export type GetPreGuideFeedbackRateResponse = GuideFeedbackRating[];
 
 export interface PreGuideRateStatus {
-  rateStatus: 'IN PROGRESS' | 'ALMOST';
+  ratingStatus: 'IN PROGRESS' | 'ALMOST';
 }
 
 export type GetPreGuideRateStatusResponse = PreGuideRateStatus;

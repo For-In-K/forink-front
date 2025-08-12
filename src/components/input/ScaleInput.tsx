@@ -27,7 +27,7 @@ const ScaleInput = ({ options, onSubmit }: ScaleInputProps) => {
             >
               {value}
             </button>
-            <div className="bg-primary/60 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-max -translate-x-1/2 translate-y-2 scale-95 rounded px-2 py-1 text-sm whitespace-nowrap text-white opacity-0 transition-all duration-200 ease-in-out group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100">
+            <div className="bg-primary/60 pointer-events-none absolute bottom-full left-1/2 z-10 mb-2 w-max -translate-x-1/2 translate-y-2 scale-95 rounded px-2 py-1 text-sm whitespace-nowrap text-white opacity-0 transition-all duration-200 ease-in-out group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100">
               {option.answer}
             </div>
           </div>

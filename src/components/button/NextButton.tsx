@@ -14,7 +14,7 @@ const NextButton = ({ onClick }: NextButtonProps) => {
 
   return (
     <button
-      className="shimmer-secondary text-title2 hover:bg-secondary-hover relative w-40 p-2 text-white"
+      className="shimmer-secondary text-title2 relative w-40 p-2 text-white"
       onClick={onClick}
       onKeyDown={handleKeyDown}
     >
