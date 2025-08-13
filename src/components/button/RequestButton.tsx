@@ -1,10 +1,11 @@
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 
 const RequestButton = () => {
   const { t } = useTranslation();
 
   const handleRequestMatching = () => {
-    alert('Request matching clicked');
+    toast.success('가이드 매칭이 요청되었어요');
   };
 
   return (
