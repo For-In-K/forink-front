@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { updateGuideResumeStep } from '@apis/resume';
 import { resumeQuestions } from '@constants/resume';
 import { useResumeStore } from '@stores/useResumeStore';
+import useRoadmaps from '@hooks/useRoadmaps';
 
 import Progressbar from '@components/status/Progressbar';
 import QuestionTitle from '../template/Question/QuestionTitle';
@@ -19,6 +20,8 @@ const ResumeQuestionnairePage = () => {
   const { stepNumber } = useParams();
   const currentStep = Number(stepNumber ?? '1');
   const size = resumeQuestions.length;
+
+  const { createRoadmapsRequest } = useRoadmaps();
 
   const [submittedValue, setSubmittedValue] = useState<string | null>(null);
 
@@ -41,8 +44,15 @@ const ResumeQuestionnairePage = () => {
     onSuccess: () => {
       const nextStep = currentStep + 1;
       const isLastQuestion = nextStep > size;
-      navigate(isLastQuestion ? '/' : `/resume/step/${nextStep}`);
-      toast.success('Your answer has been saved successfully.');
+
+      if (isLastQuestion) {
+        createRoadmapsRequest(); // 마지막 단계에서 로드맵 생성 호출
+        navigate('/');
+      } else {
+        navigate(`/exams/step/${nextStep}`);
+      }
+
+      toast.success('Answer saved successfully!');
       setSubmittedValue(null);
     },
     onError: (error) => {

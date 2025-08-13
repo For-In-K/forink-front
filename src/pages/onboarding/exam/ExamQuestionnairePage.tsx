@@ -7,6 +7,7 @@ import { createExamStep } from '@apis/exams';
 import { examQuestions } from '@constants/exams';
 import type { Answer, OptionsAnswer, Option } from 'types/exams';
 import { useExamStore } from '@stores/useExamStore';
+import useRoadmaps from '@hooks/useRoadmaps';
 
 import Progressbar from '@components/status/Progressbar';
 import QuestionTitle from '../template/Question/QuestionTitle';
@@ -14,13 +15,14 @@ import NextButton from '@components/button/NextButton';
 import DropdownInput from '@components/input/DropdownInput';
 import ButtonInput from '@components/input/ButtonInput';
 import ScaleInput from '@components/input/ScaleInput';
-import { create } from 'domain';
 
 const ExamQuestionnairePage = () => {
   const navigate = useNavigate();
   const { stepNumber } = useParams();
   const currentStep = Number(stepNumber ?? '1');
   const size = examQuestions.length;
+
+  const { createRoadmapsRequest } = useRoadmaps();
 
   const [selectedValue, setSelectedValue] = useState<Option | null>(null);
 
@@ -74,7 +76,15 @@ const ExamQuestionnairePage = () => {
     mutationFn: createExamStep,
     onSuccess: () => {
       const nextStep = currentStep + 1;
-      navigate(nextStep > size ? '/' : `/exams/step/${nextStep}`);
+      const isLastStep = nextStep > size;
+
+      if (isLastStep) {
+        createRoadmapsRequest();
+        navigate('/');
+      } else {
+        navigate(`/exams/step/${nextStep}`);
+      }
+
       toast.success('Answer saved successfully!');
       setSelectedValue(null);
     },
