@@ -1,6 +1,9 @@
 import { useMemo, useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
+import { updateGuideResumeStep } from '@apis/resume';
 import { resumeQuestions } from '@constants/resume';
 import { useResumeStore } from '@stores/useResumeStore';
 
@@ -33,16 +36,29 @@ const ResumeQuestionnairePage = () => {
     setSubmittedValue(typeof option === 'string' ? option : option.answer);
   };
 
+  const { mutate: updateGuideResumeAnswer } = useMutation({
+    mutationFn: updateGuideResumeStep,
+    onSuccess: () => {
+      const nextStep = currentStep + 1;
+      const isLastQuestion = nextStep > size;
+      navigate(isLastQuestion ? '/' : `/resume/step/${nextStep}`);
+      toast.success('Your answer has been saved successfully.');
+      setSubmittedValue(null);
+    },
+    onError: (error) => {
+      toast.error(`Failed to save your answer: ${error.message}`);
+    },
+  });
+
   const handleAnswerSubmit = (option: { answer: string } | string) => {
     saveAnswer(
       resume.questionId,
       typeof option === 'string' ? option : option.answer
     );
-    console.log(submittedValue);
-    const nextStep = currentStep + 1;
-    const isLastQuestion = nextStep > size;
-    navigate(isLastQuestion ? '/' : `/resume/step/${nextStep}`);
-    setSubmittedValue(null);
+    updateGuideResumeAnswer({
+      stepNumber: currentStep,
+      payload: { answer: typeof option === 'string' ? option : option.answer },
+    });
   };
 
   return (

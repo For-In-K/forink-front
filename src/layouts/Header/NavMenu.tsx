@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import useAuth from '@hooks/useAuth';
 
 const NAV_ITEMS = [
   { buttonName: 'Roadmap', directPath: '/roadmap' },
@@ -10,10 +11,11 @@ type NavMenuButton = (typeof NAV_ITEMS)[number];
 
 interface NavMenuButtonProps {
   label: NavMenuButton['buttonName'];
-  to: NavMenuButton['directPath'];
+  to: string;
+  invisible?: boolean;
 }
 
-const NavButton = ({ label, to }: NavMenuButtonProps) => {
+const NavButton = ({ label, to, invisible }: NavMenuButtonProps) => {
   return (
     <>
       <NavLink
@@ -23,7 +25,7 @@ const NavButton = ({ label, to }: NavMenuButtonProps) => {
             isActive
               ? 'border-primary text-primary font-bold'
               : 'text-text-primary font-normal'
-          }`
+          } ${invisible ? 'pointer-events-none invisible' : ''}`
         }
       >
         {label}
@@ -33,12 +35,30 @@ const NavButton = ({ label, to }: NavMenuButtonProps) => {
 };
 
 const NavMenu = () => {
+  const { isUser, isPreGuide, isGuide } = useAuth();
+
+  const boardPath = isPreGuide
+    ? '/board/guide/status'
+    : isGuide
+      ? '/board/guide/rating'
+      : '/guide';
+
   return (
     <>
       <nav className="flex gap-4 sm:gap-6">
-        {NAV_ITEMS.map(({ buttonName, directPath }) => (
-          <NavButton key={buttonName} to={directPath} label={buttonName} />
-        ))}
+        {NAV_ITEMS.map(({ buttonName, directPath }) => {
+          const isBoard = buttonName === 'Board';
+          const to = isBoard ? boardPath : directPath;
+          const invisible = isBoard && isUser;
+          return (
+            <NavButton
+              key={buttonName}
+              to={to}
+              label={buttonName}
+              invisible={invisible}
+            />
+          );
+        })}
       </nav>
     </>
   );

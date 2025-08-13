@@ -1,6 +1,9 @@
 import { useMemo, useEffect, useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
+import { createExamStep } from '@apis/exams';
 import { examQuestions } from '@constants/exams';
 import type { Answer, OptionsAnswer, Option } from 'types/exams';
 import { useExamStore } from '@stores/useExamStore';
@@ -11,6 +14,7 @@ import NextButton from '@components/button/NextButton';
 import DropdownInput from '@components/input/DropdownInput';
 import ButtonInput from '@components/input/ButtonInput';
 import ScaleInput from '@components/input/ScaleInput';
+import { create } from 'domain';
 
 const ExamQuestionnairePage = () => {
   const navigate = useNavigate();
@@ -66,16 +70,27 @@ const ExamQuestionnairePage = () => {
     return exam.answer;
   }, [answers, exam]);
 
+  const { mutate: createExamStepAnswer } = useMutation({
+    mutationFn: createExamStep,
+    onSuccess: () => {
+      const nextStep = currentStep + 1;
+      navigate(nextStep > size ? '/' : `/exams/step/${nextStep}`);
+      toast.success('Answer saved successfully!');
+      setSelectedValue(null);
+    },
+    onError: () => toast.error('답변이 저장되지 않았어요'),
+  });
+
   const handleAnswerSubmit = () => {
     if (!selectedValue) {
-      alert('Please select an answer before proceeding.');
+      toast.info('답변을 선택해주세요');
       return;
     }
     saveAnswer(exam.examId, selectedValue.answerId);
-    console.log(selectedValue);
-    const nextStep = currentStep + 1;
-    navigate(nextStep > size ? '/' : `/exams/step/${nextStep}`);
-    setSelectedValue(null);
+    createExamStepAnswer({
+      stepNumber: currentStep,
+      payload: { answer: selectedValue.answerId },
+    });
   };
 
   return (

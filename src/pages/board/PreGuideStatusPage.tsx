@@ -1,9 +1,15 @@
+import { Navigate } from 'react-router-dom';
+import useAuth from '@hooks/useAuth';
 import GuideHeader from '@pages/guide/template/GuideHeader';
 import PreGuideStatusWrapper from './template/PreGuideStatusWrapper';
 
 import { preGuideRateStatus } from '@mocks/data/guides';
 
 const PreGuideStatusPage = () => {
+  const { isPreGuide } = useAuth();
+
+  if (!isPreGuide) return <Navigate to="/" replace />;
+
   return (
     <div className="flex flex-col gap-10">
       <GuideHeader
