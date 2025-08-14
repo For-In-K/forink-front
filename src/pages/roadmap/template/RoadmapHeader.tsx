@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { getRoadmapTypes, getRoadmapsOnType } from '@apis/roadmaps';
+import { useRoadmapTypes, useRoadmapsOnType } from '@hooks/useRoadmaps';
 
 import Progressbar from '@components/status/Progressbar';
 import type { RoadmapTypeDetail } from 'types/roadmaps';
@@ -24,20 +24,13 @@ const RoadmapHeader = ({
   roadmapType,
   roadmapId,
 }: RoadmapHeaderProps) => {
-  const { data: roadmapTypes = [] } = useQuery<RoadmapTypeDetail[]>({
-    queryKey: ['roadmapTypes'],
-    queryFn: getRoadmapTypes,
-  });
-
-  const { data: subroadmaps = [] } = useQuery({
-    queryKey: ['roadmaps', roadmapType],
-    queryFn: () => getRoadmapsOnType(roadmapType),
-  });
+  const { data: roadmapTypes = [] } = useRoadmapTypes();
+  const { data: roadmapsOnType } = useRoadmapsOnType(roadmapType);
 
   const headerRatio = getProgressRatio(roadmapTypes, roadmapType);
-  const milestoneTitle = subroadmaps.find(
-    (item: { roadmapId: number | undefined }) => item.roadmapId === roadmapId
-  )?.title;
+  const milestoneTitle = Array.isArray(roadmapsOnType)
+    ? roadmapsOnType.find((roadmap) => roadmap.roadmapId === roadmapId)?.title
+    : undefined;
 
   return (
     <>

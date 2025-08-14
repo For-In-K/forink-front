@@ -47,14 +47,10 @@ const useRoadmaps = (roadmapType?: string) => {
 
   return {
     createRoadmapsRequest,
-    roadmapTypes: {
-      data: roadmapTypes,
-      isLoading: isRoadmapTypesLoading,
-    },
-    roadmapsOnType: {
-      data: roadmapsOnType,
-      isLoading: isRoadmapsOnTypeLoading,
-    },
+    roadmapTypes,
+    isRoadmapTypesLoading,
+    roadmapsOnType,
+    isRoadmapsOnTypeLoading,
   };
 };
 
