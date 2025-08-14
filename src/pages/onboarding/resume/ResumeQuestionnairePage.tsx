@@ -3,7 +3,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { updateGuideResumeStep } from '@apis/resume';
+import { updateGuideResumeStep, submitGuideResume } from '@apis/resume';
 import { resumeQuestions } from '@constants/resume';
 import { useResumeStore } from '@stores/useResumeStore';
 import useRoadmaps from '@hooks/useRoadmaps';
@@ -46,10 +46,9 @@ const ResumeQuestionnairePage = () => {
       const isLastQuestion = nextStep > size;
 
       if (isLastQuestion) {
-        createRoadmapsRequest(); // 마지막 단계에서 로드맵 생성 호출
         navigate('/');
       } else {
-        navigate(`/exams/step/${nextStep}`);
+        navigate(`/resume/step/${nextStep}`);
       }
 
       toast.success('Answer saved successfully!');
@@ -58,6 +57,10 @@ const ResumeQuestionnairePage = () => {
     onError: (error) => {
       toast.error(`Failed to save your answer: ${error.message}`);
     },
+  });
+
+  const { mutate: submitResume } = useMutation({
+    mutationFn: submitGuideResume,
   });
 
   const handleAnswerSubmit = (option: { answer: string } | string) => {
@@ -69,6 +72,7 @@ const ResumeQuestionnairePage = () => {
       stepNumber: currentStep,
       payload: { answer: typeof option === 'string' ? option : option.answer },
     });
+    submitResume();
   };
 
   return (
