@@ -1,5 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
+import useRoadmaps from '@hooks/useRoadmaps';
 import { submitRoadmapFeedbackOnStepDetail } from '@apis/roadmaps';
 
 import Modal from '@components/modal/Modal';
@@ -17,21 +18,10 @@ const StepFeedbackModal = ({
   onClose,
 }: StepFeedbackModalProps) => {
   const { t } = useTranslation();
-
-  const { mutate: submitFeedbackOnStep } = useMutation({
-    mutationFn: submitRoadmapFeedbackOnStepDetail,
-    onSuccess: () => {
-      alert('피드백이 제출되었습니다.'); // TODO: toast로 바꾸기, i18n 적용
-      onClose();
-    },
-    onError: () => {
-      alert('피드백 제출에 실패했습니다.'); // TODO: toast로 바꾸기, i18n 적용
-    },
-  });
+  const { submitFeedbackOnStepDetail } = useRoadmaps();
 
   const handleFeedbackSubmit = (feedbackValue: 'GOOD' | 'BAD') => {
-    console.log(`Feedback for step ${stepNumber}: ${feedbackValue}`);
-    submitFeedbackOnStep({
+    submitFeedbackOnStepDetail({
       roadmapStepId: stepNumber,
       payload: {
         roadmapAnswerType: feedbackValue,
