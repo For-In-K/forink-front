@@ -17,23 +17,29 @@ export const getRoadmapTypes = async (): Promise<GetRoadmapTypeResponse> => {
   return res.data;
 };
 
-export const getRoadmapsOnType = async (
-  roadmapType: string
-): Promise<GetSubroadmapsResponse> => {
+export const getRoadmapsOnType = async ({
+  roadmapType,
+}: {
+  roadmapType: string;
+}): Promise<GetSubroadmapsResponse> => {
   const res = await apiClient.get(`/roadmaps/${roadmapType}`);
   return res.data;
 };
 
-export const getRoadmapStepDetail = async (
-  roadmapId: number
-): Promise<GetRoadmapStepDetailResponse> => {
+export const getRoadmapStepDetail = async ({
+  roadmapId,
+}: {
+  roadmapId: number;
+}): Promise<GetRoadmapStepDetailResponse> => {
   const res = await apiClient.get(`/roadmaps/${roadmapId}`);
   return res.data;
 };
 
-export const updateRoadmapStepDetailCheck = async (
-  roadmapStepContentId: number
-) => {
+export const updateRoadmapStepDetailCheck = async ({
+  roadmapStepContentId,
+}: {
+  roadmapStepContentId: number;
+}) => {
   const res = await apiClient.patch(`/roadmaps/${roadmapStepContentId}`);
   return res.data;
 };

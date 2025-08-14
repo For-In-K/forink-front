@@ -1,8 +1,17 @@
+import { useQuery } from '@tanstack/react-query';
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
-import { createRoadmaps } from '@apis/roadmaps';
+import {
+  createRoadmaps,
+  getRoadmapTypes,
+  getRoadmapsOnType,
+  getRoadmapStepDetail,
+  updateRoadmapStepDetailCheck,
+  submitRoadmapFeedbackOnSubroadmap,
+  submitRoadmapFeedbackOnStepDetail,
+} from '@apis/roadmaps';
 
-const useRoadmaps = () => {
+const useRoadmaps = (roadmapType?: string) => {
   const { mutate: createRoadmapsRequest } = useMutation({
     mutationFn: createRoadmaps,
     onSuccess: () => {
@@ -13,8 +22,24 @@ const useRoadmaps = () => {
     },
   });
 
+  const { data: roadmapTypes, isLoading: isRoadmapTypesLoading } = useQuery({
+    queryKey: ['roadmapTypes'],
+    queryFn: getRoadmapTypes,
+  });
+
+  const { data: roadmapsOnType, isLoading: isRoadmapsOnTypeLoading } = useQuery(
+    {
+      queryKey: ['roadmapsOnType', roadmapType],
+      queryFn: () => getRoadmapsOnType,
+    }
+  );
+
   return {
     createRoadmapsRequest,
+    roadmapTypes: {
+      data: roadmapTypes,
+      isLoading: isRoadmapTypesLoading,
+    },
   };
 };
 

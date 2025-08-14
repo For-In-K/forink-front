@@ -40,13 +40,11 @@ const useGuides = () => {
       queryFn: getPreGuideRatings,
     });
 
-  const {
-    data: preGuideRateStatus = {},
-    isLoading: isPreGuideRateStatusLoading,
-  } = useQuery({
-    queryKey: ['preGuideRateStatus'],
-    queryFn: getPreGuideStatus,
-  });
+  const { data: preGuideRateStatus, isLoading: isPreGuideRateStatusLoading } =
+    useQuery({
+      queryKey: ['preGuideRateStatus'],
+      queryFn: getPreGuideStatus,
+    });
 
   return {
     guideProfiles: {

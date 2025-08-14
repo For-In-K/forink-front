@@ -5,11 +5,11 @@ import type {
 } from 'types/roadmaps';
 
 export const roadmapTypes: GetRoadmapTypeResponse = [
-  { type: 'ADMINISTRATION', progressRatio: 95 },
-  { type: 'TRAVEL', progressRatio: 75 },
-  { type: 'CAREER', progressRatio: 50 },
-  { type: 'EDUCATION', progressRatio: 80 },
-  { type: 'HOUSING', progressRatio: 40 },
+  { roadmapType: 'ADMINISTRATION', progressRatio: 95 },
+  { roadmapType: 'TRAVEL', progressRatio: 75 },
+  { roadmapType: 'CAREER', progressRatio: 50 },
+  { roadmapType: 'EDUCATION', progressRatio: 80 },
+  { roadmapType: 'HOUSING', progressRatio: 40 },
 ];
 
 export const subroadmaps: GetSubroadmapsResponse = [

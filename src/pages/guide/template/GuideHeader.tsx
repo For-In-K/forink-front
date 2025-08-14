@@ -50,8 +50,8 @@ const GuideHeader = ({ headerTitle, mode, status }: GuideHeaderProps) => {
             <TypeButton type="All" isSelected />
             {roadmapTypes.map((item) => (
               <TypeButton
-                key={item.type}
-                type={capitalizeFirstLetter(item.type)}
+                key={item.roadmapType}
+                type={capitalizeFirstLetter(item.roadmapType)}
               />
             ))}
           </>
