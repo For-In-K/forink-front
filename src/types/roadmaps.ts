@@ -1,7 +1,7 @@
 export const VALID_ROADMAP_TYPES = [
-  'administration',
-  'career',
-  'language',
+  'ADMINISTRATION',
+  'CAREER',
+  'la',
   'travel',
 ];
 

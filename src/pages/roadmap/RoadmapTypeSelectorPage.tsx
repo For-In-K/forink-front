@@ -37,7 +37,7 @@ const RoadmapTypeSelector = () => {
   return (
     <div className="flex flex-col items-center gap-6">
       {roadmapTypes.map((category: RoadmapTypeDetail) => {
-        const roadmapType = category.roadmapType.toLowerCase();
+        const roadmapType = category.roadmapType;
         const title = capitalizeFirstLetter(category.roadmapType);
         const progress = category.progressRatio;
 
