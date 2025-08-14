@@ -16,7 +16,7 @@ const PreGuideStatusPage = () => {
       <GuideHeader
         headerTitle="Rating results"
         mode="Board"
-        status={preGuideRateStatus.data?.ratingStatus}
+        status={preGuideRateStatus?.ratingStatus}
       />
       <PreGuideStatusWrapper />
     </div>

@@ -10,19 +10,19 @@ import {
 import { toast } from 'react-toastify';
 
 const useGuides = () => {
-  // const { data: guideProfiles = [], isLoading: isGuideProfilesLoading } =
-  //   useQuery({
-  //     queryKey: ['guideProfiles'],
-  //     queryFn: getGuideProfiles,
-  //   });
+  const { data: guideProfiles = [], isLoading: isGuideProfilesLoading } =
+    useQuery({
+      queryKey: ['guideProfiles'],
+      queryFn: getGuideProfiles,
+    });
 
-  // const {
-  //   data: preGuideFeedbacks = [],
-  //   isLoading: isPreGuideFeedbacksLoading,
-  // } = useQuery({
-  //   queryKey: ['preGuideFeedbacks'],
-  //   queryFn: getPreGuideFeedbacks,
-  // });
+  const {
+    data: preGuideFeedbacks = [],
+    isLoading: isPreGuideFeedbacksLoading,
+  } = useQuery({
+    queryKey: ['preGuideFeedbacks'],
+    queryFn: getPreGuideFeedbacks,
+  });
 
   const { mutate: submitRatings } = useMutation({
     mutationFn: postRatingsOnFeedback,
@@ -47,23 +47,15 @@ const useGuides = () => {
     });
 
   return {
-    // guideProfiles: {
-    //   data: guideProfiles,
-    //   isLoading: isGuideProfilesLoading,
-    // },
-    // preGuideFeedbacks: {
-    //   data: preGuideFeedbacks,
-    //   isLoading: isPreGuideFeedbacksLoading,
-    // },
-    // submitRatings,
-    // preGuideRatings: {
-    //   data: preGuideRatings,
-    //   isLoading: isPreGuideRatingsLoading,
-    // },
-    preGuideRateStatus: {
-      data: preGuideRateStatus,
-      isLoading: isPreGuideRateStatusLoading,
-    },
+    guideProfiles,
+    isGuideProfilesLoading,
+    preGuideFeedbacks,
+    isPreGuideFeedbacksLoading,
+    submitRatings,
+    preGuideRatings,
+    isPreGuideRatingsLoading,
+    preGuideRateStatus,
+    isPreGuideRateStatusLoading,
   };
 };
 
