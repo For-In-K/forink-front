@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useRoutes } from 'react-router-dom';
+import { useRoutes, Navigate } from 'react-router-dom';
 import { ExamRoutes, ResumeRoutes } from './OnboardingRoutes';
 
 import SideLayout from '@layouts/SideLayout';
@@ -19,6 +19,7 @@ import PreGuideStatusPage from '@pages/board/PreGuideStatusPage';
 import ResumeFinalViewPage from '@pages/onboarding/resume/ResumeFinalViewPage';
 
 import NotFound from '@pages/fallback/NotFound';
+import HomePage from '@pages/home/HomePage';
 
 const MainRoutes = () => {
   const { i18n } = useTranslation();
@@ -38,7 +39,7 @@ const MainRoutes = () => {
       path: '/',
       element: <MainLayout />,
       children: [
-        { index: true, element: <div>This is home page.</div> },
+        { index: true, element: <HomePage /> },
         {
           path: 'roadmap',
           children: [
@@ -61,7 +62,7 @@ const MainRoutes = () => {
             { path: 'guide/status', element: <PreGuideStatusPage /> },
           ],
         },
-        { path: '*', element: <NotFound /> },
+        { path: '*', element: <Navigate to="/" replace /> },
       ],
     },
     {

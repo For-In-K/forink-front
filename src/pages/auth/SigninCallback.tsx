@@ -23,8 +23,10 @@ const SigninCallback = () => {
       try {
         const { token } = await getOauthCallback(code);
         signIn(token);
-        toast.success('로그인에 성공했어요');
-        navigate('/');
+        // toast.success('로그인에 성공했어요');
+        // navigate('/');
+        toast.info('가입 페이지로 넘어갈게요');
+        navigate('/signin/option');
       } catch {
         toast.error('로그인에 실패했어요');
         navigate('/signin');

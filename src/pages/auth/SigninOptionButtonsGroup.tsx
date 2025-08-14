@@ -1,5 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
+
+import { toast } from 'react-toastify';
 import { createGuideResume } from '@apis/resume';
 import { createUserExam } from '@apis/exams';
 
@@ -12,7 +14,7 @@ const SigninOptionButton = ({ text, onClick }: SigninOptionButtonProps) => {
   return (
     <button
       type="button"
-      className="border-primary/40 text-title2 hover:bg-primary/10 focus:text-primary focus:ring-primary text-text-muted min-w-32 rounded-full px-6 py-3 font-mono font-semibold transition focus:ring-2 focus:outline-none"
+      className="border-primary text-title2 hover:bg-primary/10 focus:text-primary focus:ring-primary text-primary min-w-32 rounded-full px-6 py-3 font-mono font-semibold transition focus:ring-2 focus:outline-none"
       onClick={onClick}
     >
       {text}
@@ -26,11 +28,11 @@ const SigninOptionButtonsGroup = () => {
   const { mutate: createResume } = useMutation({
     mutationFn: createGuideResume,
     onSuccess: () => {
-      console.log('Guide resume created successfully'); // TODO
+      toast.success('Guide resume created successfully');
       navigate('/resume/step/1');
     },
     onError: (error: Error) => {
-      console.error('Error creating guide resume:', error); // TODO
+      toast.error('Error creating guide resume');
     },
   });
 
@@ -41,11 +43,11 @@ const SigninOptionButtonsGroup = () => {
   const { mutate: createExam } = useMutation({
     mutationFn: createUserExam,
     onSuccess: () => {
-      console.log('Exam created successfully'); // TODO
+      toast.success('Exam created successfully');
       navigate('/exams/step/1');
     },
     onError: (error: Error) => {
-      console.error('Error creating exam:', error); // TODO
+      toast.error('Error creating exam');
     },
   });
 

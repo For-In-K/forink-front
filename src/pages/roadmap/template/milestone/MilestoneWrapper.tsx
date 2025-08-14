@@ -1,4 +1,7 @@
 import React, { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useRoadmapsOnType } from '@hooks/useRoadmaps';
+
 import ReactFlow, {
   Background,
   Controls,
@@ -9,12 +12,10 @@ import ReactFlow, {
 } from 'reactflow';
 import type { Node, Edge, Connection } from 'reactflow';
 import 'reactflow/dist/style.css';
-import { useNavigate } from 'react-router-dom';
 
 import { getX } from '@utils/coordinates';
 import { milestoneNodeTypes } from 'types/milestone';
 import MilestoneButton from '@components/button/MilestoneButton';
-import { subroadmaps } from '@mocks/data/roadmaps';
 
 interface MilestoneWrapperProps {
   roadmapType: string;
@@ -27,39 +28,43 @@ const MilestoneWrapper = ({ roadmapType }: MilestoneWrapperProps) => {
     navigate(`/roadmap/${roadmapType}/${roadmapId}`);
   };
 
-  const initialNodes: Node[] = subroadmaps.map((sub: any, index: number) => ({
-    id: sub.roadmapId.toString(),
-    position: {
-      x: getX(index),
-      y: index * 180,
-    },
-    data: {
-      label: (
-        <MilestoneButton
-          title={sub.title}
-          statusType={sub.statusType}
-          onClick={() => handleMilestoneSelect(sub.roadmapId)}
-        />
-      ),
-    },
-    draggable: true,
-    type: 'milestoneNode',
-    style: {
-      background: 'transparent',
-      border: 'none',
-      boxShadow: 'none',
-      width: 'fit-content',
-      height: 'fit-content',
-      padding: 0,
-    },
-  }));
+  const { data: roadmapsOnType = [] } = useRoadmapsOnType(roadmapType);
 
-  const initialEdges: Edge[] = subroadmaps
+  const initialNodes: Node[] = roadmapsOnType.map(
+    (sub: any, index: number) => ({
+      id: sub.roadmapId.toString(),
+      position: {
+        x: getX(index),
+        y: index * 180,
+      },
+      data: {
+        label: (
+          <MilestoneButton
+            title={sub.title}
+            statusType={sub.statusType}
+            onClick={() => handleMilestoneSelect(sub.roadmapId)}
+          />
+        ),
+      },
+      draggable: true,
+      type: 'milestoneNode',
+      style: {
+        background: 'transparent',
+        border: 'none',
+        boxShadow: 'none',
+        width: 'fit-content',
+        height: 'fit-content',
+        padding: 0,
+      },
+    })
+  );
+
+  const initialEdges: Edge[] = roadmapsOnType
     .slice(0, -1)
     .map((sub: any, index: number) => ({
-      id: `e${sub.roadmapId}-${subroadmaps[index + 1].roadmapId}`,
+      id: `e${sub.roadmapId}-${roadmapsOnType[index + 1].roadmapId}`,
       source: sub.roadmapId.toString(),
-      target: subroadmaps[index + 1].roadmapId.toString(),
+      target: roadmapsOnType[index + 1].roadmapId.toString(),
       type: 'default',
       animated: true,
       style: {

@@ -19,10 +19,13 @@ export const getGuideResume = async (): Promise<GetGuideResumeResponse> => {
   return res.data;
 };
 
-export const updateGuideResumeStep = async (
-  stepNumber: number,
-  payload: UpdateGuideResumeStepRequest
-) => {
+export const updateGuideResumeStep = async ({
+  stepNumber,
+  payload,
+}: {
+  stepNumber: number;
+  payload: UpdateGuideResumeStepRequest;
+}) => {
   const res = await apiClient.patch(
     `/guides/resume/steps/${stepNumber}`,
     payload

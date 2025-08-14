@@ -1,9 +1,13 @@
 import { useMemo, useEffect, useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
+import { createExamStep } from '@apis/exams';
 import { examQuestions } from '@constants/exams';
 import type { Answer, OptionsAnswer, Option } from 'types/exams';
 import { useExamStore } from '@stores/useExamStore';
+import { useCreateRoadmaps } from '@hooks/useRoadmaps';
 
 import Progressbar from '@components/status/Progressbar';
 import QuestionTitle from '../template/Question/QuestionTitle';
@@ -17,6 +21,8 @@ const ExamQuestionnairePage = () => {
   const { stepNumber } = useParams();
   const currentStep = Number(stepNumber ?? '1');
   const size = examQuestions.length;
+
+  const { mutate: createRoadmapsRequest } = useCreateRoadmaps();
 
   const [selectedValue, setSelectedValue] = useState<Option | null>(null);
 
@@ -66,16 +72,49 @@ const ExamQuestionnairePage = () => {
     return exam.answer;
   }, [answers, exam]);
 
+  const { mutate: createExamStepAnswer, isPending } = useMutation({
+    mutationFn: createExamStep,
+    onSuccess: () => {
+      const nextStep = currentStep + 1;
+      const isLastStep = nextStep > size;
+
+      if (isLastStep) {
+        createRoadmapsRequest();
+        navigate('/');
+      } else {
+        navigate(`/exams/step/${nextStep}`);
+      }
+
+      toast.success('Answer saved successfully!');
+    },
+    onError: () => toast.error('답변이 저장되지 않았어요'),
+  });
+
   const handleAnswerSubmit = () => {
-    if (!selectedValue) {
-      alert('Please select an answer before proceeding.');
+    const currentAnswer = answers[exam.examId];
+
+    const hasAnswer = selectedValue || currentAnswer !== undefined;
+
+    if (!hasAnswer) {
+      toast.info('답변을 선택해주세요');
       return;
     }
-    saveAnswer(exam.examId, selectedValue.answerId);
-    console.log(selectedValue);
-    const nextStep = currentStep + 1;
-    navigate(nextStep > size ? '/' : `/exams/step/${nextStep}`);
-    setSelectedValue(null);
+
+    if (isPending) {
+      toast.info('제출 중입니다...');
+      return;
+    }
+    
+    if (selectedValue) {
+      saveAnswer(exam.examId, selectedValue.answerId);
+    }
+
+    const answerToSubmit = selectedValue?.answerId ?? currentAnswer;
+
+    createExamStepAnswer({
+      stepNumber: currentStep,
+      payload: { answer: answerToSubmit },
+    });
   };
 
   return (

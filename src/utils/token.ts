@@ -12,11 +12,12 @@ export const setToken = (token: string) => {
 };
 
 export const removeToken = () => {
-  Cookies.remove('token');
+  Cookies.remove('token', { path: '/' });
 };
 
 export const getUserFromToken = (token: string): User | null => {
   if (!token) return null;
+
   try {
     const decoded = jwtDecode<UserOAuthResponse>(token);
     return {

@@ -1,8 +1,12 @@
 import { useMemo, useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
+import { updateGuideResumeStep, submitGuideResume } from '@apis/resume';
 import { resumeQuestions } from '@constants/resume';
 import { useResumeStore } from '@stores/useResumeStore';
+import useRoadmaps from '@hooks/useRoadmaps';
 
 import Progressbar from '@components/status/Progressbar';
 import QuestionTitle from '../template/Question/QuestionTitle';
@@ -16,6 +20,8 @@ const ResumeQuestionnairePage = () => {
   const { stepNumber } = useParams();
   const currentStep = Number(stepNumber ?? '1');
   const size = resumeQuestions.length;
+
+  const { createRoadmapsRequest } = useRoadmaps();
 
   const [submittedValue, setSubmittedValue] = useState<string | null>(null);
 
@@ -33,16 +39,40 @@ const ResumeQuestionnairePage = () => {
     setSubmittedValue(typeof option === 'string' ? option : option.answer);
   };
 
+  const { mutate: updateGuideResumeAnswer } = useMutation({
+    mutationFn: updateGuideResumeStep,
+    onSuccess: () => {
+      const nextStep = currentStep + 1;
+      const isLastQuestion = nextStep > size;
+
+      if (isLastQuestion) {
+        navigate('/');
+      } else {
+        navigate(`/resume/step/${nextStep}`);
+      }
+
+      toast.success('Answer saved successfully!');
+      setSubmittedValue(null);
+    },
+    onError: (error) => {
+      toast.error(`Failed to save your answer: ${error.message}`);
+    },
+  });
+
+  const { mutate: submitResume } = useMutation({
+    mutationFn: submitGuideResume,
+  });
+
   const handleAnswerSubmit = (option: { answer: string } | string) => {
     saveAnswer(
       resume.questionId,
       typeof option === 'string' ? option : option.answer
     );
-    console.log(submittedValue);
-    const nextStep = currentStep + 1;
-    const isLastQuestion = nextStep > size;
-    navigate(isLastQuestion ? '/' : `/resume/step/${nextStep}`);
-    setSubmittedValue(null);
+    updateGuideResumeAnswer({
+      stepNumber: currentStep,
+      payload: { answer: typeof option === 'string' ? option : option.answer },
+    });
+    submitResume();
   };
 
   return (

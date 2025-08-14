@@ -1,9 +1,9 @@
-import { roadmapTypes } from '@mocks/data/roadmaps';
+import { useQuery } from '@tanstack/react-query';
+import { useRoadmapTypes, useRoadmapsOnType } from '@hooks/useRoadmaps';
+
 import Progressbar from '@components/status/Progressbar';
 import type { RoadmapTypeDetail } from 'types/roadmaps';
 import { capitalizeFirstLetter } from '@utils/chars';
-
-import { subroadmaps } from '@mocks/data/roadmaps';
 
 interface RoadmapHeaderProps {
   headerType: 'milestone' | 'detail';
@@ -11,10 +11,10 @@ interface RoadmapHeaderProps {
   roadmapId?: number;
 }
 
-const getProgressRatio = (type: string) => {
+const getProgressRatio = (roadmapTypes: RoadmapTypeDetail[], type: string) => {
   const roadmapTypeStd = type.toUpperCase();
   const roadmapItem = roadmapTypes.find(
-    (item: RoadmapTypeDetail) => item.type === roadmapTypeStd
+    (item: RoadmapTypeDetail) => item.roadmapType === roadmapTypeStd
   );
   return roadmapItem ? roadmapItem.progressRatio : 0;
 };
@@ -24,10 +24,13 @@ const RoadmapHeader = ({
   roadmapType,
   roadmapId,
 }: RoadmapHeaderProps) => {
-  const headerRatio = getProgressRatio(roadmapType);
-  const milestoneTitle = subroadmaps.find(
-    (item: { roadmapId: number | undefined; }) => item.roadmapId === roadmapId
-  )?.title;
+  const { data: roadmapTypes = [] } = useRoadmapTypes();
+  const { data: roadmapsOnType } = useRoadmapsOnType(roadmapType);
+
+  const headerRatio = getProgressRatio(roadmapTypes, roadmapType);
+  const milestoneTitle = Array.isArray(roadmapsOnType)
+    ? roadmapsOnType.find((roadmap) => roadmap.roadmapId === roadmapId)?.title
+    : undefined;
 
   return (
     <>

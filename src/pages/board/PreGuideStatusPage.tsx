@@ -1,15 +1,22 @@
+import { Navigate } from 'react-router-dom';
+
+import useGuides from '@hooks/useGuides';
+import useAuth from '@hooks/useAuth';
 import GuideHeader from '@pages/guide/template/GuideHeader';
 import PreGuideStatusWrapper from './template/PreGuideStatusWrapper';
 
-import { preGuideRateStatus } from '@mocks/data/guides';
-
 const PreGuideStatusPage = () => {
+  const { isPreGuide } = useAuth();
+  const { preGuideRateStatus } = useGuides();
+
+  if (!isPreGuide) return <Navigate to="/" replace />;
+
   return (
     <div className="flex flex-col gap-10">
       <GuideHeader
         headerTitle="Rating results"
         mode="Board"
-        status={preGuideRateStatus.ratingStatus}
+        status={preGuideRateStatus.data?.ratingStatus}
       />
       <PreGuideStatusWrapper />
     </div>

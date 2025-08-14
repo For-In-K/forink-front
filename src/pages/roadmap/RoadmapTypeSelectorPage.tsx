@@ -27,7 +27,6 @@ const RoadmapTypeSelector = () => {
   });
 
   const handleRoadmapTypeSelect = (roadmapType: string) => {
-    console.log(`Selected roadmap type: ${roadmapType}`);
     navigate(`/roadmap/${roadmapType}`);
   };
 
@@ -38,20 +37,24 @@ const RoadmapTypeSelector = () => {
   return (
     <div className="flex flex-col items-center gap-6">
       {roadmapTypes.map((category: RoadmapTypeDetail) => {
+        const roadmapType = category.roadmapType.toLowerCase();
+        const title = capitalizeFirstLetter(category.roadmapType);
+        const progress = category.progressRatio;
+
         const roadmapTypeInfo: RoadmapTypeButtonInfo = {
-          type: category.type,
-          title: t(`roadmap.categories.${category.type}.title`, {
-            defaultValue: capitalizeFirstLetter(category.type),
+          type: roadmapType,
+          title: t(`roadmap.categories.${roadmapType}.title`, {
+            defaultValue: title,
           }),
-          description: t(`roadmap.categories.${category.type}.description`, {
+          description: t(`roadmap.categories.${roadmapType}.description`, {
             defaultValue: '',
           }),
-          progress: category.progressRatio,
+          progress: progress,
         };
 
         return (
           <RoadmapTypeButton
-            key={category.type}
+            key={category.roadmapType}
             roadmapTypeButtonInfo={roadmapTypeInfo}
             hoveredType={hoveredType}
             onSelect={handleRoadmapTypeSelect}
