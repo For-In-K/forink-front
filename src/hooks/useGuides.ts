@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useMutation } from '@tanstack/react-query';
 import {
   getGuideProfiles,
@@ -10,6 +10,8 @@ import {
 import { toast } from 'react-toastify';
 
 const useGuides = () => {
+  const queryClient = useQueryClient();
+
   const { data: guideProfiles = [], isLoading: isGuideProfilesLoading } =
     useQuery({
       queryKey: ['guideProfiles'],
@@ -27,11 +29,10 @@ const useGuides = () => {
   const { mutate: submitRatings } = useMutation({
     mutationFn: postRatingsOnFeedback,
     onSuccess: () => {
-      toast.success('Rating submitted successfully!');
+      toast.success('평가가 성공적으로 제출되었어요');
+      queryClient.invalidateQueries({ queryKey: ['preGuideFeedbacks'] });
     },
-    onError: (error) => {
-      toast.error(`Failed to submit rating: ${error.message}`);
-    },
+    onError: (error) => toast.error('평가 제출에 실패했어요'),
   });
 
   const { data: preGuideRatings = [], isLoading: isPreGuideRatingsLoading } =
