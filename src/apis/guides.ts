@@ -19,10 +19,13 @@ export const getPreGuideFeedbacks =
     return res.data;
   };
 
-export const postRatingsOnFeedback = async (
-  feedbackId: number,
-  payload: SubmitFeedbackRateFieldRequest
-) => {
+export const postRatingsOnFeedback = async ({
+  feedbackId,
+  payload,
+}: {
+  feedbackId: number;
+  payload: SubmitFeedbackRateFieldRequest;
+}) => {
   const res = await apiClient.post(
     `/guides/feedbacks/${feedbackId}/ratings`,
     payload
@@ -32,12 +35,12 @@ export const postRatingsOnFeedback = async (
 
 export const getPreGuideRatings =
   async (): Promise<GetPreGuideFeedbackRateResponse> => {
-    const res = await apiClient.get('/guides/feedbacks/rating-summary');
+    const res = await apiClient.get('/guides/feedbacks/ratings');
     return res.data;
   };
 
 export const getPreGuideStatus =
   async (): Promise<GetPreGuideRateStatusResponse> => {
-    const res = await apiClient.get('/guides/feedbacks/rating-status');
+    const res = await apiClient.get('/guides/feedbacks/ratings/status');
     return res.data;
   };
