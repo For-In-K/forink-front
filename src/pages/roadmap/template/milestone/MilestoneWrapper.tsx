@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRoadmapsOnType } from '@hooks/useRoadmaps';
 
@@ -24,14 +24,23 @@ interface MilestoneWrapperProps {
 const MilestoneWrapper = ({ roadmapType }: MilestoneWrapperProps) => {
   const navigate = useNavigate();
 
-  const handleMilestoneSelect = (roadmapId: number) => {
-    navigate(`/roadmap/${roadmapType}/${roadmapId}`);
-  };
+  const handleMilestoneSelect = useCallback(
+    (roadmapId: number) => {
+      navigate(`/roadmap/${roadmapType}/${roadmapId}`);
+    },
+    [navigate, roadmapType]
+  );
 
-  const { data: roadmapsOnType = [] } = useRoadmapsOnType(roadmapType);
+  const { data: roadmapsOnType = [], isLoading } =
+    useRoadmapsOnType(roadmapType);
 
-  const initialNodes: Node[] = roadmapsOnType.map(
-    (sub: any, index: number) => ({
+  const [nodes, setNodes, onNodesChange] = useNodesState([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+
+  useEffect(() => {
+    if (!roadmapsOnType || roadmapsOnType.length === 0) return;
+
+    const newNodes: Node[] = roadmapsOnType.map((sub: any, index: number) => ({
       id: sub.roadmapId.toString(),
       position: {
         x: getX(index),
@@ -56,34 +65,42 @@ const MilestoneWrapper = ({ roadmapType }: MilestoneWrapperProps) => {
         height: 'fit-content',
         padding: 0,
       },
-    })
-  );
-
-  const initialEdges: Edge[] = roadmapsOnType
-    .slice(0, -1)
-    .map((sub: any, index: number) => ({
-      id: `e${sub.roadmapId}-${roadmapsOnType[index + 1].roadmapId}`,
-      source: sub.roadmapId.toString(),
-      target: roadmapsOnType[index + 1].roadmapId.toString(),
-      type: 'default',
-      animated: true,
-      style: {
-        stroke: '#404F6E',
-        strokeWidth: 8,
-        strokeLinecap: 'round',
-        strokeDasharray: '16 12',
-        strokeDashoffset: 0,
-        animation: 'flowDash 3s linear infinite',
-      },
     }));
 
-  const [nodes, , onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+    const newEdges: Edge[] = roadmapsOnType
+      .slice(0, -1)
+      .map((sub: any, index: number) => ({
+        id: `e${sub.roadmapId}-${roadmapsOnType[index + 1].roadmapId}`,
+        source: sub.roadmapId.toString(),
+        target: roadmapsOnType[index + 1].roadmapId.toString(),
+        type: 'default',
+        animated: true,
+        style: {
+          stroke: '#404F6E',
+          strokeWidth: 8,
+          strokeLinecap: 'round',
+          strokeDasharray: '16 12',
+          strokeDashoffset: 0,
+          animation: 'flowDash 3s linear infinite',
+        },
+      }));
+
+    setNodes(newNodes);
+    setEdges(newEdges);
+  }, [roadmapsOnType, handleMilestoneSelect]);
 
   const onConnect = useCallback(
     (connection: Connection) => setEdges((eds) => addEdge(connection, eds)),
     [setEdges]
   );
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (roadmapsOnType.length === 0) {
+    return <div>No roadmaps found</div>;
+  }
 
   return (
     <div style={{ width: '100%', height: '1300px' }}>

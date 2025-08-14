@@ -6,4 +6,5 @@ export type UserOAuthResponse = {
   email: string;
   name: string;
   role: RoleType;
+  isCompleted: boolean;
 };

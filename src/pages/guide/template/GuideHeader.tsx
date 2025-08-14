@@ -1,24 +1,21 @@
 import { useState } from 'react';
 
 import useAuth from '@hooks/useAuth';
-import useRoadmaps from '@hooks/useRoadmaps';
+import { VALID_ROADMAP_TYPES } from 'types/roadmaps';
 import { capitalizeFirstLetter, formatStatus } from '@utils/chars';
 
 import GuideRatingSign from './GuideRatingSign';
 import GuideStatusSign from './GuideStatusSign';
 
 const ProfileTypeButtons = () => {
-  const { roadmapTypes } = useRoadmaps();
+  const roadmapTypes = VALID_ROADMAP_TYPES;
 
   return (
     <>
       <TypeButton type="All" isSelected />
       {roadmapTypes &&
         roadmapTypes.map((item) => (
-          <TypeButton
-            key={item.roadmapType}
-            type={capitalizeFirstLetter(item.roadmapType)}
-          />
+          <TypeButton key={item} type={capitalizeFirstLetter(item)} />
         ))}
     </>
   );
@@ -54,10 +51,6 @@ const GuideHeader = ({ headerTitle, mode, status }: GuideHeaderProps) => {
   const [statusVisible, setStatusVisible] = useState(() => {
     return localStorage.getItem('guideStatusSignClosed') !== 'true';
   });
-
-  if (mode === 'Profile') {
-    const { roadmapTypes } = useRoadmaps();
-  }
 
   const showRatingSign = mode === 'Board' && !status && ratingVisible;
   const showStatusSign = mode === 'Board' && status && statusVisible;
