@@ -72,7 +72,7 @@ const ExamQuestionnairePage = () => {
     return exam.answer;
   }, [answers, exam]);
 
-  const { mutate: createExamStepAnswer } = useMutation({
+  const { mutate: createExamStepAnswer, isPending } = useMutation({
     mutationFn: createExamStep,
     onSuccess: () => {
       const nextStep = currentStep + 1;
@@ -86,20 +86,34 @@ const ExamQuestionnairePage = () => {
       }
 
       toast.success('Answer saved successfully!');
-      setSelectedValue(null);
     },
     onError: () => toast.error('답변이 저장되지 않았어요'),
   });
 
   const handleAnswerSubmit = () => {
-    if (!selectedValue) {
+    const currentAnswer = answers[exam.examId];
+
+    const hasAnswer = selectedValue || currentAnswer !== undefined;
+
+    if (!hasAnswer) {
       toast.info('답변을 선택해주세요');
       return;
     }
-    saveAnswer(exam.examId, selectedValue.answerId);
+
+    if (isPending) {
+      toast.info('제출 중입니다...');
+      return;
+    }
+    
+    if (selectedValue) {
+      saveAnswer(exam.examId, selectedValue.answerId);
+    }
+
+    const answerToSubmit = selectedValue?.answerId ?? currentAnswer;
+
     createExamStepAnswer({
       stepNumber: currentStep,
-      payload: { answer: selectedValue.answerId },
+      payload: { answer: answerToSubmit },
     });
   };
 
