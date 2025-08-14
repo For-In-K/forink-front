@@ -1,8 +1,8 @@
 export const VALID_ROADMAP_TYPES = [
   'ADMINISTRATION',
   'CAREER',
-  'la',
-  'travel',
+  'LANGUAGE',
+  'TRAVEL',
 ];
 
 export interface RoadmapTypeDetail {
