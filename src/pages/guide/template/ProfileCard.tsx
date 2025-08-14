@@ -63,7 +63,7 @@ const ProfileCard = ({ profile }: ProfileCardProps) => {
             {profile.name}
           </p>
         </div>
-        <div className="flex flex-3 flex-col gap-5 truncate">
+        <div className="flex flex-5 flex-col gap-5 truncate">
           <LabelWithText
             label="Language"
             text={profile.language
