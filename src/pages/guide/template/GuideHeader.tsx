@@ -1,9 +1,28 @@
 import { useState } from 'react';
+
+import useAuth from '@hooks/useAuth';
 import useRoadmaps from '@hooks/useRoadmaps';
 import { capitalizeFirstLetter, formatStatus } from '@utils/chars';
 
 import GuideRatingSign from './GuideRatingSign';
 import GuideStatusSign from './GuideStatusSign';
+
+const ProfileTypeButtons = () => {
+  const { roadmapTypes } = useRoadmaps();
+
+  return (
+    <>
+      <TypeButton type="All" isSelected />
+      {roadmapTypes.data &&
+        roadmapTypes.data.map((item) => (
+          <TypeButton
+            key={item.roadmapType}
+            type={capitalizeFirstLetter(item.roadmapType)}
+          />
+        ))}
+    </>
+  );
+};
 
 interface TypeButtonProps {
   type: string;
@@ -27,6 +46,8 @@ interface GuideHeaderProps {
 }
 
 const GuideHeader = ({ headerTitle, mode, status }: GuideHeaderProps) => {
+  const { isPreGuide, isGuide } = useAuth();
+
   const [ratingVisible, setRatingVisible] = useState(() => {
     return localStorage.getItem('guideRatingSignClosed') !== 'true';
   });
@@ -34,7 +55,9 @@ const GuideHeader = ({ headerTitle, mode, status }: GuideHeaderProps) => {
     return localStorage.getItem('guideStatusSignClosed') !== 'true';
   });
 
-  const { roadmapTypes } = useRoadmaps();
+  if (mode === 'Profile') {
+    const { roadmapTypes } = useRoadmaps();
+  }
 
   const showRatingSign = mode === 'Board' && !status && ratingVisible;
   const showStatusSign = mode === 'Board' && status && statusVisible;
@@ -45,20 +68,7 @@ const GuideHeader = ({ headerTitle, mode, status }: GuideHeaderProps) => {
         <div className="text-text-muted bg-surface text-title2 rounded-full px-6 py-2">
           {headerTitle}
         </div>
-
-        {mode === 'Profile' && (
-          <>
-            <TypeButton type="All" isSelected />
-            {roadmapTypes.data &&
-              roadmapTypes.data.map((item) => (
-                <TypeButton
-                  key={item.roadmapType}
-                  type={capitalizeFirstLetter(item.roadmapType)}
-                />
-              ))}
-          </>
-        )}
-
+        {mode === 'Profile' && <ProfileTypeButtons />}
         {mode === 'Board' && status && (
           <div
             className={`${

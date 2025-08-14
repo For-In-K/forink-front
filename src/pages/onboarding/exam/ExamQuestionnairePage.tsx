@@ -7,7 +7,7 @@ import { createExamStep } from '@apis/exams';
 import { examQuestions } from '@constants/exams';
 import type { Answer, OptionsAnswer, Option } from 'types/exams';
 import { useExamStore } from '@stores/useExamStore';
-import useRoadmaps from '@hooks/useRoadmaps';
+import { useCreateRoadmaps } from '@hooks/useRoadmaps';
 
 import Progressbar from '@components/status/Progressbar';
 import QuestionTitle from '../template/Question/QuestionTitle';
@@ -22,7 +22,7 @@ const ExamQuestionnairePage = () => {
   const currentStep = Number(stepNumber ?? '1');
   const size = examQuestions.length;
 
-  const { createRoadmapsRequest } = useRoadmaps();
+  const { mutate: createRoadmapsRequest } = useCreateRoadmaps();
 
   const [selectedValue, setSelectedValue] = useState<Option | null>(null);
 

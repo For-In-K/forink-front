@@ -11,8 +11,8 @@ import {
   submitRoadmapFeedbackOnStepDetail,
 } from '@apis/roadmaps';
 
-const useRoadmaps = (roadmapType?: string) => {
-  const { mutate: createRoadmapsRequest } = useMutation({
+export const useCreateRoadmaps = () => {
+  return useMutation({
     mutationFn: createRoadmaps,
     onSuccess: () => {
       toast.success('사용자 전용 로드맵이 생성되었어요');
@@ -21,18 +21,29 @@ const useRoadmaps = (roadmapType?: string) => {
       toast.error(`${error.message}`);
     },
   });
+};
 
-  const { data: roadmapTypes, isLoading: isRoadmapTypesLoading } = useQuery({
+export const useRoadmapTypes = () => {
+  return useQuery({
     queryKey: ['roadmapTypes'],
     queryFn: getRoadmapTypes,
   });
+};
 
-  const { data: roadmapsOnType, isLoading: isRoadmapsOnTypeLoading } = useQuery(
-    {
-      queryKey: ['roadmapsOnType', roadmapType],
-      queryFn: () => getRoadmapsOnType,
-    }
-  );
+export const useRoadmapsOnType = (roadmapType?: string) => {
+  return useQuery({
+    queryKey: ['roadmapsOnType', roadmapType],
+    queryFn: () => getRoadmapsOnType,
+    enabled: !!roadmapType,
+  });
+};
+
+const useRoadmaps = (roadmapType?: string) => {
+  const { mutate: createRoadmapsRequest } = useCreateRoadmaps();
+  const { data: roadmapTypes, isLoading: isRoadmapTypesLoading } =
+    useRoadmapTypes();
+  const { data: roadmapsOnType, isLoading: isRoadmapsOnTypeLoading } =
+    useRoadmapsOnType(roadmapType);
 
   return {
     createRoadmapsRequest,

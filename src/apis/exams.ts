@@ -17,7 +17,7 @@ export const createExamStep = async ({
   stepNumber: number;
   payload: CreateExamStepRequest;
 }) => {
-  const res = await apiClient.post(`exams/step/${stepNumber}`, payload);
+  const res = await apiClient.post(`exams/steps/${stepNumber}`, payload);
   return res.data;
 };
 
