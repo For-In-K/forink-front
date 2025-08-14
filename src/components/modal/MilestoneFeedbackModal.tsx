@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
+
+import useRoadmaps from '@hooks/useRoadmaps';
 import Modal from '@components/modal/Modal';
 import SubmitButton from '@components/button/SubmitButton';
 
-import { submitRoadmapFeedbackOnSubroadmap } from '@apis/roadmaps';
 import { t } from 'i18next';
 
 interface MilestoneFeedbackModalProps {
@@ -21,21 +22,10 @@ const MilestoneFeedbackModal = ({
 }: MilestoneFeedbackModalProps) => {
   const [feedback, setFeedback] = useState('');
 
-  const { mutate: submitFeedbackOnMilestone } = useMutation({
-    mutationFn: submitRoadmapFeedbackOnSubroadmap,
-    onSuccess: () => {
-      alert('피드백이 성공적으로 제출되었습니다.'); // TODO: toast로 바꾸기, i18n 적용
-      setFeedback('');
-      if (onSubmit) onSubmit(feedback);
-      onClose();
-    },
-    onError: () => {
-      alert('피드백 제출에 실패했습니다.'); // TODO: toast로 바꾸기, i18n 적용
-    },
-  });
+  const { submitFeedbackOnSubroadmap } = useRoadmaps();
 
   const handleSubmit = () => {
-    submitFeedbackOnMilestone({
+    submitFeedbackOnSubroadmap({
       roadmapId: roadmapId,
       payload: {
         content: feedback,
