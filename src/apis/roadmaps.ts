@@ -24,11 +24,9 @@ export const getRoadmapsOnType = async (
   return res.data;
 };
 
-export const getRoadmapStepDetail = async ({
-  roadmapId,
-}: {
-  roadmapId: number;
-}): Promise<GetRoadmapStepDetailResponse> => {
+export const getRoadmapStepDetail = async (
+  roadmapId: number
+): Promise<GetRoadmapStepDetailResponse> => {
   const res = await apiClient.get(`/roadmaps/${roadmapId}`);
   return res.data;
 };

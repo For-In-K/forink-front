@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { useRoadmapStepDetail } from '@hooks/useRoadmaps';
 import StepUnit from './StepUnit';
 import MilestoneFeedbackModal from '@components/modal/MilestoneFeedbackModal';
-import { roadmapStepDetail } from '@mocks/data/roadmaps';
 
 interface StepWrapperProps {
   roadmapId: number;
@@ -11,6 +11,7 @@ interface StepWrapperProps {
 
 const StepWrapper = ({ roadmapId }: StepWrapperProps) => {
   const { t } = useTranslation();
+  const { data: roadmapStepDetail = [] } = useRoadmapStepDetail(roadmapId);
 
   const [milestoneFeedbackOpen, setMilestoneFeedbackOpen] = useState(false);
   const isMilestoneCompleted = roadmapStepDetail.every((step) =>
@@ -21,7 +22,7 @@ const StepWrapper = ({ roadmapId }: StepWrapperProps) => {
     <>
       <div className="flex flex-col items-center gap-8">
         {roadmapStepDetail.map((step) => (
-          <StepUnit key={step.stepNumber} step={step} />
+          <StepUnit key={step.stepNumber} step={step} roadmapId={roadmapId} />
         ))}
       </div>
 

@@ -38,11 +38,11 @@ export const useRoadmapsOnType = (roadmapType?: string) => {
   });
 };
 
-export const useRoadmapStepDetail = (roadmapStepContentId?: number) => {
+export const useRoadmapStepDetail = (stepContentId?: number) => {
   return useQuery({
-    queryKey: ['roadmapStepDetail', roadmapStepContentId],
-    queryFn: () => getRoadmapStepDetail,
-    enabled: !!roadmapStepContentId,
+    queryKey: ['roadmapStepDetail', stepContentId],
+    queryFn: () => getRoadmapStepDetail(stepContentId!),
+    enabled: !!stepContentId,
   });
 };
 
@@ -82,14 +82,13 @@ export const useSubmitRoadmapFeedbackOnStepDetail = () => {
   });
 };
 
-const useRoadmaps = (roadmapType?: string, roadmapStepContentId?: number) => {
+const useRoadmaps = (roadmapType?: string, stepContentId?: number) => {
   const { mutate: createRoadmapsRequest } = useCreateRoadmaps();
   const { data: roadmapTypes, isLoading: isRoadmapTypesLoading } =
     useRoadmapTypes();
   const { data: roadmapsOnType, isLoading: isRoadmapsOnTypeLoading } =
     useRoadmapsOnType(roadmapType);
-  const { data: roadmapStepDetail } =
-    useRoadmapStepDetail(roadmapStepContentId);
+  const { data: roadmapStepDetail } = useRoadmapStepDetail(stepContentId);
   const { mutate: updateCheck } = useUpdateRoadmapStepDetailCheck();
   const { mutate: submitFeedbackOnSubroadmap } =
     useSubmitRoadmapFeedbackOnSubroadmap();

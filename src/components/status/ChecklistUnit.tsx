@@ -1,29 +1,22 @@
 import { useState } from 'react';
 
-import useRoadmaps from '@hooks/useRoadmaps';
 import type { StepContent } from 'types/roadmaps';
-import { updateRoadmapStepDetailCheck } from '@apis/roadmaps';
 import CheckButton from '../button/CheckButton';
 
 interface ChecklistUnitProps {
   content: StepContent;
+  onToggle: (contentId: number) => void;
 }
 
-const ChecklistUnit = ({ content }: ChecklistUnitProps) => {
+const ChecklistUnit = ({ content, onToggle }: ChecklistUnitProps) => {
   const [isChecked, setIsChecked] = useState(content.isChecked);
-
-  const { updateCheck } = useRoadmaps();
-
-  const handleListCheck = () => {
-    updateCheck(content.stepContentId);
-  };
 
   return (
     <div className="flex gap-3 md:gap-5">
       <CheckButton
         key={content.stepContentId}
-        isChecked={isChecked}
-        onClick={handleListCheck}
+        isChecked={content.isChecked}
+        onClick={() => onToggle(content.stepContentId)}
       />
       <p>{content.stepContent}</p>
     </div>
