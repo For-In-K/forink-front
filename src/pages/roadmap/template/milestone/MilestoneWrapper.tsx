@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import { getRoadmapsOnType } from '@apis/roadmaps';
+import { useRoadmapsOnType } from '@hooks/useRoadmaps';
 
 import ReactFlow, {
   Background,
@@ -29,44 +28,43 @@ const MilestoneWrapper = ({ roadmapType }: MilestoneWrapperProps) => {
     navigate(`/roadmap/${roadmapType}/${roadmapId}`);
   };
 
-  const { data: subroadmaps = [] } = useQuery({
-    queryKey: ['roadmaps', roadmapType],
-    queryFn: () => getRoadmapsOnType(roadmapType),
-  });
+  const { data: roadmapsOnType = [] } = useRoadmapsOnType(roadmapType);
 
-  const initialNodes: Node[] = subroadmaps.map((sub: any, index: number) => ({
-    id: sub.roadmapId.toString(),
-    position: {
-      x: getX(index),
-      y: index * 180,
-    },
-    data: {
-      label: (
-        <MilestoneButton
-          title={sub.title}
-          statusType={sub.statusType}
-          onClick={() => handleMilestoneSelect(sub.roadmapId)}
-        />
-      ),
-    },
-    draggable: true,
-    type: 'milestoneNode',
-    style: {
-      background: 'transparent',
-      border: 'none',
-      boxShadow: 'none',
-      width: 'fit-content',
-      height: 'fit-content',
-      padding: 0,
-    },
-  }));
+  const initialNodes: Node[] = roadmapsOnType.map(
+    (sub: any, index: number) => ({
+      id: sub.roadmapId.toString(),
+      position: {
+        x: getX(index),
+        y: index * 180,
+      },
+      data: {
+        label: (
+          <MilestoneButton
+            title={sub.title}
+            statusType={sub.statusType}
+            onClick={() => handleMilestoneSelect(sub.roadmapId)}
+          />
+        ),
+      },
+      draggable: true,
+      type: 'milestoneNode',
+      style: {
+        background: 'transparent',
+        border: 'none',
+        boxShadow: 'none',
+        width: 'fit-content',
+        height: 'fit-content',
+        padding: 0,
+      },
+    })
+  );
 
-  const initialEdges: Edge[] = subroadmaps
+  const initialEdges: Edge[] = roadmapsOnType
     .slice(0, -1)
     .map((sub: any, index: number) => ({
-      id: `e${sub.roadmapId}-${subroadmaps[index + 1].roadmapId}`,
+      id: `e${sub.roadmapId}-${roadmapsOnType[index + 1].roadmapId}`,
       source: sub.roadmapId.toString(),
-      target: subroadmaps[index + 1].roadmapId.toString(),
+      target: roadmapsOnType[index + 1].roadmapId.toString(),
       type: 'default',
       animated: true,
       style: {

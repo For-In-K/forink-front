@@ -13,8 +13,8 @@ const ProfileTypeButtons = () => {
   return (
     <>
       <TypeButton type="All" isSelected />
-      {roadmapTypes.data &&
-        roadmapTypes.data.map((item) => (
+      {roadmapTypes &&
+        roadmapTypes.map((item) => (
           <TypeButton
             key={item.roadmapType}
             type={capitalizeFirstLetter(item.roadmapType)}
