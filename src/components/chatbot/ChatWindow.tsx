@@ -13,7 +13,7 @@ const ChatWindow = ({ bottom = 96 }) => {
         zIndex: 50,
       }}
     >
-      <h2 className="flex h-16 w-full items-center justify-start gap-4 px-3">
+      <h2 className="my-2 flex w-full items-center justify-start gap-4 px-3">
         <svg
           className="bg-surface rounded-md p-1"
           viewBox="0 0 50 50"
@@ -32,7 +32,7 @@ const ChatWindow = ({ bottom = 96 }) => {
         </div>
       </h2>
       <span className="w-full border-t border-gray-200" />
-      <div className="flex h-full w-full flex-col justify-between gap-2 p-3">
+      <div className="flex h-full min-h-0 w-full flex-col justify-between gap-2 p-3">
         <ChatLog />
         <ChatInput />
       </div>

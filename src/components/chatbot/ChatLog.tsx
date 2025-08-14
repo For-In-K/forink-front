@@ -1,5 +1,5 @@
 const ChatLog = () => {
-  return <div className="flex-1"></div>;
+  return <div className="flex min-h-0 overflow-y-scroll"></div>;
 };
 
 export default ChatLog;
