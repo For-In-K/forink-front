@@ -8,6 +8,7 @@ interface CheckButtonProps {
 const CheckButton = ({ isChecked, onClick }: CheckButtonProps) => {
   return (
     <button
+      type="button"
       className={`${isChecked ? 'border-primary bg-primary/75' : 'hover:bg-white-hover border-border'} h-full rounded-md border-2`}
       onClick={onClick}
     >
