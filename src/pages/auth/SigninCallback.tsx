@@ -21,10 +21,13 @@ const SigninCallback = () => {
 
     const handleSignin = async () => {
       try {
-        const { token } = await getOauthCallback(code);
+        const { token, isCompleted } = await getOauthCallback(code);
         signIn(token);
-        // toast.success('로그인에 성공했어요');
-        // navigate('/');
+        if (isCompleted) {
+          toast.success('로그인에 성공했어요');
+          navigate('/');
+          return;
+        }
         toast.info('가입 페이지로 넘어갈게요');
         navigate('/signin/option');
       } catch {

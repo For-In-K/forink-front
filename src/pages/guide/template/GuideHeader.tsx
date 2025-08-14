@@ -55,10 +55,6 @@ const GuideHeader = ({ headerTitle, mode, status }: GuideHeaderProps) => {
     return localStorage.getItem('guideStatusSignClosed') !== 'true';
   });
 
-  if (mode === 'Profile') {
-    const { roadmapTypes } = useRoadmaps();
-  }
-
   const showRatingSign = mode === 'Board' && !status && ratingVisible;
   const showStatusSign = mode === 'Board' && status && statusVisible;
 
