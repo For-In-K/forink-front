@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { roadmapTypes } from '@mocks/data/roadmaps';
-import { PreGuideRateStatus } from 'types/guides';
-import { capitalizeFirstLetter } from '@utils/chars';
+import useRoadmaps from '@hooks/useRoadmaps';
+import { capitalizeFirstLetter, formatStatus } from '@utils/chars';
 
 import GuideRatingSign from './GuideRatingSign';
 import GuideStatusSign from './GuideStatusSign';
@@ -35,6 +34,8 @@ const GuideHeader = ({ headerTitle, mode, status }: GuideHeaderProps) => {
     return localStorage.getItem('guideStatusSignClosed') !== 'true';
   });
 
+  const { roadmapTypes } = useRoadmaps();
+
   const showRatingSign = mode === 'Board' && !status && ratingVisible;
   const showStatusSign = mode === 'Board' && status && statusVisible;
 
@@ -48,12 +49,13 @@ const GuideHeader = ({ headerTitle, mode, status }: GuideHeaderProps) => {
         {mode === 'Profile' && (
           <>
             <TypeButton type="All" isSelected />
-            {roadmapTypes.map((item) => (
-              <TypeButton
-                key={item.roadmapType}
-                type={capitalizeFirstLetter(item.roadmapType)}
-              />
-            ))}
+            {roadmapTypes.data &&
+              roadmapTypes.data.map((item) => (
+                <TypeButton
+                  key={item.roadmapType}
+                  type={capitalizeFirstLetter(item.roadmapType)}
+                />
+              ))}
           </>
         )}
 
@@ -63,7 +65,7 @@ const GuideHeader = ({ headerTitle, mode, status }: GuideHeaderProps) => {
               status === 'ALMOST' ? 'bg-secondary/90' : 'bg-accent/90'
             } text-title2 rounded-full px-6 py-2 text-white`}
           >
-            {capitalizeFirstLetter(status)}
+            {formatStatus(status)}
           </div>
         )}
       </div>

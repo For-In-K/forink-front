@@ -40,6 +40,10 @@ const useRoadmaps = (roadmapType?: string) => {
       data: roadmapTypes,
       isLoading: isRoadmapTypesLoading,
     },
+    roadmapsOnType: {
+      data: roadmapsOnType,
+      isLoading: isRoadmapsOnTypeLoading,
+    },
   };
 };
 
