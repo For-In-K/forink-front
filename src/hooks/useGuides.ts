@@ -9,24 +9,38 @@ import {
 } from '@apis/guides';
 import { toast } from 'react-toastify';
 
-const useGuides = () => {
-  const queryClient = useQueryClient();
+export const useGuideProfiles = () => {
+  return useQuery({
+    queryKey: ['guideProfiles'],
+    queryFn: getGuideProfiles,
+  });
+};
 
-  const { data: guideProfiles = [], isLoading: isGuideProfilesLoading } =
-    useQuery({
-      queryKey: ['guideProfiles'],
-      queryFn: getGuideProfiles,
-    });
-
-  const {
-    data: preGuideFeedbacks = [],
-    isLoading: isPreGuideFeedbacksLoading,
-  } = useQuery({
+export const usePreGuideFeedbacks = () => {
+  return useQuery({
     queryKey: ['preGuideFeedbacks'],
     queryFn: getPreGuideFeedbacks,
   });
+};
 
-  const { mutate: submitRatings } = useMutation({
+export const usePreGuideRatings = () => {
+  return useQuery({
+    queryKey: ['preGuideRatings'],
+    queryFn: getPreGuideRatings,
+  });
+};
+
+export const usePreGuideStatus = () => {
+  return useQuery({
+    queryKey: ['preGuideRateStatus'],
+    queryFn: getPreGuideStatus,
+  });
+};
+
+export const useSubmitRatings = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
     mutationFn: postRatingsOnFeedback,
     onSuccess: () => {
       toast.success('평가가 성공적으로 제출되었어요');
@@ -34,18 +48,18 @@ const useGuides = () => {
     },
     onError: (error) => toast.error('평가 제출에 실패했어요'),
   });
+};
 
-  const { data: preGuideRatings = [], isLoading: isPreGuideRatingsLoading } =
-    useQuery({
-      queryKey: ['preGuideRatings'],
-      queryFn: getPreGuideRatings,
-    });
-
+const useGuides = () => {
+  const { data: guideProfiles, isLoading: isGuideProfilesLoading } =
+    useGuideProfiles();
+  const { data: preGuideFeedbacks, isLoading: isPreGuideFeedbacksLoading } =
+    usePreGuideFeedbacks();
+  const { data: preGuideRatings, isLoading: isPreGuideRatingsLoading } =
+    usePreGuideRatings();
   const { data: preGuideRateStatus, isLoading: isPreGuideRateStatusLoading } =
-    useQuery({
-      queryKey: ['preGuideRateStatus'],
-      queryFn: getPreGuideStatus,
-    });
+    usePreGuideStatus();
+  const submitRatings = useSubmitRatings();
 
   return {
     guideProfiles,

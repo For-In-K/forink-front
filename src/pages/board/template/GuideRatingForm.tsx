@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import useGuides from '@hooks/useGuides';
+import { useSubmitRatings } from '@hooks/useGuides';
 import type { SubmitFeedbackRateFieldRequest } from 'types/guides';
 
 import RatingRow from './RatingRow';
@@ -24,7 +24,7 @@ interface RatingFormProps {
 }
 
 const GuideRatingForm = ({ feedbackId, onSuccess }: RatingFormProps) => {
-  const { submitRatings } = useGuides();
+  const { mutate: submitRatings } = useSubmitRatings();
 
   const [ratings, setRatings] = useState<SubmitFeedbackRateFieldRequest>({
     expertiseScore: 0,

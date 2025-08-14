@@ -1,13 +1,13 @@
 import { Navigate } from 'react-router-dom';
 
-import useGuides from '@hooks/useGuides';
+import { usePreGuideStatus } from '@hooks/useGuides';
 import useAuth from '@hooks/useAuth';
 import GuideHeader from '@pages/guide/template/GuideHeader';
 import PreGuideStatusWrapper from './template/PreGuideStatusWrapper';
 
 const PreGuideStatusPage = () => {
   const { isPreGuide } = useAuth();
-  const { preGuideRateStatus } = useGuides();
+  const { data: preGuideRateStatus } = usePreGuideStatus();
 
   if (!isPreGuide) return <Navigate to="/" replace />;
 

@@ -1,9 +1,8 @@
-import useGuides from '@hooks/useGuides';
+import usePreGuideRatings from '@hooks/useGuides';
 import StatusUnit from './StatusUnit';
 
 const PreGuideStatusWrapper = () => {
-  const { preGuideRatings } = useGuides();
-
+  const { preGuideRatings = [] } = usePreGuideRatings();
   return (
     <>
       {preGuideRatings.map((rating) => (
