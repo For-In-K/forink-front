@@ -23,11 +23,15 @@ const SupportCard = ({ card }: { card: SupportInfoCard }) => {
       )}
 
       <div className="flex flex-1 flex-col gap-3 p-4">
-        <h3 id={`support-${card.title}`} className="line-clamp-2 text-lg font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+        <h3
+          id={`support-${card.title}`}
+          className="line-clamp-2 text-lg font-semibold"
+          style={{ color: 'var(--color-text-primary)' }}
+        >
           {card.title}
         </h3>
 
-        <p className="flex-1 text-sm leading-relaxed text-gray-600 line-clamp-3">
+        <p className="line-clamp-3 flex-1 text-sm leading-relaxed text-gray-600">
           {card.summary}
         </p>
 
