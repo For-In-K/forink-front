@@ -1,10 +1,11 @@
-import { guideFeedbackRates } from '@mocks/data/guides';
+import { usePreGuideRatings } from '@hooks/useGuides';
 import StatusUnit from './StatusUnit';
 
 const PreGuideStatusWrapper = () => {
+  const { data: preGuideRatings = [] } = usePreGuideRatings();
   return (
     <>
-      {guideFeedbackRates.map((rating) => (
+      {preGuideRatings.map((rating) => (
         <StatusUnit key={rating.ratingId} rating={rating} />
       ))}
     </>

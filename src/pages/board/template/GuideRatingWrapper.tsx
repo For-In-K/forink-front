@@ -1,7 +1,9 @@
 import RatingUnit from './RatingUnit';
-import { preGuideFeedbacks } from '@mocks/data/guides';
+import { usePreGuideFeedbacks } from '@hooks/useGuides';
 
 const RatingWrapper = () => {
+  const { data: preGuideFeedbacks = [] } = usePreGuideFeedbacks();
+
   return preGuideFeedbacks.map((feedback) => (
     <RatingUnit key={feedback.feedbackId} feedback={feedback} />
   ));

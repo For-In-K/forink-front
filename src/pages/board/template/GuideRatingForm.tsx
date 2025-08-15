@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import RatingRow from './RatingRow';
-import { postRatingsOnFeedback } from '@apis/guides';
+
+import { useSubmitRatings } from '@hooks/useGuides';
 import type { SubmitFeedbackRateFieldRequest } from 'types/guides';
 
+import RatingRow from './RatingRow';
 import SubmitButton from '@components/button/SubmitButton';
 import CancelButton from '@components/button/CancelButton';
 
@@ -23,6 +24,8 @@ interface RatingFormProps {
 }
 
 const GuideRatingForm = ({ feedbackId, onSuccess }: RatingFormProps) => {
+  const { mutate: submitRatings } = useSubmitRatings();
+
   const [ratings, setRatings] = useState<SubmitFeedbackRateFieldRequest>({
     expertiseScore: 0,
     helpScore: 0,
@@ -48,7 +51,7 @@ const GuideRatingForm = ({ feedbackId, onSuccess }: RatingFormProps) => {
   };
 
   const handleSubmit = () => {
-    console.log(`feedbackId: ${feedbackId}, ratings: ${ratings}`);
+    submitRatings({ feedbackId, payload: ratings });
   };
 
   return (
