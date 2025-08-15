@@ -34,7 +34,9 @@ export const getRoadmapStepDetail = async (
 export const updateRoadmapStepDetailCheck = async (
   roadmapStepContentId: number
 ) => {
-  const res = await apiClient.patch(`/roadmaps/${roadmapStepContentId}`);
+  const res = await apiClient.patch(
+    `/roadmaps/roadmapStepContents/${roadmapStepContentId}`
+  );
   return res.data;
 };
 
@@ -45,7 +47,7 @@ export const submitRoadmapFeedbackOnSubroadmap = async ({
   roadmapId: number;
   payload: PostRoadmapFeedbackOnSubroadmap;
 }) => {
-  const res = await apiClient.post(`/roadmaps/${roadmapId}`, payload);
+  const res = await apiClient.post(`/roadmaps/${roadmapId}/feedback`, payload);
   return res.data;
 };
 
@@ -56,6 +58,9 @@ export const submitRoadmapFeedbackOnStepDetail = async ({
   roadmapStepId: number;
   payload: PostRoadmapFeedbackOnStepDetail;
 }) => {
-  const res = await apiClient.post(`/roadmaps/${roadmapStepId}`, payload);
+  const res = await apiClient.post(
+    `/roadmaps/roadmapSteps/${roadmapStepId}/feedback`,
+    payload
+  );
   return res.data;
 };

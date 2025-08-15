@@ -90,10 +90,14 @@ const useRoadmaps = (roadmapType?: string, stepContentId?: number) => {
     useRoadmapsOnType(roadmapType);
   const { data: roadmapStepDetail } = useRoadmapStepDetail(stepContentId);
   const { mutate: updateCheck } = useUpdateRoadmapStepDetailCheck();
-  const { mutate: submitFeedbackOnSubroadmap } =
-    useSubmitRoadmapFeedbackOnSubroadmap();
-  const { mutate: submitFeedbackOnStepDetail } =
-    useSubmitRoadmapFeedbackOnStepDetail();
+  const {
+    mutate: submitFeedbackOnSubroadmap,
+    isSuccess: isSubmitFeedbackOnSubroadmapSuccess,
+  } = useSubmitRoadmapFeedbackOnSubroadmap();
+  const {
+    mutate: submitFeedbackOnStepDetail,
+    isSuccess: isSubmitFeedbackOnStepDetailSuccess,
+  } = useSubmitRoadmapFeedbackOnStepDetail();
 
   return {
     createRoadmapsRequest,
@@ -104,7 +108,9 @@ const useRoadmaps = (roadmapType?: string, stepContentId?: number) => {
     roadmapStepDetail,
     updateCheck,
     submitFeedbackOnSubroadmap,
+    isSubmitFeedbackOnSubroadmapSuccess,
     submitFeedbackOnStepDetail,
+    isSubmitFeedbackOnStepDetailSuccess,
   };
 };
 
