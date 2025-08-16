@@ -1,40 +1,10 @@
 import { useState } from 'react';
 
 import useAuth from '@hooks/useAuth';
-import { VALID_ROADMAP_TYPES } from 'types/roadmaps';
 import { capitalizeFirstLetter, formatStatus } from '@utils/chars';
 
 import GuideRatingSign from './GuideRatingSign';
 import GuideStatusSign from './GuideStatusSign';
-
-const ProfileTypeButtons = () => {
-  const roadmapTypes = VALID_ROADMAP_TYPES;
-
-  return (
-    <>
-      <TypeButton type="All" isSelected />
-      {roadmapTypes &&
-        roadmapTypes.map((item) => (
-          <TypeButton key={item} type={capitalizeFirstLetter(item)} />
-        ))}
-    </>
-  );
-};
-
-interface TypeButtonProps {
-  type: string;
-  isSelected?: boolean;
-}
-
-const TypeButton = ({ type, isSelected = false }: TypeButtonProps) => {
-  return (
-    <button
-      className={`${isSelected ? 'bg-primary/75 text-white-hover' : 'text-primary hover:bg-white-hover'} border-primary text-title2 rounded-full border px-6 py-2`}
-    >
-      {type}
-    </button>
-  );
-};
 
 interface GuideHeaderProps {
   headerTitle: string;
@@ -61,7 +31,7 @@ const GuideHeader = ({ headerTitle, mode, status }: GuideHeaderProps) => {
         <div className="text-text-muted bg-surface text-title2 rounded-full px-6 py-2">
           {headerTitle}
         </div>
-        {mode === 'Profile' && <ProfileTypeButtons />}
+        {mode === 'Profile'}
         {mode === 'Board' && status && (
           <div
             className={`${

@@ -1,5 +1,5 @@
 import { useLocation, matchPath } from 'react-router-dom';
-import { chatbotRoutes } from '@constants/chat';
+import { chatbotRoutes } from '@routes/route';
 
 const useChatbotRoutes = () => {
   const location = useLocation();

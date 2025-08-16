@@ -46,6 +46,8 @@
   --height-min-header: 54px;
 
   --height-footer: 330px;
+
+  --height-sign: 330px;
 }
 
 @layer base {

@@ -5,9 +5,9 @@ import ContactMenu from './ContactMenu';
 
 const Footer = () => {
   return (
-    <footer className="min-h-footer text-text-primary bg-text-muted flex w-full items-start justify-center">
-      <div className="container mx-auto flex h-full flex-col gap-10 p-15">
-        <div className="flex flex-col justify-start gap-15 md:flex-row md:items-start md:gap-36">
+    <footer className="min-h-footer text-text-primary bg-text-muted mt-36 flex w-full items-start justify-center">
+      <div className="container mx-auto flex h-full min-w-0 flex-col gap-10 p-15">
+        <div className="flex flex-col justify-start gap-15 lg:flex-row lg:items-start lg:gap-36">
           <ForinkMenu />
           <ServiceMenu />
           <SupportMenu />
