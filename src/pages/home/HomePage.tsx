@@ -1,13 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 
-import useAuth from '@hooks/useAuth';
 import { getSupportInfo } from '@apis/home';
 import SupportCard from './SupportCard';
 import SupportSkeleton from './SupportSkeleton';
+import BasicInfoCard from './info/BasicInfoCard';
+import BasicInfoWrapper from './info/BasicInfoWrapper';
 
 const HomePage = () => {
-  const { isSignedIn } = useAuth();
-
   const {
     data: supportInfo,
     isLoading,
@@ -20,12 +19,10 @@ const HomePage = () => {
   return (
     <main>
       <header className="mb-8">
-        <p className="text-title2 sm:text-title1 font-semibold">
-          도움말 & 가이드
-        </p>
+        <p className="text-title2 font-semibold">ForinK의 최신 문서</p>
         <p className="text-text-muted mt-1 text-sm">
-          최신 문서와 자주 묻는 질문을 모았습니다. 필요하면 개별 기사로
-          이동하세요.
+          AI 기능 도입으로 최신 문서를 확인할 수 있어요. 링크를 클릭하여 자세한
+          정보를 확인해보세요.
         </p>
       </header>
 
@@ -42,6 +39,8 @@ const HomePage = () => {
               <SupportCard key={idx} card={card} />
             ))}
       </div>
+      <div className="h-header" />
+      <BasicInfoWrapper />
     </main>
   );
 };

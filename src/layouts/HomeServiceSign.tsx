@@ -5,7 +5,7 @@ const HomeServiceSign = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="h-sign to-primary from-primary w-full bg-gradient-to-b">
+    <div className="h-sign to-primary w-full bg-gradient-to-b from-blue-600">
       <div className="container mx-auto flex flex-col gap-8 p-10 text-center">
         <p className="font-mono text-6xl font-bold text-white">ForinK</p>
         <div className="flex flex-col gap-3">
