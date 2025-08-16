@@ -30,7 +30,7 @@ export const LanguageSelector = () => {
     <div className="relative hidden items-center sm:flex">
       <button
         onClick={toggleDropdown}
-        className="border-border size-10 min-w-10 overflow-hidden rounded-full border"
+        className="border-border size-8 overflow-hidden rounded-full border"
       >
         <Flag
           code={currentLang.countryCode}

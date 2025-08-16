@@ -42,25 +42,13 @@
   --color-text-primary: #111827;
   --color-text-muted: #404f6e;
 
-  --height-header: 72px;
-  --height-min-header: 64px;
+  --height-header: 64px;
+  --height-min-header: 54px;
 
   --height-footer: 330px;
 }
 
 @layer base {
-  html.lang-eng {
-    font-family: 'Ubuntu', sans-serif;
-  }
-  html.lang-kor {
-    font-family: 'Noto Sans KR', sans-serif;
-  }
-  html.lang-chi {
-    font-family: 'Noto Sans SC', sans-serif;
-  }
-  html.lang-vie {
-    font-family: 'Roboto', sans-serif;
-  }
   html {
     font-family: 'Ubuntu', sans-serif;
   }

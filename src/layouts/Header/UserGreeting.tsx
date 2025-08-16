@@ -7,7 +7,13 @@ const UserGreeting = () => {
 
   return (
     <p className="text-body text-text-muted hidden truncate text-center font-mono lg:inline-block">
-      <span>{t('greeting')}</span>, {user?.email}!
+      {user ? (
+        <>
+          <span>{t('greeting')}</span>, {user?.email}!
+        </>
+      ) : (
+        <span>{t('greeting')} to ForinK!</span>
+      )}
     </p>
   );
 };

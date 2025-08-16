@@ -1,6 +1,6 @@
 import useAuth from '@hooks/useAuth';
 
-import LogoButton from './LogoButton';
+import Logo from './Logo';
 import NavMenu from './NavMenu';
 import UserGreeting from './UserGreeting';
 import LanguageSelector from './LanguageSelector';
@@ -12,17 +12,13 @@ const Header = () => {
   return (
     <header className="h-min-header border-border text-text-primary md:h-header fixed z-10 flex w-full items-center border-b bg-white">
       <div className="container mx-auto flex items-center justify-around">
-        <LogoButton />
-        {isSignedIn ? (
-          <>
-            <NavMenu />
-            <UserGreeting />
-          </>
-        ) : (
-          <div />
-        )}
-        <LanguageSelector />
-        <SignInButton />
+        <Logo />
+        <NavMenu />
+        <UserGreeting />
+        <div className="flex items-center gap-8">
+          <LanguageSelector />
+          <SignInButton />
+        </div>
       </div>
     </header>
   );
