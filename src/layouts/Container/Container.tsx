@@ -9,7 +9,7 @@ const Container = () => {
 
   return (
     <>
-      <div className="container mx-auto mt-[var(--height-min-header)] w-full px-10 py-10 md:mt-[var(--height-header)] md:py-15">
+      <div className="container mx-auto mt-[var(--height-min-header)] mb-24 w-full px-10 py-10 md:mt-[var(--height-header)] md:py-15">
         <Outlet />
         <CustomToastContainer />
         {isChatbotVisible && <ChatbotWidget />}

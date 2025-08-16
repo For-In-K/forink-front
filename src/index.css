@@ -44,6 +44,8 @@
 
   --height-header: 72px;
   --height-min-header: 64px;
+
+  --height-footer: 330px;
 }
 
 @layer base {
@@ -85,6 +87,10 @@
   select {
     @apply text-title2 rounded-full bg-white px-4 py-2 transition-all duration-200 ease-in-out outline-none placeholder:text-gray-300;
     cursor: pointer;
+  }
+
+  a {
+    @apply transition-colors duration-200 ease-in-out;
   }
 }
 
