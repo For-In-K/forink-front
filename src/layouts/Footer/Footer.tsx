@@ -15,7 +15,7 @@ const Footer = () => {
         </div>
         <div className="border-t border-slate-500/30" />
         <p className="text-center text-sm text-slate-400">
-          © 2023 ForinK. All rights reserved.
+          © 2025 ForinK. All rights reserved.
         </p>
       </div>
     </footer>
