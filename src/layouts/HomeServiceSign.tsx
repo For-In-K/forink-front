@@ -6,7 +6,7 @@ const HomeServiceSign = () => {
 
   return (
     <div className="h-sign to-primary w-full bg-gradient-to-b from-blue-600">
-      <div className="container mx-auto flex flex-col gap-8 p-10 text-center">
+      <div className="container mx-auto flex h-full flex-col justify-around gap-8 p-12 text-center">
         <p className="font-mono text-6xl font-bold text-white">ForinK</p>
         <div className="flex flex-col gap-3">
           <p className="text-base text-slate-50">
