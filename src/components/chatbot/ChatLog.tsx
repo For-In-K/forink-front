@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import ChatMessage from './ChatMessage';
+import Typing from '@components/status/Typing';
 
 type Message = {
   id: string;
@@ -31,8 +32,8 @@ const ChatLog = ({
         ))}
 
         {loading && (
-          <div className="self-start rounded-md bg-gray-100 p-3 text-black">
-            <div className="text-sm">응답 중...</div>
+          <div className="rounded-2xl p-3">
+            <Typing />
           </div>
         )}
       </div>

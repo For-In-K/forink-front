@@ -1,5 +1,5 @@
 import { useRef, useState, KeyboardEvent } from 'react';
-import { ArrowUp } from 'lucide-react';
+import { Send } from 'lucide-react';
 
 interface ChatInputProps {
   onSend: (text: string) => void;
@@ -54,11 +54,11 @@ const ChatInput = ({ onSend, disabled = false }: ChatInputProps) => {
       <button
         type="button"
         onClick={doSend}
-        className="hover:bg-text-muted/80 bg-text-muted flex h-10 w-10 items-center justify-center self-end rounded-full text-center disabled:opacity-50"
+        className="hover:bg-primary-hover bg-primary flex h-8 w-8 items-center justify-center self-end rounded-lg text-center disabled:opacity-50"
         aria-label="Send message"
         disabled={disabled}
       >
-        <ArrowUp className="text-surface h-6 w-6" />
+        <Send className="text-surface size-4" />
       </button>
     </div>
   );
