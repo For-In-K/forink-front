@@ -35,34 +35,46 @@ const RoadmapTypeSelector = () => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-6">
-      {roadmapTypes.map((category: RoadmapTypeDetail) => {
-        const roadmapType = category.roadmapType;
-        const title = capitalizeFirstLetter(category.roadmapType);
-        const progress = category.progressRatio;
+    <main>
+      <header className="mb-8">
+        <p className="text-title2 text-text-muted font-semibold">
+          나의 정착 로드맵
+        </p>
+        <p className="mt-1 text-sm text-slate-500">
+          진단 결과를 바탕으로 생성된 개인 맞춤형 정착 가이드예요.
+        </p>
+      </header>
+      <div className="flex flex-col items-center gap-6">
+        {roadmapTypes.map((category: RoadmapTypeDetail) => {
+          const roadmapType = category.roadmapType;
+          const title = capitalizeFirstLetter(category.roadmapType);
+          const progress = category.progressRatio;
+          const roadmapTypeInfo: RoadmapTypeButtonInfo = {
+            type: roadmapType,
+            title: t(`roadmap.categories.${roadmapType.toLowerCase()}.title`, {
+              defaultValue: title,
+            }),
+            description: t(
+              `roadmap.categories.${roadmapType.toLowerCase()}.description`,
+              {
+                defaultValue: '',
+              }
+            ),
+            progress: progress,
+          };
 
-        const roadmapTypeInfo: RoadmapTypeButtonInfo = {
-          type: roadmapType,
-          title: t(`roadmap.categories.${roadmapType}.title`, {
-            defaultValue: title,
-          }),
-          description: t(`roadmap.categories.${roadmapType}.description`, {
-            defaultValue: '',
-          }),
-          progress: progress,
-        };
-
-        return (
-          <RoadmapTypeButton
-            key={category.roadmapType}
-            roadmapTypeButtonInfo={roadmapTypeInfo}
-            hoveredType={hoveredType}
-            onSelect={handleRoadmapTypeSelect}
-            onHover={handleHover}
-          />
-        );
-      })}
-    </div>
+          return (
+            <RoadmapTypeButton
+              key={category.roadmapType}
+              roadmapTypeButtonInfo={roadmapTypeInfo}
+              hoveredType={hoveredType}
+              onSelect={handleRoadmapTypeSelect}
+              onHover={handleHover}
+            />
+          );
+        })}
+      </div>
+    </main>
   );
 };
 

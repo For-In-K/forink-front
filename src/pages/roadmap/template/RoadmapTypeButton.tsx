@@ -30,7 +30,7 @@ const RoadmapTypeButton = ({
       <p className="text-title1 text-left font-bold">
         {roadmapTypeButtonInfo.title}
       </p>
-      <p className="text-body h-16 text-left">
+      <p className="text-body h-16 text-left text-slate-200">
         {roadmapTypeButtonInfo.description}
       </p>
       <div className="my-1 flex w-full items-center gap-2">
