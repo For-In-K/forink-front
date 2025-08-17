@@ -1,5 +1,5 @@
 import type { SupportInfoCard } from '@apis/home';
-import thumbnail from '@assets/THUMBNAIL.svg';
+import thumbnail from '@assets/thumbnail.svg';
 
 const SupportCard = ({ card }: { card: SupportInfoCard }) => {
   return (
