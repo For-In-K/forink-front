@@ -58,7 +58,6 @@ const MilestoneWrapper = ({ roadmapType }: MilestoneWrapperProps) => {
       draggable: true,
       type: 'milestoneNode',
       style: {
-        background: 'transparent',
         border: 'none',
         boxShadow: 'none',
         width: 'fit-content',
@@ -76,8 +75,8 @@ const MilestoneWrapper = ({ roadmapType }: MilestoneWrapperProps) => {
         type: 'default',
         animated: true,
         style: {
-          stroke: '#404F6E',
-          strokeWidth: 8,
+          stroke: '#e4e4e7',
+          strokeWidth: 7,
           strokeLinecap: 'round',
           strokeDasharray: '16 12',
           strokeDashoffset: 0,
@@ -120,7 +119,6 @@ const MilestoneWrapper = ({ roadmapType }: MilestoneWrapperProps) => {
         panOnDrag={true}
         fitView
       >
-        <Background />
         <Controls />
         <MiniMap />
       </ReactFlow>
