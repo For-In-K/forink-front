@@ -54,7 +54,7 @@ const RoadmapTypeSelector = () => {
         )}
 
         {!isRoadmapTypesLoading && roadmapTypesList.length === 0 && (
-          <div className="rounded-md border border-amber-200 bg-amber-50 p-4 text-amber-700">
+          <div className="w-full rounded-md border border-amber-200 bg-amber-50 p-4 text-amber-700">
             아직 생성된 로드맵이 없어요.
           </div>
         )}
