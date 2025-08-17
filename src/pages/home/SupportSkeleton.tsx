@@ -5,10 +5,7 @@ const SupportSkeleton = () => {
       <div className="h-4 w-3/4 rounded bg-gray-200" />
       <div className="mt-2 h-3 w-full rounded bg-gray-200" />
       <div className="mt-2 h-3 w-11/12 rounded bg-gray-200" />
-      <div className="mt-4 flex items-center justify-between">
-        <div className="h-8 w-24 rounded-full bg-gray-200" />
-        <div className="h-6 w-6 rounded-full bg-gray-200" />
-      </div>
+      <div className="mt-4 h-8 w-24 rounded-full bg-gray-200" />
     </div>
   );
 };
