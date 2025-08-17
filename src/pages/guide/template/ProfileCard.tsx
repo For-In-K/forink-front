@@ -67,7 +67,7 @@ const ProfileCard = ({ profile }: ProfileCardProps) => {
 
       <div className="flex flex-col gap-3">
         <div className="flex items-center justify-between rounded-xl bg-blue-50 p-4">
-          <div>
+          <div className="w-full text-center">
             <p className="text-sm text-slate-500">가이드 매칭 경력</p>
             <p className="text-body text-primary font-medium">
               {profile.guideExpCount}회
