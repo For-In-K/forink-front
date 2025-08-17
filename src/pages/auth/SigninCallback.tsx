@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
+import Typing from '@components/status/Typing';
 import useAuth from '@hooks/useAuth';
 import { getOauthCallback } from '@apis/oauth';
 
@@ -39,7 +40,12 @@ const SigninCallback = () => {
     handleSignin();
   }, [code, navigate, signIn]);
 
-  return <div>로그인 처리 중 ...</div>;
+  return (
+    <div className="flex flex-col items-center justify-center gap-10">
+      <p>로그인 중이에요</p>
+      <Typing />
+    </div>
+  );
 };
 
 export default SigninCallback;
