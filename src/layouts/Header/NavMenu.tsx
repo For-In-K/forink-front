@@ -50,7 +50,7 @@ const NavMenu = () => {
         {NAV_ITEMS.map(({ buttonName, directPath }) => {
           const isBoard = buttonName === '게시판';
           const to = isBoard ? boardPath : directPath;
-          const invisible = isBoard && isUser;
+          const invisible = isBoard && !(isPreGuide || isGuide);
           return (
             <NavButton
               key={buttonName}
