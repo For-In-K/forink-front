@@ -102,7 +102,7 @@ const MilestoneWrapper = ({ roadmapType }: MilestoneWrapperProps) => {
   }
 
   return (
-    <div style={{ width: '100%', height: '1300px' }}>
+    <div style={{ width: '100%', height: '1000px' }}>
       <ReactFlow
         nodes={nodes}
         nodeTypes={milestoneNodeTypes}
