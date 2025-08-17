@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ChatIcon from '@assets/icons/chat.svg?react';
+import { MessageCircle } from 'lucide-react';
 import ChatWindow from './ChatWindow';
 
 const CHATBOT_LAYOUT = {
@@ -11,7 +11,7 @@ const CHATBOT_LAYOUT = {
 const ChatbotWidget = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
 
-  const handleChatToggle = () => setIsChatOpen((prev) => !prev);
+  const handleStartChat = () => setIsChatOpen((prev) => !prev);
 
   const chatWindowBottom =
     CHATBOT_LAYOUT.BUTTON_SIZE +
@@ -19,13 +19,13 @@ const ChatbotWidget = () => {
     CHATBOT_LAYOUT.WINDOW_EXTRA_MARGIN;
 
   return (
-    <div className="fixed right-0 bottom-0 m-4">
+    <div className="fixed right-0 bottom-0 z-0 m-4">
       <button
-        className={`${isChatOpen ? 'animate-none' : 'slowBounce'} transition-all duration-300 hover:scale-105`}
-        onClick={handleChatToggle}
+        className={`${isChatOpen ? 'animate-none' : 'slowBounce'} from-primary flex size-15 items-center justify-center rounded-full bg-gradient-to-bl to-blue-800 transition-all duration-300 hover:scale-115`}
+        onClick={handleStartChat}
         aria-label="챗봇 열기"
       >
-        <ChatIcon />
+        <MessageCircle className="text-white" size={16} />
       </button>
       {isChatOpen && <ChatWindow bottom={chatWindowBottom} />}
     </div>

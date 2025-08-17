@@ -18,7 +18,8 @@ const StepFeedbackModal = ({
   onClose,
 }: StepFeedbackModalProps) => {
   const { t } = useTranslation();
-  const { submitFeedbackOnStepDetail } = useRoadmaps();
+  const { submitFeedbackOnStepDetail, isSubmitFeedbackOnStepDetailSuccess } =
+    useRoadmaps();
 
   const handleFeedbackSubmit = (feedbackValue: 'GOOD' | 'BAD') => {
     submitFeedbackOnStepDetail({
@@ -27,6 +28,9 @@ const StepFeedbackModal = ({
         roadmapAnswerType: feedbackValue,
       },
     });
+    if (isSubmitFeedbackOnStepDetailSuccess) {
+      onClose();
+    }
   };
 
   return (

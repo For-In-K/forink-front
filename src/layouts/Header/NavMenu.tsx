@@ -2,9 +2,10 @@ import { NavLink } from 'react-router-dom';
 import useAuth from '@hooks/useAuth';
 
 const NAV_ITEMS = [
-  { buttonName: 'Roadmap', directPath: '/roadmap' },
-  { buttonName: 'Guide', directPath: '/guide' },
-  { buttonName: 'Board', directPath: '/board' },
+  { buttonName: '홈', directPath: '/' },
+  { buttonName: '로드맵', directPath: '/roadmap' },
+  { buttonName: '가이드', directPath: '/guide' },
+  { buttonName: '게시판', directPath: '/board' },
 ] as const;
 
 type NavMenuButton = (typeof NAV_ITEMS)[number];
@@ -21,7 +22,7 @@ const NavButton = ({ label, to, invisible }: NavMenuButtonProps) => {
       <NavLink
         to={to}
         className={({ isActive }) =>
-          `sm:text-title2 text-body hover:bg-surface/50 flex h-10 items-center rounded-full p-2 px-4 font-mono transition-colors duration-300 ease-in-out ${
+          `sm:text-body text-body hover:bg-surface/50 flex h-10 items-center rounded-full p-2 px-4 transition-colors duration-300 ease-in-out ${
             isActive
               ? 'border-primary text-primary font-bold'
               : 'text-text-primary font-normal'
@@ -47,9 +48,9 @@ const NavMenu = () => {
     <>
       <nav className="flex gap-4 sm:gap-6">
         {NAV_ITEMS.map(({ buttonName, directPath }) => {
-          const isBoard = buttonName === 'Board';
+          const isBoard = buttonName === '게시판';
           const to = isBoard ? boardPath : directPath;
-          const invisible = isBoard && isUser;
+          const invisible = isBoard && !(isPreGuide || isGuide);
           return (
             <NavButton
               key={buttonName}

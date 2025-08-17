@@ -22,7 +22,8 @@ const MilestoneFeedbackModal = ({
 }: MilestoneFeedbackModalProps) => {
   const [feedback, setFeedback] = useState('');
 
-  const { submitFeedbackOnSubroadmap } = useRoadmaps();
+  const { submitFeedbackOnSubroadmap, isSubmitFeedbackOnSubroadmapSuccess } =
+    useRoadmaps();
 
   const handleSubmit = () => {
     submitFeedbackOnSubroadmap({
@@ -31,6 +32,11 @@ const MilestoneFeedbackModal = ({
         content: feedback,
       },
     });
+    if (isSubmitFeedbackOnSubroadmapSuccess) {
+      onSubmit(feedback);
+      setFeedback('');
+      onClose();
+    }
   };
 
   return (
