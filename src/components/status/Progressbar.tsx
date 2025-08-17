@@ -40,7 +40,7 @@ const Progressbar = ({
   return (
     <div className="flex w-full items-center gap-3">
       <div
-        className="h-2.5 flex-1 overflow-hidden rounded-full bg-blue-100"
+        className="h-2.5 flex-1 overflow-hidden rounded-full bg-blue-50"
         role="progressbar"
         aria-valuenow={safeProgress}
         aria-valuemin={0}

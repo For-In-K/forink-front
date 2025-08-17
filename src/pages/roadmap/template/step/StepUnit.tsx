@@ -21,7 +21,7 @@ const StepUnit = ({ step, roadmapId }: StepUnitProps) => {
   }, [step.contents]);
 
   const queryClient = useQueryClient();
-  const { updateCheck } = useRoadmaps();
+  const { updateCheck, isUpdateCheckSuccess } = useRoadmaps();
 
   const stepNumber = step.stepNumber;
   const stepTitle = `${step.stepNumber}. ${step.stepTitle}`;
@@ -30,7 +30,6 @@ const StepUnit = ({ step, roadmapId }: StepUnitProps) => {
   const isStepCompleted = contents.every((content) => content.isChecked);
 
   const handleFeedbackModalClose = () => setstepFeedbackOpen(false);
-
   const handleFeedbackStepSubmit = () => setstepFeedbackOpen(true);
 
   const handleToggleContent = useCallback(
@@ -60,9 +59,11 @@ const StepUnit = ({ step, roadmapId }: StepUnitProps) => {
         />
       </div>
       <div className="flex w-full flex-col justify-start gap-8 rounded-3xl bg-white p-8 shadow-sm md:px-15 md:py-10">
-        <div className="gap-10">
-          <p className="text-title2 text-black">{stepTitle}</p>
-          <p className="text-caption text-text-muted">{stepDescription}</p>
+        <div className="flex flex-col gap-1">
+          <p className="text-title2 font-bold text-black">{stepTitle}</p>
+          <p className="text-body font-medium text-zinc-500">
+            {stepDescription}
+          </p>
         </div>
         <div className="flex flex-col gap-3">
           {contents.map((content) => (

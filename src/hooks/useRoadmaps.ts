@@ -89,7 +89,8 @@ const useRoadmaps = (roadmapType?: string, stepContentId?: number) => {
   const { data: roadmapsOnType, isLoading: isRoadmapsOnTypeLoading } =
     useRoadmapsOnType(roadmapType);
   const { data: roadmapStepDetail } = useRoadmapStepDetail(stepContentId);
-  const { mutate: updateCheck } = useUpdateRoadmapStepDetailCheck();
+  const { mutate: updateCheck, isSuccess: isUpdateCheckSuccess } =
+    useUpdateRoadmapStepDetailCheck();
   const {
     mutate: submitFeedbackOnSubroadmap,
     isSuccess: isSubmitFeedbackOnSubroadmapSuccess,
@@ -107,6 +108,7 @@ const useRoadmaps = (roadmapType?: string, stepContentId?: number) => {
     isRoadmapsOnTypeLoading,
     roadmapStepDetail,
     updateCheck,
+    isUpdateCheckSuccess,
     submitFeedbackOnSubroadmap,
     isSubmitFeedbackOnSubroadmapSuccess,
     submitFeedbackOnStepDetail,

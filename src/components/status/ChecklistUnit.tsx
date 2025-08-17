@@ -9,8 +9,6 @@ interface ChecklistUnitProps {
 }
 
 const ChecklistUnit = ({ content, onToggle }: ChecklistUnitProps) => {
-  const [isChecked, setIsChecked] = useState(content.isChecked);
-
   return (
     <div className="flex gap-3 md:gap-5">
       <CheckButton
@@ -18,7 +16,9 @@ const ChecklistUnit = ({ content, onToggle }: ChecklistUnitProps) => {
         isChecked={content.isChecked}
         onClick={() => onToggle(content.stepContentId)}
       />
-      <p>{content.stepContent}</p>
+      <p className={`${content.isChecked ? 'text-zinc-400 line-through' : ''}`}>
+        {content.stepContent}
+      </p>
     </div>
   );
 };
