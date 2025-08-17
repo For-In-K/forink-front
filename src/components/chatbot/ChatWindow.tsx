@@ -110,7 +110,7 @@ const ChatWindow = ({ bottom = 0 }: { bottom?: number }) => {
 
   return (
     <div
-      className="fixed right-4 bottom-0 flex min-h-50 w-[360px] flex-col items-center rounded-xl bg-white shadow-lg"
+      className="fixed right-4 bottom-0 flex min-h-50 w-[400px] flex-col items-center rounded-xl bg-white shadow-lg"
       style={{
         top: `calc(var(--height-min-header) + 20px)`,
         maxHeight: `calc(100vh - var(--height-min-header) - ${bottom}px)`,
@@ -119,7 +119,7 @@ const ChatWindow = ({ bottom = 0 }: { bottom?: number }) => {
     >
       <ChatHeader chatId={chatId} isBusy={isBusy} />
       <div className="w-full border-t border-gray-200" />
-      <div className="flex h-full min-h-0 w-full flex-col justify-between gap-2 p-3">
+      <div className="flex h-full min-h-0 w-full flex-col justify-between gap-3 p-3">
         <ChatLog messages={messages} loading={isBusy} />
         <ChatInput onSend={sendMessage} disabled={isBusy} />
       </div>

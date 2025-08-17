@@ -39,7 +39,7 @@ const ChatInput = ({ onSend, disabled = false }: ChatInputProps) => {
   };
 
   return (
-    <div className="flex w-full flex-col gap-1 rounded-xl bg-white p-2 shadow-sm">
+    <div className="border-border flex w-full flex-col gap-1 rounded-xl border bg-white p-2 shadow-sm">
       <textarea
         ref={textareaRef}
         className="text-text-primary w-full resize-none p-2 placeholder:text-gray-300 focus:outline-none"
