@@ -3,13 +3,13 @@ import { officialGuideProfiles } from '@mocks/data/guides';
 
 const ProfileWrapper = () => {
   return (
-    <>
-      <div className="grid grid-cols-2 gap-15 md:grid-cols-3">
+    <section>
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
         {officialGuideProfiles.map((profile) => (
           <ProfileCard key={profile.memberId} profile={profile} />
         ))}
       </div>
-    </>
+    </section>
   );
 };
 

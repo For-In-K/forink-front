@@ -10,7 +10,7 @@ const RequestButton = () => {
 
   return (
     <button
-      className="sm:text-body bg-primary truncate rounded-xl px-6 py-3 text-sm text-white"
+      className="sm:text-body bg-primary w-full truncate rounded-xl px-6 py-2 text-sm text-white sm:py-3"
       onClick={handleRequestMatching}
     >
       {t('request')}
