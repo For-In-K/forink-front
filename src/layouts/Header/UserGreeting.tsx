@@ -9,10 +9,10 @@ const UserGreeting = () => {
     <p className="text-body text-text-muted hidden truncate text-center font-mono lg:inline-block">
       {user ? (
         <>
-          <span>{t('greeting')}</span>, {user?.email}!
+          <span>{t('greetingUser', {username: user?.email})}</span>
         </>
       ) : (
-        <span>{t('greeting')} to ForinK!</span>
+        <span>{t('greeting')}</span>
       )}
     </p>
   );
