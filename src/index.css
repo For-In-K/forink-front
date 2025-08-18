@@ -58,7 +58,7 @@
 
 @layer components {
   button {
-    @apply text-title2 gap-5 rounded-full transition-colors duration-200 ease-in-out outline-none;
+    @apply rounded-full transition-colors duration-200 ease-in-out outline-none;
     cursor: pointer;
   }
 

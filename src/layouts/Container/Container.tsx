@@ -14,9 +14,9 @@ const Container = () => {
   const { isHomeServiceSignVisible } = useHomeServiceSign();
 
   return (
-    <div className="mt-[var(--height-min-header)] w-full md:mt-[var(--height-header)]">
+    <div className="mt-[var(--height-min-header)] min-h-[calc(100vh-var(--height-min-header))] w-full md:mt-[var(--height-header)] md:min-h-[calc(100vh-var(--height-header))]">
       {!isSignedIn && isHomeServiceSignVisible && <HomeServiceSign />}
-      <div className="container mx-auto px-10 py-10 md:py-15">
+      <div className="relative container mx-auto px-10 py-10 md:py-15">
         <Outlet />
         <CustomToastContainer />
         {isSignedIn && isChatbotVisible && <ChatbotWidget />}
