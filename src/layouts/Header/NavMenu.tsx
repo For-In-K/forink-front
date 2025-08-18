@@ -1,42 +1,42 @@
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import useAuth from '@hooks/useAuth';
 
-const NAV_ITEMS = [
-  { buttonName: '홈', directPath: '/' },
-  { buttonName: '로드맵', directPath: '/roadmap' },
-  { buttonName: '가이드', directPath: '/guide' },
-  { buttonName: '게시판', directPath: '/board' },
+const ROUTES = [
+  { key: 'home', path: '/' },
+  { key: 'roadmap', path: '/roadmap' },
+  { key: 'guide', path: '/guide' },
+  { key: 'board', path: '/board' },
 ] as const;
 
-type NavMenuButton = (typeof NAV_ITEMS)[number];
+type RouteItem = (typeof ROUTES)[number];
 
 interface NavMenuButtonProps {
-  label: NavMenuButton['buttonName'];
+  label: string;
   to: string;
   invisible?: boolean;
 }
 
 const NavButton = ({ label, to, invisible }: NavMenuButtonProps) => {
   return (
-    <>
-      <NavLink
-        to={to}
-        className={({ isActive }) =>
-          `sm:text-body hover:bg-surface/50 flex h-10 items-center rounded-full p-2 px-4 text-sm transition-colors duration-300 ease-in-out ${
-            isActive
-              ? 'border-primary text-primary font-bold'
-              : 'text-text-primary font-normal'
-          } ${invisible ? 'pointer-events-none invisible' : ''}`
-        }
-      >
-        {label}
-      </NavLink>
-    </>
+    <NavLink
+      to={to}
+      className={({ isActive }) =>
+        `sm:text-body hover:bg-surface/50 flex h-10 items-center rounded-full p-2 px-4 text-sm transition-colors duration-300 ease-in-out ${
+          isActive
+            ? 'border-primary text-primary font-bold'
+            : 'text-text-primary font-normal'
+        } ${invisible ? 'pointer-events-none invisible' : ''}`
+      }
+    >
+      {label}
+    </NavLink>
   );
 };
 
 const NavMenu = () => {
-  const { isUser, isPreGuide, isGuide } = useAuth();
+  const { t } = useTranslation();
+  const { isPreGuide, isGuide } = useAuth();
 
   const boardPath = isPreGuide
     ? '/board/guide/status'
@@ -45,23 +45,17 @@ const NavMenu = () => {
       : '/guide';
 
   return (
-    <>
-      <nav className="flex truncate sm:gap-4 md:gap-6">
-        {NAV_ITEMS.map(({ buttonName, directPath }) => {
-          const isBoard = buttonName === '게시판';
-          const to = isBoard ? boardPath : directPath;
-          const invisible = isBoard && !(isPreGuide || isGuide);
-          return (
-            <NavButton
-              key={buttonName}
-              to={to}
-              label={buttonName}
-              invisible={invisible}
-            />
-          );
-        })}
-      </nav>
-    </>
+    <nav className="flex truncate sm:gap-4 md:gap-6">
+      {ROUTES.map(({ key, path }) => {
+        const isBoard = key === 'board';
+        const to = isBoard ? boardPath : path;
+        const label = t(`nav.${key}`);
+        const invisible = isBoard && !(isPreGuide || isGuide);
+        return (
+          <NavButton key={key} to={to} label={label} invisible={invisible} />
+        );
+      })}
+    </nav>
   );
 };
 

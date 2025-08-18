@@ -3,11 +3,11 @@ import { useState } from 'react';
 import Flag from 'react-world-flags';
 import { motion } from 'framer-motion';
 
-type Language = 'eng' | 'kor' | 'chi' | 'vie';
+type Language = 'kor' | 'eng' | 'chi' | 'vie';
 
 const LANGUAGES: { code: Language; label: string; countryCode: string }[] = [
-  { code: 'eng', label: 'English', countryCode: 'US' },
   { code: 'kor', label: '한국어', countryCode: 'KR' },
+  { code: 'eng', label: 'English', countryCode: 'US' },
   { code: 'chi', label: '中文', countryCode: 'CN' },
   { code: 'vie', label: 'Tiếng Việt', countryCode: 'VN' },
 ];
@@ -17,7 +17,7 @@ export const LanguageSelector = () => {
   const [open, setOpen] = useState(false);
 
   const currentLang =
-    LANGUAGES.find((l) => l.code === i18n.language) || LANGUAGES[0];
+    LANGUAGES.find((l) => l.code === i18n.language) || LANGUAGES[1];
 
   const toggleDropdown = () => setOpen((prev) => !prev);
 

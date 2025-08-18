@@ -2,11 +2,17 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 i18n.use(initReactI18next).init({
-  lng: 'eng',
+  lng: 'kor',
   fallbackLng: 'eng',
   resources: {
     eng: {
       translation: {
+        nav: {
+          home: 'Home',
+          roadmap: 'Roadmap',
+          guide: 'Guide',
+          board: 'Board',
+        },
         greeting: 'Welcome',
         signin: 'Sign in',
         signout: 'Sign out',
@@ -53,6 +59,12 @@ i18n.use(initReactI18next).init({
     },
     kor: {
       translation: {
+        nav: {
+          home: '홈',
+          roadmap: '로드맵',
+          guide: '가이드',
+          board: '게시판',
+        },
         greeting: '안녕하세요',
         signin: '로그인',
         signout: '로그아웃',
@@ -97,6 +109,12 @@ i18n.use(initReactI18next).init({
     },
     chi: {
       translation: {
+        nav: {
+          home: '首页',
+          roadmap: '路线图',
+          guide: '指南',
+          board: '论坛',
+        },
         greeting: '欢迎',
         signin: '登录',
         signout: '登出',
@@ -138,6 +156,12 @@ i18n.use(initReactI18next).init({
     },
     vie: {
       translation: {
+        nav: {
+          home: 'Trang chủ',
+          roadmap: 'Lộ trình',
+          guide: 'Hướng dẫn',
+          board: 'Diễn đàn',
+        },
         greeting: 'Chào mừng',
         signin: 'Đăng nhập',
         signout: 'Đăng xuất',
