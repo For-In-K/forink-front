@@ -97,7 +97,7 @@ const ChatWindow = ({ bottom = 0 }: { bottom?: number }) => {
 
   return (
     <div
-      className="fixed right-4 bottom-0 flex min-h-50 w-[400px] flex-col items-center rounded-xl bg-white shadow-lg"
+      className="fixed right-4 bottom-0 flex min-h-50 flex-col items-center rounded-xl bg-white shadow-lg md:w-[400px]"
       style={{
         top: `calc(var(--height-min-header) + 20px)`,
         maxHeight: `calc(100vh - var(--height-min-header) - ${bottom}px)`,
