@@ -36,6 +36,9 @@ i18n.use(initReactI18next).init({
           findGuide: '가이드 찾기',
         },
         roadmap: {
+          title: '나의 정착 로드맵',
+          description:
+            '진단 결과를 바탕으로 생성된 개인 맞춤형 정착 가이드예요.',
           categories: {
             administration: {
               title: '나만의 행정 로드맵',
@@ -69,6 +72,19 @@ i18n.use(initReactI18next).init({
             placeholder:
               '로드맵 내용, 전문성, 유용성 등을 강조해서 작성하면 좋아요.',
           },
+        },
+        guide: {
+          matchingCount: '{{ guideExpCount }}회 매칭 경력',
+          specialty: '전문 분야',
+          language: '가능 언어',
+          matchingExpertise: '가이드 매칭 경력',
+          matchingUnit: '{{ guideExpCount }}회',
+        },
+        fori: {
+          greeting:
+            '안녕하세요! 👋 도우미 Fori예요.\n한국 생활과 행정 절차에 대해 궁금한 점이 있으면 언제든 물어보세요.',
+          faq1: '비자 연장 방법이 궁금해요.',
+          faq2: '외국인등록증 발급은 어떻게 하나요?',
         },
         footer: {
           service: {
@@ -121,6 +137,9 @@ i18n.use(initReactI18next).init({
           findGuide: 'Find a Guide',
         },
         roadmap: {
+          title: 'My Settlement Roadmap',
+          description:
+            'This is your personalized roadmap for settling in Korea, based on your diagnosis results.',
           categories: {
             administration: {
               title: 'Administration Roadmap',
@@ -156,6 +175,19 @@ i18n.use(initReactI18next).init({
             placeholder:
               'It’s great to highlight the content, expertise, and usefulness of the roadmap.',
           },
+        },
+        guide: {
+          matchingCount: '{{ guideExpCount }} times matched experience',
+          specialty: 'Specialty',
+          language: 'Language',
+          matchingExpertise: 'Matching Expertise',
+          matchingUnit: '{{ guideExpCount }} times',
+        },
+        fori: {
+          greeting:
+            'Hello! 👋 I am Fori, your assistant.\nFeel free to ask me anything about life in Korea and administrative procedures.',
+          faq1: 'How do I extend my visa?',
+          faq2: 'How do I get a foreigner registration card?',
         },
         footer: {
           service: {
@@ -206,6 +238,8 @@ i18n.use(initReactI18next).init({
           findGuide: '查找指南',
         },
         roadmap: {
+          title: '我的定居路线图',
+          description: '这是基于您的诊断结果生成的个性化定居指南。',
           categories: {
             administration: {
               title: '我的行政路线图',
@@ -236,6 +270,19 @@ i18n.use(initReactI18next).init({
             description: '请为里程碑留下反馈。',
             placeholder: '强调路线图的内容、专业性和实用性是很好的。',
           },
+        },
+        guide: {
+          matchingCount: '{{ guideExpCount }}次匹配经验',
+          specialty: '专业领域',
+          language: '可用语言',
+          matchingExpertise: '匹配专业',
+          matchingUnit: '{{ guideExpCount }}次',
+        },
+        fori: {
+          greeting:
+            '你好！👋 我是 Fori，你的助手。\n如果你对韩国生活和行政程序有任何疑问，请随时问我。',
+          faq1: '我如何延长我的签证？',
+          faq2: '我如何获得外国人注册卡？',
         },
         footer: {
           service: {
@@ -288,6 +335,9 @@ i18n.use(initReactI18next).init({
           findGuide: 'Tìm hướng dẫn',
         },
         roadmap: {
+          title: 'Lộ trình định cư của tôi',
+          description:
+            'Đây là lộ trình cá nhân hóa dành cho bạn để định cư tại Hàn Quốc, dựa trên kết quả chẩn đoán của bạn.',
           categories: {
             administration: {
               title: 'Quản trị',
@@ -323,6 +373,19 @@ i18n.use(initReactI18next).init({
             placeholder:
               'Nên làm nổi bật nội dung, chuyên môn và tính hữu ích của lộ trình.',
           },
+        },
+        guide: {
+          matchingCount: '{{ guideExpCount }} lần kinh nghiệm ghép đôi',
+          specialty: 'Chuyên môn',
+          language: 'Ngôn ngữ',
+          matchingExpertise: 'Kinh nghiệm ghép đôi',
+          matchingUnit: '{{ guideExpCount }} lần',
+        },
+        fori: {
+          greeting:
+            'Xin chào! 👋 Tôi là Fori, trợ lý của bạn.\nHãy thoải mái hỏi tôi bất cứ điều gì về cuộc sống ở Hàn Quốc và các thủ tục hành chính.',
+          faq1: 'Tôi làm thế nào để gia hạn visa?',
+          faq2: 'Tôi làm thế nào để nhận thẻ đăng ký người nước ngoài?',
         },
         footer: {
           service: {

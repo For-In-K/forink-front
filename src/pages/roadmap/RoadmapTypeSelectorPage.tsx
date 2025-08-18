@@ -37,10 +37,10 @@ const RoadmapTypeSelector = () => {
     <main>
       <header className="mb-8">
         <p className="text-title2 text-text-muted font-semibold">
-          나의 정착 로드맵
+          {t('roadmap.title')}
         </p>
         <p className="mt-1 text-sm text-slate-500">
-          진단 결과를 바탕으로 생성된 개인 맞춤형 정착 가이드예요.
+          {t('roadmap.description')}
         </p>
       </header>
 

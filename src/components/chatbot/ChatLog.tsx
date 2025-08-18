@@ -29,6 +29,8 @@ const ChatLog = ({
     el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' });
   }, [messages, loading]);
 
+  // console.log(chatBotInit);
+
   return (
     <div ref={wrapRef} className="min-h-0 flex-1 overflow-auto px-2">
       <div className="mb-3 flex items-start gap-2">
