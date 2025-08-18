@@ -7,6 +7,9 @@ i18n.use(initReactI18next).init({
   resources: {
     kor: {
       translation: {
+        slogan: '외국인을 위한 맞춤형 정착 지원 서비스',
+        sloganDescription:
+          '한국 생활 적응부터 까다로운 행정 절차까지, 당신의 성공적인 정착을 위한 모든 것을 함께 합니다.',
         nav: {
           home: '홈',
           roadmap: '로드맵',
@@ -29,6 +32,8 @@ i18n.use(initReactI18next).init({
           importantDocsDescription:
             '놓치면 안되는 필수 행정 절차들을 확인하세요.',
           articleButton: '자세히 보기',
+          startExam: '정착 진단 시작하기',
+          findGuide: '가이드 찾기',
         },
         roadmap: {
           categories: {
@@ -65,10 +70,31 @@ i18n.use(initReactI18next).init({
               '로드맵 내용, 전문성, 유용성 등을 강조해서 작성하면 좋아요.',
           },
         },
+        footer: {
+          service: {
+            title: '서비스',
+            settlementExam: '정착 진단',
+            recommendRoadmap: '로드맵 추천',
+            matchGuide: '가이드 매칭',
+          },
+          support: {
+            title: '지원',
+            help: '도움말',
+            contactUs: '문의하기',
+            faq: '자주 묻는 질문',
+          },
+          contact: {
+            title: '연락처',
+            schedule: '평일 09:00-18:00',
+          },
+        },
       },
     },
     eng: {
       translation: {
+        slogan: 'Tailored Settlement Support for Foreigners',
+        sloganDescription:
+          'From adapting to life in Korea to navigating complex administrative procedures, we are here to support your successful settlement.',
         nav: {
           home: 'Home',
           roadmap: 'Roadmap',
@@ -91,6 +117,8 @@ i18n.use(initReactI18next).init({
           importantDocsDescription:
             'Check essential administrative procedures you must not miss.',
           articleButton: 'Read More',
+          startExam: 'Start Settlement Diagnosis',
+          findGuide: 'Find a Guide',
         },
         roadmap: {
           categories: {
@@ -129,10 +157,31 @@ i18n.use(initReactI18next).init({
               'It’s great to highlight the content, expertise, and usefulness of the roadmap.',
           },
         },
+        footer: {
+          service: {
+            title: 'Service',
+            settlementExam: 'Settlement Diagnosis',
+            recommendRoadmap: 'Recommend Roadmap',
+            matchGuide: 'Match Guide',
+          },
+          support: {
+            title: 'Support',
+            help: 'Help',
+            contactUs: 'Contact Us',
+            faq: 'FAQ',
+          },
+          contact: {
+            title: 'Contact',
+            schedule: 'Weekdays 09:00-18:00',
+          },
+        },
       },
     },
     chi: {
       translation: {
+        slogan: '为外国人量身定制的定居支持服务',
+        sloganDescription:
+          '从适应韩国生活到应对复杂的行政程序，我们在这里支持您的成功定居。',
         nav: {
           home: '首页',
           roadmap: '路线图',
@@ -153,6 +202,8 @@ i18n.use(initReactI18next).init({
           importantDocsTitle: '重要行政信息',
           importantDocsDescription: '查看您必须了解的重要行政程序。',
           articleButton: '阅读更多',
+          startExam: '开始定居诊断',
+          findGuide: '查找指南',
         },
         roadmap: {
           categories: {
@@ -186,10 +237,31 @@ i18n.use(initReactI18next).init({
             placeholder: '强调路线图的内容、专业性和实用性是很好的。',
           },
         },
+        footer: {
+          service: {
+            title: '服务',
+            settlementExam: '定居诊断',
+            recommendRoadmap: '推荐路线图',
+            matchGuide: '匹配指南',
+          },
+          support: {
+            title: '支持',
+            help: '帮助',
+            contactUs: '联系我们',
+            faq: '常见问题解答',
+          },
+          contact: {
+            title: '联系方式',
+            schedule: '工作日 09:00-18:00',
+          },
+        },
       },
     },
     vie: {
       translation: {
+        slogan: 'Hỗ trợ định cư dành riêng cho người nước ngoài',
+        sloganDescription:
+          'Từ việc thích nghi với cuộc sống ở Hàn Quốc đến việc điều hướng các thủ tục hành chính phức tạp, chúng tôi ở đây để hỗ trợ bạn định cư thành công.',
         nav: {
           home: 'Trang chủ',
           roadmap: 'Lộ trình',
@@ -212,6 +284,8 @@ i18n.use(initReactI18next).init({
           importantDocsDescription:
             'Xem các thủ tục hành chính thiết yếu mà bạn không nên bỏ lỡ.',
           articleButton: 'Đọc thêm',
+          startExam: 'Bắt đầu chẩn đoán định cư',
+          findGuide: 'Tìm hướng dẫn',
         },
         roadmap: {
           categories: {
@@ -248,6 +322,24 @@ i18n.use(initReactI18next).init({
             description: 'Vui lòng để lại phản hồi cho cột mốc.',
             placeholder:
               'Nên làm nổi bật nội dung, chuyên môn và tính hữu ích của lộ trình.',
+          },
+        },
+        footer: {
+          service: {
+            title: 'Dịch vụ',
+            settlementExam: 'Chẩn đoán định cư',
+            recommendRoadmap: 'Đề xuất lộ trình',
+            matchGuide: 'Khớp hướng dẫn',
+          },
+          support: {
+            title: 'Hỗ trợ',
+            help: 'Trợ giúp',
+            contactUs: 'Liên hệ với chúng tôi',
+            faq: 'Câu hỏi thường gặp',
+          },
+          contact: {
+            title: 'Liên hệ',
+            schedule: 'Thứ Hai đến Thứ Sáu 09:00-18:00',
           },
         },
       },
