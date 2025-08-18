@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle, X } from 'lucide-react';
 import ChatWindow from './ChatWindow';
+import useChatBot from '@hooks/useChatBot';
 
 const CHATBOT_LAYOUT = {
   BUTTON_SIZE: 64,
@@ -10,8 +11,31 @@ const CHATBOT_LAYOUT = {
 
 const ChatbotWidget = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const { createChatBot, isCreating } = useChatBot();
 
-  const handleStartChat = () => setIsChatOpen((prev) => !prev);
+  const handleStartChat = () => {
+    if (!isChatOpen) {
+      createChatBot(undefined, {
+        onSuccess: (data: any) => {
+          const id = data?.chatId ?? data?.data?.chatId ?? null;
+          if (id && Number(id) >= 1) {
+            try {
+              localStorage.setItem('fori_chatId', String(Number(id)));
+            } catch {}
+            setIsChatOpen(true);
+          } else {
+            setIsChatOpen(false);
+          }
+        },
+        onError: () => {
+          setIsChatOpen(false);
+        },
+      });
+      return;
+    }
+
+    setIsChatOpen(false);
+  };
 
   const chatWindowBottom =
     CHATBOT_LAYOUT.BUTTON_SIZE +
@@ -19,14 +43,28 @@ const ChatbotWidget = () => {
     CHATBOT_LAYOUT.WINDOW_EXTRA_MARGIN;
 
   return (
-    <div className="fixed right-0 bottom-0 z-0 m-4">
+    <div className="pointer-events-auto fixed right-0 bottom-0 z-0 m-4">
       <button
-        className={`${isChatOpen ? 'animate-none' : 'slowBounce'} from-primary flex size-15 items-center justify-center rounded-full bg-gradient-to-bl to-blue-800 transition-all duration-300 hover:scale-115`}
+        className={`from-primary flex items-center justify-center rounded-full bg-gradient-to-br to-blue-600 text-white transition-all duration-300 ${
+          isCreating ? 'cursor-not-allowed opacity-60' : 'hover:scale-105'
+        }`}
+        style={{
+          width: CHATBOT_LAYOUT.BUTTON_SIZE,
+          height: CHATBOT_LAYOUT.BUTTON_SIZE,
+        }}
         onClick={handleStartChat}
-        aria-label="챗봇 열기"
+        aria-label={isChatOpen ? '챗봇 닫기' : '챗봇 열기'}
+        disabled={isCreating}
       >
-        <MessageCircle className="text-white" size={16} />
+        <span
+          className={`inline-block transition-transform duration-500 ${
+            isCreating ? 'animate-spin' : ''
+          } ${isChatOpen ? 'rotate-180' : 'rotate-0'}`}
+        >
+          {isChatOpen ? <X size={25} /> : <MessageCircle size={20} />}
+        </span>
       </button>
+
       {isChatOpen && <ChatWindow bottom={chatWindowBottom} />}
     </div>
   );

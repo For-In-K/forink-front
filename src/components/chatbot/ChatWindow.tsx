@@ -21,6 +21,7 @@ const STORAGE_KEY = 'fori_chatId';
 const ChatWindow = ({ bottom = 0 }: { bottom?: number }) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [chatId, setChatId] = useState<number | null>(null);
+  const [isActive, setIsActive] = useState<boolean>(false);
 
   const { createChatBot, isCreating, exchangeChatMessage, isExchanging } =
     useChatBot();
@@ -49,7 +50,7 @@ const ChatWindow = ({ bottom = 0 }: { bottom?: number }) => {
           pushMessage('bot', answer);
         },
         onError: () =>
-          pushMessage('bot', '응답을 받지 못했습니다. 다시 시도해 주세요.'),
+          pushMessage('bot', '응답을 받지 못했어요. 다시 시도해 주세요 😢'),
       });
     },
     [exchangeChatMessage, pushMessage]
@@ -60,29 +61,20 @@ const ChatWindow = ({ bottom = 0 }: { bottom?: number }) => {
       if (!text.trim()) return;
       pushMessage('user', text);
 
-      if (chatId && chatId >= 1) {
-        sendWithChatId(chatId, text);
+      let storedId: number | null = null;
+      try {
+        const s = localStorage.getItem(STORAGE_KEY);
+        if (s && Number(s) >= 1) storedId = Number(s);
+      } catch {}
+
+      if (storedId && storedId >= 1) {
+        sendWithChatId(storedId, text);
         return;
       }
 
-      createChatBot(undefined, {
-        onSuccess: (data: CreateChatBotResponse | any) => {
-          const id = data?.chatId ?? data?.data?.chatId ?? null;
-          if (id && Number(id) >= 1) {
-            const numericId = Number(id);
-            setChatId(numericId);
-            try {
-              localStorage.setItem(STORAGE_KEY, String(numericId));
-            } catch {}
-            sendWithChatId(numericId, text);
-          } else {
-            pushMessage('bot', '챗봇 생성에 실패했습니다.');
-          }
-        },
-        onError: () => pushMessage('bot', '챗봇 생성에 실패했습니다.'),
-      });
+      pushMessage('bot', '챗봇이 준비되지 않았어요. 다시 열어주세요.');
     },
-    [chatId, createChatBot, pushMessage, sendWithChatId]
+    [pushMessage, sendWithChatId]
   );
 
   useEffect(() => {
@@ -90,37 +82,36 @@ const ChatWindow = ({ bottom = 0 }: { bottom?: number }) => {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored && Number(stored) >= 1) {
         setChatId(Number(stored));
-        return;
+        setIsActive(true);
       }
     } catch {}
 
-    createChatBot(undefined, {
-      onSuccess: (data: CreateChatBotResponse | any) => {
-        const id = data?.chatId ?? data?.data?.chatId ?? null;
-        if (id && Number(id) >= 1) {
-          const numericId = Number(id);
-          setChatId(numericId);
-          try {
-            localStorage.setItem(STORAGE_KEY, String(numericId));
-          } catch {}
-        }
-      },
-    });
-  }, []);
+    return () => {
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+      } catch {}
+      setChatId(null);
+      setIsActive(false);
+    };
+  }, [exchangeChatMessage]);
 
   return (
     <div
-      className="fixed right-4 bottom-0 flex min-h-50 w-[400px] flex-col items-center rounded-xl bg-white shadow-lg"
+      className="fixed right-4 bottom-0 flex min-h-50 flex-col items-center rounded-xl bg-white shadow-lg md:w-[400px]"
       style={{
         top: `calc(var(--height-min-header) + 20px)`,
         maxHeight: `calc(100vh - var(--height-min-header) - ${bottom}px)`,
         zIndex: 50,
       }}
     >
-      <ChatHeader chatId={chatId} isBusy={isBusy} />
+      <ChatHeader chatId={chatId} isBusy={isBusy} isActive={isActive} />
       <div className="w-full border-t border-gray-200" />
       <div className="flex h-full min-h-0 w-full flex-col justify-between gap-3 p-3">
-        <ChatLog messages={messages} loading={isBusy} />
+        <ChatLog
+          messages={messages}
+          loading={isBusy}
+          onFaqClick={sendMessage}
+        />
         <ChatInput onSend={sendMessage} disabled={isBusy} />
       </div>
     </div>

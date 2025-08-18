@@ -111,10 +111,10 @@ const MilestoneWrapper = ({ roadmapType }: MilestoneWrapperProps) => {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         zoomOnScroll={false}
-        zoomOnPinch={false}
+        // zoomOnPinch={false}
         zoomOnDoubleClick={false}
-        minZoom={1}
-        maxZoom={1}
+        // minZoom={1}
+        // maxZoom={1}
         panOnScroll={true}
         panOnDrag={true}
         fitView

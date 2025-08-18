@@ -15,12 +15,12 @@ type Message = {
 const ChatLog = ({
   messages = [],
   loading = false,
+  onFaqClick,
 }: {
   messages?: Message[];
   loading?: boolean;
+  onFaqClick?: (text: string) => void;
 }) => {
-  const INITIAL_MENT =
-    '안녕하세요! 👋 도우미 Fori예요.\n한국 생활과 행정 절차에 대해 궁금한 점이 있으면 언제든 물어보세요.';
   const wrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -35,14 +35,18 @@ const ChatLog = ({
         <img src={Logo} alt="Fori Logo" className="h-8 w-8" />
         <div className="border-border flex flex-col gap-2 rounded-tl-sm rounded-tr-2xl rounded-br-2xl rounded-bl-2xl border bg-white p-3 text-sm shadow-sm">
           <p className="whitespace-pre-line">{chatBotInit.initialMent}</p>
-          {chatBotInit.faqButtonText.map((text, index) => (
-            <button
-              key={index}
-              className="hover:bg-white-hover border-primary text-primary inline w-fit rounded-md border bg-white p-1.5 text-left text-xs font-medium"
-            >
-              {text}
-            </button>
-          ))}
+          <div className="flex flex-wrap gap-2">
+            {chatBotInit.faqButtonText.map((text, index) => (
+              <button
+                key={index}
+                className="hover:bg-white-hover border-primary text-primary inline w-fit rounded-md border bg-white p-1.5 text-left text-xs font-medium"
+                onClick={() => onFaqClick?.(text)}
+                type="button"
+              >
+                {text}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
       <div className="flex flex-col gap-3">

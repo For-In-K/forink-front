@@ -22,7 +22,7 @@ const NavButton = ({ label, to, invisible }: NavMenuButtonProps) => {
       <NavLink
         to={to}
         className={({ isActive }) =>
-          `sm:text-body text-body hover:bg-surface/50 flex h-10 items-center rounded-full p-2 px-4 transition-colors duration-300 ease-in-out ${
+          `sm:text-body hover:bg-surface/50 flex h-10 items-center rounded-full p-2 px-4 text-sm transition-colors duration-300 ease-in-out ${
             isActive
               ? 'border-primary text-primary font-bold'
               : 'text-text-primary font-normal'
@@ -46,7 +46,7 @@ const NavMenu = () => {
 
   return (
     <>
-      <nav className="flex gap-4 sm:gap-6">
+      <nav className="flex truncate sm:gap-4 md:gap-6">
         {NAV_ITEMS.map(({ buttonName, directPath }) => {
           const isBoard = buttonName === '게시판';
           const to = isBoard ? boardPath : directPath;
