@@ -5,6 +5,68 @@ i18n.use(initReactI18next).init({
   lng: 'kor',
   fallbackLng: 'eng',
   resources: {
+    kor: {
+      translation: {
+        nav: {
+          home: '홈',
+          roadmap: '로드맵',
+          guide: '가이드',
+          board: '게시판',
+        },
+        greeting: '안녕하세요',
+        signin: '로그인',
+        signout: '로그아웃',
+        submit: '제출하기',
+        request: '가이드 매칭 요청',
+        error: {
+          loading: '로딩 중 오류가 발생했어요',
+        },
+        home: {
+          aiDocsTitle: 'ForinK의 최신 문서',
+          aiDocsDescription:
+            'AI 기능 도입으로 최신 문서를 확인할 수 있어요. 링크를 클릭하여 자세한 정보를 확인해보세요.',
+          importantDocsTitle: '중요 행정 정보',
+          importantDocsDescription:
+            '놓치면 안되는 필수 행정 절차들을 확인하세요.',
+          articleButton: '자세히 보기',
+        },
+        roadmap: {
+          categories: {
+            administration: {
+              title: '나만의 행정 로드맵',
+              description:
+                '비자, 건강 보험 및 등록에 대한 단계별 가이드를 받으세요.',
+            },
+            travel: {
+              title: '나만의 여행 로드맵',
+              description: '정착하기 전에 필수 장소와 팁을 알아보세요.',
+            },
+            language: {
+              title: '나만의 언어 로드맵',
+              description: '한국어의 기초를 배워 정착하는 데 도움을 주세요.',
+            },
+            career: {
+              title: '나만의 경력 로드맵',
+              description:
+                '한국에서 경력 경로를 구축할 수 있는 리소스와 가이드를 제공해요.',
+            },
+          },
+          stepFeedback: {
+            title: '단계 {{stepNumber}} 완료!',
+            description: '이 단계에 대한 피드백을 남겨주세요.',
+            bad: '별로예요',
+            good: '좋아요',
+          },
+          milestoneFeedback: {
+            button: '보상 피드백 남기기',
+            title: '모든 단계 완료!',
+            description: '마일스톤에 대한 피드백을 남겨주세요.',
+            placeholder:
+              '로드맵 내용, 전문성, 유용성 등을 강조해서 작성하면 좋아요.',
+          },
+        },
+      },
+    },
     eng: {
       translation: {
         nav: {
@@ -18,6 +80,18 @@ i18n.use(initReactI18next).init({
         signout: 'Sign out',
         submit: 'Submit',
         request: 'Request a Guide',
+        error: {
+          loading: 'An error occurred while loading',
+        },
+        home: {
+          aiDocsTitle: 'Latest Documents with AI',
+          aiDocsDescription:
+            'Check the latest documents with AI features. Click the link to learn more.',
+          importantDocsTitle: 'Important Administrative Information',
+          importantDocsDescription:
+            'Check essential administrative procedures you must not miss.',
+          articleButton: 'Read More',
+        },
         roadmap: {
           categories: {
             administration: {
@@ -57,56 +131,6 @@ i18n.use(initReactI18next).init({
         },
       },
     },
-    kor: {
-      translation: {
-        nav: {
-          home: '홈',
-          roadmap: '로드맵',
-          guide: '가이드',
-          board: '게시판',
-        },
-        greeting: '안녕하세요',
-        signin: '로그인',
-        signout: '로그아웃',
-        submit: '제출하기',
-        request: '가이드 매칭 요청',
-        roadmap: {
-          categories: {
-            administration: {
-              title: '나만의 행정 로드맵',
-              description:
-                '비자, 건강 보험 및 등록에 대한 단계별 가이드를 받으세요.',
-            },
-            travel: {
-              title: '나만의 여행 로드맵',
-              description: '정착하기 전에 필수 장소와 팁을 알아보세요.',
-            },
-            language: {
-              title: '나만의 언어 로드맵',
-              description: '한국어의 기초를 배워 정착하는 데 도움을 주세요.',
-            },
-            career: {
-              title: '나만의 경력 로드맵',
-              description:
-                '한국에서 경력 경로를 구축할 수 있는 리소스와 가이드를 제공해요.',
-            },
-          },
-          stepFeedback: {
-            title: '단계 {{stepNumber}} 완료!',
-            description: '이 단계에 대한 피드백을 남겨주세요.',
-            bad: '별로예요',
-            good: '좋아요',
-          },
-          milestoneFeedback: {
-            button: '보상 피드백 남기기',
-            title: '모든 단계 완료!',
-            description: '마일스톤에 대한 피드백을 남겨주세요.',
-            placeholder:
-              '로드맵 내용, 전문성, 유용성 등을 강조해서 작성하면 좋아요.',
-          },
-        },
-      },
-    },
     chi: {
       translation: {
         nav: {
@@ -120,6 +144,16 @@ i18n.use(initReactI18next).init({
         signout: '登出',
         submit: '提交',
         request: '请求指南',
+        error: {
+          loading: '加载时发生错误',
+        },
+        home: {
+          aiDocsTitle: 'ForinK 最新文档',
+          aiDocsDescription: '通过 AI 功能查看最新文档。点击链接了解更多信息。',
+          importantDocsTitle: '重要行政信息',
+          importantDocsDescription: '查看您必须了解的重要行政程序。',
+          articleButton: '阅读更多',
+        },
         roadmap: {
           categories: {
             administration: {
@@ -167,6 +201,18 @@ i18n.use(initReactI18next).init({
         signout: 'Đăng xuất',
         submit: 'Gửi đi',
         request: 'Yêu cầu hướng dẫn',
+        error: {
+          loading: 'Đã xảy ra lỗi khi tải',
+        },
+        home: {
+          aiDocsTitle: 'Tài liệu mới nhất của ForinK',
+          aiDocsDescription:
+            'Xem tài liệu mới nhất với tính năng AI. Nhấp vào liên kết để tìm hiểu thêm.',
+          importantDocsTitle: 'Thông tin hành chính quan trọng',
+          importantDocsDescription:
+            'Xem các thủ tục hành chính thiết yếu mà bạn không nên bỏ lỡ.',
+          articleButton: 'Đọc thêm',
+        },
         roadmap: {
           categories: {
             administration: {
