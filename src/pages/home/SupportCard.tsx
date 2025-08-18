@@ -1,7 +1,11 @@
+import { useTranslation } from 'react-i18next';
+
 import type { SupportInfoCard } from '@apis/home';
 import thumbnail from '@assets/thumbnail.svg';
 
 const SupportCard = ({ card }: { card: SupportInfoCard }) => {
+  const { t } = useTranslation();
+
   return (
     <article
       className="flex h-full flex-col overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition-transform duration-150 hover:-translate-y-1"
@@ -46,7 +50,7 @@ const SupportCard = ({ card }: { card: SupportInfoCard }) => {
             rel="noreferrer"
             className="bg-primary hover:bg-primary-hover inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium text-white transition-colors"
           >
-            Read article
+            {t('home.articleButton')}
           </a>
 
           <span className="text-xs text-gray-400">{/* optional meta */}</span>

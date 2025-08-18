@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import type { GuideProfile } from 'types/guides';
 import RequestButton from '@components/button/RequestButton';
 
@@ -21,6 +22,8 @@ interface ProfileCardProps {
 }
 
 const ProfileCard = ({ profile }: ProfileCardProps) => {
+  const { t } = useTranslation();
+
   return (
     <article className="text-body flex h-full w-full flex-col justify-between gap-4 rounded-xl bg-white p-4 shadow-sm transition-transform duration-200 hover:scale-105 md:p-6">
       <header className="flex items-center gap-5">
@@ -36,14 +39,16 @@ const ProfileCard = ({ profile }: ProfileCardProps) => {
             {profile.nationality}
           </p>
           <p className="text-primary mt-1 text-sm font-medium">
-            {profile.guideExpCount}회 매칭 경력
+            {t('guide.matchingCount', {
+              guideExpCount: profile.guideExpCount,
+            })}
           </p>
         </div>
       </header>
 
       <div className="flex flex-1 flex-col gap-4">
         <div>
-          <p className="mb-2 text-sm font-semibold">전문분야</p>
+          <p className="mb-2 text-sm font-semibold">{t('guide.specialty')}</p>
           <div className="flex flex-wrap gap-2">
             {profile.expertise.split(',').map((expertise, index) => (
               <Label
@@ -56,7 +61,7 @@ const ProfileCard = ({ profile }: ProfileCardProps) => {
         </div>
 
         <div>
-          <p className="mb-2 text-sm font-semibold">가능 언어</p>
+          <p className="mb-2 text-sm font-semibold">{t('guide.language')}</p>
           <div className="flex flex-wrap gap-2">
             {profile.language.split(',').map((language, index) => (
               <Label key={index} value={language.trim()} />
@@ -68,9 +73,13 @@ const ProfileCard = ({ profile }: ProfileCardProps) => {
       <div className="flex flex-col gap-3">
         <div className="flex items-center justify-between rounded-xl bg-blue-50 p-4">
           <div className="w-full text-center">
-            <p className="text-sm text-slate-500">가이드 매칭 경력</p>
+            <p className="text-sm text-slate-500">
+              {t('guide.matchingExpertise')}
+            </p>
             <p className="text-body text-primary font-medium">
-              {profile.guideExpCount}회
+              {t('guide.matchingUnit', {
+                guideExpCount: profile.guideExpCount,
+              })}
             </p>
           </div>
         </div>

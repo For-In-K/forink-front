@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { useTranslation } from 'react-i18next';
 
 import { getSupportInfo } from '@apis/home';
 import SupportCard from './SupportCard';
@@ -7,6 +8,8 @@ import BasicInfoCard from './info/BasicInfoCard';
 import BasicInfoWrapper from './info/BasicInfoWrapper';
 
 const HomePage = () => {
+  const { t } = useTranslation();
+
   const {
     data: supportInfo,
     isLoading,
@@ -19,16 +22,15 @@ const HomePage = () => {
   return (
     <main>
       <header className="mb-8">
-        <p className="text-title2 font-semibold">ForinK의 최신 문서</p>
+        <p className="text-title2 font-semibold">{t('home.aiDocsTitle')}</p>
         <p className="text-text-muted mt-1 text-sm">
-          AI 기능 도입으로 최신 문서를 확인할 수 있어요. 링크를 클릭하여 자세한
-          정보를 확인해보세요.
+          {t('home.aiDocsDescription')}
         </p>
       </header>
 
       {isError && (
         <div className="rounded-md border border-red-200 bg-red-50 p-4 text-red-700">
-          콘텐츠를 불러오는 중 오류가 발생했습니다.
+          {t('error.loading')}
         </div>
       )}
 
@@ -39,7 +41,7 @@ const HomePage = () => {
               <SupportCard key={idx} card={card} />
             ))}
       </div>
-      <div className="h-header" />
+      <div className="h-min-header" />
       <BasicInfoWrapper />
     </main>
   );
