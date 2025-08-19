@@ -6,7 +6,7 @@ import GuideRatingWrapper from './template/GuideRatingWrapper';
 
 const GuideRatingPage = () => {
   const { isGuide } = useAuth();
-  if (!isGuide) return <Navigate to="/" replace />;
+  // if (!isGuide) return <Navigate to="/" replace />;
 
   return (
     <div className="flex flex-col gap-10">
