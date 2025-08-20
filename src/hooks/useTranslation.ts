@@ -3,21 +3,23 @@ import { useTranslation } from 'react-i18next';
 import { fetchTranslation } from '@servieces/translationService';
 
 export const useTranslationQuery = (
-  text: string,
-  { originalLang = 'kor' } = {}
+  texts: string[],
+  { originalLang = 'ko' } = {}
 ) => {
   const { i18n } = useTranslation();
   const targetLanguage = i18n.language;
 
-  const queryKey = ['translation', text, targetLanguage];
+  const queryKey = ['translation', texts, targetLanguage];
 
-  const enabled = !!text && targetLanguage !== originalLang;
+  const enabled = !!texts && targetLanguage !== originalLang;
 
   const { data, isLoading, isError } = useQuery({
     queryKey: queryKey,
-    queryFn: () => fetchTranslation(text, targetLanguage),
+    queryFn: () => fetchTranslation(texts, targetLanguage),
     enabled,
+    staleTime: 5 * 60 * 1000,
+    retry: 1,
   });
 
-  return { data, isLoading, isError };
+  return { translatedTexts: data || texts, isLoading, isError };
 };

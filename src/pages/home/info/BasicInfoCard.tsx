@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { ServiceBasicInfo } from '@constants/home';
 import { Clock } from 'lucide-react';
 
@@ -9,6 +10,8 @@ const BasicInfoCard = ({
   url,
   icon,
 }: ServiceBasicInfo) => {
+  const { t } = useTranslation();
+
   return (
     <div className="border-border flex h-52 w-xs flex-shrink-0 flex-col items-start justify-between rounded-lg border bg-white p-6 transition">
       <div className="w-full">
@@ -28,9 +31,9 @@ const BasicInfoCard = ({
             {tag}
           </span>
         </div>
-        <div className="min-w-0">
-          <p className="text-md font-semibold">{title}</p>
-          <p className="mt-1 text-xs text-wrap break-words text-gray-500">
+        <div className="w-full min-w-0">
+          <p className="text-md truncate font-semibold">{title}</p>
+          <p className="mt-1 text-xs text-wrap break-words text-ellipsis text-gray-500">
             {summary}
           </p>
         </div>
@@ -46,7 +49,7 @@ const BasicInfoCard = ({
           rel="noopener noreferrer"
           className="hover:bg-white-hover border-primary text-primary mt-3 inline-block w-full rounded-md border p-1 text-center text-xs"
         >
-          자세히 보기
+          {t('home.articleButton')}
         </a>
       </div>
     </div>

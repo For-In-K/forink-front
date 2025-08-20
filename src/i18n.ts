@@ -2,10 +2,10 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 i18n.use(initReactI18next).init({
-  lng: 'kor',
-  fallbackLng: 'eng',
+  lng: 'ko',
+  fallbackLng: 'en',
   resources: {
-    kor: {
+    ko: {
       translation: {
         slogan: '외국인을 위한 맞춤형 정착 지원 서비스',
         sloganDescription:
@@ -110,7 +110,7 @@ i18n.use(initReactI18next).init({
         },
       },
     },
-    eng: {
+    en: {
       translation: {
         slogan: 'Tailored Settlement Support for Foreigners',
         sloganDescription:
@@ -217,7 +217,7 @@ i18n.use(initReactI18next).init({
         },
       },
     },
-    chi: {
+    zh: {
       translation: {
         slogan: '为外国人量身定制的定居支持服务',
         sloganDescription:
@@ -316,7 +316,7 @@ i18n.use(initReactI18next).init({
         },
       },
     },
-    vie: {
+    vi: {
       translation: {
         slogan: 'Hỗ trợ định cư dành riêng cho người nước ngoài',
         sloganDescription:

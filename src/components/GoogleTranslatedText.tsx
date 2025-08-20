@@ -1,9 +1,25 @@
 import { useTranslationQuery } from '@hooks/useTranslation';
 
-const GoogleTranslatedText = (text: string, { originalLang = 'kor' } = {}) => {
-  const { data, isLoading, isError } = useTranslationQuery(text, {
+const GoogleTranslatedText = ({
+  text,
+  originalLang = 'ko',
+}: {
+  text: string;
+  originalLang?: string;
+}) => {
+  const { translatedText, isLoading, isError } = useTranslationQuery(text, {
     originalLang,
   });
 
-  return data;
+  if (isLoading) {
+    return <span>Loading...</span>;
+  }
+
+  if (isError) {
+    return <span>Error occurred</span>;
+  }
+
+  return translatedText;
 };
+
+export default GoogleTranslatedText;

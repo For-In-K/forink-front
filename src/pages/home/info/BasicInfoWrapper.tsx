@@ -1,10 +1,36 @@
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useTranslationQuery } from '@hooks/useTranslation';
 
 import BasicInfoCard from './BasicInfoCard';
 import { serviceList } from '@constants/home';
 
 const BasicInfoWrapper = () => {
   const { t } = useTranslation();
+
+  const textsToTranslate = useMemo(() => {
+    return serviceList.flatMap((service) => [
+      service.title,
+      service.when,
+      service.summary,
+      service.tag,
+    ]);
+  }, [serviceList]);
+
+  const { translatedTexts, isLoading: isTranslating } =
+    useTranslationQuery(textsToTranslate);
+
+  const translatedServiceList = useMemo(() => {
+    if (!translatedTexts) return serviceList;
+
+    return serviceList.map((service, idx) => ({
+      ...service,
+      title: translatedTexts[idx * 4],
+      when: translatedTexts[idx * 4 + 1],
+      summary: translatedTexts[idx * 4 + 2],
+      // tag: translatedTexts[idx * 4 + 3],
+    }));
+  }, [serviceList, translatedTexts]);
 
   return (
     <div>
@@ -17,7 +43,7 @@ const BasicInfoWrapper = () => {
         </p>
       </header>
       <div className="flex gap-2 overflow-x-scroll">
-        {serviceList.map((service, index) => (
+        {translatedServiceList.map((service, index) => (
           <BasicInfoCard key={index} {...service} />
         ))}
       </div>

@@ -1,5 +1,7 @@
+import { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
+import { useTranslationQuery } from '@hooks/useTranslation';
 
 import { getSupportInfo } from '@apis/home';
 import SupportCard from './SupportCard';
@@ -19,6 +21,25 @@ const HomePage = () => {
     queryFn: getSupportInfo,
   });
 
+  const textsToTranslate = useMemo(() => {
+    if (!supportInfo) return [];
+    return supportInfo.flatMap((card) => [card.title, card.summary]);
+  }, [supportInfo]);
+
+  const { translatedTexts, isLoading: isTranslating } =
+    useTranslationQuery(textsToTranslate);
+
+  const translatedSupportInfo = useMemo(() => {
+    if (!supportInfo) return [];
+    if (!translatedTexts) return supportInfo;
+
+    return supportInfo.map((card, idx) => ({
+      ...card,
+      title: translatedTexts[idx * 2],
+      summary: translatedTexts[idx * 2 + 1],
+    }));
+  }, [supportInfo, translatedTexts]);
+
   return (
     <main>
       <header className="mb-8">
@@ -37,7 +58,7 @@ const HomePage = () => {
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {isLoading
           ? Array.from({ length: 6 }).map((_, i) => <SupportSkeleton key={i} />)
-          : supportInfo?.map((card, idx) => (
+          : translatedSupportInfo?.map((card, idx) => (
               <SupportCard key={idx} card={card} />
             ))}
       </div>
