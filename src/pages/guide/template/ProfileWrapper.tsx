@@ -6,7 +6,11 @@ import ProfileCardSkeleton from './ProfileCardSkeleton';
 
 const ProfileWrapper = () => {
   const { isSignedIn } = useAuth();
-  const { data: guideProfiles, isLoading, isError } = useGuideProfiles();
+  const {
+    data: guideProfiles,
+    isLoading,
+    isError,
+  } = useGuideProfiles({ enabled: isSignedIn });
 
   if (!isSignedIn) {
     return (

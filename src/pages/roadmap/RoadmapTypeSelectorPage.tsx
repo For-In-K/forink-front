@@ -18,7 +18,7 @@ export interface RoadmapTypeButtonInfo {
 }
 
 const RoadmapTypeSelector = () => {
-  const { isUser, isPreGuide } = useAuth();
+  const { isSignedIn, isUser, isPreGuide } = useAuth();
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [hoveredType, setHoveredType] = useState<string | null>(null);
@@ -58,7 +58,11 @@ const RoadmapTypeSelector = () => {
           {t('roadmap.description')}
         </p>
       </header>
-
+      {!isSignedIn && (
+        <div className="rounded-md border border-gray-200 bg-gray-50 p-4 text-gray-700">
+          로드맵을 보려면 로그인이 필요해요. 로그인 후 다시 시도해주세요.
+        </div>
+      )}
       <div className="flex flex-col items-center gap-6">
         {isRoadmapTypesLoading && (
           <>
@@ -68,44 +72,34 @@ const RoadmapTypeSelector = () => {
           </>
         )}
 
-        {!isRoadmapTypesLoading && roadmapTypesList.length === 0 && (
-          <div className="w-full rounded-md border border-amber-200 bg-amber-50 p-4 text-amber-700">
-            아직 생성된 로드맵이 없어요.
-          </div>
-        )}
+        {roadmapTypesList.map((category: RoadmapTypeDetail) => {
+          const roadmapType = category.roadmapType;
+          const title = capitalizeFirstLetter(category.roadmapType);
+          const progress = category.progressRatio;
+          const roadmapTypeInfo: RoadmapTypeButtonInfo = {
+            type: roadmapType,
+            title: t(`roadmap.categories.${roadmapType.toLowerCase()}.title`, {
+              defaultValue: title,
+            }),
+            description: t(
+              `roadmap.categories.${roadmapType.toLowerCase()}.description`,
+              {
+                defaultValue: '',
+              }
+            ),
+            progress: progress,
+          };
 
-        {!isRoadmapTypesLoading &&
-          roadmapTypesList.map((category: RoadmapTypeDetail) => {
-            const roadmapType = category.roadmapType;
-            const title = capitalizeFirstLetter(category.roadmapType);
-            const progress = category.progressRatio;
-            const roadmapTypeInfo: RoadmapTypeButtonInfo = {
-              type: roadmapType,
-              title: t(
-                `roadmap.categories.${roadmapType.toLowerCase()}.title`,
-                {
-                  defaultValue: title,
-                }
-              ),
-              description: t(
-                `roadmap.categories.${roadmapType.toLowerCase()}.description`,
-                {
-                  defaultValue: '',
-                }
-              ),
-              progress: progress,
-            };
-
-            return (
-              <RoadmapTypeButton
-                key={category.roadmapType}
-                roadmapTypeButtonInfo={roadmapTypeInfo}
-                hoveredType={hoveredType}
-                onSelect={handleRoadmapTypeSelect}
-                onHover={handleHover}
-              />
-            );
-          })}
+          return (
+            <RoadmapTypeButton
+              key={category.roadmapType}
+              roadmapTypeButtonInfo={roadmapTypeInfo}
+              hoveredType={hoveredType}
+              onSelect={handleRoadmapTypeSelect}
+              onHover={handleHover}
+            />
+          );
+        })}
       </div>
     </main>
   );

@@ -30,15 +30,6 @@ const MilestoneWrapperSkeleton = () => {
           >
             <div className="h-16 w-48 animate-pulse rounded-lg bg-gray-200"></div>
           </div>
-
-          <div
-            className="absolute h-1 w-32 animate-pulse rounded bg-gray-300"
-            style={{ left: '350px', top: '58px' }}
-          ></div>
-          <div
-            className="absolute h-1 w-32 animate-pulse rounded bg-gray-300"
-            style={{ left: '350px', top: '418px' }}
-          ></div>
         </div>
 
         <div className="absolute bottom-4 left-4 flex flex-col gap-2">

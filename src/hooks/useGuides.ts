@@ -9,10 +9,11 @@ import {
 } from '@apis/guides';
 import { toast } from 'react-toastify';
 
-export const useGuideProfiles = () => {
+export const useGuideProfiles = (p0?: { enabled: boolean }) => {
   return useQuery({
     queryKey: ['guideProfiles'],
     queryFn: getGuideProfiles,
+    enabled: p0?.enabled,
   });
 };
 
