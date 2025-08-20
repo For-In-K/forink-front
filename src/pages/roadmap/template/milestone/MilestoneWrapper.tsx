@@ -113,7 +113,11 @@ const MilestoneWrapper = ({ roadmapType }: MilestoneWrapperProps) => {
   }
 
   if (roadmapsOnType.length === 0) {
-    return <div>No roadmaps found</div>;
+    return (
+      <div className="rounded-md border border-amber-200 bg-amber-50 p-4 text-amber-700">
+        해당 타입의 로드맵이 없어요. 개발자에게 문의해주세요.
+      </div>
+    );
   }
 
   return (
