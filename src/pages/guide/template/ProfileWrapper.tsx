@@ -1,14 +1,14 @@
 import ProfileCard from './ProfileCard';
 import ProfileCardSkeleton from './ProfileCardSkeleton';
-import useGuides, { useGuideProfiles } from '@hooks/useGuides';
+import { useGuideProfiles } from '@hooks/useGuides';
 
 const ProfileWrapper = () => {
-  const { data: guideProfiles, isLoading: isGuideProfilesLoading } =
-    useGuideProfiles();
-  if (!guideProfiles || guideProfiles.length === 0) {
+  const { data: guideProfiles, isLoading, isError } = useGuideProfiles();
+
+  if (isError) {
     return (
-      <div className="rounded-md border border-blue-200 bg-blue-50 p-4 text-blue-700">
-        아직 등록된 가이드가 없어요.
+      <div className="rounded-md border border-red-200 bg-red-50 p-4 text-red-700">
+        가이드 프로필을 불러오는 데 실패했어요. 나중에 다시 시도해주세요.
       </div>
     );
   }
@@ -16,11 +16,12 @@ const ProfileWrapper = () => {
   return (
     <section>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
-        {isGuideProfilesLoading
+        {isLoading
           ? Array.from({ length: 6 }).map((_, index) => (
               <ProfileCardSkeleton key={index} />
             ))
-          : guideProfiles.map((profile) => (
+          : guideProfiles &&
+            guideProfiles.map((profile) => (
               <ProfileCard key={profile.memberId} profile={profile} />
             ))}
       </div>
