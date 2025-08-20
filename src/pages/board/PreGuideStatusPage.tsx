@@ -7,9 +7,9 @@ import PreGuideStatusWrapper from './template/PreGuideStatusWrapper';
 
 const PreGuideStatusPage = () => {
   const { isPreGuide } = useAuth();
-  const { data: preGuideRateStatus } = usePreGuideStatus();
-
   if (!isPreGuide) return <Navigate to="/" replace />;
+
+  const { data: preGuideRateStatus } = usePreGuideStatus();
 
   return (
     <div className="flex flex-col gap-10">
