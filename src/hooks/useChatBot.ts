@@ -6,8 +6,8 @@ import { useTranslation } from 'react-i18next';
 export const useCreateChatBot = () => {
   return useMutation({
     mutationFn: createChatBot,
-    // onSuccess: () => toast.success('챗봇 Fori가 생성되었어요!'),
-    // onError: () => toast.error('챗봇 Fori 생성에 실패했어요'),
+    onSuccess: () => toast.success('챗봇 Fori가 생성되었어요!'),
+    onError: () => toast.error('챗봇 Fori 생성에 실패했어요'),
   });
 };
 
