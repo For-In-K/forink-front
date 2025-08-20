@@ -3,6 +3,7 @@ import useAuth from '@hooks/useAuth';
 import Logo from './Logo';
 import NavMenu from './NavMenu';
 import UserGreeting from './UserGreeting';
+import Point from './Point';
 import LanguageSelector from './LanguageSelector';
 import SignInButton from './SignInButton';
 
@@ -16,6 +17,7 @@ const Header = () => {
         <NavMenu />
         <UserGreeting />
         <div className="flex items-center gap-8">
+          {isSignedIn && <Point />}
           <LanguageSelector />
           <SignInButton />
         </div>

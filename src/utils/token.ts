@@ -25,6 +25,7 @@ export const getUserFromToken = (token: string): User | null => {
       email: decoded.email,
       name: decoded.name,
       role: decoded.role as RoleType,
+      point: decoded.point
     } as User;
   } catch {
     return null;

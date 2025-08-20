@@ -1,12 +1,13 @@
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 import { createChatBot, exchangeChatMessage } from '@apis/chat';
+import { useTranslation } from 'react-i18next';
 
 export const useCreateChatBot = () => {
   return useMutation({
     mutationFn: createChatBot,
-    // onSuccess: () => toast.success('챗봇 Fori가 생성되었어요!'),
-    // onError: () => toast.error('챗봇 Fori 생성에 실패했어요'),
+    onSuccess: () => toast.success('챗봇 Fori가 생성되었어요!'),
+    onError: () => toast.error('챗봇 Fori 생성에 실패했어요'),
   });
 };
 
@@ -18,17 +19,16 @@ export const useExchangeChatMessage = () => {
   });
 };
 
-const useChatBot = () => {
-  const { mutate: createChatBot, isPending: isCreating } = useCreateChatBot();
-  const { mutate: exchangeChatMessage, isPending: isExchanging } =
-    useExchangeChatMessage();
+export interface ChatBotInitMsg {
+  initialMent: string;
+  faqButtonText: string[];
+}
+
+export const useChatBotInit: () => ChatBotInitMsg = () => {
+  const { t } = useTranslation();
 
   return {
-    createChatBot,
-    isCreating,
-    exchangeChatMessage,
-    isExchanging,
+    initialMent: t('fori.greeting'),
+    faqButtonText: [t('fori.faq1'), t('fori.faq2')],
   };
 };
-
-export default useChatBot;

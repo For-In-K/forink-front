@@ -17,7 +17,8 @@
       "@styles/*": ["styles/*"],
       "@hooks/*": ["hooks/*"],
       "@utils/*": ["utils/*"],
-      "@stores/*": ["stores/*"]
+      "@stores/*": ["stores/*"],
+      "@servieces/*": ["services/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,

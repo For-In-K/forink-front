@@ -2,10 +2,10 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 i18n.use(initReactI18next).init({
-  lng: 'kor',
-  fallbackLng: 'eng',
+  lng: 'ko',
+  fallbackLng: 'en',
   resources: {
-    kor: {
+    ko: {
       translation: {
         slogan: '외국인을 위한 맞춤형 정착 지원 서비스',
         sloganDescription:
@@ -16,6 +16,7 @@ i18n.use(initReactI18next).init({
           guide: '가이드',
           board: '게시판',
         },
+        copySuccess: '복사 완료!',
         greeting: 'ForinK에 온 걸 환영해요!',
         greetingUser: '{{username}}님, 안녕하세요!',
         signin: '로그인',
@@ -82,6 +83,8 @@ i18n.use(initReactI18next).init({
           matchingUnit: '{{ guideExpCount }}회',
         },
         fori: {
+          emailInquiry: '이메일 문의',
+          emailCopy: '이메일 복사',
           greeting:
             '안녕하세요! 👋 도우미 Fori예요.\n한국 생활과 행정 절차에 대해 궁금한 점이 있으면 언제든 물어보세요.',
           faq1: '비자 연장 방법이 궁금해요.',
@@ -107,7 +110,7 @@ i18n.use(initReactI18next).init({
         },
       },
     },
-    eng: {
+    en: {
       translation: {
         slogan: 'Tailored Settlement Support for Foreigners',
         sloganDescription:
@@ -118,6 +121,7 @@ i18n.use(initReactI18next).init({
           guide: 'Guide',
           board: 'Board',
         },
+        copySuccess: 'Copy successful!',
         greeting: 'Welcome to ForinK!',
         greetingUser: 'Hello, {{username}}!',
         signin: 'Sign in',
@@ -186,6 +190,8 @@ i18n.use(initReactI18next).init({
           matchingUnit: '{{ guideExpCount }} times',
         },
         fori: {
+          emailInquiry: 'Email Inquiry',
+          emailCopy: 'Copy Email',
           greeting:
             'Hello! 👋 I am Fori, your assistant.\nFeel free to ask me anything about life in Korea and administrative procedures.',
           faq1: 'How do I extend my visa?',
@@ -211,7 +217,7 @@ i18n.use(initReactI18next).init({
         },
       },
     },
-    chi: {
+    zh: {
       translation: {
         slogan: '为外国人量身定制的定居支持服务',
         sloganDescription:
@@ -222,6 +228,7 @@ i18n.use(initReactI18next).init({
           guide: '指南',
           board: '论坛',
         },
+        copySuccess: '复制成功！',
         greeting: '欢迎!',
         greetingUser: '{{username}}，欢迎！',
         signin: '登录',
@@ -282,6 +289,8 @@ i18n.use(initReactI18next).init({
           matchingUnit: '{{ guideExpCount }}次',
         },
         fori: {
+          emailInquiry: '电子邮件咨询',
+          emailCopy: '复制电子邮件',
           greeting:
             '你好！👋 我是 Fori，你的助手。\n如果你对韩国生活和行政程序有任何疑问，请随时问我。',
           faq1: '我如何延长我的签证？',
@@ -307,7 +316,7 @@ i18n.use(initReactI18next).init({
         },
       },
     },
-    vie: {
+    vi: {
       translation: {
         slogan: 'Hỗ trợ định cư dành riêng cho người nước ngoài',
         sloganDescription:
@@ -318,6 +327,7 @@ i18n.use(initReactI18next).init({
           guide: 'Hướng dẫn',
           board: 'Diễn đàn',
         },
+        copySuccess: 'Sao chép thành công!',
         greeting: 'Chào mừng!',
         greetingUser: 'Xin chào, {{username}}!',
         signin: 'Đăng nhập',
@@ -386,6 +396,8 @@ i18n.use(initReactI18next).init({
           matchingUnit: '{{ guideExpCount }} lần',
         },
         fori: {
+          emailInquiry: 'Yêu cầu qua email',
+          emailCopy: 'Sao chép email',
           greeting:
             'Xin chào! 👋 Tôi là Fori, trợ lý của bạn.\nHãy thoải mái hỏi tôi bất cứ điều gì về cuộc sống ở Hàn Quốc và các thủ tục hành chính.',
           faq1: 'Tôi làm thế nào để gia hạn visa?',

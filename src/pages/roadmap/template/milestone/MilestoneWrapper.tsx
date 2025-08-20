@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useAuth from '@hooks/useAuth';
 import { useRoadmapsOnType } from '@hooks/useRoadmaps';
+import { guideAdministrationSubroadmap } from '@constants/guides';
 
 import ReactFlow, {
   Background,
@@ -16,6 +18,7 @@ import 'reactflow/dist/style.css';
 import { getX } from '@utils/coordinates';
 import { milestoneNodeTypes } from 'types/milestone';
 import MilestoneButton from '@components/button/MilestoneButton';
+import MilestoneWrapperSkeleton from '../MilestoneWrapperSkeleton';
 
 interface MilestoneWrapperProps {
   roadmapType: string;
@@ -23,6 +26,7 @@ interface MilestoneWrapperProps {
 
 const MilestoneWrapper = ({ roadmapType }: MilestoneWrapperProps) => {
   const navigate = useNavigate();
+  const { isUser, isPreGuide } = useAuth();
 
   const handleMilestoneSelect = useCallback(
     (roadmapId: number) => {
@@ -31,8 +35,19 @@ const MilestoneWrapper = ({ roadmapType }: MilestoneWrapperProps) => {
     [navigate, roadmapType]
   );
 
-  const { data: roadmapsOnType = [], isLoading } =
-    useRoadmapsOnType(roadmapType);
+  const { data: userSubroadmaps = [], isLoading: isUserSubroadmaps } =
+    useRoadmapsOnType(roadmapType, { enabled: isUser });
+
+  const getRoadmapsData = () => {
+    if (isUser) {
+      return { data: userSubroadmaps, isLoading: isUserSubroadmaps };
+    } else if (isPreGuide) {
+      return { data: guideAdministrationSubroadmap, isLoading: false };
+    }
+    return { data: [], isLoading: false };
+  };
+
+  const { data: roadmapsOnType, isLoading } = getRoadmapsData();
 
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
@@ -94,11 +109,15 @@ const MilestoneWrapper = ({ roadmapType }: MilestoneWrapperProps) => {
   );
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <MilestoneWrapperSkeleton />;
   }
 
   if (roadmapsOnType.length === 0) {
-    return <div>No roadmaps found</div>;
+    return (
+      <div className="rounded-md border border-amber-200 bg-amber-50 p-4 text-amber-700">
+        해당 타입의 로드맵이 없어요. 개발자에게 문의해주세요.
+      </div>
+    );
   }
 
   return (

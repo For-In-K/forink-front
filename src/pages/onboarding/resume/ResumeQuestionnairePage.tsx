@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { updateGuideResumeStep, submitGuideResume } from '@apis/resume';
 import { resumeQuestions } from '@constants/resume';
 import { useResumeStore } from '@stores/useResumeStore';
-import useRoadmaps from '@hooks/useRoadmaps';
+import { useCreateRoadmaps } from '@hooks/useRoadmaps';
 
 import Progressbar from '@components/status/Progressbar';
 import QuestionTitle from '../template/Question/QuestionTitle';
@@ -21,7 +21,7 @@ const ResumeQuestionnairePage = () => {
   const currentStep = Number(stepNumber ?? '1');
   const size = resumeQuestions.length;
 
-  const { createRoadmapsRequest } = useRoadmaps();
+  const { mutate: createRoadmapsRequest } = useCreateRoadmaps();
 
   const [submittedValue, setSubmittedValue] = useState<string | null>(null);
 

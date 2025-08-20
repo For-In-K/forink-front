@@ -1,17 +1,44 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import useAuth from '@hooks/useAuth';
 import { useRoadmapStepDetail } from '@hooks/useRoadmaps';
+import { guideAdministrationStepDetail } from '@constants/guides';
 import StepUnit from './StepUnit';
 import MilestoneFeedbackModal from '@components/modal/MilestoneFeedbackModal';
+import { data } from 'react-router-dom';
 
 interface StepWrapperProps {
   roadmapId: number;
 }
 
 const StepWrapper = ({ roadmapId }: StepWrapperProps) => {
+  const { isUser, isPreGuide } = useAuth();
   const { t } = useTranslation();
-  const { data: roadmapStepDetail = [] } = useRoadmapStepDetail(roadmapId);
+  const {
+    data: userRoadmapStepDetail = [],
+    isLoading: isUserRoadmapStepDetailLoading,
+  } = useRoadmapStepDetail(roadmapId);
+
+  const getRoadmapStepDetail = () => {
+    if (isUser) {
+      return {
+        data: userRoadmapStepDetail,
+        isLoading: isUserRoadmapStepDetailLoading,
+      };
+    } else if (isPreGuide) {
+      return {
+        data: guideAdministrationStepDetail,
+        isLoading: false,
+      };
+    }
+    return {
+      data: [],
+      isLoading: false,
+    };
+  };
+
+  const { data: roadmapStepDetail, isLoading } = getRoadmapStepDetail();
 
   const [milestoneFeedbackOpen, setMilestoneFeedbackOpen] = useState(false);
   const isMilestoneCompleted = roadmapStepDetail.every((step) =>

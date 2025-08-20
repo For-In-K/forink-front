@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import useCopy from '@hooks/useCopy';
 import LogoIcon from '@assets/logo/logo.svg?react';
@@ -14,6 +15,7 @@ const ChatHeader = ({
   isBusy: boolean;
   isActive: boolean;
 }) => {
+  const { t } = useTranslation();
   const FORINK_EMAIL = import.meta.env.VITE_EMAIL_DEV;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCopied, copy] = useCopy();
@@ -67,7 +69,7 @@ const ChatHeader = ({
                       className="flex items-center"
                     >
                       <Mail size={16} className="mr-2 inline-block" />
-                      이메일 문의
+                      {t('fori.emailInquiry')}
                     </a>
                   </li>
                   <li className="hover:bg-white-hover rounded-md p-1">
@@ -83,12 +85,12 @@ const ChatHeader = ({
                             size={16}
                             className="mr-2 inline-block text-emerald-400"
                           />
-                          복사 완료!
+                          {t('copySuccess')}
                         </>
                       ) : (
                         <>
                           <Copy size={16} className="mr-2 inline-block" />
-                          이메일 복사
+                          {t('fori.emailCopy')}
                         </>
                       )}
                     </button>

@@ -22,8 +22,8 @@ const GuideHeader = ({ headerTitle, mode, status }: GuideHeaderProps) => {
     return localStorage.getItem('guideStatusSignClosed') !== 'true';
   });
 
-  const showRatingSign = mode === 'Board' && !status && ratingVisible;
-  const showStatusSign = mode === 'Board' && status && statusVisible;
+  const showRatingSign = mode === 'Board' && isGuide && ratingVisible;
+  const showStatusSign = mode === 'Board' && isPreGuide && statusVisible;
 
   return (
     <div className="flex w-full flex-col">
@@ -32,13 +32,13 @@ const GuideHeader = ({ headerTitle, mode, status }: GuideHeaderProps) => {
           {headerTitle}
         </div>
         {mode === 'Profile'}
-        {mode === 'Board' && status && (
+        {mode === 'Board' && isPreGuide && (
           <div
             className={`${
               status === 'ALMOST' ? 'bg-secondary/90' : 'bg-accent/90'
             } text-title2 rounded-full px-6 py-2 text-white`}
           >
-            {formatStatus(status)}
+            {formatStatus(status ?? 'IN PROGRESS')}
           </div>
         )}
       </div>
