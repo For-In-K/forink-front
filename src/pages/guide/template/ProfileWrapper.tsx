@@ -1,9 +1,20 @@
-import ProfileCard from './ProfileCard';
-import ProfileCardSkeleton from './ProfileCardSkeleton';
+import useAuth from '@hooks/useAuth';
 import { useGuideProfiles } from '@hooks/useGuides';
 
+import ProfileCard from './ProfileCard';
+import ProfileCardSkeleton from './ProfileCardSkeleton';
+
 const ProfileWrapper = () => {
+  const { isSignedIn } = useAuth();
   const { data: guideProfiles, isLoading, isError } = useGuideProfiles();
+
+  if (!isSignedIn) {
+    return (
+      <div className="rounded-md border border-gray-200 bg-gray-50 p-4 text-gray-700">
+        가이드를 보려면 로그인이 필요해요. 로그인 후 다시 시도해주세요.
+      </div>
+    );
+  }
 
   if (isError) {
     return (

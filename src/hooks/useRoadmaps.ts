@@ -23,18 +23,22 @@ export const useCreateRoadmaps = () => {
   });
 };
 
-export const useRoadmapTypes = () => {
+export const useRoadmapTypes = (p0?: { enabled: boolean }) => {
   return useQuery({
     queryKey: ['roadmapTypes'],
     queryFn: getRoadmapTypes,
+    enabled: p0?.enabled,
   });
 };
 
-export const useRoadmapsOnType = (roadmapType?: string) => {
+export const useRoadmapsOnType = (
+  roadmapType?: string,
+  p0?: { enabled: boolean }
+) => {
   return useQuery({
     queryKey: ['roadmapsOnType', roadmapType],
     queryFn: () => getRoadmapsOnType(roadmapType!),
-    enabled: !!roadmapType,
+    enabled: !!roadmapType && p0?.enabled,
   });
 };
 

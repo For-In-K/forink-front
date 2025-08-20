@@ -17,7 +17,7 @@ const Header = () => {
         <NavMenu />
         <UserGreeting />
         <div className="flex items-center gap-8">
-          <Point />
+          {isSignedIn && <Point />}
           <LanguageSelector />
           <SignInButton />
         </div>

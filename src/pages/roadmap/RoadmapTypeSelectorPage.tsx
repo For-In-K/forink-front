@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
+import useAuth from '@hooks/useAuth';
 import { useRoadmapTypes } from '@hooks/useRoadmaps';
+import { guideRoadmapTypes } from '@constants/guides';
 import { capitalizeFirstLetter } from '@utils/chars';
 import type { RoadmapTypeDetail } from 'types/roadmaps';
 import RoadmapTypeButton from './template/RoadmapTypeButton';
@@ -16,12 +18,25 @@ export interface RoadmapTypeButtonInfo {
 }
 
 const RoadmapTypeSelector = () => {
+  const { isUser, isPreGuide } = useAuth();
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [hoveredType, setHoveredType] = useState<string | null>(null);
 
+  const { data: userRoadmapTypes, isLoading: isUserRoadmapTypesLoading } =
+    useRoadmapTypes({ enabled: isUser });
+
+  const getRoadmapTypes = () => {
+    if (isUser) {
+      return { data: userRoadmapTypes, isLoading: isUserRoadmapTypesLoading };
+    } else if (isPreGuide) {
+      return { data: guideRoadmapTypes, isLoading: false };
+    }
+    return { data: [], isLoading: false };
+  };
+
   const { data: roadmapTypes, isLoading: isRoadmapTypesLoading } =
-    useRoadmapTypes();
+    getRoadmapTypes();
 
   const handleRoadmapTypeSelect = (roadmapType: string) => {
     navigate(`/roadmap/${roadmapType}`);
