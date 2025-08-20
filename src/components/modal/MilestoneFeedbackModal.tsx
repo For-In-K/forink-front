@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 
-import useRoadmaps from '@hooks/useRoadmaps';
+import { useSubmitRoadmapFeedbackOnSubroadmap } from '@hooks/useRoadmaps';
 import Modal from '@components/modal/Modal';
 import SubmitButton from '@components/button/SubmitButton';
 
@@ -22,8 +22,10 @@ const MilestoneFeedbackModal = ({
 }: MilestoneFeedbackModalProps) => {
   const [feedback, setFeedback] = useState('');
 
-  const { submitFeedbackOnSubroadmap, isSubmitFeedbackOnSubroadmapSuccess } =
-    useRoadmaps();
+  const {
+    mutate: submitFeedbackOnSubroadmap,
+    isSuccess: isSubmitFeedbackOnSubroadmapSuccess,
+  } = useSubmitRoadmapFeedbackOnSubroadmap();
 
   const handleSubmit = () => {
     submitFeedbackOnSubroadmap({

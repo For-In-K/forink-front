@@ -1,7 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
 
-import useRoadmaps from '@hooks/useRoadmaps';
 import type { Step } from 'types/roadmaps';
 import ChecklistUnit from '@components/status/ChecklistUnit';
 import SubmitButton from '@components/button/SubmitButton';
@@ -20,9 +18,6 @@ const StepUnit = ({ step, roadmapId }: StepUnitProps) => {
     setContents(step.contents);
   }, [step.contents]);
 
-  const queryClient = useQueryClient();
-  const { updateCheck, isUpdateCheckSuccess } = useRoadmaps();
-
   const stepNumber = step.stepNumber;
   const stepTitle = `${step.stepNumber}. ${step.stepTitle}`;
   const stepDescription = step.stepDescription;
@@ -31,23 +26,6 @@ const StepUnit = ({ step, roadmapId }: StepUnitProps) => {
 
   const handleFeedbackModalClose = () => setstepFeedbackOpen(false);
   const handleFeedbackStepSubmit = () => setstepFeedbackOpen(true);
-
-  const handleToggleContent = useCallback(
-    (contentId: number) => {
-      setContents((prev) =>
-        prev.map((c) =>
-          c.stepContentId === contentId ? { ...c, isChecked: !c.isChecked } : c
-        )
-      );
-
-      updateCheck(contentId);
-
-      queryClient.invalidateQueries({
-        queryKey: ['roadmapStepDetail', roadmapId],
-      });
-    },
-    [updateCheck, queryClient, roadmapId]
-  );
 
   return (
     <>
@@ -67,11 +45,7 @@ const StepUnit = ({ step, roadmapId }: StepUnitProps) => {
         </div>
         <div className="flex flex-col gap-3">
           {contents.map((content) => (
-            <ChecklistUnit
-              key={content.stepContentId}
-              content={content}
-              onToggle={handleToggleContent}
-            />
+            <ChecklistUnit key={content.stepContentId} content={content} />
           ))}
         </div>
         <div className="flex justify-end">

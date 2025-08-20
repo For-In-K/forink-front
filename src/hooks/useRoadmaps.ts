@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 import {
@@ -38,7 +38,7 @@ export const useRoadmapsOnType = (roadmapType?: string) => {
   });
 };
 
-export const useRoadmapStepDetail = (stepContentId?: number) => {
+export const useRoadmapStepDetail = (stepContentId: number) => {
   return useQuery({
     queryKey: ['roadmapStepDetail', stepContentId],
     queryFn: () => getRoadmapStepDetail(stepContentId!),
@@ -46,10 +46,15 @@ export const useRoadmapStepDetail = (stepContentId?: number) => {
   });
 };
 
-export const useUpdateRoadmapStepDetailCheck = () => {
+export const useUpdateRoadmapStepDetailCheck = (stepContentId: number) => {
+  const queryClient = useQueryClient();
+
   return useMutation({
     mutationFn: updateRoadmapStepDetailCheck,
     onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['roadmapStepDetail', stepContentId],
+      });
       toast.success('체크리스트가 업데이트 되었어요');
     },
     onError: () => {
@@ -59,9 +64,12 @@ export const useUpdateRoadmapStepDetailCheck = () => {
 };
 
 export const useSubmitRoadmapFeedbackOnSubroadmap = () => {
+  const queryClient = useQueryClient();
+
   return useMutation({
     mutationFn: submitRoadmapFeedbackOnSubroadmap,
     onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['memberInformation'] });
       toast.success('피드백이 제출되었어요');
     },
     onError: () => {
@@ -71,9 +79,12 @@ export const useSubmitRoadmapFeedbackOnSubroadmap = () => {
 };
 
 export const useSubmitRoadmapFeedbackOnStepDetail = () => {
+  const queryClient = useQueryClient();
+
   return useMutation({
     mutationFn: submitRoadmapFeedbackOnStepDetail,
     onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['memberInformation'] });
       toast.success('피드백이 제출되었어요');
     },
     onError: () => {
@@ -81,39 +92,3 @@ export const useSubmitRoadmapFeedbackOnStepDetail = () => {
     },
   });
 };
-
-const useRoadmaps = (roadmapType?: string, stepContentId?: number) => {
-  const { mutate: createRoadmapsRequest } = useCreateRoadmaps();
-  const { data: roadmapTypes, isLoading: isRoadmapTypesLoading } =
-    useRoadmapTypes();
-  const { data: roadmapsOnType, isLoading: isRoadmapsOnTypeLoading } =
-    useRoadmapsOnType(roadmapType);
-  const { data: roadmapStepDetail } = useRoadmapStepDetail(stepContentId);
-  const { mutate: updateCheck, isSuccess: isUpdateCheckSuccess } =
-    useUpdateRoadmapStepDetailCheck();
-  const {
-    mutate: submitFeedbackOnSubroadmap,
-    isSuccess: isSubmitFeedbackOnSubroadmapSuccess,
-  } = useSubmitRoadmapFeedbackOnSubroadmap();
-  const {
-    mutate: submitFeedbackOnStepDetail,
-    isSuccess: isSubmitFeedbackOnStepDetailSuccess,
-  } = useSubmitRoadmapFeedbackOnStepDetail();
-
-  return {
-    createRoadmapsRequest,
-    roadmapTypes,
-    isRoadmapTypesLoading,
-    roadmapsOnType,
-    isRoadmapsOnTypeLoading,
-    roadmapStepDetail,
-    updateCheck,
-    isUpdateCheckSuccess,
-    submitFeedbackOnSubroadmap,
-    isSubmitFeedbackOnSubroadmapSuccess,
-    submitFeedbackOnStepDetail,
-    isSubmitFeedbackOnStepDetailSuccess,
-  };
-};
-
-export default useRoadmaps;

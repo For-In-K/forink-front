@@ -1,14 +1,16 @@
 import { Check } from 'lucide-react';
 
 interface CheckButtonProps {
+  disabled?: boolean;
   isChecked: boolean;
   onClick: () => void;
 }
 
-const CheckButton = ({ isChecked, onClick }: CheckButtonProps) => {
+const CheckButton = ({ isChecked, onClick, disabled }: CheckButtonProps) => {
   return (
     <button
       type="button"
+      disabled={disabled}
       className={`${isChecked ? 'border-primary bg-primary/75' : 'hover:bg-white-hover border-border'} h-full rounded-md border-2`}
       onClick={onClick}
     >

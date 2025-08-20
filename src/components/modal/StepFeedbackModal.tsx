@@ -1,7 +1,5 @@
-import { useMutation } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
-import useRoadmaps from '@hooks/useRoadmaps';
-import { submitRoadmapFeedbackOnStepDetail } from '@apis/roadmaps';
+import { useSubmitRoadmapFeedbackOnStepDetail } from '@hooks/useRoadmaps';
 
 import Modal from '@components/modal/Modal';
 import { ThumbsUp, ThumbsDown } from 'lucide-react';
@@ -18,8 +16,10 @@ const StepFeedbackModal = ({
   onClose,
 }: StepFeedbackModalProps) => {
   const { t } = useTranslation();
-  const { submitFeedbackOnStepDetail, isSubmitFeedbackOnStepDetailSuccess } =
-    useRoadmaps();
+  const {
+    mutate: submitFeedbackOnStepDetail,
+    isSuccess: isSubmitFeedbackOnStepDetailSuccess,
+  } = useSubmitRoadmapFeedbackOnStepDetail();
 
   const handleFeedbackSubmit = (feedbackValue: 'GOOD' | 'BAD') => {
     submitFeedbackOnStepDetail({
