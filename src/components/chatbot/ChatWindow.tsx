@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from 'react';
 import ChatHeader from './ChatHeader';
 import ChatLog from './ChatLog';
 import ChatInput from './ChatInput';
-import useChatBot from '@hooks/useChatBot';
+import { useExchangeChatMessage } from '@hooks/useChatBot';
 import type {
   CreateChatBotResponse,
   GiveChatMessageRequest,
@@ -18,13 +18,18 @@ type Message = {
 
 const STORAGE_KEY = 'fori_chatId';
 
-const ChatWindow = ({ bottom = 0 }: { bottom?: number }) => {
+interface ChatWindowProps {
+  bottom?: number;
+  isCreating?: boolean;
+}
+
+const ChatWindow = ({ bottom = 0, isCreating }: ChatWindowProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [chatId, setChatId] = useState<number | null>(null);
   const [isActive, setIsActive] = useState<boolean>(false);
 
-  const { createChatBot, isCreating, exchangeChatMessage, isExchanging } =
-    useChatBot();
+  const { mutate: exchangeChatMessage, isPending: isExchanging } =
+    useExchangeChatMessage();
   const isBusy = Boolean(isCreating || isExchanging);
 
   const pushMessage = useCallback((role: Message['role'], text: string) => {

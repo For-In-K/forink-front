@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { MessageCircle, X } from 'lucide-react';
 import ChatWindow from './ChatWindow';
-import useChatBot from '@hooks/useChatBot';
+import { useCreateChatBot } from '@hooks/useChatBot';
 
 const CHATBOT_LAYOUT = {
   BUTTON_SIZE: 64,
@@ -11,7 +11,7 @@ const CHATBOT_LAYOUT = {
 
 const ChatbotWidget = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
-  const { createChatBot, isCreating } = useChatBot();
+  const { mutate: createChatBot, isPending: isCreating } = useCreateChatBot();
 
   const handleStartChat = () => {
     if (!isChatOpen) {
@@ -65,7 +65,9 @@ const ChatbotWidget = () => {
         </span>
       </button>
 
-      {isChatOpen && <ChatWindow bottom={chatWindowBottom} />}
+      {isChatOpen && (
+        <ChatWindow bottom={chatWindowBottom} isCreating={isCreating} />
+      )}
     </div>
   );
 };

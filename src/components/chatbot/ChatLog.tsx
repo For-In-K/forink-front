@@ -3,7 +3,7 @@ import ChatMessage from './ChatMessage';
 import Typing from '@components/status/Typing';
 import Logo from '@assets/logo/logo.svg';
 
-import { chatBotInit } from '@constants/chat';
+import { useChatBotInit } from '@hooks/useChatBot';
 
 type Message = {
   id: string;
@@ -22,6 +22,7 @@ const ChatLog = ({
   onFaqClick?: (text: string) => void;
 }) => {
   const wrapRef = useRef<HTMLDivElement>(null);
+  const chatBotInit = useChatBotInit();
 
   useEffect(() => {
     const el = wrapRef.current;
