@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 import { ArrowRight } from 'lucide-react';
 
 const HomeServiceSign = () => {
@@ -16,13 +17,19 @@ const HomeServiceSign = () => {
         </div>
         <div className="flex justify-center gap-4">
           <button
-            onClick={() => navigate('/signin')}
+            onClick={() => {
+              navigate('/signin');
+              toast.info('정착 진단을 위해 로그인이 필요해요');
+            }}
             className="bg-accent hover:bg-accent-hover flex items-center justify-center gap-1 rounded-md p-2 text-xs font-medium text-white"
           >
             {t('home.startExam')} <ArrowRight className="ml-1" size={12} />
           </button>
           <button
-            onClick={() => navigate('/signin')}
+            onClick={() => {
+              navigate('/signin');
+              toast.info('정착 진단을 위해 로그인이 필요해요');
+            }}
             className="hover:border-white-hover hover:text-white-hover rounded-md border p-2 px-6 text-xs font-medium text-white"
           >
             {t('home.findGuide')}
