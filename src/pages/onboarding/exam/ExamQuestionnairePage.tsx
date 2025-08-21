@@ -1,6 +1,6 @@
 import { useMemo, useEffect, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { createExamStep } from '@apis/exams';
@@ -21,6 +21,10 @@ const ExamQuestionnairePage = () => {
   const { stepNumber } = useParams();
   const currentStep = Number(stepNumber ?? '1');
   const size = examQuestions.length;
+
+  if (currentStep < 1 || currentStep > size) {
+    return <Navigate to="/" replace />;
+  }
 
   const { mutate: createRoadmapsRequest } = useCreateRoadmaps();
 
