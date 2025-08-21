@@ -15,7 +15,7 @@ const ButtonInput = ({ options, onSubmit }: ButtonInputProps) => {
   };
 
   return (
-    <div className="flex w-full items-start justify-start gap-10">
+    <div className="flex w-full flex-col items-center justify-start gap-4 sm:flex-row sm:flex-wrap sm:gap-6 md:gap-10">
       {options.map((option) => {
         const isSelected = option.answerId === selectedId;
         return (
@@ -23,13 +23,13 @@ const ButtonInput = ({ options, onSubmit }: ButtonInputProps) => {
             key={option.answerId}
             onClick={() => handleSelect(option)}
             type="button"
-            className={`border-primary/40 text-title2 min-w-32 rounded-full border px-4 py-2 transition ${
+            className={`border-primary/40 md:text-title2 w-full min-w-24 rounded-full border px-4 py-3 text-sm font-medium transition sm:w-auto sm:min-w-32 sm:text-base ${
               isSelected
                 ? 'bg-primary text-white'
                 : 'text-text-muted hover:bg-white-hover bg-white'
-            } `}
+            }`}
           >
-            {option.answer}
+            <span className="truncate">{option.answer}</span>
           </button>
         );
       })}

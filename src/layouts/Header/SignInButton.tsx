@@ -25,11 +25,11 @@ const SignInButton = () => {
       onClick={handleClick}
     >
       {isSignedIn ? (
-        <LogOut className="inline-block size-5 md:hidden" />
+        <LogOut className="mr-1 hidden size-5 lg:inline-block" />
       ) : (
-        <LogIn className="inline-block size-5 md:hidden" />
+        <LogIn className="mr-1 hidden size-5 lg:inline-block" />
       )}
-      <span className="hidden md:inline-block">
+      <span className="inline-block">
         {isSignedIn ? t('signout') : t('signin')}
       </span>
     </button>

@@ -1,5 +1,4 @@
 import { Outlet } from 'react-router-dom';
-import CustomToastContainer from '@components/toast/CustomToastContainer';
 import ChatbotWidget from '@components/chatbot/ChatbotWidget';
 import HomeServiceSign from '@layouts/HomeServiceSign';
 
@@ -18,7 +17,6 @@ const Container = () => {
       {!isSignedIn && isHomeServiceSignVisible && <HomeServiceSign />}
       <div className="relative container mx-auto px-10 py-10 md:py-15">
         <Outlet />
-        <CustomToastContainer />
         {isSignedIn && isChatbotVisible && <ChatbotWidget />}
       </div>
     </div>

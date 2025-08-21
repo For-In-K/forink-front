@@ -11,6 +11,9 @@ Just go get and share much experience.`;
       <div className="flex flex-col items-center gap-30">
         <SigninTitle title={TITLE} description={DESCRIPTION} />
         <SocialSigninButton />
+        <span className="animate-pulse text-xs text-gray-200">
+          로그인 / 회원가입 페이지예요
+        </span>
       </div>
     </>
   );

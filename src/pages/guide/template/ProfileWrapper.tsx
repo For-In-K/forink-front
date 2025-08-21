@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import useAuth from '@hooks/useAuth';
 import { useGuideProfiles } from '@hooks/useGuides';
 
@@ -12,10 +13,19 @@ const ProfileWrapper = () => {
     isError,
   } = useGuideProfiles({ enabled: isSignedIn });
 
+  const navigate = useNavigate();
+
   if (!isSignedIn) {
     return (
       <div className="rounded-md border border-gray-200 bg-gray-50 p-4 text-gray-700">
-        가이드를 보려면 로그인이 필요해요. 로그인 후 다시 시도해주세요.
+        가이드를 보려면{' '}
+        <button
+          className="text-primary hover:text-primary-hover underline"
+          onClick={() => navigate('/signin')}
+        >
+          로그인
+        </button>
+        이 필요해요. 로그인 후 다시 시도해주세요.
       </div>
     );
   }
