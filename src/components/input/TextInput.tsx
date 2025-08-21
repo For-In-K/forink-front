@@ -11,7 +11,7 @@ const TextInput = ({ placeholder, value, onType }: TextInputProps) => {
     <div className="flex w-full items-start justify-start">
       <input
         placeholder={placeholder}
-        className="border-primary rounded-lg border px-4 py-2 text-black"
+        className="border-primary focus:border-primary focus:ring-primary/20 w-full rounded-lg border px-4 py-3 text-sm text-black focus:ring-2 focus:outline-none sm:text-base md:py-2"
         value={value ?? ''}
         onChange={(e) => onType(e.target.value)}
       />

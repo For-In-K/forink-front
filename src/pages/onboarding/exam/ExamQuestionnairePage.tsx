@@ -104,7 +104,7 @@ const ExamQuestionnairePage = () => {
       toast.info('제출 중입니다...');
       return;
     }
-    
+
     if (selectedValue) {
       saveAnswer(exam.examId, selectedValue.answerId);
     }
@@ -118,8 +118,8 @@ const ExamQuestionnairePage = () => {
   };
 
   return (
-    <div className="flex w-full max-w-300 flex-col items-center justify-center px-15">
-      <div className="flex w-full items-center px-10">
+    <div className="flex min-h-screen w-full flex-col items-center justify-center px-4 py-6 sm:px-6 md:px-15">
+      <div className="flex w-full max-w-4xl items-center px-2 sm:px-6 md:px-10">
         <Progressbar
           totalSize={size}
           currentSize={exam.examId}
@@ -127,15 +127,15 @@ const ExamQuestionnairePage = () => {
         />
       </div>
 
-      <div className="my-10 flex h-100 w-full flex-col items-center justify-center rounded-[50px] bg-white p-12 shadow-md md:p-20">
-        <div className="flex w-full flex-4 justify-center">
+      <div className="my-6 flex w-full max-w-4xl flex-col items-center justify-center rounded-2xl bg-white p-4 shadow-md sm:my-8 sm:p-6 md:my-10 md:h-100 md:rounded-3xl md:p-12 lg:rounded-[50px] lg:p-20">
+        <div className="flex w-full flex-1 justify-center md:flex-4">
           <QuestionTitle
-            title={`Q${exam.examId}. ${exam.question.title}`}
+            title={exam.question.title}
             description={exam.question.description}
           />
         </div>
 
-        <div className="flex w-full flex-3 justify-center px-10">
+        <div className="flex w-full flex-1 justify-center px-2 py-4 sm:px-6 md:flex-3 md:px-10 md:py-0">
           {filteredAnswer.mode === 'Dropdown' && (
             <DropdownInput
               key={`${currentStep}`}
@@ -160,7 +160,7 @@ const ExamQuestionnairePage = () => {
         </div>
       </div>
 
-      <footer className="flex w-full justify-end">
+      <footer className="flex w-full max-w-4xl justify-end px-2 sm:px-6 md:px-0">
         <NextButton onClick={handleAnswerSubmit} />
       </footer>
     </div>
