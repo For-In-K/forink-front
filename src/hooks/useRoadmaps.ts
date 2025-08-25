@@ -42,11 +42,11 @@ export const useRoadmapsOnType = (
   });
 };
 
-export const useRoadmapStepDetail = (stepContentId: number) => {
+export const useRoadmapStepDetail = (roadmapId: number) => {
   return useQuery({
-    queryKey: ['roadmapStepDetail', stepContentId],
-    queryFn: () => getRoadmapStepDetail(stepContentId!),
-    enabled: !!stepContentId,
+    queryKey: ['roadmapStepDetail'],
+    queryFn: () => getRoadmapStepDetail(roadmapId!),
+    enabled: !!roadmapId,
   });
 };
 
@@ -54,15 +54,38 @@ export const useUpdateRoadmapStepDetailCheck = (stepContentId: number) => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: updateRoadmapStepDetailCheck,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['roadmapStepDetail', stepContentId],
+    mutationFn: () => updateRoadmapStepDetailCheck(stepContentId),
+    onMutate: async () => {
+      await queryClient.cancelQueries({ queryKey: ['roadmapStepDetail'] });
+
+      const previousData = queryClient.getQueryData(['roadmapStepDetail']);
+
+      queryClient.setQueryData(['roadmapStepDetail'], (old: any) => {
+        if (!old) return old;
+
+        return old.map((step: any) => ({
+          ...step,
+          contents: step.contents.map((content: any) =>
+            content.stepContentId === stepContentId
+              ? { ...content, isChecked: !content.isChecked }
+              : content
+          ),
+        }));
       });
+
+      return { previousData };
+    },
+    onSuccess: () => {
       toast.success('체크리스트가 업데이트 되었어요');
     },
-    onError: () => {
+    onError: (error, variables, context) => {
+      if (context?.previousData) {
+        queryClient.setQueryData(['roadmapStepDetail'], context.previousData);
+      }
       toast.error('체크리스트 업데이트에 실패했어요');
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ['roadmapStepDetail'] });
     },
   });
 };
