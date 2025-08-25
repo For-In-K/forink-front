@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { X } from 'lucide-react';
 
 interface GuideRatingSignProps {
@@ -8,6 +9,7 @@ interface GuideRatingSignProps {
 const LOCAL_STORAGE_KEY = 'guideRatingSignClosed';
 
 const GuideRatingSign = ({ onClose }: GuideRatingSignProps) => {
+  const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -25,6 +27,10 @@ const GuideRatingSign = ({ onClose }: GuideRatingSignProps) => {
 
   if (!visible) return null;
 
+  const criteria = t('guide.rating.criteria', {
+    returnObjects: true,
+  }) as string[];
+
   return (
     <div className="relative flex flex-col gap-4 rounded-lg bg-white p-6 font-sans shadow-sm">
       <button
@@ -33,14 +39,18 @@ const GuideRatingSign = ({ onClose }: GuideRatingSignProps) => {
       >
         <X size={16} />
       </button>
-      <h2 className="text-lg font-semibold">Guide Rating Criteria</h2>
-      <p className="text-sm leading-snug text-gray-500">
-        Please evaluate based on the criteria below. Prospective guides need at
-        least 10 feedback entries, an average score of <strong>4.0+</strong>,
-        and a minimum of <strong>3.0 per criterion</strong> for promotion.
-      </p>
+
+      <h2 className="text-lg font-semibold">{t('guide.rating.title')}</h2>
+
+      <p
+        className="text-sm leading-snug text-gray-500"
+        dangerouslySetInnerHTML={{ __html: t('guide.rating.description') }}
+      />
+
       <ul className="list-inside list-disc space-y-1 text-sm text-gray-700">
-        <li>Milestone title and the feedback given by a pre-guide</li>
+        {criteria.map((criterion, index) => (
+          <li key={index}>{criterion}</li>
+        ))}
       </ul>
     </div>
   );

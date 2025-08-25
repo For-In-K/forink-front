@@ -32,7 +32,7 @@ const GuideHeader = ({ headerTitle, mode, status }: GuideHeaderProps) => {
           {headerTitle}
         </div>
         {mode === 'Profile'}
-        {mode === 'Board' && isPreGuide && (
+        {showStatusSign && (
           <div
             className={`${
               status === 'ALMOST' ? 'bg-secondary/90' : 'bg-accent/90'

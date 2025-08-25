@@ -81,7 +81,12 @@ i18n.use(initReactI18next).init({
           language: '가능 언어',
           matchingExpertise: '가이드 매칭 경력',
           matchingUnit: '{{ guideExpCount }}회',
-
+          rating: {
+            title: '가이드 평가 기준',
+            description:
+              '아래 기준에 따라 평가해주세요. 예비 가이드는 최소 10개의 피드백 항목, <strong>4.0 이상</strong>의 평균 점수, 그리고 <strong>기준별 최소 3.0점</strong>이 필요합니다.',
+            criteria: ['마일스톤 제목과 예비 가이드가 제공한 피드백'],
+          },
           status: {
             title: '가이드 상태 레벨',
             description:
@@ -214,6 +219,12 @@ i18n.use(initReactI18next).init({
           language: 'Language',
           matchingExpertise: 'Matching Expertise',
           matchingUnit: '{{ guideExpCount }} times',
+          rating: {
+            title: 'Guide Rating Criteria',
+            description:
+              'Please evaluate based on the criteria below. Prospective guides need at least 10 feedback entries, an average score of <strong>4.0+</strong>, and a minimum of <strong>3.0 per criterion</strong> for promotion.',
+            criteria: ['Milestone title and the feedback given by a pre-guide'],
+          },
           status: {
             title: 'Guide Status Levels',
             description:
@@ -338,7 +349,15 @@ i18n.use(initReactI18next).init({
           language: '可用语言',
           matchingExpertise: '匹配专业',
           matchingUnit: '{{ guideExpCount }}次',
-
+          ratings: {
+            title: '指南评分',
+            description: '请根据以下标准对指南进行评分。',
+            criteria: [
+              '内容的准确性和相关性',
+              '提供的信息的清晰度和可理解性',
+              '对用户问题的响应速度和有效性',
+            ],
+          },
           status: {
             title: '指南状态级别',
             description:
@@ -471,6 +490,14 @@ i18n.use(initReactI18next).init({
           language: 'Ngôn ngữ',
           matchingExpertise: 'Kinh nghiệm ghép đôi',
           matchingUnit: '{{ guideExpCount }} lần',
+          ratings: {
+            title: 'Tiêu chí đánh giá hướng dẫn',
+            description:
+              'Vui lòng đánh giá dựa trên các tiêu chí dưới đây. Hướng dẫn viên tiềm năng cần ít nhất 10 mục phản hồi, điểm trung bình <strong>4.0+</strong>, và tối thiểu <strong>3.0 cho mỗi tiêu chí</strong> để được thăng chức.',
+            criteria: [
+              'Tiêu đề cột mốc và phản hồi từ hướng dẫn viên tiềm năng',
+            ],
+          },
           status: {
             title: 'Cấp độ trạng thái hướng dẫn',
             description:
