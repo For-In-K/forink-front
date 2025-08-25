@@ -6,7 +6,6 @@ import { useRoadmapStepDetail } from '@hooks/useRoadmaps';
 import { guideAdministrationStepDetail } from '@constants/guides';
 import StepUnit from './StepUnit';
 import MilestoneFeedbackModal from '@components/modal/MilestoneFeedbackModal';
-import { data } from 'react-router-dom';
 
 interface StepWrapperProps {
   roadmapId: number;

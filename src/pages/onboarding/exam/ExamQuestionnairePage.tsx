@@ -51,11 +51,9 @@ const ExamQuestionnairePage = () => {
         exam.dependsOn.answerId !== parentAnswer
       ) {
         const nextStep = currentStep + 1;
-        setTimeout(() => {
-          navigate(nextStep <= size ? `/exams/step/${nextStep}` : '/', {
-            replace: true,
-          });
-        }, 2000);
+        navigate(nextStep <= size ? `/exams/step/${nextStep}` : '/', {
+          replace: true,
+        });
         return;
       }
     }
@@ -84,19 +82,18 @@ const ExamQuestionnairePage = () => {
 
       if (isLastStep) {
         createRoadmapsRequest();
-        navigate('/');
+        navigate('/roadmap');
       } else {
         navigate(`/exams/step/${nextStep}`);
       }
 
-      toast.success('Answer saved successfully!');
+      toast.success('답변이 제출되었어요');
     },
     onError: () => toast.error('답변이 저장되지 않았어요'),
   });
 
   const handleAnswerSubmit = () => {
     const currentAnswer = answers[exam.examId];
-
     const hasAnswer = selectedValue || currentAnswer !== undefined;
 
     if (!hasAnswer) {

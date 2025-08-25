@@ -35,10 +35,10 @@ const BasicInfoWrapper = () => {
   return (
     <div>
       <header className="mb-8">
-        <p className="text-title2 font-semibold">
+        <p className="text-text-muted text-title2 font-semibold">
           {t('home.importantDocsTitle')}
         </p>
-        <p className="text-text-muted mt-1 text-sm">
+        <p className="mt-1 text-sm text-slate-500">
           {t('home.importantDocsDescription')}
         </p>
       </header>

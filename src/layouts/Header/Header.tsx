@@ -16,7 +16,7 @@ const Header = () => {
         <Logo />
         <NavMenu />
         <UserGreeting />
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-2 sm:gap-8">
           {isSignedIn && <Point />}
           <LanguageSelector />
           <SignInButton />
