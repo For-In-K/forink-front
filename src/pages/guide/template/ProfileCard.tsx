@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import type { GuideProfile } from 'types/guides';
 import RequestButton from '@components/button/RequestButton';
+import { BadgeCheck } from 'lucide-react';
 
 interface LabelProps {
   value: string;
@@ -25,12 +26,25 @@ const ProfileCard = ({ profile }: ProfileCardProps) => {
   const { t } = useTranslation();
 
   return (
-    <article className="text-body flex h-full w-full flex-col justify-between gap-4 rounded-xl bg-white p-4 shadow-sm transition-transform duration-200 hover:scale-105 md:p-6">
+    <article className="text-body relative flex h-full w-full flex-col justify-between gap-4 rounded-xl bg-white p-4 shadow-sm transition-transform duration-200 hover:scale-105 md:p-6">
+      <div className="absolute top-3 right-3 md:top-4 md:right-4">
+        <div className="group relative">
+          <BadgeCheck
+            className="h-5 w-5 text-white drop-shadow-sm md:h-6 md:w-6"
+            fill="#3b82f6"
+          />
+          <div className="absolute top-full right-0 mt-1 hidden group-hover:block">
+            <div className="rounded-md bg-gray-800 px-2 py-1 text-xs whitespace-nowrap text-white shadow-lg">
+              Verified guide
+              <div className="absolute right-2 bottom-full h-0 w-0 border-r-2 border-b-2 border-l-2 border-r-transparent border-b-gray-800 border-l-transparent"></div>
+            </div>
+          </div>
+        </div>
+      </div>
       <header className="flex items-center gap-5">
         <div className="flex-shrink-0">
           <div className="from-primary to-secondary h-12 w-12 rounded-full bg-gradient-to-br md:h-20 md:w-20" />
         </div>
-
         <div className="min-w-0">
           <p className="text-title2 text-text-primary truncate font-semibold">
             {profile.name}
