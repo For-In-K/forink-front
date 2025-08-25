@@ -13,17 +13,16 @@ const ChecklistUnit = ({ content }: ChecklistUnitProps) => {
     content.stepContentId
   );
 
-  const handleCheckToggle = (stepContentId: number) => () => {
-    updateCheck(stepContentId);
+  const handleCheckToggle = () => {
+    updateCheck();
   };
 
   return (
     <div className="flex gap-3 md:gap-5">
       <CheckButton
-        key={content.stepContentId}
         disabled={isPending}
         isChecked={content.isChecked}
-        onClick={handleCheckToggle(content.stepContentId)}
+        onClick={handleCheckToggle}
       />
       <p className={`${content.isChecked ? 'text-zinc-400 line-through' : ''}`}>
         {content.stepContent}
