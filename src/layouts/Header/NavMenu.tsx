@@ -22,7 +22,7 @@ const NavButton = ({ label, to, invisible }: NavMenuButtonProps) => {
     <NavLink
       to={to}
       className={({ isActive }) =>
-        `sm:text-body hover:bg-surface/50 flex h-10 items-center rounded-full p-2 px-4 text-sm transition-colors duration-300 ease-in-out ${
+        `sm:text-body hover:bg-surface/50 flex h-10 items-center rounded-full p-2 px-3 text-xs transition-colors duration-300 ease-in-out ${
           isActive
             ? 'border-primary text-primary font-bold'
             : 'text-text-primary font-normal'

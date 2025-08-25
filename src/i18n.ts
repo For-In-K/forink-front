@@ -81,6 +81,32 @@ i18n.use(initReactI18next).init({
           language: '가능 언어',
           matchingExpertise: '가이드 매칭 경력',
           matchingUnit: '{{ guideExpCount }}회',
+
+          status: {
+            title: '가이드 상태 레벨',
+            description:
+              '가이드님의 상태는 받은 평가 수와 피드백의 질에 따라 결정됩니다. 정식 가이드가 되려면 충분한 평가를 받고 모든 기준에서 높은 점수를 유지하세요.',
+            steps: {
+              inProgress: {
+                label: 'In progress',
+                requirements: ['아직 충족된 특정 요구 사항이 없습니다.'],
+              },
+              almost: {
+                label: 'Almost',
+                requirements: [
+                  '총 10회 이상의 평가와 모든 피드백에 1회 이상의 평가가 있어야 합니다.',
+                  '기준별 평균이 3.0 미만이거나 전체 평균이 4.0 미만입니다.',
+                ],
+              },
+              formalGuide: {
+                label: 'Formal guide',
+                requirements: [
+                  '총 10회 이상의 평가와 모든 피드백에 1회 이상의 평가가 있어야 합니다.',
+                  '기준별 평균이 3.0 이상이고 전체 평균이 4.0 이상입니다.',
+                ],
+              },
+            },
+          },
         },
         fori: {
           emailInquiry: '이메일 문의',
@@ -188,6 +214,31 @@ i18n.use(initReactI18next).init({
           language: 'Language',
           matchingExpertise: 'Matching Expertise',
           matchingUnit: '{{ guideExpCount }} times',
+          status: {
+            title: 'Guide Status Levels',
+            description:
+              "Your status is determined by the number of ratings you've received and the quality of your feedback. To reach Formal Guide, earn enough ratings and maintain high scores across all criteria.",
+            steps: {
+              inProgress: {
+                label: 'In Progress',
+                requirements: ['No specific requirements met yet.'],
+              },
+              almost: {
+                label: 'Almost',
+                requirements: [
+                  'At least 10 total ratings and every feedback has 1+ rating.',
+                  'Average per criterion is below 3.0 or overall average is below 4.0.',
+                ],
+              },
+              formalGuide: {
+                label: 'Formal guide',
+                requirements: [
+                  'At least 10 total ratings and every feedback has 1+ rating.',
+                  'Average per criterion ≥ 3.0 and overall average ≥ 4.0.',
+                ],
+              },
+            },
+          },
         },
         fori: {
           emailInquiry: 'Email Inquiry',
@@ -287,6 +338,32 @@ i18n.use(initReactI18next).init({
           language: '可用语言',
           matchingExpertise: '匹配专业',
           matchingUnit: '{{ guideExpCount }}次',
+
+          status: {
+            title: '指南状态级别',
+            description:
+              '您的状态由您收到的评分数量和反馈质量决定。要达到正式指南，请获得足够的评分并在所有标准上保持高分。',
+            steps: {
+              inProgress: {
+                label: 'In progress',
+                requirements: ['尚未满足任何具体要求。'],
+              },
+              almost: {
+                label: 'Almost',
+                requirements: [
+                  '总评分至少10次，每个反馈都有1次以上的评分。',
+                  '每个标准的平均值低于3.0或总体平均值低于4.0。',
+                ],
+              },
+              formalGuide: {
+                label: 'Formal guide',
+                requirements: [
+                  '总评分至少10次，每个反馈都有1次以上的评分。',
+                  '每个标准的平均值≥3.0且总体平均值≥4.0。',
+                ],
+              },
+            },
+          },
         },
         fori: {
           emailInquiry: '电子邮件咨询',
@@ -394,6 +471,31 @@ i18n.use(initReactI18next).init({
           language: 'Ngôn ngữ',
           matchingExpertise: 'Kinh nghiệm ghép đôi',
           matchingUnit: '{{ guideExpCount }} lần',
+          status: {
+            title: 'Cấp độ trạng thái hướng dẫn',
+            description:
+              'Trạng thái của bạn được xác định bởi số lượng đánh giá bạn nhận được và chất lượng phản hồi của bạn. Để đạt được Hướng dẫn chính thức, hãy nhận đủ đánh giá và duy trì điểm cao trên tất cả các tiêu chí.',
+            steps: {
+              inProgress: {
+                label: 'In progress',
+                requirements: ['Chưa đáp ứng yêu cầu cụ thể nào.'],
+              },
+              almost: {
+                label: 'Almost',
+                requirements: [
+                  'Tổng cộng ít nhất 10 đánh giá và mọi phản hồi đều có từ 1 đánh giá trở lên.',
+                  'Trung bình mỗi tiêu chí dưới 3.0 hoặc trung bình tổng thể dưới 4.0.',
+                ],
+              },
+              formalGuide: {
+                label: 'Formal guide',
+                requirements: [
+                  'Tổng cộng ít nhất 10 đánh giá và mọi phản hồi đều có từ 1 đánh giá trở lên.',
+                  'Trung bình mỗi tiêu chí ≥ 3.0 và trung bình tổng thể ≥ 4.0.',
+                ],
+              },
+            },
+          },
         },
         fori: {
           emailInquiry: 'Yêu cầu qua email',
