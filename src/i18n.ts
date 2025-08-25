@@ -76,6 +76,9 @@ i18n.use(initReactI18next).init({
           },
         },
         guide: {
+          title: '나의 정착 가이드',
+          description:
+            '낯선 곳에서의 시작, 가이드의 자격은 블록체인에 맡겨두세요. 검증된 전문가의 프로필을 둘러보고 가장 끌리는 사람과 새로운 여정을 시작해봐요.',
           matchingCount: '{{ guideExpCount }}회 매칭 경력',
           specialty: '전문 분야',
           language: '가능 언어',
@@ -214,6 +217,9 @@ i18n.use(initReactI18next).init({
           },
         },
         guide: {
+          title: 'My Settlement Guide',
+          description:
+            'Starting anew in a foreign land? Leave the qualifications of your guide to the blockchain. Browse profiles of verified experts and embark on a new journey with the one that resonates most with you.',
           matchingCount: '{{ guideExpCount }} times matched experience',
           specialty: 'Specialty',
           language: 'Language',
@@ -344,6 +350,9 @@ i18n.use(initReactI18next).init({
           },
         },
         guide: {
+          title: '我的定居指南',
+          description:
+            '在异国他乡重新开始？将您的指南资格交给区块链。浏览经过验证的专家的个人资料，并与最能引起您共鸣的人一起踏上新的旅程。',
           matchingCount: '{{ guideExpCount }}次匹配经验',
           specialty: '专业领域',
           language: '可用语言',
@@ -485,6 +494,9 @@ i18n.use(initReactI18next).init({
           },
         },
         guide: {
+          title: 'Hướng dẫn định cư của tôi',
+          description:
+            'Bắt đầu lại ở một vùng đất xa lạ? Hãy để các tiêu chuẩn của hướng dẫn viên của bạn cho blockchain. Duyệt qua hồ sơ của các chuyên gia đã được xác minh và bắt đầu một hành trình mới với người mà bạn cảm thấy đồng điệu nhất.',
           matchingCount: '{{ guideExpCount }} lần kinh nghiệm ghép đôi',
           specialty: 'Chuyên môn',
           language: 'Ngôn ngữ',

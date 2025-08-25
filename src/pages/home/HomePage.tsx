@@ -43,8 +43,10 @@ const HomePage = () => {
   return (
     <main>
       <header className="mb-8">
-        <p className="text-title2 font-semibold">{t('home.aiDocsTitle')}</p>
-        <p className="text-text-muted mt-1 text-sm">
+        <p className="text-title2 text-text-muted font-semibold">
+          {t('home.aiDocsTitle')}
+        </p>
+        <p className="mt-1 text-sm text-slate-500">
           {t('home.aiDocsDescription')}
         </p>
       </header>
