@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTranslationQuery } from '@hooks/useTranslation';
 
@@ -7,6 +7,9 @@ import { serviceList } from '@constants/home';
 
 const BasicInfoWrapper = () => {
   const { t } = useTranslation();
+
+  const [focusedIndex, setFocusedIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   const textsToTranslate = useMemo(() => {
     return serviceList.flatMap((service) => [
@@ -28,9 +31,19 @@ const BasicInfoWrapper = () => {
       title: translatedTexts[idx * 4],
       when: translatedTexts[idx * 4 + 1],
       summary: translatedTexts[idx * 4 + 2],
-      // tag: translatedTexts[idx * 4 + 3],
+      tag: translatedTexts[idx * 4 + 3],
     }));
   }, [serviceList, translatedTexts]);
+
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+
+    const interval = setInterval(() => {
+      setFocusedIndex((prev) => (prev + 1) % translatedServiceList.length);
+    }, 8000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, translatedServiceList.length]);
 
   return (
     <div>
