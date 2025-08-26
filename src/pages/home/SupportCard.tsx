@@ -8,16 +8,16 @@ const SupportCard = ({ card }: { card: SupportInfoCard }) => {
 
   return (
     <article
-      className="flex h-full flex-col overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition-transform duration-150 hover:-translate-y-1"
+      className="flex h-full flex-col overflow-hidden rounded-xl border border-gray-100 bg-white opacity-80 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:opacity-100"
       aria-labelledby={`support-${card.title}`}
     >
       {card.thumbnail_url ? (
-        <div className="aspect-[16/9] w-full overflow-hidden">
+        <div className="aspect-[16/9] w-full overflow-hidden transition-all duration-300 ease-in-out hover:[&>img]:object-bottom">
           <img
             src={card.thumbnail_url}
             alt={card.title}
             loading="lazy"
-            className="h-full w-full object-cover object-top"
+            className="h-full w-full object-cover object-top transition-[object-position] duration-[2500ms] ease-in-out"
           />
         </div>
       ) : (
@@ -33,7 +33,7 @@ const SupportCard = ({ card }: { card: SupportInfoCard }) => {
       <div className="flex flex-1 flex-col gap-3 p-4">
         <h3
           id={`support-${card.title}`}
-          className="line-clamp-2 text-lg font-semibold"
+          className="text-text-primary line-clamp-2 text-lg font-semibold"
           style={{ color: 'var(--color-text-primary)' }}
         >
           {card.title}
