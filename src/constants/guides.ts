@@ -4,6 +4,35 @@ import {
   GetRoadmapStepDetailResponse,
 } from 'types/roadmaps';
 
+export const guideSafeImageUrls: {
+  [key: string]: string;
+} = {
+  Jaewon:
+    'https://github.com/For-In-K/forink-light-db/blob/main/guides/jaewon.png?raw=true',
+  Suhyen:
+    'https://github.com/For-In-K/forink-light-db/blob/main/guides/suhyen.png?raw=true',
+  Taehyen:
+    'https://github.com/For-In-K/forink-light-db/blob/main/guides/taehyun.png?raw=true',
+  Jungsan:
+    'https://github.com/For-In-K/forink-light-db/blob/main/guides/jungsan.png?raw=true',
+  'Anna Kim':
+    'https://github.com/For-In-K/forink-light-db/blob/main/guides/annakim.png?raw=true',
+  'Minji Lee':
+    'https://github.com/For-In-K/forink-light-db/blob/main/guides/minjilee.png?raw=true',
+  'Carlos Rodríguez':
+    'https://github.com/For-In-K/forink-light-db/blob/main/guides/carlosrodriguez.png?raw=true',
+  'Aisha Khan':
+    'https://github.com/For-In-K/forink-light-db/blob/main/guides/aishakhan.png?raw=true',
+  'Takeshi Yamamoto': '',
+  'Fatima Zahra':
+    'https://github.com/For-In-K/forink-light-db/blob/main/guides/fatimazahra.png?raw=true',
+  'Jean Dupont': '',
+  'Nguyen Thi Hoa':
+    'https://github.com/For-In-K/forink-light-db/blob/main/guides/nguyenthihoa.png?raw=true',
+  'John Smith': '',
+  'Tatiana Ivanova': '',
+};
+
 export const guideRoadmapTypes: GetRoadmapTypeResponse = [
   { roadmapType: 'ADMINISTRATION', progressRatio: 0 },
 ];
