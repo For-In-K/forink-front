@@ -15,7 +15,7 @@ const Container = () => {
   return (
     <div className="mt-12 min-h-[calc(100vh-var(--height-min-header))] w-full md:mt-14 md:min-h-[calc(100vh-var(--height-header))]">
       {!isSignedIn && isHomeServiceSignVisible && <HomeServiceSign />}
-      <div className="relative container mx-auto px-10 py-10 md:py-15">
+      <div className="relative container mx-auto px-5 py-10 md:py-15">
         <Outlet />
         {isSignedIn && isChatbotVisible && <ChatbotWidget />}
       </div>

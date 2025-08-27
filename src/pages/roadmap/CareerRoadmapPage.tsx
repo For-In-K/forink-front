@@ -164,10 +164,10 @@ const CareerTimelineStep = ({
 
   return (
     <div className="relative">
-      <div className="absolute top-16 left-6 h-full w-0.5 bg-gray-200" />
-      <div className="flex items-start space-x-4">
+      <div className="absolute top-12 left-4 h-full w-0.5 bg-gray-200 sm:top-16 sm:left-6" />
+      <div className="flex items-start space-x-3 sm:space-x-4">
         <div
-          className={`flex h-12 w-12 items-center justify-center rounded-full border-2 ${
+          className={`flex h-8 w-8 items-center justify-center rounded-full border-2 sm:h-12 sm:w-12 ${
             isCompleted
               ? 'border-purple-500 bg-purple-500'
               : isActive
@@ -176,29 +176,30 @@ const CareerTimelineStep = ({
           }`}
         >
           {isCompleted ? (
-            <CheckCircle className="h-6 w-6 text-white" />
+            <CheckCircle className="h-4 w-4 text-white sm:h-6 sm:w-6" />
           ) : (
             <Circle
-              className={`h-6 w-6 ${isActive ? 'text-purple-500' : 'text-gray-400'}`}
+              className={`h-4 w-4 sm:h-6 sm:w-6 ${isActive ? 'text-purple-500' : 'text-gray-400'}`}
             />
           )}
         </div>
 
-        <div className="flex-1 pb-8">
-          <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
-            <div className="mb-4 flex items-center justify-between">
-              <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
-              <div className="text-right">
+        <div className="flex-1 pb-6 sm:pb-8">
+          <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm sm:p-6">
+            <div className="mb-3 flex flex-col gap-2 sm:mb-4 sm:flex-row sm:items-center sm:justify-between">
+              <h3 className="text-base font-semibold text-gray-800 sm:text-lg">
+                {title}
+              </h3>
+              <div className="flex items-center justify-between sm:block sm:text-right">
                 <span className="text-sm font-medium text-gray-600">
-                  {completed}/{total}
+                  {completed}/{total} 완료
                 </span>
-                <div className="text-xs text-gray-500">완료</div>
               </div>
             </div>
 
-            <p className="mb-4 text-sm text-gray-600">{description}</p>
+            <p className="mb-3 text-sm text-gray-600 sm:mb-4">{description}</p>
 
-            <div className="mb-4 flex items-center space-x-2">
+            <div className="mb-3 flex flex-wrap items-center gap-2 sm:mb-4">
               <span
                 className={`rounded-full px-2 py-1 text-xs font-medium ${
                   priorityColors[priority as keyof typeof priorityColors] ||
@@ -213,11 +214,11 @@ const CareerTimelineStep = ({
               </span>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               {steps.map((step) => (
                 <div
                   key={step.id}
-                  className="flex cursor-pointer items-start space-x-3 rounded-lg p-2 transition-colors hover:bg-gray-50"
+                  className="flex cursor-pointer items-start space-x-3 rounded-lg p-2 transition-colors hover:bg-gray-50 active:bg-gray-100"
                   onClick={() => onStepToggle(step.id)}
                 >
                   <div className="mt-0.5">
@@ -231,7 +232,7 @@ const CareerTimelineStep = ({
                     <h4 className="text-sm font-medium text-gray-800">
                       {step.title}
                     </h4>
-                    <p className="mt-1 text-xs text-gray-600">
+                    <p className="mt-1 text-xs leading-relaxed text-gray-600">
                       {step.description}
                     </p>
                   </div>
@@ -346,26 +347,28 @@ const CareerRoadmapPage = () => {
   ).length;
 
   return (
-    <div className="flex w-full flex-col gap-10">
-      <div className="">
-        <div className="mb-8 grid gap-6 md:grid-cols-4">
-          <div className="rounded-2xl border border-purple-200 bg-white/80 p-6 shadow-lg backdrop-blur-sm md:col-span-2">
-            <div className="mb-4 flex items-center space-x-3">
-              <Target className="h-6 w-6 text-purple-600" />
-              <h2 className="text-xl font-bold text-gray-800">커리어 진행도</h2>
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 px-4 py-6 sm:px-6 sm:py-8">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-6 grid gap-4 sm:mb-8 sm:gap-6 md:grid-cols-4">
+          <div className="col-span-full rounded-2xl border border-purple-200 bg-white/80 p-4 shadow-lg backdrop-blur-sm sm:p-6 md:col-span-2">
+            <div className="mb-3 flex items-center space-x-2 sm:mb-4 sm:space-x-3">
+              <Target className="h-5 w-5 text-purple-600 sm:h-6 sm:w-6" />
+              <h2 className="text-lg font-bold text-gray-800 sm:text-xl">
+                커리어 진행도
+              </h2>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-lg font-semibold text-gray-700">
+                <span className="text-base font-semibold text-gray-700 sm:text-lg">
                   전체 완료율
                 </span>
-                <span className="text-2xl font-bold text-purple-600">
+                <span className="text-xl font-bold text-purple-600 sm:text-2xl">
                   {Math.round(overallProgress)}%
                 </span>
               </div>
-              <div className="h-4 w-full rounded-full bg-gray-200">
+              <div className="h-3 w-full rounded-full bg-gray-200 sm:h-4">
                 <div
-                  className="h-4 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 shadow-sm transition-all duration-700"
+                  className="h-3 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 shadow-sm transition-all duration-700 sm:h-4"
                   style={{ width: `${overallProgress}%` }}
                 />
               </div>
@@ -375,41 +378,48 @@ const CareerRoadmapPage = () => {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-purple-200 bg-white/80 p-6 shadow-lg backdrop-blur-sm">
-            <div className="mb-4 flex items-center space-x-3">
-              <Calendar className="h-6 w-6 text-blue-500" />
-              <h2 className="text-lg font-bold text-gray-800">현재 단계</h2>
+          <div className="rounded-2xl border border-purple-200 bg-white/80 p-4 shadow-lg backdrop-blur-sm sm:p-6">
+            <div className="mb-3 flex items-center space-x-2 sm:mb-4 sm:space-x-3">
+              <Calendar className="h-5 w-5 text-blue-500 sm:h-6 sm:w-6" />
+              <h2 className="text-base font-bold text-gray-800 sm:text-lg">
+                현재 단계
+              </h2>
             </div>
             <div className="text-center">
               {currentPhase === -1 ? (
                 <>
-                  <div className="mb-3 text-3xl font-bold text-green-600">
+                  <div className="mb-2 text-2xl font-bold text-green-600 sm:mb-3 sm:text-3xl">
                     완료!
                   </div>
-                  <div className="inline-block rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-800">
+                  <div className="inline-block rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800 sm:px-3">
                     모든 단계 완료
                   </div>
                 </>
               ) : (
                 <>
-                  <div className="mb-3 text-3xl font-bold text-purple-600">
+                  <div className="mb-2 text-2xl font-bold text-purple-600 sm:mb-3 sm:text-3xl">
                     {currentPhase + 1}단계
                   </div>
-                  <div className="inline-block rounded-full bg-purple-100 px-3 py-1 text-xs font-medium text-purple-800">
-                    {roadmap.sections[currentPhase]?.title}
+                  <div className="inline-block rounded-full bg-purple-100 px-2 py-1 text-xs font-medium text-purple-800 sm:px-3">
+                    <span className="hidden sm:inline">
+                      {roadmap.sections[currentPhase]?.title}
+                    </span>
+                    <span className="sm:hidden">진행 중</span>
                   </div>
                 </>
               )}
             </div>
           </div>
 
-          <div className="rounded-2xl border border-purple-200 bg-white/80 p-6 shadow-lg backdrop-blur-sm">
-            <div className="mb-4 flex items-center space-x-3">
-              <TrendingUp className="h-6 w-6 text-green-500" />
-              <h2 className="text-lg font-bold text-gray-800">완료한 단계</h2>
+          <div className="rounded-2xl border border-purple-200 bg-white/80 p-4 shadow-lg backdrop-blur-sm sm:p-6">
+            <div className="mb-3 flex items-center space-x-2 sm:mb-4 sm:space-x-3">
+              <TrendingUp className="h-5 w-5 text-green-500 sm:h-6 sm:w-6" />
+              <h2 className="text-base font-bold text-gray-800 sm:text-lg">
+                완료한 단계
+              </h2>
             </div>
             <div className="text-center">
-              <div className="mb-3 text-3xl font-bold text-green-600">
+              <div className="mb-2 text-2xl font-bold text-green-600 sm:mb-3 sm:text-3xl">
                 {completedPhases}
               </div>
               <div className="text-xs text-gray-500">
@@ -420,19 +430,19 @@ const CareerRoadmapPage = () => {
         </div>
 
         <div className="rounded-2xl border border-gray-200 bg-white shadow-lg">
-          <div className="border-b border-gray-200 p-6">
-            <div className="mb-2 flex items-center space-x-3">
-              <Briefcase className="h-6 w-6 text-purple-600" />
-              <h2 className="text-xl font-bold text-gray-800">
+          <div className="border-b border-gray-200 p-4 sm:p-6">
+            <div className="mb-2 flex items-center space-x-2 sm:space-x-3">
+              <Briefcase className="h-5 w-5 text-purple-600 sm:h-6 sm:w-6" />
+              <h2 className="text-lg font-bold text-gray-800 sm:text-xl">
                 커리어 타임라인
               </h2>
             </div>
-            <p className="text-gray-600">
+            <p className="text-sm text-gray-600 sm:text-base">
               단계별로 체계적으로 한국에서의 커리어를 쌓아가세요
             </p>
           </div>
-          <div className="p-6">
-            <div className="space-y-8">
+          <div className="p-4 sm:p-6">
+            <div className="space-y-6 sm:space-y-8">
               {roadmap.sections.map((section, index) => {
                 const isActive = index === currentPhase;
 
@@ -458,23 +468,23 @@ const CareerRoadmapPage = () => {
           </div>
         </div>
 
-        <div className="mt-8 grid gap-6 md:grid-cols-2">
-          <div className="rounded-2xl border border-blue-200 bg-gradient-to-r from-blue-50 to-blue-100 p-6 shadow-lg">
-            <h3 className="mb-4 flex items-center text-lg font-semibold text-blue-800">
+        <div className="mt-6 grid gap-4 sm:mt-8 sm:gap-6 md:grid-cols-2">
+          <div className="rounded-2xl border border-blue-200 bg-gradient-to-r from-blue-50 to-blue-100 p-4 shadow-lg sm:p-6">
+            <h3 className="mb-3 flex items-center text-base font-semibold text-blue-800 sm:mb-4 sm:text-lg">
               💼 커리어 성공 팁
             </h3>
-            <ul className="space-y-2 text-sm text-blue-700">
+            <ul className="space-y-1.5 text-xs text-blue-700 sm:space-y-2 sm:text-sm">
               <li>• 한국 비즈니스 문화를 이해하고 적응하세요</li>
               <li>• 지속적인 네트워킹으로 인맥을 확장하세요</li>
               <li>• 업계 트렌드를 파악하고 스킬을 업데이트하세요</li>
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-green-200 bg-gradient-to-r from-green-50 to-green-100 p-6 shadow-lg">
-            <h3 className="mb-4 flex items-center text-lg font-semibold text-green-800">
+          <div className="rounded-2xl border border-green-200 bg-gradient-to-r from-green-50 to-green-100 p-4 shadow-lg sm:p-6">
+            <h3 className="mb-3 flex items-center text-base font-semibold text-green-800 sm:mb-4 sm:text-lg">
               🎯 면접 준비 핵심
             </h3>
-            <ul className="space-y-2 text-sm text-green-700">
+            <ul className="space-y-1.5 text-xs text-green-700 sm:space-y-2 sm:text-sm">
               <li>• 1분 자기소개는 완벽하게 준비하세요</li>
               <li>• 지원 동기를 구체적으로 설명할 수 있어야 해요</li>
               <li>• 한국어 비즈니스 용어를 익혀두세요</li>
