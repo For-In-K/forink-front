@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
-  ArrowLeft,
   BookOpen,
   Award,
   CheckCircle,
@@ -8,9 +7,8 @@ import {
   Lock,
   Unlock,
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-// Mock data for language roadmap
 const languageRoadmap = {
   title: '한국어 학습 경로',
   subtitle: '단계별로 차근차근 따라오면서 한국어 실력을 쌓아보세요!',
@@ -109,7 +107,6 @@ const languageRoadmap = {
   ],
 };
 
-// LanguageLevelCard Component
 interface LanguageLevelCardProps {
   level: string;
   title: string;
@@ -232,9 +229,63 @@ const LanguageLevelCard = ({
   );
 };
 
+const LANGUAGE_ROADMAP_STORAGE_KEY = 'language-roadmap-progress';
+
+const loadProgressFromStorage = () => {
+  try {
+    const stored = localStorage.getItem(LANGUAGE_ROADMAP_STORAGE_KEY);
+    return stored ? JSON.parse(stored) : null;
+  } catch (error) {
+    toast.error('데이터를 불러오는 중 오류가 발생했어요');
+    return null;
+  }
+};
+
+const saveProgressToStorage = (roadmapData: any) => {
+  try {
+    localStorage.setItem(
+      LANGUAGE_ROADMAP_STORAGE_KEY,
+      JSON.stringify(roadmapData)
+    );
+  } catch (error) {
+    toast.error('데이터를 저장하는 중 오류가 발생했어요');
+  }
+};
+
 const LanguageRoadmapPage = () => {
-  const navigate = useNavigate();
-  const [roadmap, setRoadmap] = useState(languageRoadmap);
+  const [roadmap, setRoadmap] = useState(() => {
+    const savedProgress = loadProgressFromStorage();
+    if (savedProgress) {
+      return {
+        ...languageRoadmap,
+        sections: languageRoadmap.sections.map((section) => {
+          const savedSection = savedProgress.sections?.find(
+            (s: any) => s.id === section.id
+          );
+          if (savedSection) {
+            return {
+              ...section,
+              completed: savedSection.completed,
+              steps: section.steps.map((step) => {
+                const savedStep = savedSection.steps?.find(
+                  (st: any) => st.id === step.id
+                );
+                return savedStep
+                  ? { ...step, completed: savedStep.completed }
+                  : step;
+              }),
+            };
+          }
+          return section;
+        }),
+      };
+    }
+    return languageRoadmap;
+  });
+
+  useEffect(() => {
+    saveProgressToStorage(roadmap);
+  }, [roadmap]);
 
   const handleStepToggle = (sectionId: string, stepId: string) => {
     setRoadmap((prev) => ({
@@ -268,7 +319,6 @@ const LanguageRoadmapPage = () => {
     0
   );
 
-  // Check if a level is unlocked (previous level completed or first level)
   const isLevelUnlocked = (index: number) => {
     if (index === 0) return true;
     const previousSection = roadmap.sections[index - 1];
@@ -286,10 +336,8 @@ const LanguageRoadmapPage = () => {
 
   return (
     <div>
-      {/* Learning Dashboard */}
       <div className="flex w-full flex-col gap-12">
         <div className="grid gap-6 md:grid-cols-3">
-          {/* Overall Progress */}
           <div className="rounded-2xl border border-emerald-200 bg-white/80 p-6 shadow-lg backdrop-blur-sm md:col-span-2">
             <div className="mb-4 flex items-center space-x-3">
               <BookOpen className="h-6 w-6 text-emerald-600" />
@@ -321,7 +369,6 @@ const LanguageRoadmapPage = () => {
             </div>
           </div>
 
-          {/* Current Level */}
           <div className="rounded-2xl border border-emerald-200 bg-white/80 p-6 shadow-md backdrop-blur-sm">
             <div className="mb-4 flex items-center space-x-3">
               <Award className="h-6 w-6 text-yellow-500" />
@@ -351,7 +398,6 @@ const LanguageRoadmapPage = () => {
           </div>
         </div>
 
-        {/* Learning Path */}
         <div className="space-y-8">
           <div className="text-center">
             <h2 className="mb-3 text-2xl font-bold text-gray-800">
@@ -368,7 +414,6 @@ const LanguageRoadmapPage = () => {
 
             return (
               <div key={section.id} className="relative">
-                {/* Level Connection Line */}
                 {index < roadmap.sections.length - 1 && (
                   <div className="absolute -bottom-4 left-1/2 z-0 h-8 w-0.5 -translate-x-1/2 transform bg-gradient-to-b from-emerald-300 to-transparent" />
                 )}
@@ -392,7 +437,6 @@ const LanguageRoadmapPage = () => {
           })}
         </div>
 
-        {/* Study Tips */}
         <div className="rounded-2xl border border-blue-200 bg-gradient-to-r from-blue-50 to-indigo-50 p-8 shadow-lg">
           <h3 className="mb-5 flex items-center text-xl font-bold text-gray-800">
             💡 학습 팁

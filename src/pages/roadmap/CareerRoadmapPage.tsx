@@ -8,7 +8,7 @@ import {
   Circle,
   Clock,
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+
 import { toast } from 'react-toastify';
 
 const careerRoadmap = {
@@ -252,7 +252,7 @@ const loadProgressFromStorage = () => {
     const stored = localStorage.getItem(CAREER_ROADMAP_STORAGE_KEY);
     return stored ? JSON.parse(stored) : null;
   } catch (error) {
-    toast.error('로컬 스토리지에서 데이터를 불러오는 중 오류가 발생했어요');
+    toast.error('데이터를 불러오는 중 오류가 발생했어요');
     return null;
   }
 };
@@ -264,12 +264,11 @@ const saveProgressToStorage = (roadmapData: any) => {
       JSON.stringify(roadmapData)
     );
   } catch (error) {
-    toast.error('로컬 스토리지에 데이터를 저장하는 중 오류가 발생했어요');
+    toast.error('데이터를 저장하는 중 오류가 발생했어요');
   }
 };
 
 const CareerRoadmapPage = () => {
-  const navigate = useNavigate();
   const [roadmap, setRoadmap] = useState(() => {
     const savedProgress = loadProgressFromStorage();
     if (savedProgress) {
