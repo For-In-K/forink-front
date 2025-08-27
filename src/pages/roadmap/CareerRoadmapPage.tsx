@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Briefcase,
   Target,
@@ -9,6 +9,7 @@ import {
   Clock,
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const careerRoadmap = {
   title: '커리어 타임라인',
@@ -123,7 +124,6 @@ const careerRoadmap = {
   ],
 };
 
-// CareerTimelineStep Component
 interface CareerTimelineStepProps {
   id: string;
   title: string;
@@ -164,11 +164,8 @@ const CareerTimelineStep = ({
 
   return (
     <div className="relative">
-      {/* Timeline connector */}
       <div className="absolute top-16 left-6 h-full w-0.5 bg-gray-200" />
-
       <div className="flex items-start space-x-4">
-        {/* Timeline dot */}
         <div
           className={`flex h-12 w-12 items-center justify-center rounded-full border-2 ${
             isCompleted
@@ -187,7 +184,6 @@ const CareerTimelineStep = ({
           )}
         </div>
 
-        {/* Content */}
         <div className="flex-1 pb-8">
           <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
             <div className="mb-4 flex items-center justify-between">
@@ -249,9 +245,64 @@ const CareerTimelineStep = ({
   );
 };
 
+const CAREER_ROADMAP_STORAGE_KEY = 'career-roadmap-progress';
+
+const loadProgressFromStorage = () => {
+  try {
+    const stored = localStorage.getItem(CAREER_ROADMAP_STORAGE_KEY);
+    return stored ? JSON.parse(stored) : null;
+  } catch (error) {
+    toast.error('로컬 스토리지에서 데이터를 불러오는 중 오류가 발생했어요');
+    return null;
+  }
+};
+
+const saveProgressToStorage = (roadmapData: any) => {
+  try {
+    localStorage.setItem(
+      CAREER_ROADMAP_STORAGE_KEY,
+      JSON.stringify(roadmapData)
+    );
+  } catch (error) {
+    toast.error('로컬 스토리지에 데이터를 저장하는 중 오류가 발생했어요');
+  }
+};
+
 const CareerRoadmapPage = () => {
   const navigate = useNavigate();
-  const [roadmap, setRoadmap] = useState(careerRoadmap);
+  const [roadmap, setRoadmap] = useState(() => {
+    const savedProgress = loadProgressFromStorage();
+    if (savedProgress) {
+      return {
+        ...careerRoadmap,
+        sections: careerRoadmap.sections.map((section) => {
+          const savedSection = savedProgress.sections?.find(
+            (s: any) => s.id === section.id
+          );
+          if (savedSection) {
+            return {
+              ...section,
+              completed: savedSection.completed,
+              steps: section.steps.map((step) => {
+                const savedStep = savedSection.steps?.find(
+                  (st: any) => st.id === step.id
+                );
+                return savedStep
+                  ? { ...step, completed: savedStep.completed }
+                  : step;
+              }),
+            };
+          }
+          return section;
+        }),
+      };
+    }
+    return careerRoadmap;
+  });
+
+  useEffect(() => {
+    saveProgressToStorage(roadmap);
+  }, [roadmap]);
 
   const handleStepToggle = (sectionId: string, stepId: string) => {
     setRoadmap((prev) => ({
@@ -353,7 +404,6 @@ const CareerRoadmapPage = () => {
             </div>
           </div>
 
-          {/* Completed Phases */}
           <div className="rounded-2xl border border-purple-200 bg-white/80 p-6 shadow-lg backdrop-blur-sm">
             <div className="mb-4 flex items-center space-x-3">
               <TrendingUp className="h-6 w-6 text-green-500" />
@@ -370,7 +420,6 @@ const CareerRoadmapPage = () => {
           </div>
         </div>
 
-        {/* Career Timeline */}
         <div className="rounded-2xl border border-gray-200 bg-white shadow-lg">
           <div className="border-b border-gray-200 p-6">
             <div className="mb-2 flex items-center space-x-3">
@@ -410,7 +459,6 @@ const CareerRoadmapPage = () => {
           </div>
         </div>
 
-        {/* Career Tips */}
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           <div className="rounded-2xl border border-blue-200 bg-gradient-to-r from-blue-50 to-blue-100 p-6 shadow-lg">
             <h3 className="mb-4 flex items-center text-lg font-semibold text-blue-800">
