@@ -62,13 +62,26 @@ const ProfileCard = ({ profile }: ProfileCardProps) => {
 
       <div className="flex flex-1 flex-col gap-4">
         <div>
+          <p className="mb-2 text-sm font-semibold">{t('guide.location')}</p>
+          <div className="flex flex-wrap gap-2">
+            {profile.location.split(',').map((location, index) => (
+              <Label
+                key={index}
+                value={location.trim()}
+                className="bg-blue-50"
+              />
+            ))}
+          </div>
+        </div>
+
+        <div>
           <p className="mb-2 text-sm font-semibold">{t('guide.specialty')}</p>
           <div className="flex flex-wrap gap-2">
             {profile.expertise.split(',').map((expertise, index) => (
               <Label
                 key={index}
                 value={expertise.trim()}
-                className="bg-emerald-50"
+                className="bg-indigo-50"
               />
             ))}
           </div>
@@ -78,7 +91,11 @@ const ProfileCard = ({ profile }: ProfileCardProps) => {
           <p className="mb-2 text-sm font-semibold">{t('guide.language')}</p>
           <div className="flex flex-wrap gap-2">
             {profile.language.split(',').map((language, index) => (
-              <Label key={index} value={language.trim()} />
+              <Label
+                key={index}
+                value={language.trim()}
+                className="bg-sky-50"
+              />
             ))}
           </div>
         </div>
