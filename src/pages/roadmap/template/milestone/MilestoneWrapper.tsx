@@ -89,6 +89,8 @@ const MilestoneWrapper = ({ roadmapType }: MilestoneWrapperProps) => {
         target: roadmapsOnType[index + 1].roadmapId.toString(),
         type: 'default',
         animated: true,
+        sourceHandle: 'bottom',
+        targetHandle: 'top',
         style: {
           stroke: '#e4e4e7',
           strokeWidth: 7,
