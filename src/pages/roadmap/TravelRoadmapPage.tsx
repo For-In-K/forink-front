@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Map, Compass, MapPin } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { Map, Compass, MapPin } from 'lucide-react';
+import { toast } from 'react-toastify';
 
 const travelRoadmap = {
   title: '나만의 한국 모험 지도',
@@ -152,7 +152,6 @@ const travelRoadmap = {
   ],
 };
 
-// TravelMapStep Component
 interface TravelMapStepProps {
   id: string;
   title: string;
@@ -174,23 +173,19 @@ const TravelMapStep = ({
 }: TravelMapStepProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  // 툴팁 위치 결정을 더 세밀하게 조정
   const isTopHalf = position.y < 40;
-  const isLeftEdge = position.x < 25; // 왼쪽 끝
-  const isRightEdge = position.x > 75; // 오른쪽 끝
+  const isLeftEdge = position.x < 25;
+  const isRightEdge = position.x > 75;
 
-  // 툴팁 위치 클래스 결정
   const getTooltipPositionClass = () => {
     let positionClass = '';
 
-    // 상하 위치
     if (isTopHalf) {
       positionClass += 'top-full mt-3 ';
     } else {
       positionClass += 'bottom-full mb-3 ';
     }
 
-    // 좌우 위치
     if (isLeftEdge) {
       positionClass += 'left-0 ';
     } else if (isRightEdge) {
@@ -202,18 +197,15 @@ const TravelMapStep = ({
     return positionClass;
   };
 
-  // 화살표 위치 클래스 결정
   const getArrowPositionClass = () => {
     let arrowClass = 'absolute h-0 w-0 border-4 border-transparent ';
 
-    // 상하 화살표 방향
     if (isTopHalf) {
       arrowClass += 'bottom-full border-b-white ';
     } else {
       arrowClass += 'top-full border-t-white ';
     }
 
-    // 좌우 화살표 위치
     if (isLeftEdge) {
       arrowClass += 'left-4 ';
     } else if (isRightEdge) {
@@ -251,7 +243,6 @@ const TravelMapStep = ({
         />
       </div>
 
-      {/* Tooltip - 동적 위치 조정 */}
       <div
         className={`pointer-events-none absolute transition-all duration-300 ${
           isHovered ? 'visible opacity-100' : 'invisible opacity-0'
@@ -267,7 +258,6 @@ const TravelMapStep = ({
             <p className="text-xs leading-relaxed text-orange-700">💡 {tip}</p>
           </div>
 
-          {/* 화살표 - 위치에 따라 동적 조정 */}
           <div className={getArrowPositionClass()} />
         </div>
       </div>
@@ -275,9 +265,63 @@ const TravelMapStep = ({
   );
 };
 
+const TRAVEL_ROADMAP_STORAGE_KEY = 'travel-roadmap-progress';
+
+const loadProgressFromStorage = () => {
+  try {
+    const stored = localStorage.getItem(TRAVEL_ROADMAP_STORAGE_KEY);
+    return stored ? JSON.parse(stored) : null;
+  } catch (error) {
+    toast.error('데이터를 불러오는 중 오류가 발생했어요');
+    return null;
+  }
+};
+
+const saveProgressToStorage = (roadmapData: any) => {
+  try {
+    localStorage.setItem(
+      TRAVEL_ROADMAP_STORAGE_KEY,
+      JSON.stringify(roadmapData)
+    );
+  } catch (error) {
+    toast.error('데이터를 저장하는 중 오류가 발생했어요');
+  }
+};
+
 const TravelRoadmapPage = () => {
-  const navigate = useNavigate();
-  const [roadmap, setRoadmap] = useState(travelRoadmap);
+  const [roadmap, setRoadmap] = useState(() => {
+    const savedProgress = loadProgressFromStorage();
+    if (savedProgress) {
+      return {
+        ...travelRoadmap,
+        sections: travelRoadmap.sections.map((section) => {
+          const savedSection = savedProgress.sections?.find(
+            (s: any) => s.id === section.id
+          );
+          if (savedSection) {
+            return {
+              ...section,
+              completed: savedSection.completed,
+              steps: section.steps.map((step) => {
+                const savedStep = savedSection.steps?.find(
+                  (st: any) => st.id === step.id
+                );
+                return savedStep
+                  ? { ...step, completed: savedStep.completed }
+                  : step;
+              }),
+            };
+          }
+          return section;
+        }),
+      };
+    }
+    return travelRoadmap;
+  });
+
+  useEffect(() => {
+    saveProgressToStorage(roadmap);
+  }, [roadmap]);
 
   const handleStepToggle = (sectionId: string, stepId: string) => {
     setRoadmap((prev) => ({
@@ -311,7 +355,6 @@ const TravelRoadmapPage = () => {
     0
   );
 
-  // Map positions matching the image
   const getStepPositions = () => {
     const positions = [
       // STEP 1: 생활 기반 다지기 (좌측 영역, 5개)
@@ -371,7 +414,6 @@ const TravelRoadmapPage = () => {
         </div>
       </div>
 
-      {/* Interactive Map */}
       <div className="w-full">
         <div className="overflow-hidden rounded-2xl border border-orange-100 bg-white shadow-sm">
           <div className="border-b border-orange-100 bg-white p-6">
@@ -387,7 +429,6 @@ const TravelRoadmapPage = () => {
           </div>
           <div className="p-0">
             <div className="relative h-[500px] overflow-hidden bg-gradient-to-br from-blue-50/50 via-green-50/50 to-yellow-50/50">
-              {/* Decorative background elements */}
               <div className="absolute inset-0 opacity-5">
                 <div className="absolute top-8 left-8 h-16 w-16 rounded-full bg-orange-300" />
                 <div className="absolute top-20 right-16 h-12 w-12 rounded-full bg-orange-200" />
@@ -395,7 +436,6 @@ const TravelRoadmapPage = () => {
                 <div className="absolute right-12 bottom-12 h-20 w-20 rounded-full bg-orange-100" />
               </div>
 
-              {/* Travel Steps as Map Pins */}
               {allSteps.map((step, index) => (
                 <TravelMapStep
                   key={step.id}
@@ -410,7 +450,6 @@ const TravelRoadmapPage = () => {
           </div>
         </div>
 
-        {/* Section Legend */}
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           {roadmap.sections.map((section, index) => (
             <div
