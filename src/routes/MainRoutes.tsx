@@ -20,6 +20,7 @@ import ResumeFinalViewPage from '@pages/onboarding/resume/ResumeFinalViewPage';
 
 import NotFound from '@pages/fallback/NotFound';
 import HomePage from '@pages/home/HomePage';
+import TravelRoadmapPage from '@pages/roadmap/TravelRoadmapPage';
 
 const MainRoutes = () => {
   const { i18n } = useTranslation();
@@ -44,6 +45,7 @@ const MainRoutes = () => {
           path: 'roadmap',
           children: [
             { index: true, element: <RoadmapTypeSelectorPage /> },
+            { path: 'TRAVEL', element: <TravelRoadmapPage /> },
             { path: ':roadmapType', element: <RoadmapDiagramPage /> },
             {
               path: ':roadmapType/:roadmapId',
