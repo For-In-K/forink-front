@@ -40,7 +40,7 @@ i18n.use(initReactI18next).init({
         roadmap: {
           title: '나의 정착 로드맵',
           description:
-            '진단 결과를 바탕으로 생성된 개인 맞춤형 정착 가이드예요.',
+            '진단 결과를 바탕으로 생성된 개인 맞춤형 정착 가이드를 확인해보세요.',
           categories: {
             administration: {
               title: '나만의 행정 로드맵',
