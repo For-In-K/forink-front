@@ -54,7 +54,7 @@ const RoadmapSpecialTypeButton = ({
       onMouseLeave={() => onHover(null)}
       className={`flex min-h-32 w-full max-w-2xl min-w-0 overflow-hidden rounded-3xl shadow-md transition-all duration-300 hover:scale-105 ${
         isHovered
-          ? colorClasses[roadmapTypeButtonInfo.type].hover
+          ? `${colorClasses[roadmapTypeButtonInfo.type].hover} blur-xs filter`
           : colorClasses[roadmapTypeButtonInfo.type].normal
       } md:h-42`}
     >

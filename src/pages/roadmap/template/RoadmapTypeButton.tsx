@@ -24,7 +24,7 @@ const RoadmapTypeButton = ({
       onMouseEnter={() => onHover(roadmapTypeButtonInfo.type)}
       onMouseLeave={() => onHover(null)}
       className={`flex w-full max-w-2xl min-w-0 flex-col items-start gap-1 rounded-3xl px-6 py-4 shadow-md transition-all duration-300 hover:scale-105 ${
-        isHovered ? 'bg-blue-300 blur-xs filter' : 'bg-blue-400'
+        isHovered ? 'bg-blue-300 blur-xs filter' : 'shimmer-primary'
       } md:h-42 md:px-10 md:py-6`}
     >
       <p className="text-title3 md:text-title2 lg:text-title1 text-left font-bold text-white">
