@@ -2,14 +2,20 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { ArrowRight } from 'lucide-react';
+import homeServiceImage from '@assets/static/home-service.png';
 
 const HomeServiceSign = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
   return (
-    <div className="h-sign to-primary w-full bg-gradient-to-b from-blue-600">
-      <div className="container mx-auto flex h-full flex-col justify-around gap-8 p-4 text-center sm:p-8 md:p-12">
+    <div className="h-sign to-primary relative w-full bg-gradient-to-b from-blue-600">
+      <img
+        src={homeServiceImage}
+        className="h-sign absolute inset-0 z-0 w-full object-cover opacity-10"
+        alt="Home service background"
+      />
+      <div className="relative z-10 container mx-auto flex h-full flex-col justify-around gap-8 p-4 text-center sm:p-8 md:p-12 md:text-left">
         <p className="font-mono text-4xl font-bold text-white sm:text-6xl">
           ForinK
         </p>
@@ -17,13 +23,13 @@ const HomeServiceSign = () => {
           <p className="text-base text-slate-50">{t('slogan')}</p>
           <p className="text-xs text-slate-200">{t('sloganDescription')}</p>
         </div>
-        <div className="flex w-full flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
+        <div className="flex w-full flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4 md:justify-start">
           <button
             onClick={() => {
               navigate('/signin');
               toast.info('정착 진단을 위해 로그인이 필요해요');
             }}
-            className="bg-accent hover:bg-accent-hover flex w-full max-w-xs items-center justify-center gap-1 rounded-md p-2 text-xs font-medium text-white sm:w-auto"
+            className="bg-accent hover:bg-accent-hover relative z-20 flex w-full max-w-xs items-center justify-center gap-1 rounded-md p-2 text-xs font-medium text-white transition-colors duration-200 sm:w-auto"
           >
             <span className="truncate">{t('home.startExam')}</span>
             <ArrowRight className="ml-1" size={12} />
@@ -33,7 +39,7 @@ const HomeServiceSign = () => {
               navigate('/signin');
               toast.info('정착 진단을 위해 로그인이 필요해요');
             }}
-            className="hover:border-white-hover hover:text-white-hover w-full max-w-xs rounded-md border p-2 px-6 text-xs font-medium text-white sm:w-auto"
+            className="hover:border-white-hover hover:text-white-hover relative z-20 w-full max-w-xs rounded-md border border-white p-2 px-6 text-xs font-medium text-white transition-colors duration-200 sm:w-auto"
           >
             <span className="truncate">{t('home.findGuide')}</span>
           </button>
