@@ -12,6 +12,9 @@ import SigninCallback from '@pages/auth/SigninCallback';
 import RoadmapTypeSelectorPage from '@pages/roadmap/RoadmapTypeSelectorPage';
 import RoadmapDiagramPage from '@pages/roadmap/RoadmapDiagramPage';
 import RoadmapStepDetailPage from '@pages/roadmap/RoadmapStepDetailPage';
+import TravelRoadmapPage from '@pages/roadmap/TravelRoadmapPage';
+import LanguageRoadmapPage from '@pages/roadmap/LanguageRoadmapPage';
+import CareerRoadmapPage from '@pages/roadmap/CareerRoadmapPage';
 
 import GuideProfilePage from '@pages/guide/GuideProfilePage';
 import GuideRatingPage from '@pages/board/GuideRatingPage';
@@ -20,7 +23,6 @@ import ResumeFinalViewPage from '@pages/onboarding/resume/ResumeFinalViewPage';
 
 import NotFound from '@pages/fallback/NotFound';
 import HomePage from '@pages/home/HomePage';
-import TravelRoadmapPage from '@pages/roadmap/TravelRoadmapPage';
 
 const MainRoutes = () => {
   const { i18n } = useTranslation();
@@ -46,6 +48,8 @@ const MainRoutes = () => {
           children: [
             { index: true, element: <RoadmapTypeSelectorPage /> },
             { path: 'TRAVEL', element: <TravelRoadmapPage /> },
+            { path: 'LANGUAGE', element: <LanguageRoadmapPage /> },
+            { path: 'CAREER', element: <CareerRoadmapPage /> },
             { path: ':roadmapType', element: <RoadmapDiagramPage /> },
             {
               path: ':roadmapType/:roadmapId',

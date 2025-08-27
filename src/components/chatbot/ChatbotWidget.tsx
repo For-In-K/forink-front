@@ -43,7 +43,7 @@ const ChatbotWidget = () => {
     CHATBOT_LAYOUT.WINDOW_EXTRA_MARGIN;
 
   return (
-    <div className="pointer-events-auto fixed right-0 bottom-0 z-0 m-4">
+    <div className="pointer-events-auto fixed right-0 bottom-0 z-99 m-4">
       <button
         className={`from-primary flex items-center justify-center rounded-full bg-gradient-to-br to-blue-600 text-white transition-all duration-300 ${
           isCreating ? 'cursor-not-allowed opacity-60' : 'hover:scale-105'

@@ -11,7 +11,7 @@ const Header = () => {
   const { isSignedIn } = useAuth();
 
   return (
-    <header className="h-min-header border-border text-text-primary md:h-header fixed z-10 flex w-full items-center border-b bg-white px-2">
+    <header className="h-min-header border-border text-text-primary md:h-header fixed z-9999 flex w-full items-center border-b bg-white px-2">
       <div className="container mx-auto flex items-center justify-around">
         <Logo />
         <NavMenu />
