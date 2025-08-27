@@ -62,13 +62,13 @@ i18n.use(initReactI18next).init({
             },
           },
           stepFeedback: {
-            title: '{{stepNumber}} 단계를 완료했어요!',
+            title: '{{stepTitle}} 단계를 완료했어요!',
             description: '이 단계에 대한 피드백을 남겨주세요.',
             bad: '별로예요',
             good: '좋아요',
           },
           milestoneFeedback: {
-            button: '보상 피드백 남기기',
+            button: '피드백만 남겨도 포인트가 쏙! 📝🎁',
             title: '소중한 의견을 듣고 싶어요!',
             description: '마일스톤에 대한 피드백을 남겨주세요.',
             placeholder:
@@ -204,13 +204,13 @@ i18n.use(initReactI18next).init({
             },
           },
           stepFeedback: {
-            title: 'Step {{stepNumber}} Completed!',
+            title: 'Step {{stepTitle}} Completed!',
             description: 'Please leave feedback for this step.',
             bad: 'Not good',
             good: 'Good',
           },
           milestoneFeedback: {
-            button: 'Leave Feedback for Rewards!',
+            button: 'Leave Feedback for Rewards! 📝🎁',
             title: 'Give us your valuable feedback!',
             description: 'Please leave feedback for the milestone.',
             placeholder:
@@ -339,13 +339,13 @@ i18n.use(initReactI18next).init({
             },
           },
           stepFeedback: {
-            title: '步骤 {{stepNumber}} 完成！',
+            title: '步骤 {{stepTitle}} 完成！',
             description: '请为此步骤留下反馈。',
             bad: '不好',
             good: '好',
           },
           milestoneFeedback: {
-            button: '留下奖励反馈！',
+            button: '留下奖励反馈！ 📝🎁',
             title: '我们想听取您的宝贵意见！',
             description: '请为里程碑留下反馈。',
             placeholder: '强调路线图的内容、专业性和实用性是很好的。',
@@ -483,13 +483,13 @@ i18n.use(initReactI18next).init({
             },
           },
           stepFeedback: {
-            title: 'Bước {{stepNumber}} đã hoàn thành!',
+            title: 'Bước {{stepTitle}} đã hoàn thành!',
             description: 'Vui lòng để lại phản hồi cho bước này.',
             bad: 'Không tốt',
             good: 'Tốt',
           },
           milestoneFeedback: {
-            button: 'Để lại phản hồi cho phần thưởng!',
+            button: 'Để lại phản hồi cho phần thưởng! 📝🎁',
             title: 'Vui lòng để lại phản hồi quý giá của bạn!',
             description: 'Vui lòng để lại phản hồi cho cột mốc.',
             placeholder:

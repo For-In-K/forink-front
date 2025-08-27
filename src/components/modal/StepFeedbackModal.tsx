@@ -8,12 +8,14 @@ import sadEmoji from '@assets/icons/emoji_sad.png';
 
 interface StepFeedbackModalProps {
   stepNumber: number;
+  stepTitle: string;
   open: boolean;
   onClose: () => void;
 }
 
 const StepFeedbackModal = ({
   stepNumber,
+  stepTitle,
   open,
   onClose,
 }: StepFeedbackModalProps) => {
@@ -46,7 +48,7 @@ const StepFeedbackModal = ({
         <div className="flex w-full items-center gap-5">
           <div className="flex w-full flex-col gap-2">
             <p className="text-text-muted text-body font-medium">
-              {t('roadmap.stepFeedback.title', { stepNumber })}
+              {t('roadmap.stepFeedback.title', { stepTitle })}
             </p>
             <p className="text-text-muted/50 text-xs font-normal">
               {t('roadmap.stepFeedback.description')}

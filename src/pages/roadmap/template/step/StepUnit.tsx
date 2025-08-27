@@ -32,6 +32,7 @@ const StepUnit = ({ step, roadmapId }: StepUnitProps) => {
       <div className="absolute top-0 left-0 z-10 flex w-full">
         <StepFeedbackModal
           stepNumber={contents[0].stepContentId}
+          stepTitle={stepTitle}
           open={stepFeedbackOpen}
           onClose={handleFeedbackModalClose}
         />
