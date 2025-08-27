@@ -13,6 +13,7 @@ export const officialGuideProfiles: GetOfficialGuideProfileResponse = [
     nationality: 'USA',
     guideExpCount: 5,
     expertise: 'Immigration, Banking',
+    location: 'Gangnam-gu, Seoul',
   },
   {
     memberId: 102,
@@ -21,6 +22,7 @@ export const officialGuideProfiles: GetOfficialGuideProfileResponse = [
     nationality: 'China',
     guideExpCount: 3,
     expertise: 'Housing, Education, Daily Life Support',
+    location: 'Jongno-gu, Seoul',
   },
   {
     memberId: 103,
@@ -29,6 +31,7 @@ export const officialGuideProfiles: GetOfficialGuideProfileResponse = [
     nationality: 'Mexico',
     guideExpCount: 7,
     expertise: 'Job Hunting, Visa, Health Insurance',
+    location: 'Geumjeong-gu, Busan',
   },
   {
     memberId: 104,
@@ -37,6 +40,7 @@ export const officialGuideProfiles: GetOfficialGuideProfileResponse = [
     nationality: 'Pakistan',
     guideExpCount: 4,
     expertise: 'Healthcare, Childcare',
+    location: 'Seocho-gu, Seoul',
   },
   {
     memberId: 105,
@@ -45,6 +49,7 @@ export const officialGuideProfiles: GetOfficialGuideProfileResponse = [
     nationality: 'Japan',
     guideExpCount: 6,
     expertise: 'Banking, Transportation',
+    location: 'Yongsan-gu, Seoul',
   },
   {
     memberId: 106,
@@ -53,6 +58,7 @@ export const officialGuideProfiles: GetOfficialGuideProfileResponse = [
     nationality: 'Morocco',
     guideExpCount: 2,
     expertise: 'Visa, Public Services',
+    location: 'Mapo-gu, Seoul',
   },
   {
     memberId: 107,
@@ -61,6 +67,7 @@ export const officialGuideProfiles: GetOfficialGuideProfileResponse = [
     nationality: 'France',
     guideExpCount: 5,
     expertise: 'Legal Aid, Housing',
+    location: 'Jung-gu, Seoul',
   },
   {
     memberId: 108,
@@ -69,6 +76,7 @@ export const officialGuideProfiles: GetOfficialGuideProfileResponse = [
     nationality: 'Vietnam',
     guideExpCount: 3,
     expertise: 'Job Hunting, Banking',
+    location: 'Dongdaemun-gu, Seoul',
   },
   {
     memberId: 109,
@@ -77,6 +85,7 @@ export const officialGuideProfiles: GetOfficialGuideProfileResponse = [
     nationality: 'UK',
     guideExpCount: 8,
     expertise: 'University Admission, Visa',
+    location: 'Seodaemun-gu, Seoul',
   },
   {
     memberId: 110,
@@ -85,6 +94,7 @@ export const officialGuideProfiles: GetOfficialGuideProfileResponse = [
     nationality: 'Russia',
     guideExpCount: 4,
     expertise: 'Immigration, Medical Support',
+    location: 'Gangbuk-gu, Seoul',
   },
 ];
 
