@@ -5,16 +5,24 @@ import { useTranslation } from 'react-i18next';
 import useAuth from '@hooks/useAuth';
 import { useRoadmapTypes } from '@hooks/useRoadmaps';
 import { guideRoadmapTypes } from '@constants/guides';
+import { roadmapSpecialTypesList } from '@constants/roadmaps';
 import { capitalizeFirstLetter } from '@utils/chars';
 import type { RoadmapTypeDetail } from 'types/roadmaps';
 import RoadmapTypeButton from './template/RoadmapTypeButton';
+import RoadmapSpecialTypeButton from './template/RoadmapSpecialTypeButton';
 import RoadmapTypeButtonSkeleton from './template/RoadmapTypeButtonSkeleton';
 
-export interface RoadmapTypeButtonInfo {
+export interface RoadmapButtonInfo {
   type: string;
   title: string;
   description: string;
+}
+export interface RoadmapTypeButtonInfo extends RoadmapButtonInfo {
   progress: number;
+}
+
+export interface RoadmapSpecialTypeButtonInfo extends RoadmapButtonInfo {
+  thumbnailUrl: string;
 }
 
 const RoadmapTypeSelector = () => {
@@ -110,6 +118,39 @@ const RoadmapTypeSelector = () => {
             />
           );
         })}
+        {isUser
+          ? roadmapSpecialTypesList.map((specialType) => {
+              const roadmapType = specialType.roadmapType;
+              const title = capitalizeFirstLetter(roadmapType);
+              const roadmapSpecialTypeButtonInfo: RoadmapSpecialTypeButtonInfo =
+                {
+                  type: roadmapType,
+                  title: t(
+                    `roadmap.categories.${roadmapType.toLowerCase()}.title`,
+                    {
+                      defaultValue: title,
+                    }
+                  ),
+                  description: t(
+                    `roadmap.categories.${roadmapType.toLowerCase()}.description`,
+                    {
+                      defaultValue: '',
+                    }
+                  ),
+                  thumbnailUrl: specialType.thumbnailUrl,
+                };
+
+              return (
+                <RoadmapSpecialTypeButton
+                  key={roadmapType}
+                  roadmapTypeButtonInfo={roadmapSpecialTypeButtonInfo}
+                  hoveredType={hoveredType}
+                  onSelect={handleRoadmapTypeSelect}
+                  onHover={handleHover}
+                />
+              );
+            })
+          : null}
       </div>
     </main>
   );

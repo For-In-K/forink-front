@@ -48,17 +48,19 @@ i18n.use(initReactI18next).init({
                 '비자, 건강 보험 및 등록에 대한 단계별 가이드를 받으세요.',
             },
             travel: {
-              title: '나만의 여행 로드맵',
-              description: '정착하기 전에 필수 장소와 팁을 알아보세요.',
+              title: '낯선 한국, 나만의 아지트로 만들기',
+              description:
+                '관광객이 아닌 현지인으로 거듭나기 위한 필수 미션을 하나씩 완료해보세요.',
             },
             language: {
-              title: '나만의 언어 로드맵',
-              description: '한국어의 기초를 배워 정착하는 데 도움을 주세요.',
+              title: '안녕하세요! 한국어와 친해지기',
+              description:
+                '한글부터 시작해 자연스러운 대화까지, 차근차근 따라오면 한국어 실력이 쑥쑥 늘 거예요.',
             },
             career: {
-              title: '나만의 경력 로드맵',
+              title: '글로벌 인재를 위한 K-커리어',
               description:
-                '한국에서 경력 경로를 구축할 수 있는 리소스와 가이드를 제공해요.',
+                '당신의 전문성을 한국에서 펼칠 수 있도록, 취업의 모든 단계를 함께 준비해 드립니다.',
             },
           },
           stepFeedback: {
@@ -189,19 +191,19 @@ i18n.use(initReactI18next).init({
                 'Get step-by-step guidance for visas, health insurance, and registration.',
             },
             travel: {
-              title: 'Travel Roadmap',
+              title: 'Making Korea Your Own Sanctuary',
               description:
-                'Discover essential places and tips before settling down.',
+                'Complete these essential missions one by one to transform from a tourist into a true local!',
             },
             language: {
-              title: 'Language Roadmap',
+              title: 'Befriending Korean',
               description:
-                'Learn the basics of the Korean language to help you settle in.',
+                'From the Korean alphabet, Hangeul, to natural conversations, your Korean skills will improve by leaps and bounds if you follow along step-by-step.',
             },
             career: {
-              title: 'Career Roadmap',
+              title: 'K-Career Guide for Global Talent',
               description:
-                'Build your career path in Korea with resources and guidance.',
+                "We'll guide you through every step of the job-seeking process to help you build your professional career in Korea.",
             },
           },
           stepFeedback: {
@@ -328,16 +330,19 @@ i18n.use(initReactI18next).init({
               description: '获取有关签证、健康保险和注册的逐步指南。',
             },
             travel: {
-              title: '我的旅行路线图',
-              description: '在定居之前，发现必要的地方和提示。',
+              title: '打造你的韩国专属天地',
+              description:
+                '请逐一完成这些必要任务，从一名游客蜕变为真正的当地人！',
             },
             language: {
-              title: '我的语言路线图',
-              description: '学习韩语基础知识，以帮助您定居。',
+              title: '与韩语交朋友',
+              description:
+                '从韩文字母入门，到进行自然的会话，只要您循序渐进地学习，韩语实力就会飞速提升。',
             },
             career: {
-              title: '我的职业路线图',
-              description: '通过资源和指导在韩国建立你的职业生涯。',
+              title: '全球英才K-职场指南',
+              description:
+                '我们将与您一起准备求职的每一步，助您在韩国尽情施展专业才能。',
             },
           },
           stepFeedback: {
@@ -470,19 +475,19 @@ i18n.use(initReactI18next).init({
                 'Nhận hướng dẫn từng bước về visa, bảo hiểm y tế và đăng ký.',
             },
             travel: {
-              title: 'Du lịch',
+              title: 'Biến Hàn Quốc xa lạ thành chốn riêng của bạn',
               description:
-                'Khám phá những nơi cần thiết và mẹo trước khi định cư.',
+                'Trở thành người bản xứ, không còn là du khách! Hãy hoàn thành từng nhiệm vụ để bắt đầu hành trình của bạn.',
             },
             language: {
-              title: 'Ngôn ngữ',
+              title: 'Kết bạn với tiếng Hàn',
               description:
-                'Học các kiến thức cơ bản về tiếng Hàn để giúp bạn định cư.',
+                'Bắt đầu từ bảng chữ cái Hangeul đến giao tiếp tự nhiên, chỉ cần bạn kiên trì học theo từng bước, trình độ tiếng Hàn của bạn sẽ tiến bộ vượt bậc.',
             },
             career: {
-              title: 'Nghề nghiệp',
+              title: 'Cẩm nang sự nghiệp K cho nhân tài toàn cầu',
               description:
-                'Xây dựng con đường sự nghiệp của bạn tại Hàn Quốc với các tài nguyên và hướng dẫn.',
+                'Chúng tôi sẽ đồng hành cùng bạn trong mọi giai đoạn tìm việc, giúp bạn phát huy tối đa năng lực chuyên môn tại Hàn Quốc.',
             },
           },
           stepFeedback: {

@@ -6,6 +6,7 @@ import {
   PostRoadmapFeedbackOnSubroadmap,
 } from 'types/roadmaps';
 import apiClient from './apiClient';
+import axios from 'axios';
 
 export const createRoadmaps = async () => {
   const res = await apiClient.post('/roadmaps');
@@ -63,4 +64,11 @@ export const submitRoadmapFeedbackOnStepDetail = async ({
     payload
   );
   return res.data;
+};
+
+export const getImageFromGitHubDB = async (id: string) => {
+  const res = axios.get(
+    `https://raw.githubusercontent.com/forus-io/db/main/images/${id}.png`
+  );
+  return res;
 };
