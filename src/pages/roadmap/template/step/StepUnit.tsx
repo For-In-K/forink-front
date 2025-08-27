@@ -40,7 +40,7 @@ const StepUnit = ({ step, roadmapId }: StepUnitProps) => {
       </div>
 
       <div
-        className={`relative flex w-full flex-col justify-start gap-8 rounded-3xl border p-8 shadow-sm transition-all duration-300 md:px-15 md:py-10 ${
+        className={`relative flex w-full flex-col justify-start gap-8 rounded-3xl border p-8 shadow-sm transition-all duration-300 md:px-10 ${
           isStepCompleted
             ? 'bg-primary/10 border-primary/20 backdrop-blur-sm'
             : 'border-border bg-white hover:shadow-lg'
