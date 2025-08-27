@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import type { SupportInfoCard } from '@apis/home';
-import thumbnail from '@assets/thumbnail.svg';
+import thumbnail from '@assets/static/thumbnail.svg';
 
 const SupportCard = ({ card }: { card: SupportInfoCard }) => {
   const { t } = useTranslation();
