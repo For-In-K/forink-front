@@ -24,7 +24,7 @@ const ChecklistUnit = ({ content }: ChecklistUnitProps) => {
         isChecked={content.isChecked}
         onClick={handleCheckToggle}
       />
-      <p className={`${content.isChecked ? 'text-zinc-400 line-through' : ''}`}>
+      <p className={`${content.isChecked ? 'text-zinc-300 line-through' : ''}`}>
         {content.stepContent}
       </p>
     </div>

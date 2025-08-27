@@ -62,14 +62,14 @@ i18n.use(initReactI18next).init({
             },
           },
           stepFeedback: {
-            title: '단계 {{stepNumber}} 완료!',
+            title: '{{stepNumber}} 단계를 완료했어요!',
             description: '이 단계에 대한 피드백을 남겨주세요.',
             bad: '별로예요',
             good: '좋아요',
           },
           milestoneFeedback: {
             button: '보상 피드백 남기기',
-            title: '모든 단계 완료!',
+            title: '소중한 의견을 듣고 싶어요!',
             description: '마일스톤에 대한 피드백을 남겨주세요.',
             placeholder:
               '로드맵 내용, 전문성, 유용성 등을 강조해서 작성하면 좋아요.',
@@ -210,7 +210,7 @@ i18n.use(initReactI18next).init({
           },
           milestoneFeedback: {
             button: 'Leave Feedback for Rewards!',
-            title: 'All Steps Completed!',
+            title: 'Give us your valuable feedback!',
             description: 'Please leave feedback for the milestone.',
             placeholder:
               'It’s great to highlight the content, expertise, and usefulness of the roadmap.',
@@ -344,7 +344,7 @@ i18n.use(initReactI18next).init({
           },
           milestoneFeedback: {
             button: '留下奖励反馈！',
-            title: '所有步骤已完成！',
+            title: '我们想听取您的宝贵意见！',
             description: '请为里程碑留下反馈。',
             placeholder: '强调路线图的内容、专业性和实用性是很好的。',
           },
@@ -487,7 +487,7 @@ i18n.use(initReactI18next).init({
           },
           milestoneFeedback: {
             button: 'Để lại phản hồi cho phần thưởng!',
-            title: 'Tất cả các bước đã hoàn thành!',
+            title: 'Vui lòng để lại phản hồi quý giá của bạn!',
             description: 'Vui lòng để lại phản hồi cho cột mốc.',
             placeholder:
               'Nên làm nổi bật nội dung, chuyên môn và tính hữu ích của lộ trình.',

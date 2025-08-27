@@ -1,8 +1,10 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSubmitRoadmapFeedbackOnStepDetail } from '@hooks/useRoadmaps';
 
 import Modal from '@components/modal/Modal';
-import { ThumbsUp, ThumbsDown } from 'lucide-react';
+import happyEmoji from '@assets/icons/emoji_happy.png';
+import sadEmoji from '@assets/icons/emoji_sad.png';
 
 interface StepFeedbackModalProps {
   stepNumber: number;
@@ -20,6 +22,7 @@ const StepFeedbackModal = ({
     mutate: submitFeedbackOnStepDetail,
     isSuccess,
     isError,
+    isPending,
   } = useSubmitRoadmapFeedbackOnStepDetail();
 
   const handleFeedbackSubmit = (feedbackValue: 'GOOD' | 'BAD') => {
@@ -31,42 +34,80 @@ const StepFeedbackModal = ({
     });
   };
 
-  if (isSuccess) {
-    onClose();
-  }
+  useEffect(() => {
+    if (isSuccess) {
+      onClose();
+    }
+  }, [isSuccess, onClose]);
 
   return (
     <Modal open={open} onClose={onClose}>
       <div className="flex flex-col items-center gap-8">
-        <div className="flex w-full flex-col items-center gap-5">
-          <div className="rounded-full bg-white/30 p-3">
-            <p className="text-title1 animate-bounce">🎉</p>
-          </div>
-          <div className="w-full text-center">
-            <p className="text-title1 font-bold text-white drop-shadow">
+        <div className="flex w-full items-center gap-5">
+          <div className="flex w-full flex-col gap-2">
+            <p className="text-text-muted text-body font-medium">
               {t('roadmap.stepFeedback.title', { stepNumber })}
             </p>
-            <p className="text-body text-white/80">
+            <p className="text-text-muted/50 text-xs font-normal">
               {t('roadmap.stepFeedback.description')}
             </p>
           </div>
         </div>
+
         <div className="flex w-full justify-center gap-10">
-          <button
-            onClick={() => handleFeedbackSubmit('BAD')}
-            className="shimmer-accent border-danger/40 sm:text-body flex items-center gap-3 rounded-full border-2 p-2 px-4 text-sm font-bold text-white shadow-lg transition-all"
-          >
-            <ThumbsDown className="inline" size={18} />
-            {t('roadmap.stepFeedback.bad')}
-          </button>
-          <button
-            onClick={() => handleFeedbackSubmit('GOOD')}
-            className="shimmer-secondary sm:text-body flex items-center gap-2 rounded-full border-2 border-emerald-600 p-2 px-4 text-sm font-bold text-white shadow-lg transition-all"
-          >
-            <ThumbsUp className="inline" size={18} />
-            {t('roadmap.stepFeedback.good')}
-          </button>
+          <div className="flex flex-col items-center gap-2">
+            <button
+              onClick={() => handleFeedbackSubmit('BAD')}
+              disabled={isPending}
+              className={`transition-all duration-300 ${
+                isPending ? 'cursor-not-allowed opacity-50' : 'hover:scale-110'
+              }`}
+            >
+              <img
+                src={sadEmoji}
+                alt="Sad Emoji"
+                className={`h-20 w-20 drop-shadow-lg transition-all duration-300 ${
+                  isPending
+                    ? 'brightness-75 grayscale'
+                    : 'grayscale hover:brightness-110 hover:grayscale-0'
+                }`}
+              />
+            </button>
+            <span className="text-text-muted/60 text-xs">
+              {t('roadmap.stepFeedback.bad')}
+            </span>
+          </div>
+
+          <div className="flex flex-col items-center gap-2">
+            <button
+              onClick={() => handleFeedbackSubmit('GOOD')}
+              disabled={isPending}
+              className={`transition-all duration-300 ${
+                isPending ? 'cursor-not-allowed opacity-50' : 'hover:scale-110'
+              }`}
+            >
+              <img
+                src={happyEmoji}
+                alt="Happy Emoji"
+                className={`h-20 w-20 drop-shadow-lg transition-all duration-300 ${
+                  isPending
+                    ? 'brightness-75 grayscale'
+                    : 'grayscale hover:brightness-110 hover:grayscale-0'
+                }`}
+              />
+            </button>
+            <span className="text-text-muted/60 text-xs">
+              {t('roadmap.stepFeedback.good')}
+            </span>
+          </div>
         </div>
+
+        {isPending && (
+          <div className="text-text-muted/70 flex items-center gap-2 text-xs">
+            <div className="border-text-muted/30 border-t-text-muted h-4 w-4 animate-spin rounded-full border-2"></div>
+            피드백 제출 중...
+          </div>
+        )}
       </div>
     </Modal>
   );

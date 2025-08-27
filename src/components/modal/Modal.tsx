@@ -11,15 +11,15 @@ const Modal = ({ open, onClose, children }: ModalProps) => {
   if (!open) return null;
 
   return (
-    <div className="bg-opacity-50 fixed inset-0 flex items-center justify-center bg-white/40">
-      <div className="shimmer-primary relative w-lg rounded-lg p-6 shadow-lg">
+    <div className="bg-opacity-50 fixed inset-0 flex items-center justify-center bg-black/40">
+      <div className="relative w-md rounded-lg border border-zinc-50 bg-white p-6 shadow-2xl">
         <button
-          className="transition-color absolute top-2 right-2 flex text-white hover:text-sky-300"
+          className="transition-color absolute top-4 right-4 flex text-zinc-400 hover:text-zinc-500"
           onClick={onClose}
         >
-          <X size={24} />
+          <X size={18} />
         </button>
-        {children}
+        <div className="p-5">{children}</div>
       </div>
     </div>
   );

@@ -37,7 +37,7 @@ const StepUnit = ({ step, roadmapId }: StepUnitProps) => {
         />
       </div>
       <div className="flex w-full flex-col justify-start gap-8 rounded-3xl bg-white p-8 shadow-sm md:px-15 md:py-10">
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-2">
           <p className="text-title2 font-bold text-black">{stepTitle}</p>
           <p className="text-body font-medium text-zinc-500">
             {stepDescription}
