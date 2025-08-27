@@ -28,7 +28,10 @@ const RoadmapTypeSelector = () => {
 
   const getRoadmapTypes = () => {
     if (isUser) {
-      return { data: userRoadmapTypes, isLoading: isUserRoadmapTypesLoading };
+      return {
+        data: userRoadmapTypes ? [userRoadmapTypes[0]] : [],
+        isLoading: isUserRoadmapTypesLoading,
+      };
     } else if (isPreGuide) {
       return { data: guideRoadmapTypes, isLoading: false };
     }
@@ -73,7 +76,7 @@ const RoadmapTypeSelector = () => {
       <div className="flex flex-col items-center gap-6">
         {isRoadmapTypesLoading && (
           <>
-            {Array.from({ length: 6 }).map((_, index) => (
+            {Array.from({ length: 4 }).map((_, index) => (
               <RoadmapTypeButtonSkeleton key={index} />
             ))}
           </>

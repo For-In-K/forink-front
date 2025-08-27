@@ -2,6 +2,10 @@ import { useTranslation } from 'react-i18next';
 import { ServiceBasicInfo } from '@constants/home';
 import { Clock } from 'lucide-react';
 
+interface BasicInfoCardProps extends ServiceBasicInfo {
+  className?: string;
+}
+
 const BasicInfoCard = ({
   title,
   when,
@@ -9,11 +13,12 @@ const BasicInfoCard = ({
   tag,
   url,
   icon,
-}: ServiceBasicInfo) => {
+  className,
+}: BasicInfoCardProps) => {
   const { t } = useTranslation();
 
   return (
-    <div className="border-border flex h-52 w-xs flex-shrink-0 flex-col items-start justify-between rounded-lg border bg-white p-6 transition">
+    <div className={`border-border flex h-52 w-xs flex-shrink-0 flex-col items-start justify-between rounded-lg border bg-white p-6 transition ${className}`}>
       <div className="w-full">
         <div className="mb-3 flex w-full items-center justify-between">
           <div className="text-primary">{icon}</div>

@@ -6,7 +6,7 @@ const UserGreeting = () => {
   const { user } = useUserStore();
 
   return (
-    <p className="text-body text-text-muted hidden truncate text-center font-mono xl:inline-block">
+    <p className="text-text-muted hidden truncate text-center text-sm md:text-sm xl:inline-block">
       {user ? (
         <>
           <span>{t('greetingUser', { username: user?.email })}</span>

@@ -5,6 +5,7 @@ export interface GuideProfile {
   nationality: string;
   guideExpCount: number;
   expertise: string;
+  location: string;
 }
 
 export type GetOfficialGuideProfileResponse = GuideProfile[];

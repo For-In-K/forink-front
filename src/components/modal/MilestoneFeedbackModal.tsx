@@ -24,6 +24,7 @@ const MilestoneFeedbackModal = ({
 
   const {
     mutate: submitFeedbackOnSubroadmap,
+    isPending,
     isSuccess: isSubmitFeedbackOnSubroadmapSuccess,
   } = useSubmitRoadmapFeedbackOnSubroadmap();
 
@@ -43,31 +44,37 @@ const MilestoneFeedbackModal = ({
 
   return (
     <Modal open={open} onClose={onClose}>
-      <div className="flex w-full flex-col items-center gap-10">
-        <div className="flex w-full flex-col items-center gap-5">
-          <div className="rounded-full bg-white/30 p-3">
-            <p className="text-title1 animate-bounce">🥳</p>
-          </div>
-          <div className="text-title1 w-full text-center font-bold text-white drop-shadow">
-            <p>{t('roadmap.milestoneFeedback.title')}</p>
-            <p className="text-body font-normal text-white/80">
+      <div className="flex w-full flex-col items-center gap-5">
+        <div className="flex w-full items-center gap-5">
+          <div className="flex w-full flex-col gap-2">
+            <p className="text-text-muted text-body font-medium">
+              {t('roadmap.milestoneFeedback.title')}
+            </p>
+            <p className="text-text-muted/50 text-xs font-normal">
               {t('roadmap.milestoneFeedback.description')}
             </p>
           </div>
         </div>
         <textarea
-          className="focus:text-text-primary text-text-muted min-h-[120px] w-full resize-y rounded-lg border-none bg-white/90 p-4 transition-all duration-300 ease-in-out placeholder:text-gray-200 focus:bg-white focus:outline-none"
+          className="focus:text-text-primary text-text-muted border-text-muted/10 min-h-[120px] w-full resize-none rounded-sm border bg-white/90 p-4 text-sm transition-all duration-300 ease-in-out placeholder:text-zinc-200 focus:bg-white focus:outline-none"
           placeholder={t('roadmap.milestoneFeedback.placeholder')}
           value={feedback}
           onChange={(e) => setFeedback(e.target.value)}
         />
-        <div className="flex w-full justify-end">
-          <SubmitButton
-            onClick={handleSubmit}
-            disabled={!feedback.trim()}
-            color="secondary"
-          />
-        </div>
+
+        <button
+          onClick={handleSubmit}
+          disabled={!feedback.trim()}
+          className="bg-primary w-full rounded-sm p-2 px-4 text-sm text-white"
+        >
+          {t('submit')}
+        </button>
+        {isPending && (
+          <div className="text-text-muted/70 flex items-center gap-2 text-xs">
+            <div className="border-text-muted/30 border-t-text-muted h-4 w-4 animate-spin rounded-full border-2"></div>
+            피드백 제출 중...
+          </div>
+        )}
       </div>
     </Modal>
   );

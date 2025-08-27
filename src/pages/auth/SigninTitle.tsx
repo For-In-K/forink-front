@@ -2,18 +2,23 @@ import React from 'react';
 
 interface SigninTitleProps {
   title: string;
-  description: string;
+  description?: string;
+  option?: boolean;
 }
 
-const SigninTitle = ({ title, description }: SigninTitleProps) => {
+const SigninTitle = ({ title, description, option }: SigninTitleProps) => {
   return (
     <>
-      <div className="flex animate-bounce flex-col gap-3 text-center font-mono">
-        <h1 className="text-title1 font-semibold tracking-tight md:text-6xl">
+      <div className="flex flex-col gap-3 text-center font-mono">
+        <p
+          className={`${option ? 'md:text-title1 text-2xl' : 'text-title1 md:text-6xl'} text-text-primary font-semibold tracking-tight`}
+        >
           {title}
-        </h1>
-        <p className="md:text-title2 text-text-muted text-xs">
-          {description.split('\n').map((line, index) => (
+        </p>
+        <p
+          className={`${option ? 'text-caption md:text-body' : 'md:text-title2 text-xs'} text-text-muted/60`}
+        >
+          {description?.split('\n').map((line, index) => (
             <React.Fragment key={index}>
               {line}
               {index !== description.split('\n').length - 1 && <br />}
