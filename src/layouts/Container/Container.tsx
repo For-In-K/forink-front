@@ -13,7 +13,7 @@ const Container = () => {
   const { isHomeServiceSignVisible } = useHomeServiceSign();
 
   return (
-    <div className="mt-[var(--height-min-header)] min-h-[calc(100vh-var(--height-min-header))] w-full md:mt-[var(--height-header)] md:min-h-[calc(100vh-var(--height-header))]">
+    <div className="mt-12 min-h-[calc(100vh-var(--height-min-header))] w-full md:mt-14 md:min-h-[calc(100vh-var(--height-header))]">
       {!isSignedIn && isHomeServiceSignVisible && <HomeServiceSign />}
       <div className="relative container mx-auto px-10 py-10 md:py-15">
         <Outlet />

@@ -74,6 +74,7 @@ i18n.use(initReactI18next).init({
             placeholder:
               '로드맵 내용, 전문성, 유용성 등을 강조해서 작성하면 좋아요.',
           },
+          progress: '로드맵 완주까지 {{progress}}% 남았어요!',
         },
         guide: {
           title: '나의 정착 가이드',
@@ -215,6 +216,7 @@ i18n.use(initReactI18next).init({
             placeholder:
               'It’s great to highlight the content, expertise, and usefulness of the roadmap.',
           },
+          progress: "You're {{progress}}% closer to completing the roadmap!",
         },
         guide: {
           title: 'My Settlement Guide',
@@ -348,6 +350,7 @@ i18n.use(initReactI18next).init({
             description: '请为里程碑留下反馈。',
             placeholder: '强调路线图的内容、专业性和实用性是很好的。',
           },
+          progress: '您距离完成路线图还有 {{progress}}%！',
         },
         guide: {
           title: '我的定居指南',
@@ -492,6 +495,7 @@ i18n.use(initReactI18next).init({
             placeholder:
               'Nên làm nổi bật nội dung, chuyên môn và tính hữu ích của lộ trình.',
           },
+          progress: 'Bạn còn {{progress}}% nữa là hoàn thành lộ trình!',
         },
         guide: {
           title: 'Hướng dẫn định cư của tôi',
