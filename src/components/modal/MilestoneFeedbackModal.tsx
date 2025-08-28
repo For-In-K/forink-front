@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useMutation } from '@tanstack/react-query';
 
 import { useSubmitRoadmapFeedbackOnSubroadmap } from '@hooks/useRoadmaps';
@@ -21,25 +21,46 @@ const MilestoneFeedbackModal = ({
   onSubmit,
 }: MilestoneFeedbackModalProps) => {
   const [feedback, setFeedback] = useState('');
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const {
     mutate: submitFeedbackOnSubroadmap,
     isPending,
     isSuccess: isSubmitFeedbackOnSubroadmapSuccess,
+    reset,
   } = useSubmitRoadmapFeedbackOnSubroadmap();
 
+  useEffect(() => {
+    if (open) {
+      setHasSubmitted(false);
+      setFeedback('');
+    }
+  }, [open]);
+
+  useEffect(() => {
+    if (isSubmitFeedbackOnSubroadmapSuccess && hasSubmitted) {
+      onSubmit(feedback);
+      onClose();
+      setHasSubmitted(false);
+      reset();
+    }
+  }, [
+    isSubmitFeedbackOnSubroadmapSuccess,
+    hasSubmitted,
+    feedback,
+    onSubmit,
+    onClose,
+    reset,
+  ]);
+
   const handleSubmit = () => {
+    setHasSubmitted(true);
     submitFeedbackOnSubroadmap({
       roadmapId: roadmapId,
       payload: {
         content: feedback,
       },
     });
-    if (isSubmitFeedbackOnSubroadmapSuccess) {
-      onSubmit(feedback);
-      setFeedback('');
-      onClose();
-    }
   };
 
   return (
