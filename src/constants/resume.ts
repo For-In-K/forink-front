@@ -276,7 +276,7 @@ export const resumeQuestions: GetResumeQuestionResponse = [
   },
   {
     questionId: 6,
-    questionTitle: 'Write down your external resume link.',
+    questionTitle: 'What is your main area of activity?',
     answer: {
       mode: 'Text',
     },
