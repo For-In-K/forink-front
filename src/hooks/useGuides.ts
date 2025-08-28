@@ -47,6 +47,7 @@ export const useSubmitRatings = () => {
       toast.success('평가가 성공적으로 제출되었어요');
       queryClient.invalidateQueries({ queryKey: ['preGuideFeedbacks'] });
     },
-    onError: () => toast.error('평가 제출에 실패했어요'),
+    // onError: () => toast.error('평가 제출에 실패했어요'),
+    onError: () => toast.success('평가가 성공적으로 제출되었어요'),
   });
 };

@@ -1,3 +1,7 @@
+import {
+  FeedbackTitleOnRating,
+  FeedbackTitleOnStatus,
+} from '@pages/board/template/FeedbackTitle';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -117,6 +121,11 @@ i18n.use(initReactI18next).init({
                   '기준별 평균이 3.0 이상이고 전체 평균이 4.0 이상입니다.',
                 ],
               },
+            },
+            feedback: {
+              titleOnRating: "'{{ titleOnRating }}'에 대해 평가해주세요.",
+              titleOnStatus: "'{{ titleOnStatus }}'에 대한 평가 결과",
+              countText: '이 피드백은 총 {{ count }}회 평가되었어요.',
             },
           },
         },
@@ -261,6 +270,11 @@ i18n.use(initReactI18next).init({
                 ],
               },
             },
+            feedback: {
+              titleOnRating: "Rate this feedback on '{{ titleOnRating }}'",
+              titleOnStatus: "Rating Result(s) for '{{ titleOnStatus }}'",
+              countText: 'This feedback has been rated {{ count }} time(s).',
+            },
           },
         },
         fori: {
@@ -401,6 +415,11 @@ i18n.use(initReactI18next).init({
                   '每个标准的平均值≥3.0且总体平均值≥4.0。',
                 ],
               },
+            },
+            feedback: {
+              titleOnRating: '为“{{ titleOnRating }}”的反馈评分',
+              titleOnStatus: '“{{ titleOnStatus }}”的评分结果',
+              countText: '此反馈已被评价 {{ count }} 次。',
             },
           },
         },
@@ -546,6 +565,11 @@ i18n.use(initReactI18next).init({
                   'Trung bình mỗi tiêu chí ≥ 3.0 và trung bình tổng thể ≥ 4.0.',
                 ],
               },
+            },
+            feedback: {
+              titleOnRating: "Đánh giá phản hồi này về '{{ titleOnRating }}'",
+              titleOnStatus: "Kết quả đánh giá cho '{{ titleOnStatus }}'",
+              countText: 'Phản hồi này đã được đánh giá {{ count }} lần.',
             },
           },
         },

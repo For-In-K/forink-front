@@ -168,21 +168,12 @@ Helped me review my housing lease in detail, explaining key legal terms and ensu
 export const guideFeedbackRates: GetPreGuideFeedbackRateResponse = [
   {
     ratingId: 1,
-    feedbackTitle: 'Immigration Help',
+    feedbackTitle: '외국인 등록',
     ratingCount: 12,
     allAvgScore: 4.3,
     expertiseAvgScore: 4.5,
     helpAvgScore: 4.2,
     recommendAvgScore: 4.1,
-  },
-  {
-    ratingId: 2,
-    feedbackTitle: 'Housing Guide',
-    ratingCount: 9,
-    allAvgScore: 4.0,
-    expertiseAvgScore: 3.8,
-    helpAvgScore: 4.1,
-    recommendAvgScore: 4.2,
   },
 ];
 

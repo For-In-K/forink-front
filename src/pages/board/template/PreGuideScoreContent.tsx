@@ -1,12 +1,10 @@
+import { useTranslation } from 'react-i18next';
 import { StatusUnitProps } from './StatusUnit';
 
 const RatingCountText = ({ count }: { count: number }) => {
-  return (
-    <p>
-      This feedback has been rated for&nbsp;
-      <span className="text-primary font-bold">{count} time(s).</span>
-    </p>
-  );
+  const { t } = useTranslation();
+
+  return <p>{t('guide.status.feedback.countText', { count })}</p>;
 };
 
 const PreGuideScoreContent = ({ rating }: StatusUnitProps) => {
