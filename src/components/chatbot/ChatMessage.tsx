@@ -13,7 +13,7 @@ const ChatMessage = ({
     >
       {isUser ? null : <img src={Logo} alt="Fori Logo" className="h-8 w-8" />}
       <div
-        className={`max-w-[80%] p-3 ${isUser ? 'bg-primary/80 rounded-tl-2xl rounded-tr-sm rounded-br-2xl rounded-bl-2xl text-white' : 'rounded-tl-sm rounded-tr-2xl rounded-br-2xl rounded-bl-2xl bg-gray-100 text-black'}`}
+        className={`max-w-[80%] p-3 ${isUser ? 'bg-primary/80 rounded-tl-2xl rounded-tr-sm rounded-br-2xl rounded-bl-2xl text-white' : 'rounded-tl-sm rounded-tr-2xl rounded-br-2xl rounded-bl-2xl bg-gray-100 text-black'} break-words`}
       >
         <div className="text-sm whitespace-pre-wrap">{message.text}</div>
       </div>
