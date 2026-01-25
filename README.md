@@ -1,6 +1,21 @@
 <h1>ForinK🌿<br>외국인 맞춤형 정착 지원 서비스</h1>
 <img width="1200" height="300" alt="forink_preview (2)" src="https://github.com/user-attachments/assets/f15c10f3-aef5-40de-984d-594fbeba7e0d" />
 
+## Table of Contents
+- [Overview](#1-overview)
+- [Features](#2-features)
+  - [Personalized Settlement Roadmap](#🗺️-personalized-settlement-roadmap)
+  - [Trust-based Guide Matching](#🛡️-trust-based-guide-matching)
+  - [RAG-based AI Chatbot (Fori)](#🤖-rag-based-ai-chatbot-fori)
+- [System Design](#3-system-design)
+- [Tech Stacks](#4-tech-stacks)
+- [Pages' Details](#5-pages-details)
+- [UI Overview](#6-ui-overview)
+- [Directory Structure](#7-directory-structure)
+- [Installation](#8-installation)
+- [Demo Video](#9-demo-video)
+- [Contributor](#10-contributor)
+
 ## 1. Overview
 **문제의식:** 한국 거주 외국인들은 언어 장벽, 정보 부족, 복잡한 행정 절차 등으로 초기 정착에 어려움을 겪는 실정<br>
 
@@ -9,7 +24,7 @@
 
 ## 2. Features
 
-### 🗺️ 맞춤형 정착 로드맵
+### 🗺️ Personalized Settlement Roadmap
 - 진단 검사 결과 기반 **개인 최적화 로드맵** 생성
   
   <img width="13161" height="832" alt="Group 71" src="https://github.com/user-attachments/assets/19a84923-5967-4305-8ef3-123449825fe5" />
@@ -17,23 +32,23 @@
 - 진행률 시각화 및 체크리스트 관리
 - 완료 시 **포인트 지급** (가이드 매칭 등 활용 가능)
 
-### 🛡️ 신뢰 기반 가이드 매칭
+### 🛡️ Trust-based Guide Matching
 - 인증된 가이드와 1:1 매칭
 - 예비 가이드 → 전문 가이드로 승격 과정 투명 관리
 - 블록체인 기반 검증 시스템 적용
 
-### 🤖 RAG 기반 AI 챗봇 (Fori)
+### 🤖 RAG-based AI Chatbot (Fori)
 - 개인화된 답변 제공, 환각 방지
 - 다국어 지원
 - 로드맵 진행 상황 기반 추천
 
 
-## 2. System Design
+## 3. System Design
 
 ### Architecture Diagram
 <img width="1000" align="center" alt="forink-diagram" src="https://github.com/user-attachments/assets/bd1d48f7-a460-44bc-bf5e-a0e4c7840065" />
 
-## 3. Tech Stacks
+## 4. Tech Stacks
 
 ![React](https://img.shields.io/badge/React%2019.1.0-20232a?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript%205.8.3-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
@@ -50,7 +65,7 @@
     </div>
   </details>
 
-## 4. Pages' Details
+## 5. Pages' Details
 `진단 검사 페이지`
 - 맞춤형 정착 서비스를 원하는 일반 사용자라면, 회원가입 후 진단검사 페이지로 이동해요.
 - 진단 검사는 약 20개의 문항으로 이루어져 있으며, 각 항목을 클릭하면 다음 항목으로 이동해요.
@@ -118,11 +133,11 @@
 - 로그아웃 버튼을 클릭하면 로그아웃 할 수 있어요.
 
 
-## 5. UI Overview
+## 6. UI Overview
 <img width="22027" height="18015" alt="Group 73" src="https://github.com/user-attachments/assets/ad174768-60e7-4507-89b7-255b8cea50b7" />
 
 
-## 6. Directories
+## 7. Directory Structure
 
 ```shell
 src/
@@ -164,7 +179,7 @@ src/
 ```
 
 
-## 7. Installation
+## 8. Installation
 
 ```shell
 git clone https://github.com/For-In-K/forink-front.git
@@ -174,10 +189,10 @@ npm run dev
 ```
 
 
-## 8. Demo Video
+## 9. Demo Video
 
 https://github.com/user-attachments/assets/6af46090-f4c8-47d5-956c-85a9e0a820ec
 <caption>10MB 제한으로 일부 기능 생략 후 시연한 영상입니다.</caption>
 
-## 9. Contributor
+## 10. Contributor
 [![contributors](https://contrib.rocks/image?repo=For-In-K/forink-front)](https://github.com/For-In-K/forink-front/graphs/contributors)
