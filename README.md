@@ -42,6 +42,7 @@
 - 다국어 지원
 - 로드맵 진행 상황 기반 추천
 
+<img height="500" alt="Fori" src="https://github.com/user-attachments/assets/f2644738-a106-4aa7-b9dd-b981c4d55ea8" />
 
 ## 3. System Design
 
