@@ -4,9 +4,9 @@
 ## Table of Contents
 - [Overview](#1-overview)
 - [Features](#2-features)
-  - [Personalized Settlement Roadmap](#🗺️-personalized-settlement-roadmap)
-  - [Trust-based Guide Matching](#🛡️-trust-based-guide-matching)
-  - [RAG-based AI Chatbot (Fori)](#🤖-rag-based-ai-chatbot-fori)
+  - [Personalized Settlement Roadmap](#personalized-settlement-roadmap)
+  - [Trust-based Guide Matching](#trust-based-guide-matching)
+  - [RAG-based AI Chatbot (Fori)](#rag-based-ai-chatbot-fori)
 - [System Design](#3-system-design)
 - [Tech Stacks](#4-tech-stacks)
 - [Pages' Details](#5-pages-details)
